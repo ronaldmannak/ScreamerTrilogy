@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-25",
+  "version": "0.3.0",
+  "build": 5,
+  "python_tests_passed": 162,
+  "numeric_transform_checks_passed": 535,
+  "rally_packaged_boot_race_native_4k_sky_hud_window_verified": true,
+  "rally_window_points": [
+    659,
+    371
+  ],
+  "rally_4k_render_size": [
+    3840,
+    2160
+  ],
+  "rally_physics": "unchanged original3tick wait;0.030raw/0.033smoothed seconds",
+  "foreground_60fps_final_package_verified": false,
+  "foreground_limit": "Final packaged runs were background/occluded;9native+sky snapshots were verified; later stale-pose fallback was observed.",
+  "rally_corrected": [
+    "desktop16:9 window after initial system clamp",
+    "16:9 render target and fit presentation",
+    "original sky",
+    "exact transparent original HUD including RPMneedle",
+    "original CW culling",
+    "exact bumper-view own-car hide",
+    "retry HUD transport across intro-to-Voodoo transition"
+  ],
+  "screamer_candidate": {
+    "bundle": "build-screamer-crash-candidate/Screamer Metal.app",
+    "status": "candidate; active driving validation pending",
+    "input_free_4k_world_sky_verified": true,
+    "active_main_race_backend_skip_hud_or_wall_crash_verified": false,
+    "original_physics_wait_ticks": 2
+  },
+  "screamer2_input_free_4k_demo_verified": true,
+  "installed_original_games_and_saves_modified": false,
+  "source_sha256": "75a13412273654e35570a0915e75436ba2892e743b4f724d046be2a382d8db5e",
+  "bundles": [
+    "build-live/Screamer Rally Metal.app",
+    "build-screamer2-4k/Screamer 2 Metal.app",
+    "build-screamer-crash-candidate/Screamer Metal.app"
+  ],
+  "original_s1_crash": "Guest software textured vertical-span rasterizer D5D30 wrote beyond16MiB before CPU_JMP abort; bad-span trigger not yet proven."
+}

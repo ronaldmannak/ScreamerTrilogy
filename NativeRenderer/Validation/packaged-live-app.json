@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-25",
+  "app": "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app",
+  "bundle_id": "local.screamer-rally.metal-player",
+  "bounded_normal_launch_seconds": 20,
+  "state": "stopped",
+  "engine_exit": 0,
+  "source_python_tests": 60,
+  "numeric_contract_checks": 535,
+  "bundled_arm64_macho_files": 120,
+  "deep_strict_signature": "passed",
+  "scope": "Final packaged normal app startup, original framebuffer delivery and owned-child shutdown; the separate live race and offscreen reports carry rendering/input/timing evidence."
+}

@@ -1,0 +1,603 @@
+{
+  "128": [
+    {
+      "screamer2_va": "0x7cc48",
+      "compared_bytes": 128,
+      "unmasked_bytes": 92,
+      "relocated_operand_pairs": [
+        {
+          "instruction_operand_offset": 8,
+          "rally_target": "0x798ac",
+          "screamer2_target": "0x7b2dc"
+        },
+        {
+          "instruction_operand_offset": 26,
+          "rally_target": "0x81e3c",
+          "screamer2_target": "0x8386c"
+        },
+        {
+          "instruction_operand_offset": 44,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 53,
+          "rally_target": "0x81e0c",
+          "screamer2_target": "0x8383c"
+        },
+        {
+          "instruction_operand_offset": 73,
+          "rally_target": "0x7b450",
+          "screamer2_target": "0x7ce80"
+        },
+        {
+          "instruction_operand_offset": 79,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 84,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 90,
+          "rally_target": "0x14734c",
+          "screamer2_target": "0x15471c"
+        },
+        {
+          "instruction_operand_offset": 111,
+          "rally_target": "0xaa5bc",
+          "screamer2_target": "0xabfec"
+        }
+      ]
+    }
+  ],
+  "256": [
+    {
+      "screamer2_va": "0x7cc48",
+      "compared_bytes": 256,
+      "unmasked_bytes": 160,
+      "relocated_operand_pairs": [
+        {
+          "instruction_operand_offset": 8,
+          "rally_target": "0x798ac",
+          "screamer2_target": "0x7b2dc"
+        },
+        {
+          "instruction_operand_offset": 26,
+          "rally_target": "0x81e3c",
+          "screamer2_target": "0x8386c"
+        },
+        {
+          "instruction_operand_offset": 44,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 53,
+          "rally_target": "0x81e0c",
+          "screamer2_target": "0x8383c"
+        },
+        {
+          "instruction_operand_offset": 73,
+          "rally_target": "0x7b450",
+          "screamer2_target": "0x7ce80"
+        },
+        {
+          "instruction_operand_offset": 79,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 84,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 90,
+          "rally_target": "0x14734c",
+          "screamer2_target": "0x15471c"
+        },
+        {
+          "instruction_operand_offset": 111,
+          "rally_target": "0xaa5bc",
+          "screamer2_target": "0xabfec"
+        },
+        {
+          "instruction_operand_offset": 131,
+          "rally_target": "0xaa5c0",
+          "screamer2_target": "0xabff0"
+        },
+        {
+          "instruction_operand_offset": 137,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 145,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 155,
+          "rally_target": "0x147394",
+          "screamer2_target": "0x154764"
+        },
+        {
+          "instruction_operand_offset": 171,
+          "rally_target": "0x123740",
+          "screamer2_target": "0x133730"
+        },
+        {
+          "instruction_operand_offset": 186,
+          "rally_target": "0x81e1c",
+          "screamer2_target": "0x8384c"
+        },
+        {
+          "instruction_operand_offset": 192,
+          "rally_target": "0x123740",
+          "screamer2_target": "0x133730"
+        },
+        {
+          "instruction_operand_offset": 203,
+          "rally_target": "0x123744",
+          "screamer2_target": "0x133734"
+        },
+        {
+          "instruction_operand_offset": 208,
+          "rally_target": "0xaa5c4",
+          "screamer2_target": "0xabff4"
+        },
+        {
+          "instruction_operand_offset": 214,
+          "rally_target": "0xaa5c8",
+          "screamer2_target": "0xabff8"
+        },
+        {
+          "instruction_operand_offset": 228,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 238,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 244,
+          "rally_target": "0xaa6ac",
+          "screamer2_target": "0xac0dc"
+        }
+      ]
+    }
+  ],
+  "512": [
+    {
+      "screamer2_va": "0x7cc48",
+      "compared_bytes": 512,
+      "unmasked_bytes": 380,
+      "relocated_operand_pairs": [
+        {
+          "instruction_operand_offset": 8,
+          "rally_target": "0x798ac",
+          "screamer2_target": "0x7b2dc"
+        },
+        {
+          "instruction_operand_offset": 26,
+          "rally_target": "0x81e3c",
+          "screamer2_target": "0x8386c"
+        },
+        {
+          "instruction_operand_offset": 44,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 53,
+          "rally_target": "0x81e0c",
+          "screamer2_target": "0x8383c"
+        },
+        {
+          "instruction_operand_offset": 73,
+          "rally_target": "0x7b450",
+          "screamer2_target": "0x7ce80"
+        },
+        {
+          "instruction_operand_offset": 79,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 84,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 90,
+          "rally_target": "0x14734c",
+          "screamer2_target": "0x15471c"
+        },
+        {
+          "instruction_operand_offset": 111,
+          "rally_target": "0xaa5bc",
+          "screamer2_target": "0xabfec"
+        },
+        {
+          "instruction_operand_offset": 131,
+          "rally_target": "0xaa5c0",
+          "screamer2_target": "0xabff0"
+        },
+        {
+          "instruction_operand_offset": 137,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 145,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 155,
+          "rally_target": "0x147394",
+          "screamer2_target": "0x154764"
+        },
+        {
+          "instruction_operand_offset": 171,
+          "rally_target": "0x123740",
+          "screamer2_target": "0x133730"
+        },
+        {
+          "instruction_operand_offset": 186,
+          "rally_target": "0x81e1c",
+          "screamer2_target": "0x8384c"
+        },
+        {
+          "instruction_operand_offset": 192,
+          "rally_target": "0x123740",
+          "screamer2_target": "0x133730"
+        },
+        {
+          "instruction_operand_offset": 203,
+          "rally_target": "0x123744",
+          "screamer2_target": "0x133734"
+        },
+        {
+          "instruction_operand_offset": 208,
+          "rally_target": "0xaa5c4",
+          "screamer2_target": "0xabff4"
+        },
+        {
+          "instruction_operand_offset": 214,
+          "rally_target": "0xaa5c8",
+          "screamer2_target": "0xabff8"
+        },
+        {
+          "instruction_operand_offset": 228,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 238,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 244,
+          "rally_target": "0xaa6ac",
+          "screamer2_target": "0xac0dc"
+        },
+        {
+          "instruction_operand_offset": 389,
+          "rally_target": "0x123744",
+          "screamer2_target": "0x133734"
+        },
+        {
+          "instruction_operand_offset": 395,
+          "rally_target": "0xaa5c8",
+          "screamer2_target": "0xabff8"
+        },
+        {
+          "instruction_operand_offset": 404,
+          "rally_target": "0xaa5c4",
+          "screamer2_target": "0xabff4"
+        },
+        {
+          "instruction_operand_offset": 414,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 424,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 430,
+          "rally_target": "0xaa6ac",
+          "screamer2_target": "0xac0dc"
+        },
+        {
+          "instruction_operand_offset": 438,
+          "rally_target": "0x123744",
+          "screamer2_target": "0x133734"
+        }
+      ]
+    }
+  ],
+  "1024": [
+    {
+      "screamer2_va": "0x7cc48",
+      "compared_bytes": 1024,
+      "unmasked_bytes": 788,
+      "relocated_operand_pairs": [
+        {
+          "instruction_operand_offset": 838,
+          "rally_target": "0x7bad4",
+          "screamer2_target": "0x7d504"
+        },
+        {
+          "instruction_operand_offset": 842,
+          "rally_target": "0x7b738",
+          "screamer2_target": "0x7d168"
+        },
+        {
+          "instruction_operand_offset": 848,
+          "rally_target": "0x7b630",
+          "screamer2_target": "0x7d060"
+        },
+        {
+          "instruction_operand_offset": 1012,
+          "rally_target": "0x7b578",
+          "screamer2_target": "0x7cfa8"
+        },
+        {
+          "instruction_operand_offset": 1020,
+          "rally_target": "0x7b59c",
+          "screamer2_target": "0x7cfcc"
+        },
+        {
+          "instruction_operand_offset": 8,
+          "rally_target": "0x798ac",
+          "screamer2_target": "0x7b2dc"
+        },
+        {
+          "instruction_operand_offset": 26,
+          "rally_target": "0x81e3c",
+          "screamer2_target": "0x8386c"
+        },
+        {
+          "instruction_operand_offset": 44,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 53,
+          "rally_target": "0x81e0c",
+          "screamer2_target": "0x8383c"
+        },
+        {
+          "instruction_operand_offset": 73,
+          "rally_target": "0x7b450",
+          "screamer2_target": "0x7ce80"
+        },
+        {
+          "instruction_operand_offset": 79,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 84,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 90,
+          "rally_target": "0x14734c",
+          "screamer2_target": "0x15471c"
+        },
+        {
+          "instruction_operand_offset": 111,
+          "rally_target": "0xaa5bc",
+          "screamer2_target": "0xabfec"
+        },
+        {
+          "instruction_operand_offset": 131,
+          "rally_target": "0xaa5c0",
+          "screamer2_target": "0xabff0"
+        },
+        {
+          "instruction_operand_offset": 137,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 145,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 155,
+          "rally_target": "0x147394",
+          "screamer2_target": "0x154764"
+        },
+        {
+          "instruction_operand_offset": 171,
+          "rally_target": "0x123740",
+          "screamer2_target": "0x133730"
+        },
+        {
+          "instruction_operand_offset": 186,
+          "rally_target": "0x81e1c",
+          "screamer2_target": "0x8384c"
+        },
+        {
+          "instruction_operand_offset": 192,
+          "rally_target": "0x123740",
+          "screamer2_target": "0x133730"
+        },
+        {
+          "instruction_operand_offset": 203,
+          "rally_target": "0x123744",
+          "screamer2_target": "0x133734"
+        },
+        {
+          "instruction_operand_offset": 208,
+          "rally_target": "0xaa5c4",
+          "screamer2_target": "0xabff4"
+        },
+        {
+          "instruction_operand_offset": 214,
+          "rally_target": "0xaa5c8",
+          "screamer2_target": "0xabff8"
+        },
+        {
+          "instruction_operand_offset": 228,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 238,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 244,
+          "rally_target": "0xaa6ac",
+          "screamer2_target": "0xac0dc"
+        },
+        {
+          "instruction_operand_offset": 389,
+          "rally_target": "0x123744",
+          "screamer2_target": "0x133734"
+        },
+        {
+          "instruction_operand_offset": 395,
+          "rally_target": "0xaa5c8",
+          "screamer2_target": "0xabff8"
+        },
+        {
+          "instruction_operand_offset": 404,
+          "rally_target": "0xaa5c4",
+          "screamer2_target": "0xabff4"
+        },
+        {
+          "instruction_operand_offset": 414,
+          "rally_target": "0xaa5b8",
+          "screamer2_target": "0xabfe8"
+        },
+        {
+          "instruction_operand_offset": 424,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 430,
+          "rally_target": "0xaa6ac",
+          "screamer2_target": "0xac0dc"
+        },
+        {
+          "instruction_operand_offset": 438,
+          "rally_target": "0x123744",
+          "screamer2_target": "0x133734"
+        },
+        {
+          "instruction_operand_offset": 512,
+          "rally_target": "0x81e24",
+          "screamer2_target": "0x83854"
+        },
+        {
+          "instruction_operand_offset": 524,
+          "rally_target": "0x147394",
+          "screamer2_target": "0x154764"
+        },
+        {
+          "instruction_operand_offset": 540,
+          "rally_target": "0x81e1c",
+          "screamer2_target": "0x8384c"
+        },
+        {
+          "instruction_operand_offset": 546,
+          "rally_target": "0x123740",
+          "screamer2_target": "0x133730"
+        },
+        {
+          "instruction_operand_offset": 557,
+          "rally_target": "0x123744",
+          "screamer2_target": "0x133734"
+        },
+        {
+          "instruction_operand_offset": 580,
+          "rally_target": "0x798ac",
+          "screamer2_target": "0x7b2dc"
+        },
+        {
+          "instruction_operand_offset": 597,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 611,
+          "rally_target": "0x81e0c",
+          "screamer2_target": "0x8383c"
+        },
+        {
+          "instruction_operand_offset": 622,
+          "rally_target": "0x7b678",
+          "screamer2_target": "0x7d0a8"
+        },
+        {
+          "instruction_operand_offset": 628,
+          "rally_target": "0x6ed94",
+          "screamer2_target": "0x707c4"
+        },
+        {
+          "instruction_operand_offset": 661,
+          "rally_target": "0x798bc",
+          "screamer2_target": "0x7b2ec"
+        },
+        {
+          "instruction_operand_offset": 668,
+          "rally_target": "0x798c0",
+          "screamer2_target": "0x7b2f0"
+        },
+        {
+          "instruction_operand_offset": 675,
+          "rally_target": "0x798bc",
+          "screamer2_target": "0x7b2ec"
+        },
+        {
+          "instruction_operand_offset": 682,
+          "rally_target": "0x798c0",
+          "screamer2_target": "0x7b2f0"
+        },
+        {
+          "instruction_operand_offset": 698,
+          "rally_target": "0x7b574",
+          "screamer2_target": "0x7cfa4"
+        },
+        {
+          "instruction_operand_offset": 713,
+          "rally_target": "0x81e3c",
+          "screamer2_target": "0x8386c"
+        },
+        {
+          "instruction_operand_offset": 741,
+          "rally_target": "0x6ed94",
+          "screamer2_target": "0x707c4"
+        },
+        {
+          "instruction_operand_offset": 747,
+          "rally_target": "0x7b608",
+          "screamer2_target": "0x7d038"
+        },
+        {
+          "instruction_operand_offset": 753,
+          "rally_target": "0x7b630",
+          "screamer2_target": "0x7d060"
+        }
+      ]
+    }
+  ]
+}

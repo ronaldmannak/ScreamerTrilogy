@@ -1,0 +1,26 @@
+{
+  "checks": [
+    "All four selections and repeated/toggled launches match independently calculated executable hashes; original executable, controls and save sentinel preserved",
+    "Remembered preferences honored headlessly; CLI override is temporary and OFF/OFF selects original after enhanced launch",
+    "Concurrent launch refused before preferences, executable, config or save mutation",
+    "Unsupported source hash and bad expected bytes refused atomically; prior executable/config/preferences/saves preserved"
+  ],
+  "executable_hashes": {
+    "wide=0,distance=0": "0785e38567c475f25663e4022ec125e447a799004e34efa59758b50cfd84901d",
+    "wide=1,distance=0": "a355c5e1741800448fc558f7289f40d8aae15d72569979f7a258c1261d7402ad",
+    "wide=0,distance=1": "b58de9ef7b97ade8a5dc21bcd5c6c3ebae02a6023ba02a9f89e25ae6e126a2ff",
+    "wide=1,distance=1": "e064c520b6bc545d200e30c61c11d2273c74316052055209bf7ba57f3e62aca0"
+  },
+  "result": "passed",
+  "tested_app": "/private/tmp/screamer-rally-enhancements/final/Screamer Rally.app",
+  "installed_app": "<owned-games>/ScreamerRally/NativeWrapper/dist/Screamer Rally.app",
+  "shader": {
+    "result": "passed",
+    "cases": 11,
+    "details": "shaders/validation.txt"
+  },
+  "visual": "Staged bundle: both options enabled; observed widened China race and keyboard driving to 38 MPH",
+  "options": "Native options window visually verified; remembered checkboxes; Quit preserved prior preferences",
+  "installed_launch": "macOS AppleSystemPolicy blocked execution before main; app-specific first-launch approval required. No global security policy was changed.",
+  "scope": "Short China race check; full races, all tracks, audible playback and gamepad behavior not independently verified"
+}

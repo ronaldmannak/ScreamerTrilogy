@@ -1,0 +1,16 @@
+{
+  "status": "unresolved: macOS pre-launch execution-policy assessment",
+  "installed_app": "<owned-games>/ScreamerRally/NativeWrapper/dist/Screamer Rally.app",
+  "evidence": [
+    "Installed and staged executable instructions match",
+    "Nested code signatures verify",
+    "Clean copy and freshly compiled bundle also stall before main",
+    "Restored unmodified original backup also stalls before main",
+    "System Settings has no pending Open Anyway control",
+    "Assessment of Apple Calculator succeeds; system-wide descriptor exhaustion is unproven"
+  ],
+  "next_test": "Quit Codex completely and launch Rally from Finder; if still blocked, restart macOS and test Rally before reopening Codex",
+  "service_restart": "Automatic approval review rejected restarting syspolicyd; no security daemon was terminated",
+  "source": "https://github.com/openai/codex/issues/16767",
+  "changes_this_investigation": "Installed game code and settings left intact; stopped isolated diagnostics and moved temporary app copies out of dist"
+}

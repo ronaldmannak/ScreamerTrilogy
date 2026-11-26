@@ -1,0 +1,33 @@
+{
+  "executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+  "original_call": "0x23B25 -> 0x25D28",
+  "source_rectangle": {
+    "x": 8,
+    "y": 248,
+    "width": 144,
+    "height": 144
+  },
+  "original_brightness": 0.75,
+  "bgra8_background": {
+    "b": 0,
+    "g": 0,
+    "r": 0,
+    "a": 64
+  },
+  "captures": [
+    {
+      "ram": "~/Library/Application Support/Screamer Metal/Sessions/9FF4BCCD-EBDF-4715-86D9-9CB6AF85C446/assets/8fd655074ccb-94b26512/ram.bin",
+      "table_physical": "0x2cac00",
+      "lut_sha256": "f5813a843aea64bdb941026156e03607e2fe88ecbe2f07d1233d800e9c62a00f",
+      "nearest_rgb075_mismatches": 0,
+      "examples": []
+    },
+    {
+      "ram": "~/Library/Application Support/Screamer Metal/Sessions/9FF4BCCD-EBDF-4715-86D9-9CB6AF85C446/assets/467f4804da4f-91334ff7/ram.bin",
+      "table_physical": "0x2cac00",
+      "lut_sha256": "a7dd05234013309da5dcfeedea6846e62dd2ac6602c75fb206006ba33a6bd7bd",
+      "nearest_rgb075_mismatches": 0,
+      "examples": []
+    }
+  ]
+}

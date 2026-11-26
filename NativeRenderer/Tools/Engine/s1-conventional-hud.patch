@@ -1,0 +1,119 @@
+--- a/src/webserver/s1_native.cpp
++++ b/src/webserver/s1_native.cpp
+@@ -47,6 +47,9 @@
+     uint64_t main_race_calls=0, hud_calls=0, hud_captures=0, hud_rejected=0;
+     uint64_t lease=0, callbacks=0, skipped=0, fallback=0, expired=0, stack_rejected=0;
+     std::string error;
++    uint32_t hud_candidate=0, hud_rejected_page=0, hud_ds_base=0, hud_es_base=0;
++    bool hud_paging_enabled=false;
++    std::string hud_reject_reason;
+ } state;
+ uint64_t now_ns() {
+     return std::chrono::duration_cast<std::chrono::nanoseconds>(
+@@ -96,13 +99,17 @@
+         return index<hud.pages.size()?hud.pages[index].host:nullptr;
+     }
+     uint8_t readb(PhysPt address) override {
+-        return GetHostReadPt(address/MemPageSize)[address%MemPageSize];
++        const auto physical=PAGING_GetPhysicalAddress(address);
++        return GetHostReadPt(physical/MemPageSize)[physical%MemPageSize];
+     }
+     void writeb(PhysPt address,uint8_t value) override {
+-        auto host=GetHostReadPt(address/MemPageSize);
+-        host[address%MemPageSize]=value;
+-        if(address>=hud.framebuffer&&static_cast<uint64_t>(address)-hud.framebuffer<HudPixels)
+-            hud.alpha[address-hud.framebuffer]=255;
++        // PageHandler accesses receive linear addresses. Preserve DOS/A20
++        // aliases by resolving their actual backing page before marking HUD.
++        const auto physical=PAGING_GetPhysicalAddress(address);
++        auto host=GetHostReadPt(physical/MemPageSize);
++        host[physical%MemPageSize]=value;
++        if(physical>=hud.framebuffer&&static_cast<uint64_t>(physical)-hud.framebuffer<HudPixels)
++            hud.alpha[physical-hud.framebuffer]=255;
+     }
+ } hud_handler;
+ void stop_hud_coverage() {
+@@ -110,20 +117,52 @@
+     for(const auto& page:hud.pages)MEM_SetPageHandler(page.page,1,page.original);
+     PAGING_ClearTLB();hud.active=false;
+ }
+-bool start_hud_coverage() {
+-    stop_hud_coverage();hud.pending=false;hud.pages.clear();
+-    // Paging and sub-1MiB aliases require separate translation handling. These
+-    // are not used by the verified S1 protected-mode software framebuffer.
+-    const auto fb=mem_readd(data(0x121528));
+-    if(PAGING_Enabled()||fb<0x100000||!in_ram(fb,HudPixels))return false;
+-    const uint32_t first=fb/MemPageSize,last=(fb+HudPixels-1)/MemPageSize;
++bool supported_hud_ram(uint32_t framebuffer) {
++    constexpr uint32_t LowRamStart=0x1000,LowRamEnd=0xa0000,ExtendedRamStart=0x100000;
++    if(!in_ram(framebuffer,HudPixels))return false;
++    const bool conventional=framebuffer>=LowRamStart&&static_cast<uint64_t>(framebuffer)+HudPixels<=LowRamEnd;
++    return conventional||framebuffer>=ExtendedRamStart;
++}
++bool ordinary_hud_pages(uint32_t framebuffer,std::vector<HudPage>* pages,uint32_t& rejected_page) {
++    const uint32_t first=framebuffer/MemPageSize,last=(framebuffer+HudPixels-1)/MemPageSize;
+     for(uint32_t page=first;page<=last;page++) {
+         auto previous=MEM_GetPageHandler(page);
++        // Status may inspect the framebuffer during an active HUD call.
++        // Validate the original backing rather than our temporary write trap.
++        if(hud.active&&previous==&hud_handler) {
++            const auto index=page-hud.pages.front().page;
++            if(index>=hud.pages.size()){rejected_page=page;return false;}
++            previous=hud.pages[index].original;
++        }
+         const auto host=previous->GetHostReadPt(page);
+         if(!host||host!=previous->GetHostWritePt(page)||
+            (previous->flags&(PFLAG_READABLE|PFLAG_WRITEABLE|PFLAG_HASROM|PFLAG_HASCODE))!=
+-                (PFLAG_READABLE|PFLAG_WRITEABLE)) {hud.pages.clear();return false;}
+-        hud.pages.push_back({page,previous,host});
++                (PFLAG_READABLE|PFLAG_WRITEABLE)) {rejected_page=page;return false;}
++        if(pages)pages->push_back({page,previous,host});
++    }
++    return true;
++}
++bool start_hud_coverage() {
++    stop_hud_coverage();hud.pending=false;hud.pages.clear();
++    const auto fb=mem_readd(data(0x121528));
++    state.hud_candidate=fb;state.hud_rejected_page=0;
++    state.hud_ds_base=SegPhys(ds);state.hud_es_base=SegPhys(es);
++    state.hud_paging_enabled=PAGING_Enabled();state.hud_reject_reason.clear();
++    const auto reject=[](const char* reason){state.hud_reject_reason=reason;return false;};
++    // Original 236CD/2381C load the near framebuffer pointer into EDX;
++    // PKC writer 102B4 copies it to ES:EDI. Only the verified flat profile
++    // may interpret that pointer as the physical RAM backing address.
++    if(!cpu.pmode||!cpu.code.big||state.hud_ds_base||state.hud_es_base)
++        return reject("non-flat protected framebuffer segments");
++    if(state.hud_paging_enabled)return reject("paging enabled");
++    if(!MEM_A20_Enabled())return reject("A20 disabled");
++    if(!in_ram(fb,HudPixels))return reject("framebuffer exceeds guest RAM");
++    // S1 can allocate its buffer in conventional DOS RAM (observed DC60),
++    // as well as extended RAM. Exclude IVT/BDA/first page and the video/ROM
++    // hole. The complete covered span must stay inside one supported range.
++    if(!supported_hud_ram(fb))return reject("framebuffer outside ordinary DOS/extended RAM");
++    if(!ordinary_hud_pages(fb,&hud.pages,state.hud_rejected_page)) {
++        hud.pages.clear();return reject("framebuffer page is not ordinary writable RAM");
+     }
+     hud.framebuffer=fb;hud.mode=mem_readd(data(0x1100c0));hud.alpha.fill(0);
+     for(const auto& page:hud.pages)MEM_SetPageHandler(page.page,1,&hud_handler);
+@@ -225,6 +264,9 @@
+ }
+ json status() {
+     const bool ready=live_ready();const auto now=now_ns();
++    const uint32_t framebuffer=state.installed?mem_readd(data(0x121528)):0;
++    uint32_t rejected_page=0;
++    const bool ordinary=state.installed&&!PAGING_Enabled()&&MEM_A20_Enabled()&&supported_hud_ram(framebuffer)&&ordinary_hud_pages(framebuffer,nullptr,rejected_page);
+     return {{"profile_sha256",ProfileHash},{"installed",state.installed},{"renderer_ready",ready},
+         {"lease_ms",600},{"lease_remaining_ms",ready&&state.lease>now?(state.lease-now)/1000000:0},
+         {"code_base",state.code_base},{"data_base",state.data_base},
+@@ -233,6 +275,11 @@
+         {"main_race_calls",state.main_race_calls},{"last_outer_return_physical",state.last_outer_return},
+         {"last_hud_mode",state.last_hud_mode},{"hud_calls",state.hud_calls},{"hud_captures",state.hud_captures},
+         {"hud_rejected",state.hud_rejected},{"hud_framebuffer",hud.framebuffer},{"hud_sequence",hud.sequence},
++        {"hud_candidate",state.hud_candidate},{"hud_reject_reason",state.hud_reject_reason},{"hud_rejected_page",state.hud_rejected_page},
++        {"hud_ds_base",state.hud_ds_base},{"hud_es_base",state.hud_es_base},{"hud_paging_enabled",state.hud_paging_enabled},
++        {"current_ds_base",SegPhys(ds)},{"current_es_base",SegPhys(es)},{"current_cs_base",SegPhys(cs)},
++        {"current_paging_enabled",PAGING_Enabled()},{"current_protected_mode",cpu.pmode},{"current_a20_enabled",MEM_A20_Enabled()},
++        {"current_framebuffer",framebuffer},{"current_framebuffer_ordinary_ram",ordinary},{"current_framebuffer_rejected_page",rejected_page},
+         {"supported_hud_mode",2},{"physics_wait_ticks",2},{"error",state.error}};
+ }
+ class ControlCommand final:public Command {

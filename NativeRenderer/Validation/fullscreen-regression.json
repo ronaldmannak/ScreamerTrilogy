@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "timeout": false,
+  "wall_seconds": 14.739699290999999,
+  "actual_fullscreen_entered": true,
+  "actual_fullscreen_exited": true,
+  "phases": [
+    {
+      "stage": "windowed_settled",
+      "fullscreen": false,
+      "mode_4k": true,
+      "view_points": [
+        1280,
+        720
+      ],
+      "backing_layer_supplied": [
+        2560,
+        1440
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "presented_frames": 0,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "fullscreen_settled",
+      "fullscreen": true,
+      "mode_4k": true,
+      "view_points": [
+        2560,
+        1440
+      ],
+      "backing_layer_supplied": [
+        5120,
+        2880
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "presented_frames": 46,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "fullscreen_window_resolution_checkpoint",
+      "fullscreen": true,
+      "mode_4k": false,
+      "view_points": [
+        2560,
+        1440
+      ],
+      "backing_layer_supplied": [
+        5120,
+        2880
+      ],
+      "render_target": [
+        5120,
+        2880
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "presented_frames": 200,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "exit_settled",
+      "fullscreen": false,
+      "mode_4k": true,
+      "view_points": [
+        1280,
+        720
+      ],
+      "backing_layer_supplied": [
+        2560,
+        1440
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "presented_frames": 368,
+      "stale_drawable_drops": 0
+    }
+  ],
+  "final_presented_frames": 638,
+  "gpu_errors": 0,
+  "scope": "Production frontend classes with read-only assets; no live engine, game, physics or inputs.",
+  "production_source_sha256": "ca308cd7b1eb6886ab1553847ee3042b076c6b2732bac862cb52828242049c64",
+  "version": "0.3.1",
+  "build": 6,
+  "geometry_headless_check": "passed; central4:3 framing retained with additional horizontal field of view",
+  "numeric_projection_transform_checks": 535,
+  "all_bundles_native_arm64": true,
+  "signatures": "deep strict verification passed for all3bundles",
+  "screamer_crash_validation": "unchanged: player-race backend/crash validation still pending",
+  "coverage_limit": "Historical captured-scene check omitted the game startup-overlay branch and could not detect its659-point window-width cap.",
+  "superseded_for_game_fullscreen_fill_by": "fullscreen-fill-regression.json"
+}

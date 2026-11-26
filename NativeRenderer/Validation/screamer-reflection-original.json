@@ -1,0 +1,19 @@
+{
+  "source_ram": "/private/tmp/screamer-4k-research/S1-native/Captures/attract-v1/guest-ram.bin",
+  "source_sha256": "a0a498e6286fa7dd5f6f731a40ef88d0aa4b1d1deff77d7ce59e0c1617f71f09",
+  "original_part_flags": "0x6a00",
+  "original_reflective_normal_count": 87,
+  "original_scroll": [
+    21,
+    113
+  ],
+  "integer_UV_mismatches": {
+    "original_unshifted": 0,
+    "wrong_shifted_eye": 87,
+    "wrong_Metal_X_basis": 87,
+    "renormalized_normal": 3
+  },
+  "matches": 87,
+  "formula": "r=2*dot(n,normalize(p))*n-normalize(p); UVint=(127+round_even(127*r.x)-scrollX,127+round_even(127*r.z)-scrollZ)",
+  "excluded_other_snapshot": "The other saved player RAM has a non-reflective current part (flags0xA00), so its stale normal/UV tables are not a coherent reflection cohort and are deliberately not compared."
+}

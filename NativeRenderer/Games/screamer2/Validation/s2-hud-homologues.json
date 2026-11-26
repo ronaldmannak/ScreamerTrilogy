@@ -1,0 +1,125 @@
+{
+  "mirror": {
+    "rally_va": "0x78eb0",
+    "matches": [
+      {
+        "screamer2_va": "0x7a8e0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 186,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 247,
+            "rally_target": "0x147390",
+            "screamer2_target": "0x154760"
+          },
+          {
+            "instruction_operand_offset": 1,
+            "rally_target": "0x7bb7c",
+            "screamer2_target": "0x7d5ac"
+          },
+          {
+            "instruction_operand_offset": 11,
+            "rally_target": "0xaa5b0",
+            "screamer2_target": "0xabfe0"
+          },
+          {
+            "instruction_operand_offset": 17,
+            "rally_target": "0xb06cc",
+            "screamer2_target": "0xb20fc"
+          },
+          {
+            "instruction_operand_offset": 22,
+            "rally_target": "0xaa6c4",
+            "screamer2_target": "0xac0f4"
+          },
+          {
+            "instruction_operand_offset": 34,
+            "rally_target": "0xaa6b8",
+            "screamer2_target": "0xac0e8"
+          },
+          {
+            "instruction_operand_offset": 40,
+            "rally_target": "0xaa6bc",
+            "screamer2_target": "0xac0ec"
+          },
+          {
+            "instruction_operand_offset": 45,
+            "rally_target": "0x147394",
+            "screamer2_target": "0x154764"
+          },
+          {
+            "instruction_operand_offset": 53,
+            "rally_target": "0x14737c",
+            "screamer2_target": "0x15474c"
+          },
+          {
+            "instruction_operand_offset": 58,
+            "rally_target": "0x147394",
+            "screamer2_target": "0x154764"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0x147394",
+            "screamer2_target": "0x154764"
+          },
+          {
+            "instruction_operand_offset": 90,
+            "rally_target": "0x14737c",
+            "screamer2_target": "0x15474c"
+          },
+          {
+            "instruction_operand_offset": 96,
+            "rally_target": "0x81e24",
+            "screamer2_target": "0x83854"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x1472d8",
+            "screamer2_target": "0x1546a8"
+          },
+          {
+            "instruction_operand_offset": 232,
+            "rally_target": "0x791f8",
+            "screamer2_target": "0x7ac28"
+          }
+        ]
+      }
+    ]
+  },
+  "render_single": {
+    "rally_va": "0x34c48",
+    "matches": [
+      {
+        "screamer2_va": "0x34bec",
+        "compared_bytes": 64,
+        "unmasked_bytes": 32,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 1,
+            "rally_target": "0x1296bc",
+            "screamer2_target": "0x1396cc"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x131488",
+            "screamer2_target": "0x13fadc"
+          },
+          {
+            "instruction_operand_offset": 34,
+            "rally_target": "0x1296bc",
+            "screamer2_target": "0x1396cc"
+          },
+          {
+            "instruction_operand_offset": 48,
+            "rally_target": "0x1296c4",
+            "screamer2_target": "0x1396d4"
+          }
+        ]
+      }
+    ]
+  },
+  "sprite_center": {
+    "rally_va": "0x3b950",
+    "matches": []
+  }
+}

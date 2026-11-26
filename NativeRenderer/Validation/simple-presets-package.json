@@ -1,0 +1,95 @@
+[
+  {
+    "game": "screamer",
+    "app": "<repository>/NativeRenderer/build-simple-presets/Screamer Metal.app",
+    "version": "0.3.7",
+    "build": 12,
+    "strict_signature": "passed",
+    "modes": {
+      "classic": [
+        "--no-settings",
+        "--original-aspect",
+        "--distance-level",
+        "0"
+      ],
+      "upgraded": [
+        "--window-resolution",
+        "--widescreen",
+        "--extended-distance"
+      ]
+    },
+    "unchanged_payload_sha256": {
+      "Contents/MacOS/dosbox": "62856a0fe5a3bc0b2d34e32e9b108c1af5d5d9990fce10b2bf7328f9479684e8",
+      "Contents/Resources/Python/bin/python3.14": "1a0b557fb825d16600becf68722db90122675b2016214cfb7c2bf6302144d28e",
+      "Contents/Resources/Live/Session.py": "be64ce95592a636f770a3499ca698bec47ab0f31c9650de4064a7d07c1df057c",
+      "Contents/Resources/SelectionBackground.png": "f5b0fb30545e319c44c3f4125faa294fb1f72d2f0bbb6839e19e27c6bac0fcb2",
+      "Contents/Resources/Classic/Game.app/Contents/MacOS/GameLauncher": "50f9f6be9cfeb516fc112e2d0cd3f4bd3f68eba361da90ddc0a2d5fe321c061c"
+    },
+    "frontend_sha256": "415c5feaae09c7eb27d32cd69a4afc5f72953c6d6943db54dca964f0d357ccc8",
+    "launcher_sha256": "127c15e693e1358d13e027ca5bcb8f9640e40335146c2bd62d066c1f654a516e",
+    "shader_sha256": "20bc8eff0e7c1e2f78a1b3601d8ae51ceab25ea533065db902704b413620cd5d",
+    "render_4k_default": false
+  },
+  {
+    "game": "screamer2",
+    "app": "<repository>/NativeRenderer/build-simple-presets/Screamer 2 Metal.app",
+    "version": "0.3.7",
+    "build": 12,
+    "strict_signature": "passed",
+    "modes": {
+      "classic": [
+        "--no-settings",
+        "--original-aspect",
+        "--distance-level",
+        "0"
+      ],
+      "upgraded": [
+        "--window-resolution",
+        "--widescreen",
+        "--extended-distance"
+      ]
+    },
+    "unchanged_payload_sha256": {
+      "Contents/MacOS/dosbox": "62856a0fe5a3bc0b2d34e32e9b108c1af5d5d9990fce10b2bf7328f9479684e8",
+      "Contents/Resources/Python/bin/python3.14": "1a0b557fb825d16600becf68722db90122675b2016214cfb7c2bf6302144d28e",
+      "Contents/Resources/Live/Session.py": "0da6c22f58f3cc78b409019503d7ea66ceeaef1d0b5a50cff12b53f24545e665",
+      "Contents/Resources/SelectionBackground.png": "ba38bb12447c0cdabda20fd3a5e7c96b72a0c6371a1e04ac078bc9a33cc98a9d",
+      "Contents/Resources/Classic/Game.app/Contents/MacOS/GameLauncher": "76ebd23b839aef5e9a41b6c37ce076288b039c4fe1e1bba5572992868e7c7d84"
+    },
+    "frontend_sha256": "415c5feaae09c7eb27d32cd69a4afc5f72953c6d6943db54dca964f0d357ccc8",
+    "launcher_sha256": "343ac3b928f8b2158f0b2741095d07a8af2f830a6c95df981957ffc1cb865c10",
+    "shader_sha256": "20bc8eff0e7c1e2f78a1b3601d8ae51ceab25ea533065db902704b413620cd5d",
+    "render_4k_default": false
+  },
+  {
+    "game": "screamerrally",
+    "app": "<repository>/NativeRenderer/build-simple-presets/Screamer Rally Metal.app",
+    "version": "0.3.7",
+    "build": 12,
+    "strict_signature": "passed",
+    "modes": {
+      "classic": [
+        "--no-settings",
+        "--original-aspect",
+        "--distance-level",
+        "0"
+      ],
+      "upgraded": [
+        "--window-resolution",
+        "--widescreen",
+        "--extended-distance"
+      ]
+    },
+    "unchanged_payload_sha256": {
+      "Contents/MacOS/dosbox": "62856a0fe5a3bc0b2d34e32e9b108c1af5d5d9990fce10b2bf7328f9479684e8",
+      "Contents/Resources/Python/bin/python3.14": "1a0b557fb825d16600becf68722db90122675b2016214cfb7c2bf6302144d28e",
+      "Contents/Resources/Live/Session.py": "6b1bc599ad04e82636809326ffe0e7467cfbd2a6df9b00d692cda7bbb4a2b8f5",
+      "Contents/Resources/SelectionBackground.png": "909ad864de41c67b9be3b37755e2c59b89c641a82c64818709d8fd2439f78223",
+      "Contents/Resources/Classic/Game.app/Contents/MacOS/GameLauncher": "1cf1c901ca81a8e5bea045fca8de003d37c156cecbc0dd92fab53e737041bb9e"
+    },
+    "frontend_sha256": "415c5feaae09c7eb27d32cd69a4afc5f72953c6d6943db54dca964f0d357ccc8",
+    "launcher_sha256": "955bd21836895bbcbe559314bbf85d768cf76fc9393eb8a608c27aabdee94545",
+    "shader_sha256": "20bc8eff0e7c1e2f78a1b3601d8ae51ceab25ea533065db902704b413620cd5d",
+    "render_4k_default": false
+  }
+]

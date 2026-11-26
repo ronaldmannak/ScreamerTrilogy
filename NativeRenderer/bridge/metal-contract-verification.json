@@ -1,0 +1,20 @@
+{
+  "result": "passed",
+  "source_sha256": "521efaf397b3cdd31978019c86090851c8b56df8b704e3bdd21b6fad58dc3008",
+  "shader_sha256": "918b0bff55808b1357a64009cc515389d330fcc8ecb766d175206a92305a958d",
+  "numeric_checks": 535,
+  "projection_and_camera_checks": 511,
+  "car_model_checks": 24,
+  "failures": 0,
+  "max_absolute_error": 3.433227539e-05,
+  "checks": [
+    "Actual viewer replayProjection function compiled verbatim",
+    "Projection matches independent bridge formula at4:3,16:9,21:9 and near/intermediate/far depths",
+    "Bridge determinant-1 matrix converted to proper determinant+1 rotation before quaternion construction",
+    "Final viewer row-X flip equals bridge view-Y/view-Z flip for Metal right-handed view",
+    "Quaternion wrap2040->8 midpoint is identity rather than a full-turn spin",
+    "Actual viewer poseMatrix helper preserves proper car rotation, translation, endpoints and midpoint",
+    "Shader applies root-local-to-world model before subtracting eye once and projecting"
+  ],
+  "scope": "math-only source contract review; no app/UI/emulator launch; reference main-race projection only"
+}

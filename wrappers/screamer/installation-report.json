@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-11-25T02:04:13.448842+00:00",
+  "build": "5",
+  "save_directories_touched": [],
+  "result": "installed",
+  "games": [
+    {
+      "game": "screamer",
+      "target": "/Applications/Screamer.app",
+      "backup": {
+        "path": "<owned-games>/Screamer/NativeWrapper/backups/screamer-before-build-5-20261125T020413Z-01b809fc40.zip",
+        "sha256": "b06475dbf59a7912142feb14bd57fd14219367e8d2b8713132d3d646743e73fa",
+        "verified": true,
+        "previous_app_existed": true,
+        "previous_app_content_sha256": "4500ae20b3d8391ba30b953339c59d602a3e85a80d855f491ab30c49ad1dce5c",
+        "previous_source_content_sha256": "3047520a8b1c81604c3ac7c14d0d02d2f1f529818599e9f39b968b99251c8dc4"
+      },
+      "result": "installed-and-verified"
+    },
+    {
+      "game": "screamer2",
+      "target": "/Applications/Screamer 2.app",
+      "backup": {
+        "path": "<owned-games>/Screamer2/NativeWrapper/backups/screamer2-before-build-5-20261125T020413Z-01b809fc40.zip",
+        "sha256": "b0cccbca6e6743bd1d86b88ace5369c2dc3d97298e21c3fa4ac99fe7ea249dfb",
+        "verified": true,
+        "previous_app_existed": true,
+        "previous_app_content_sha256": "670010fb0d506ecc3a343db084c5a0dbde0c7bd49669cb6351762f6387d5dd76",
+        "previous_source_content_sha256": "c5d449c19c51c21cb5886909a43c1bd0d2c9f50781c7f1fad98a7a283373b3b2"
+      },
+      "result": "installed-and-verified"
+    },
+    {
+      "game": "screamerrally",
+      "target": "<owned-games>/ScreamerRally/NativeWrapper/dist/Screamer Rally.app",
+      "backup": {
+        "path": "<owned-games>/ScreamerRally/NativeWrapper/backups/screamerrally-before-build-5-20261125T020413Z-01b809fc40.zip",
+        "sha256": "a2259a967937d153942d3c5e76ca116f1bfcd6950d5a92375ec303cf7fa9a3bc",
+        "verified": true,
+        "previous_app_existed": true,
+        "previous_app_content_sha256": "e2f8e122bb2faceff622fc011c627002c9d2f3e81324a0182a05f0f2ccfe6451",
+        "previous_source_content_sha256": "55216d700ae1e7445945435f6c78e0826ccf45b6e2fdae8ee01710199f08d6c8"
+      },
+      "result": "installed-and-verified"
+    }
+  ]
+}

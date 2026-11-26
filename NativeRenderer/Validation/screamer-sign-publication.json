@@ -1,0 +1,12 @@
+{
+  "production_source": "<repository>/NativeRenderer/Games/screamer/Runtime/Tools/live_s1.py",
+  "production_sha256": "c46ec51853ab5f6e7034d3e04d6b06929781c1a7e70c977e8fa0ea5162f71231",
+  "staged_regression": "/private/tmp/screamer-sign-live/test_s1_cull_publication.py",
+  "staged_regression_sha256": "479aa095d4ce6c8b4e92bf120ecf34d7cb2fa7bc87ac3c005c8425e8a8021251",
+  "baseline": "3of3fail only because cull_back_faces is missing",
+  "fixed": "3of3pass against actual production Bridge.state()",
+  "existing_suite": "Root independently reports44of44passed including the copied3tests",
+  "network": "All LiveAPI.request methods patched to fail; no calls occurred",
+  "worktree_changes_by_this_agent": false,
+  "game_or_gui_inputs": false
+}

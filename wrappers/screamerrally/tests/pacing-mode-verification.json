@@ -1,0 +1,77 @@
+{
+  "result": "passed",
+  "timestamp_utc": "2026-11-25T03:48:55.822660+00:00",
+  "baseline_app": "/Applications/Screamer Rally.app",
+  "candidate_app": "/private/tmp/rally-acceleration-fix/release/screamerrally/Screamer Rally.app",
+  "old_hashes_source": "/private/tmp/screamer-trilogy-update/tests/verify-trilogy.py",
+  "original_sha256": "0785e38567c475f25663e4022ec125e447a799004e34efa59758b50cfd84901d",
+  "mode_count": 6,
+  "candidate_preparations": 16,
+  "scope": "prepare-only, no emulator or GUI launched, disposable data only; no physics or visual proof",
+  "checks": [
+    "Old installed app reproduced all six pinned pre-pacing mode hashes",
+    "All six candidate modes exactly equal the independently verified old mode plus only 0x532d4:01->03",
+    "14 candidate preparations cover forward/reverse mode switching, repeated launches and OFF/OFF",
+    "OFF/OFF remembered preferences still select RALLYMAC; stale derived executable regenerated correctly",
+    "Saved OFF/OFF choices and settings.json formatting/extra key remain byte-identical",
+    "Writable original executable, 5 CFG files and binary save sentinel preserved",
+    "Fresh OFF/OFF first launch creates corrected derived executable and retains unmodified original",
+    "Both bundled original executables remain byte-identical to the pinned SHA-256"
+  ],
+  "modes": [
+    {
+      "widescreen": false,
+      "distance_level": 0,
+      "old_sha256": "0785e38567c475f25663e4022ec125e447a799004e34efa59758b50cfd84901d",
+      "candidate_sha256": "ff46ee5f74bf2b228a7a462cb25c50a228ec705d30e69b2b291887db036e1c98",
+      "only_changed_offset": "0x532d4",
+      "old_byte": "01",
+      "new_byte": "03"
+    },
+    {
+      "widescreen": false,
+      "distance_level": 1,
+      "old_sha256": "012db93bc17f35682357ee50591e5e70c867a21c901b86e7d4aa337412fb7636",
+      "candidate_sha256": "da8d6783f8b3f3fffef3f4ceab2499fc09d8d982b64f19f56f5dee3108ed8489",
+      "only_changed_offset": "0x532d4",
+      "old_byte": "01",
+      "new_byte": "03"
+    },
+    {
+      "widescreen": false,
+      "distance_level": 2,
+      "old_sha256": "7cbc4aba5d23324be3b1623588dfa49feb89692278e143a82a8ca26f527e1e1b",
+      "candidate_sha256": "86a8d28d9c18e3e14f820ae6c3be8c3813941183f62fb3e39eba8e8adb28c601",
+      "only_changed_offset": "0x532d4",
+      "old_byte": "01",
+      "new_byte": "03"
+    },
+    {
+      "widescreen": true,
+      "distance_level": 0,
+      "old_sha256": "a355c5e1741800448fc558f7289f40d8aae15d72569979f7a258c1261d7402ad",
+      "candidate_sha256": "7e927361e8858ab98eb8b00d476356cb892ea654b684a5d63ef1df15c881b9c9",
+      "only_changed_offset": "0x532d4",
+      "old_byte": "01",
+      "new_byte": "03"
+    },
+    {
+      "widescreen": true,
+      "distance_level": 1,
+      "old_sha256": "0187f6f5c7ff6d8ed69839eaebe3704fc56bc6c253f89a5fb6c9c6d482cd9c25",
+      "candidate_sha256": "d23f04872febee9dabfe47fe061f6058311006b057177190542507dbbb0994dd",
+      "only_changed_offset": "0x532d4",
+      "old_byte": "01",
+      "new_byte": "03"
+    },
+    {
+      "widescreen": true,
+      "distance_level": 2,
+      "old_sha256": "34861f1b2d0189e4f2479cbc268da3894a4d0bfa4cceda7b61e5a79a6e64562d",
+      "candidate_sha256": "31a426c491a7ffb98af6950fde620833761ecd1447fc9fa15ceca3c32862a520",
+      "only_changed_offset": "0x532d4",
+      "old_byte": "01",
+      "new_byte": "03"
+    }
+  ]
+}

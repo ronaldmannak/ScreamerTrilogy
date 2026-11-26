@@ -1,0 +1,129 @@
+{
+  "package": "<repository>/NativeRenderer/build-screamer-hires-candidate-v3/Screamer Metal.app",
+  "version": "0.3.3",
+  "build": "8",
+  "package_engine_sha256": "a7634e372904fd583b07344a3005235f2e8980bcb239a3c133a307eb8d782794",
+  "package_frontend_sha256": "7155c2438a26621fb4d01fe8ae3fd98b17faa76c03ac630f33ce37201fef18fa",
+  "elapsed_seconds": 34.478559291,
+  "native_race_observed_seconds": 17.089428374999997,
+  "native_world_frames": 1061,
+  "render_target": [
+    3840,
+    2160
+  ],
+  "gpu_errors": 0,
+  "live_parse_errors": 0,
+  "hud_captures": 937,
+  "hud_publish_count": 937,
+  "hud_rejections": 0,
+  "backend_skipped": 156519,
+  "original_physics_raw_dt_range": [
+    0.019999999552965164,
+    0.019999999552965164
+  ],
+  "physics_wait_ticks": 2,
+  "physics_patches": [],
+  "cohort_capture": {
+    "color_source": "captured-original-indices-dac",
+    "dac_bits": 6,
+    "dac_pel_mask": 255,
+    "headers_and_alpha": {
+      "cohort": true,
+      "same_capture_timestamp": true,
+      "opaque_pixels": 56332,
+      "transparent_rgb_nonzero": 0,
+      "headers": {
+        "connection": "close",
+        "x-s1-hud-width": "640",
+        "content-type": "application/octet-stream",
+        "x-s1-hud-capture-ns": "475387785872916",
+        "content-length": "1228800",
+        "x-s1-hud-sequence": "140",
+        "x-s1-hud-coverage": "original-ram-byte-writes",
+        "x-s1-hud-color-source": "captured-original-indices-dac",
+        "x-s1-hud-mode": "2",
+        "x-s1-hud-color-capture-ns": "475387785872916",
+        "cache-control": "no-store",
+        "x-s1-hud-height": "480"
+      }
+    },
+    "source_contract": "Indices, RAM byte-write alpha and VGA DAC palette_map are copied in one CPU-thread HUD-end callback; output uses those captured values only. No asynchronous display RGB/palette dependency.",
+    "paired_original_scanout_rgb_equality": "Intentionally not claimed for this version; v2 paired proof is historical and its asynchronous color source was corrected."
+  },
+  "movement": {
+    "player_id": "list:69:part:0",
+    "start": [
+      2600.0,
+      0.0,
+      -18500.0
+    ],
+    "end": [
+      -8562.0,
+      -2341.0,
+      65156.0
+    ],
+    "displacement_original_units": 84429.83395103889,
+    "visible_native12_HUD": {
+      "timer": "00:03:75",
+      "speed_kmh": 158,
+      "gear": 4,
+      "checkpoint_countdown": 38,
+      "timer_last_digits_visually_complete": true
+    }
+  },
+  "captures": {
+    "native4k-12-performance.json": {
+      "native_world_frames": 2,
+      "render_width": 3840,
+      "render_height": 2160,
+      "sky_active": true,
+      "presentation_mode": "native-world-with-original-HUD",
+      "gpu_errors": 0,
+      "live_parse_errors": 0
+    },
+    "native4k-06-performance.json": {
+      "native_world_frames": 2,
+      "render_width": 3840,
+      "render_height": 2160,
+      "sky_active": true,
+      "presentation_mode": "native-world-with-original-HUD",
+      "gpu_errors": 0,
+      "live_parse_errors": 0
+    }
+  },
+  "original_4k_png": "/private/tmp/screamer-api-input-test-121501/native4k-12.png",
+  "preview_1080_png": "/private/tmp/screamer-api-input-test-121501/native4k-12-preview1080.png",
+  "HUD_raw_snapshots": "/private/tmp/screamer-api-input-test-121501/Snapshots",
+  "cleanup": {
+    "keys_released": true,
+    "Session_exit": 0,
+    "engine_exit": 0,
+    "bridge_exit": 0,
+    "GUI_frontend_exit": -15,
+    "GUI_exit_reason": "Intentional bounded test SIGTERM",
+    "offscreen_exits": [
+      0,
+      0
+    ],
+    "remaining_owned_processes": 0,
+    "package_engine_unchanged": true,
+    "package_frontend_unchanged": true
+  },
+  "limits": [
+    "This short final HUD-color regression test used occluded GUI; it proves GPU submissions/native4K image output, not new foreground FPS.",
+    "The prior same-physics v2 race measured59.98foregroundFPS across36s; this version changes only HUD cohort capture/composition and display-mode guards.",
+    "No specific wall-collision flag was asserted."
+  ],
+  "foreground_timing_prior_hud_color_fix": {
+    "fps": 59.97573328292469,
+    "native_race_seconds": 36.325345375,
+    "scope": "Exact preceding package before HUD-only same-capture color fix; final HUD run was occluded and does not independently measure foreground FPS."
+  },
+  "timer_glyph_review": "Final TOTAL/LAP fields read00:03:75 with complete final5; independent original overlay/source-grid review passed.",
+  "views": {
+    "F1": "bonnet(native)",
+    "F2": "cockpit(original framebuffer)",
+    "F3": "near chase(native/default)",
+    "F4": "far chase(native)"
+  }
+}

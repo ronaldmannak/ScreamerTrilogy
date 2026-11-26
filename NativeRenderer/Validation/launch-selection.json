@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "games": [
+    {
+      "game": "screamer",
+      "passed": true,
+      "artwork": "/Applications/Screamer.app/Contents/Resources/SelectionBackground.png"
+    },
+    {
+      "game": "screamer2",
+      "passed": true,
+      "artwork": "/Applications/Screamer 2.app/Contents/Resources/SelectionBackground.png"
+    },
+    {
+      "game": "screamerrally",
+      "passed": true,
+      "artwork": "/Applications/Screamer Rally.app/Contents/Resources/SelectionBackground.png"
+    }
+  ],
+  "checks": [
+    "Upgraded controls enabled",
+    "Classic controls disabled",
+    "Selected options saved",
+    "Controls inside view bounds",
+    "Quit stops helper before game dispatch"
+  ],
+  "source_sha256": "bece1f1275271679afd549a1c21ea7d83b34edfbb8494c51b32c19760152a267",
+  "scope": "Production AppKit launch view only; no game or desktop input/screen capture"
+}

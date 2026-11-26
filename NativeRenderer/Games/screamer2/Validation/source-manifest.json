@@ -1,0 +1,32 @@
+{
+  "files": {
+    "s2-projection-homology.json": "c29681aaaab05e9df775d17f0f738ca2f52db35a6f0b9d760c6b1fb619ec17c0",
+    "CAMERA-COMPARISON.md": "8743b333ee2559a2a3d1888397d194531a722f05be8f8d2f235070febd2fcf3b",
+    "s2-material-homology.json": "c8624e0e3183f5ea07b8a3973169b8934100ef1413189bc1215983eabc5d78da",
+    "s2-project.asm": "2c22d780afaf5eebd74dd25fcbdfb7ceaeb61d6744b84923af2930768680c2b0",
+    "baseline-manifest.json": "100af05ecf5c4e5d58eec35b4dcd69a000ad15df2bb21f21590483772ed56448",
+    "s2-set_view.asm": "6e6fc45a2367d5d20fe5b95645dc3fdabb4da7fab70e59bd353d6cfbc41eec52",
+    "export_screamer2.py": "aeaa4f705b91efec6ce9661a7360e859b3600481cda90ca4cdb4f8a6cc137f60",
+    "s2-vertex_builder.asm": "9288666329c38ccb295a6bd9c916aa5035a5e9e6d36a339b8cbd9a715db5e918",
+    "s2-material-homology-extended.json": "0d384a1ea3984142d53dec9f724ba9e117efa7e494ee8284b888bc9853d20bbd",
+    "snapshot_view.py": "8cc77c6f1f2731bb9c1f5edbd46a8ab54082e35380a1d357f8aad5b0e9877521",
+    "hud-attract.json": "5c75c61e18418dc7c09b8a30b821200f490997614257283a95fb7dfba6f74073",
+    "s2-texture-cache-proof.asm": "aa0aca2d34e53695c9bd9d8697f365cd1139a95431873a905c446538ed8228ff",
+    "s2-projection-snapshot-proof.json": "f5f026e4b0c088c871952318a332a85de306b4629df8bb2d8782248f64c203a9",
+    "README.md": "ca101f789ea978ada614c4184a66488ccfe4d20f97f28ac51c8f81e8b3aeabdf",
+    "s2-near_setter.asm": "55ea21a32335a5571c6b9504a7ae75b63f70a5294ff88527cc4b35fd14acc7e2",
+    "VALIDATION-S2.md": "ed3fde56f6566acfab82d4d60d00223d76f954c4c14867db4bb2f0a50608d0ae",
+    "bridge/guest_memory.py": "1a685c3fc84a8db2dad860861d10615148f9a06185401d6059aac620f4d1c687",
+    "extractor/extractor_profile.py": "e6285c38ee6c439650647109042f805b32f4b25a8eef920d89464bbc2fa63f6c",
+    "extractor/LICENSE": "8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b",
+    "extractor/VALIDATION.md": "b8a8620a83b009fd8e1765586c4befcfeb8413bfd5062380ec579dc4edfc4481",
+    "extractor/validate_scene.py": "8beb539d48bbfdbba1ade741d53671c29681482ebb6cabe187703e1f7aa0c614",
+    "extractor/extract_track.py": "c0fdcc59f780006b39607e0eac0e09589370a05137dbea093e143d26c6ba606a",
+    "extractor/README.md": "096b5cd82b31de0fc7630c3b8062c3ab4e6bac223a5a85e820df4a1416952649",
+    "extractor/test_extract_track.py": "4f0aa2e0527783a2c916d9c1ae792175f2c8bb2ff673fff882210d27622c7926",
+    "extractor/extract_cars.py": "a2c920705dd4d4d718ab05f2ca9d571bfb4d1b76324fa9cc46ec3f95cfafc900",
+    "extractor/texture_decode.py": "eb311e8b92f29fc912424cb3b7f1f81999df6ae6f685ce2ed8739ab5f436e12e",
+    "extractor/test_profile_and_validation.py": "0c8244f5dc6db138a1080a91a16003598982c532daca72b97dee913c09b8387f",
+    "profiles/screamer2.json": "30d55ec6a67bc68ac984c3ce7a0b23d7aa58ed03063f0da64e8f8487f1829767"
+  }
+}

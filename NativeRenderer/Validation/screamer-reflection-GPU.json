@@ -1,0 +1,17 @@
+{
+  "formula_duplicated_in_test_shader": false,
+  "production_shader_sha256": "20bc8eff0e7c1e2f78a1b3601d8ae51ceab25ea533065db902704b413620cd5d",
+  "original_cases": 87,
+  "matches": 87,
+  "game_execution": false,
+  "scope": "Validates actual production texgen helper against saved original C3E84 outputs; runtime camera/part basis and texture sampling are separate checks.",
+  "negative_GPU_components_preserved": 49,
+  "actual_production_function": "originalS1ReflectionUV called by worldVertex and appended probe kernel",
+  "failures": [],
+  "production_shader": "<repository>/NativeRenderer/NativePreview/Sources/World.metal",
+  "source_proof": "Captures/Screamer-Glass-build10/original-UV-inputs.json (owned input; excluded from Git)",
+  "source_proof_sha256": "8f0904a952766c07f07689af27e5fe5d87bb2ad32809df56f27d3cd73e79f847",
+  "device": "Apple M5 Max",
+  "maximum_normalized_error": 0,
+  "game_inputs": false
+}

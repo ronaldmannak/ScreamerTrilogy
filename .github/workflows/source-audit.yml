@@ -1,0 +1,24 @@
+name: Source publication checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  source-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test publication gates without game assets
+        run: python3 -m unittest discover -s Tools/Publication/tests -v
+      - name: Test import with synthetic game data
+        run: python3 -m unittest discover -s NativeRenderer/Importer -p 'test_*.py' -v
+      - name: Test public app payload guards
+        run: python3 -m unittest discover -s NativeRenderer/Tools/Packaging -p 'test_public*.py' -v
+      - name: Audit current source and reachable history
+        run: python3 Tools/Publication/audit_repository.py --history --report /tmp/source-audit.json
+      - name: Validate a game-data-free source snapshot
+        run: python3 Tools/Publication/export_source.py --output /tmp/ScreamerTrilogy-source.tar.gz

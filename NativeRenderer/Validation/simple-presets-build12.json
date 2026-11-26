@@ -1,0 +1,59 @@
+{
+  "version": "0.3.7",
+  "build": 12,
+  "apps": [
+    {
+      "name": "Screamer Metal.app",
+      "version": "0.3.7",
+      "build": 12,
+      "strict_signature": "passed",
+      "actual_installed_dispatch": "passed"
+    },
+    {
+      "name": "Screamer 2 Metal.app",
+      "version": "0.3.7",
+      "build": 12,
+      "strict_signature": "passed",
+      "actual_installed_dispatch": "passed"
+    },
+    {
+      "name": "Screamer Rally Metal.app",
+      "version": "0.3.7",
+      "build": 12,
+      "strict_signature": "passed",
+      "actual_installed_dispatch": "passed"
+    }
+  ],
+  "choices": [
+    "Classic",
+    "Upgraded"
+  ],
+  "persisted_preference": "mode only; obsolete graphics toggles ignored",
+  "upgraded": [
+    "window/display pixel resolution",
+    "16:9 FoV extension",
+    "full-track draw distance"
+  ],
+  "classic": [
+    "original renderer",
+    "4:3 view",
+    "original draw distance"
+  ],
+  "bundled_rendering_menu": "removed; standalone diagnostics retain it",
+  "UI_mode_persistence_and_cancel": "passed for all3 games",
+  "actual_view_previews": 6,
+  "legacy_preference_dispatch": "passed",
+  "menu_regression": "passed without game/engine/input",
+  "projection_math": "passed",
+  "packaged_GPU_checks": "all3 passed;0GPU errors",
+  "engine_and_game_runtime_modified": false,
+  "saves_modified": false,
+  "game_execution_or_inputs": false,
+  "new_FPS_claim": false,
+  "source_sha256": {
+    "Launcher/Launcher.m": "7f42ae49ddef3e165365001af2efdd312c7e44d9707fd05b525088aa0177609e",
+    "NativePreview/Sources/NativePreview.mm": "04efeee9bded64c1f20c86ca40ea7137398da3676384fb5cd421ce8769de69aa",
+    "NativePreview/Sources/World.metal": "20bc8eff0e7c1e2f78a1b3601d8ae51ceab25ea533065db902704b413620cd5d"
+  },
+  "previous_bundles": "build-fullscreen/backups/pre-simple-presets-20261125"
+}

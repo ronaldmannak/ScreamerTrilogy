@@ -1,0 +1,55 @@
+{
+  "original": "START65H.EXE",
+  "derived": "NATIVE.EXE",
+  "sha256": "05f576866f26602be303343c5e9104132616f464b71ed6ae958e99a668e5c7c8",
+  "patches": [
+    {
+      "option": "widescreen",
+      "offset": 602958,
+      "expected": "D7/JD7/2D7/bD7//D7/tD7/A0fnR/tH70f/R/dH4Ug==",
+      "replacement": "iwbB+AIpBotGDMH4AilGDItGGMH4AilGGCvAiUYkww=="
+    },
+    {
+      "option": "widescreen",
+      "offset": 600306,
+      "expected": "K8CJRiQ=",
+      "replacement": "6FcKAAA="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 568559,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 568659,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 568793,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 568893,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 599442,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 603470,
+      "expected": "LQAgAAD36IvIi+oPrOkD",
+      "replacement": "uQDilVCQkJCQkJCQkJCQ"
+    }
+  ]
+}

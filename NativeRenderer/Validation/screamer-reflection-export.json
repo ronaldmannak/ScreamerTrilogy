@@ -1,0 +1,104 @@
+{
+  "source_sha256": {
+    "export_scene.py": "36109c78fd8fe337527933f0e26279962118ae78f7dca060becddc4d854fa403",
+    "export_dynamic.py": "3ccf55ab7a6adb84782520bc79826fd16435379d2563a9714ef47c92c3f166a0"
+  },
+  "existing_tests": {
+    "count": 41,
+    "result": "passed"
+  },
+  "focused_regression": {
+    "captures": [
+      {
+        "track": 3,
+        "unchanged_non_a0_batches": 324,
+        "restored_a0_triangles": 120,
+        "validated_a0_vertex_references": 310,
+        "byte_exact_original256_tiles": 1
+      },
+      {
+        "track": 1,
+        "unchanged_non_a0_batches": 421,
+        "restored_a0_triangles": 136,
+        "validated_a0_vertex_references": 356,
+        "byte_exact_original256_tiles": 3
+      }
+    ],
+    "live_pose_rounding_phase_and_unused_field_guard": "passed"
+  },
+  "all_six_static": [
+    {
+      "track": 1,
+      "vertices": 62433,
+      "normals": 62433,
+      "triangles": 31107,
+      "a0_batches": 0,
+      "unsupported": {}
+    },
+    {
+      "track": 2,
+      "vertices": 78701,
+      "normals": 78701,
+      "triangles": 38805,
+      "a0_batches": 0,
+      "unsupported": {}
+    },
+    {
+      "track": 3,
+      "vertices": 93185,
+      "normals": 93185,
+      "triangles": 46399,
+      "a0_batches": 0,
+      "unsupported": {}
+    },
+    {
+      "track": 4,
+      "vertices": 94615,
+      "normals": 94615,
+      "triangles": 47149,
+      "a0_batches": 0,
+      "unsupported": {
+        "0xe0": 124
+      }
+    },
+    {
+      "track": 5,
+      "vertices": 165241,
+      "normals": 165241,
+      "triangles": 82343,
+      "a0_batches": 0,
+      "unsupported": {
+        "0xc0": 156
+      }
+    },
+    {
+      "track": 6,
+      "vertices": 124875,
+      "normals": 124875,
+      "triangles": 61625,
+      "a0_batches": 0,
+      "unsupported": {}
+    }
+  ],
+  "original_uv_proof": {
+    "source_ram": "/private/tmp/screamer-4k-research/S1-native/Captures/attract-v1/guest-ram.bin",
+    "source_sha256": "a0a498e6286fa7dd5f6f731a40ef88d0aa4b1d1deff77d7ce59e0c1617f71f09",
+    "original_part_flags": "0x6a00",
+    "original_reflective_normal_count": 87,
+    "original_scroll": [
+      21,
+      113
+    ],
+    "integer_UV_mismatches": {
+      "original_unshifted": 0,
+      "wrong_shifted_eye": 87,
+      "wrong_Metal_X_basis": 87,
+      "renormalized_normal": 3
+    },
+    "matches": 87,
+    "formula": "r=2*dot(n,normalize(p))*n-normalize(p); UVint=(127+round_even(127*r.x)-scrollX,127+round_even(127*r.z)-scrollZ)",
+    "excluded_other_snapshot": "The other saved player RAM has a non-reflective current part (flags0xA00), so its stale normal/UV tables are not a coherent reflection cohort and are deliberately not compared."
+  },
+  "inputs_or_gui_actions": "none; all checks use owned assets and existing immutable RAM captures",
+  "worktree_edits": "none; staged source only"
+}

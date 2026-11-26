@@ -1,0 +1,118 @@
+{
+  "run": "/private/tmp/screamer-api-input-test-174535",
+  "candidate": "<repository>/NativeRenderer/build-s1-glass-candidate/Screamer Metal.app",
+  "version": "0.3.5",
+  "build": "10",
+  "engine_sha256": "62856a0fe5a3bc0b2d34e32e9b108c1af5d5d9990fce10b2bf7328f9479684e8",
+  "frontend_sha256": "7a6d361d4a4ef47f5c24003a003d357a63af14edb1835361ac61b48d6c2a962f",
+  "native_world_frames": 48,
+  "native_race_state_samples": 31,
+  "native_race_state_seconds": 15.674934333000003,
+  "presentation_limit": {
+    "presented_frames": 0,
+    "draw_callbacks": 84,
+    "draw_callback_hz": 2.855341751632435,
+    "note": "Main window received throttled display callbacks and no presentation callbacks in this run. Functional native4K capture is validated; this run is not an on-screen FPS benchmark.",
+    "prior_environment_baseline_supplied_by_root": "/private/tmp/screamer-selection-fullscreen-4by3-state/geometry.jsonl"
+  },
+  "reflection_triangles": 136,
+  "reflection_batches_drawn": 10,
+  "gpu_errors": 0,
+  "parse_errors": 0,
+  "render_size": [
+    3840,
+    2160
+  ],
+  "scenes": [
+    {
+      "scene": "/private/tmp/screamer-api-input-test-174535/Session/assets/8fd655074ccb-bdb6324b/Dynamic/scene.json",
+      "normals": 7934,
+      "reflection_batches": 10,
+      "reflection_triangles": 136,
+      "source_ram": "/private/tmp/screamer-api-input-test-174535/Session/assets/8fd655074ccb-bdb6324b/ram.bin"
+    }
+  ],
+  "poses_with_scroll_changes": 4,
+  "poses_with_phase_changes": 0,
+  "observed_pose_phase_values": [
+    0
+  ],
+  "all_inputs_released": true,
+  "engine_bridge_exit": [
+    0,
+    0
+  ],
+  "all_child_exit_codes": [
+    0,
+    -15,
+    0,
+    0
+  ],
+  "data_isolation": "/private/tmp/screamer-api-input-test-174535/GameData",
+  "visuals": [
+    "/private/tmp/screamer-api-input-test-174535/native4k-06.png",
+    "/private/tmp/screamer-api-input-test-174535/native4k-12-preview1080.png",
+    "/private/tmp/screamer-api-input-test-174535/native4k-12.png"
+  ],
+  "engine_capture": {
+    "hud_captures": 932,
+    "hud_rejected": 0,
+    "minimap_shade_calls": 932,
+    "minimap_shade_rejected": 0
+  },
+  "minimap_regression": [
+    {
+      "file": "/private/tmp/screamer-api-input-test-174535/Snapshots/drive-00-hud.bgra",
+      "partial_background_pixels": 24098,
+      "background_nonzero_rgb": 0
+    },
+    {
+      "file": "/private/tmp/screamer-api-input-test-174535/Snapshots/drive-05-hud.bgra",
+      "partial_background_pixels": 24092,
+      "background_nonzero_rgb": 0
+    },
+    {
+      "file": "/private/tmp/screamer-api-input-test-174535/Snapshots/drive-10-hud.bgra",
+      "partial_background_pixels": 24039,
+      "background_nonzero_rgb": 0
+    },
+    {
+      "file": "/private/tmp/screamer-api-input-test-174535/Snapshots/drive-15-hud.bgra",
+      "partial_background_pixels": 23937,
+      "background_nonzero_rgb": 0
+    }
+  ],
+  "visual_review": "Native12capture visibly restores original car rear/side window surfaces and sky reflection. Minimap stays translucent over current world; timer00:04:91 complete. Originalgloss is authored indexed texture and normals; no generated asset.",
+  "live_player_scroll": {
+    "samples": 40,
+    "distinct_offsets": 25,
+    "observed_value_transitions": 24,
+    "original_root": "list:69",
+    "source": "completed isolated test result.samples player_actor69 reflection_scroll"
+  },
+  "phase_validation": {
+    "in_game_values": [
+      0
+    ],
+    "in_game_transition_observed": false,
+    "separate_cpu_and_exporter_test": "verify_exports.py: actual part_pose reads changed float32/u32 windows; phase32768/65280 and original frame formula boundaries verified",
+    "three_frame_boundaries": [
+      {
+        "phase": 0,
+        "selected_frame": 0
+      },
+      {
+        "phase": 32768,
+        "selected_frame": 1
+      },
+      {
+        "phase": 65280,
+        "selected_frame": 2
+      },
+      {
+        "phase": 65535,
+        "selected_frame": 2
+      }
+    ]
+  }
+}

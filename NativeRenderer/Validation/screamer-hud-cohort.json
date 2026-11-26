@@ -1,0 +1,17 @@
+{
+  "base": "Existing unified + s1-conventional-hud.patch + s1-display-hud.patch; this patch must be applied afterward",
+  "patch": "/private/tmp/screamer-s1-hires/s1-hud-cohort.patch",
+  "patch_sha256": "bdd528e4fdfdda68a430f9a199b86093c3fd680cbbaec294beeff7172063448e",
+  "source_file": "src/webserver/s1_native.cpp",
+  "base_sha256": "ac96f369cce7074294ad4613157806e65e8cf9852fe747292d477a1e120f0812",
+  "source_sha256": "3bc600f7bdee0bc3993c89765581ee65df54d962de8838c077c987c14d4aba2e",
+  "binary": "/private/tmp/screamer-s1-hires/build/dosbox",
+  "binary_sha256": "e85a05d75ceac787ed2a4dfd5f2a4234bb2855394a1e150b5a4cb04b432427f0",
+  "build": "ARM64 Release,3targets passed",
+  "color_source": "captured-original-indices-dac",
+  "cohort": "HUD alpha, original256000indexedRAMpixels, and exact256-entry VGA DAC Bgrx8888 palette LUT are captured in the sameCPU-thread HUD-end callback. Later scanout cache RGB and Render palette never color the HUD.",
+  "mode_guard": "M_LIN8 +640x480 VGA image at start/end; existing flatprotected/noPaging/A20/ordinaryRAM checks retained",
+  "physics": "Original two-tick50Hz physics/wait and all game timings unchanged",
+  "runtime_proof": "/private/tmp/screamer-api-input-test-121501/summary.json",
+  "patch_replay_proof": "/private/tmp/screamer-s1-hires/cohort-patch-replay.json"
+}

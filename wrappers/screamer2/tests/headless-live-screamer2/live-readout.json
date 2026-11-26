@@ -1,0 +1,457 @@
+{
+  "samples": [
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 5.04,
+      "utc": "2026-11-25T01:55:55.139050+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 10.06,
+      "utc": "2026-11-25T01:56:00.161079+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 15.08,
+      "utc": "2026-11-25T01:56:05.185181+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 20.11,
+      "utc": "2026-11-25T01:56:10.211218+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 25.13,
+      "utc": "2026-11-25T01:56:15.237381+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 30.16,
+      "utc": "2026-11-25T01:56:20.262816+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 35.19,
+      "utc": "2026-11-25T01:56:25.288714+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 40.21,
+      "utc": "2026-11-25T01:56:30.315091+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 45.23,
+      "utc": "2026-11-25T01:56:35.337110+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 50.26,
+      "utc": "2026-11-25T01:56:40.361157+00:00",
+      "phase": "headless-automatic-scene-setup"
+    },
+    {
+      "setter_physical_address": "0x24fd4e",
+      "inferred_code_object_base": "0x1e1000",
+      "setter_radius": 104000,
+      "expected_radius": 104000,
+      "expected_threshold": 1352000000,
+      "expected_threshold_hex": "0x5095e200",
+      "live_cmp_immediates": [
+        {
+          "address": "0x2474f0",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x247554",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x2475da",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24763e",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        },
+        {
+          "address": "0x24ed93",
+          "value": 1352000000,
+          "hex": "0x5095e200"
+        }
+      ],
+      "relocated_writer_targets_match": true,
+      "live_far_plane_argument": -50000,
+      "passed": true,
+      "elapsed_seconds": 55.35,
+      "utc": "2026-11-25T01:56:45.450791+00:00",
+      "phase": "headless-automatic-scene-setup"
+    }
+  ],
+  "engine_exit": 0,
+  "elapsed_seconds": 60.392191458
+}

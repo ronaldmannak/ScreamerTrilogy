@@ -1,0 +1,26 @@
+{
+  "base": "existing unified source plus s1-conventional-hud.patch; apply this incremental patch afterward",
+  "patch": "/private/tmp/screamer-s1-hires/s1-display-hud.patch",
+  "patch_sha256": "47abdc390c1276681a461f01c055846dcb58dc23fb3f9c37d2fed1bdcc6a1c49",
+  "files": {
+    "src/webserver/s1_native.cpp": {
+      "base_sha256": "5cccdfe94a813de6fc0975cff3cf3e15047098f9accbf093bf87d25678fa2f86",
+      "source_sha256": "ac96f369cce7074294ad4613157806e65e8cf9852fe747292d477a1e120f0812"
+    },
+    "src/webserver/s1_native.h": {
+      "base_sha256": "dd5d132841a467c57f7ef24964038c91775cec301c5d4790ffe9806542602027",
+      "source_sha256": "73e3d1ebcdae6195d9aa69528ebd61bb6dd8554f60158c04fde4a96a4f71bb6a"
+    },
+    "src/webserver/rally.cpp": {
+      "base_sha256": "625cda978be7fbe443a99a9b1e0d87b9fd8b0f0a20cbdaeb44ba01612c0b6147",
+      "source_sha256": "bd0771a4c22f8881e569b192f7e99c338dec4d06948ca55e327f898b97c610a5"
+    }
+  },
+  "binary": "/private/tmp/screamer-s1-hires/build/dosbox",
+  "binary_sha256": "2441cb0f964920731bb21d21ae2104c410ad8849ddd517b2e1f02f72d884b4c0",
+  "build": "ARM64 Release,6targets passed",
+  "behavior": "HUD alpha comes only from original RAM byte writes; RGB copied from same converted original display frame; exact400to480 mask expansion retained; no physics or timers changed",
+  "actual_player_race_proof": "/private/tmp/screamer-api-input-test-120343/summary.json",
+  "patch_replay_proof": "/private/tmp/screamer-s1-hires/publisher-patch-replay.json",
+  "confirmed_old_failure": "Actual S1 VESA indexed guest mode is converted by VGA_ActivateHardwareCursor to640x480 BGRX32(display PixelFormat32); old Indexed8-only publisher rejected all HUD frames."
+}

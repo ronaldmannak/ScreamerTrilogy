@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "games": [
+    {
+      "game": "screamer",
+      "passed": true,
+      "artwork": "/Applications/Screamer.app/Contents/Resources/SelectionBackground.png",
+      "previews": [
+        "view-classic.png",
+        "view.png"
+      ]
+    },
+    {
+      "game": "screamer2",
+      "passed": true,
+      "artwork": "/Applications/Screamer 2.app/Contents/Resources/SelectionBackground.png",
+      "previews": [
+        "view-classic.png",
+        "view.png"
+      ]
+    },
+    {
+      "game": "screamerrally",
+      "passed": true,
+      "artwork": "/Applications/Screamer Rally.app/Contents/Resources/SelectionBackground.png",
+      "previews": [
+        "view-classic.png",
+        "view.png"
+      ]
+    }
+  ],
+  "dispatch": [
+    {
+      "mode": "upgraded",
+      "arguments": [
+        "--window-resolution",
+        "--widescreen",
+        "--extended-distance"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "upgraded",
+      "arguments": [
+        "--window-resolution",
+        "--widescreen",
+        "--extended-distance"
+      ],
+      "passed": true
+    },
+    {
+      "mode": "classic",
+      "arguments": [
+        "--no-settings",
+        "--original-aspect",
+        "--distance-level",
+        "0"
+      ],
+      "passed": true
+    }
+  ],
+  "checks": [
+    "Exactly two modes with no extra graphics controls",
+    "Mode descriptions change and wrapping copy fits",
+    "Legacy graphics preferences ignored; saved mode preserved",
+    "Accepted settings persist only mode",
+    "Cancel and Quit leave pending choices unchanged",
+    "Upgraded always uses window pixels, widescreen, and full track",
+    "Classic always uses original aspect and draw distance",
+    "Controls inside view bounds"
+  ],
+  "source_sha256": "7f42ae49ddef3e165365001af2efdd312c7e44d9707fd05b525088aa0177609e",
+  "scope": "Production AppKit selection view and dry-run dispatch only; no game process, game input, or desktop screen capture",
+  "visual_review": {
+    "inspected_previews": [
+      "screamer/view.png",
+      "screamer/view-classic.png",
+      "screamer2/view.png",
+      "screamer2/view-classic.png",
+      "screamerrally/view.png",
+      "screamerrally/view-classic.png"
+    ],
+    "all_titles_and_mode_copy_fit": true,
+    "no_text_or_control_clipping": true,
+    "no_text_or_control_overlap": true,
+    "only_classic_upgraded_and_start_cancel_controls": true,
+    "original_artwork_visible": true
+  }
+}

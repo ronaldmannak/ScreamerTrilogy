@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "timeout": false,
+  "wall_seconds": 14.933530333,
+  "actual_fullscreen_entered": true,
+  "actual_fullscreen_exited": true,
+  "phases": [
+    {
+      "stage": "windowed_settled",
+      "fullscreen": false,
+      "mode_4k": true,
+      "view_points": [
+        1280,
+        720
+      ],
+      "backing_layer_supplied": [
+        2560,
+        1440
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "screen_width": 2560,
+      "fullscreen_width_occupancy": 0.5,
+      "status_label_hidden": true,
+      "presented_frames": 54,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "fullscreen_settled",
+      "fullscreen": true,
+      "mode_4k": true,
+      "view_points": [
+        2560,
+        1440
+      ],
+      "backing_layer_supplied": [
+        5120,
+        2880
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "screen_width": 2560,
+      "fullscreen_width_occupancy": 1,
+      "status_label_hidden": true,
+      "presented_frames": 166,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "fullscreen_window_resolution_checkpoint",
+      "fullscreen": true,
+      "mode_4k": false,
+      "view_points": [
+        2560,
+        1440
+      ],
+      "backing_layer_supplied": [
+        5120,
+        2880
+      ],
+      "render_target": [
+        5120,
+        2880
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "screen_width": 2560,
+      "fullscreen_width_occupancy": 1,
+      "status_label_hidden": true,
+      "presented_frames": 332,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "exit_settled",
+      "fullscreen": false,
+      "mode_4k": true,
+      "view_points": [
+        1280,
+        720
+      ],
+      "backing_layer_supplied": [
+        2560,
+        1440
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "screen_width": 2560,
+      "fullscreen_width_occupancy": 0.5,
+      "status_label_hidden": true,
+      "presented_frames": 502,
+      "stale_drawable_drops": 0
+    }
+  ],
+  "final_presented_frames": 785,
+  "gpu_errors": 0,
+  "scope": "Production frontend classes including real game-overlay UI with sentinel livePath and placeholder framebuffer; no live services, engine, game, physics or inputs.",
+  "production_source_sha256": "03f2db36716f8147447f24957f07a564ae317df9537596b5b89e8a7432c49bc7"
+}

@@ -1,0 +1,198 @@
+{
+  "passed": true,
+  "exit_code": 0,
+  "timeout": false,
+  "wall_seconds": 15.114845541,
+  "actual_fullscreen_entered": true,
+  "actual_fullscreen_exited": true,
+  "phases": [
+    {
+      "stage": "windowed_settled",
+      "fullscreen": false,
+      "mode_4k": true,
+      "view_points": [
+        1280,
+        720
+      ],
+      "backing_layer_supplied": [
+        2560,
+        1440
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "screen_width": 2560,
+      "fullscreen_width_occupancy": 0.5,
+      "status_label_hidden": true,
+      "presented_frames": 55,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "fullscreen_settled",
+      "fullscreen": true,
+      "mode_4k": true,
+      "view_points": [
+        2560,
+        1440
+      ],
+      "backing_layer_supplied": [
+        5120,
+        2880
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "screen_width": 2560,
+      "fullscreen_width_occupancy": 1,
+      "status_label_hidden": true,
+      "presented_frames": 165,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "fullscreen_window_resolution_checkpoint",
+      "fullscreen": true,
+      "mode_4k": false,
+      "view_points": [
+        2560,
+        1440
+      ],
+      "backing_layer_supplied": [
+        5120,
+        2880
+      ],
+      "render_target": [
+        5120,
+        2880
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "screen_width": 2560,
+      "fullscreen_width_occupancy": 1,
+      "status_label_hidden": true,
+      "presented_frames": 332,
+      "stale_drawable_drops": 0
+    },
+    {
+      "stage": "exit_settled",
+      "fullscreen": false,
+      "mode_4k": true,
+      "view_points": [
+        1280,
+        720
+      ],
+      "backing_layer_supplied": [
+        2560,
+        1440
+      ],
+      "render_target": [
+        3840,
+        2160
+      ],
+      "presented_scene_aspect_ratio": 1.7777777777777777,
+      "screen_width": 2560,
+      "fullscreen_width_occupancy": 0.5,
+      "status_label_hidden": true,
+      "presented_frames": 502,
+      "stale_drawable_drops": 0
+    }
+  ],
+  "final_presented_frames": 784,
+  "gpu_errors": 0,
+  "scope": "Production frontend classes including real game-overlay UI with sentinel livePath and placeholder framebuffer; no live services, engine, game, physics or inputs.",
+  "production_source_sha256": "521efaf397b3cdd31978019c86090851c8b56df8b704e3bdd21b6fad58dc3008",
+  "version": "0.3.2",
+  "build": 7,
+  "baseline_expected_failure": {
+    "view_width": 659,
+    "screen_width": 2560,
+    "width_occupancy": 0.257421875,
+    "status_label_hidden": true,
+    "reason": "Hidden startup label width equality capped whole game window at560/.85points"
+  },
+  "fix": "Bound label width by85%ofview instead of equating it;560point label maximum no longer caps window width",
+  "pixel_coverage": {
+    "actual_production_method": "PreviewRenderer encodeTo:drawable:",
+    "black_pixels": 0,
+    "corners_and_center": [
+      {
+        "bgra": [
+          148,
+          107,
+          66,
+          255
+        ],
+        "x": 0,
+        "y": 0
+      },
+      {
+        "bgra": [
+          148,
+          107,
+          66,
+          255
+        ],
+        "x": 5119,
+        "y": 0
+      },
+      {
+        "bgra": [
+          148,
+          107,
+          66,
+          255
+        ],
+        "x": 0,
+        "y": 2879
+      },
+      {
+        "bgra": [
+          148,
+          107,
+          66,
+          255
+        ],
+        "x": 5119,
+        "y": 2879
+      },
+      {
+        "bgra": [
+          148,
+          107,
+          66,
+          255
+        ],
+        "x": 2560,
+        "y": 1440
+      }
+    ],
+    "coverage_fraction": 1,
+    "covered_bounds": [
+      0,
+      0,
+      5120,
+      2880
+    ],
+    "covered_pixels": 14745600,
+    "gpu_errors": 0,
+    "note": "All GPU encoding, render passes, pipeline and shaders are production. Only OS presentDrawable is suppressed for a shared-texture synthetic drawable; this does not test WindowServer/CAMetalLayer composition.",
+    "other_pixels": 0,
+    "output_size": [
+      5120,
+      2880
+    ],
+    "source_bgra": [
+      148,
+      107,
+      66,
+      255
+    ],
+    "source_size": [
+      3840,
+      2160
+    ]
+  },
+  "existing_primary_checkout_modified": false
+}

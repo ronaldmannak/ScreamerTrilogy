@@ -1,0 +1,31 @@
+{
+  "scope": "Inference from original real-clock increments in a bounded read-only real Arcade race observation; not poll cadence or render rate",
+  "source_report": "real-race-clock-observation.json",
+  "race_mode_flags": [
+    1
+  ],
+  "unique_states": 162,
+  "observed_clock_transitions": 161,
+  "wall_timestamp_span_seconds": 4.970163313,
+  "game_clock_span_seconds": 4.920112609863281,
+  "configured_minimum_frame_seconds": 0.03,
+  "per_interval_inferred_steps_histogram": {
+    "1": 159,
+    "3": 1,
+    "2": 1
+  },
+  "maximum_clock_delta_error_from_30ms_multiple_seconds": 2.0599365234408307e-06,
+  "inferred_original_steps": 164,
+  "missed_intermediate_states": 3,
+  "inferred_original_steps_per_wall_second": 32.996903657278274,
+  "sampled_raw_dt_seconds": [
+    0.03
+  ],
+  "sampled_smoothed_dt_seconds": [
+    0.033
+  ],
+  "limits": [
+    "Inference assumes each30ms clock increment corresponds to the verified original frame update, supported by rawdt=.03 and smootheddt=.033",
+    "A5s check is not an all-tracks or long-session stability claim; some intermediate wait states were missed"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "game": "Screamer",
+  "version": "0.3.5",
+  "build": 10,
+  "restored": "Original A0 opaque reflective window polygons with authored normals, signed UV texgen, repeat sampling, live source scroll and environment-frame choice",
+  "source_sha256": {
+    "NativeRenderer/NativePreview/Sources/NativePreview.mm": "dcd9b067d47ed1c68ce23722cb2b8b9d5afa6315de05a3b2dc1ba36eea4f3f5d",
+    "NativeRenderer/NativePreview/Sources/World.metal": "20bc8eff0e7c1e2f78a1b3601d8ae51ceab25ea533065db902704b413620cd5d",
+    "NativeRenderer/Games/screamer/Runtime/Tools/export_scene.py": "36109c78fd8fe337527933f0e26279962118ae78f7dca060becddc4d854fa403",
+    "NativeRenderer/Games/screamer/Runtime/Tools/export_dynamic.py": "3ccf55ab7a6adb84782520bc79826fd16435379d2563a9714ef47c92c3f166a0"
+  },
+  "validation": {
+    "original_GPU_UV_matches": 87,
+    "maximum_normalized_UV_error": 0,
+    "existing_S1_tests": 41,
+    "production_frontend_contracts": "passed",
+    "car_view_captures": [
+      "front-quarter",
+      "rear-quarter",
+      "side-window"
+    ],
+    "per_player_glass_triangles": 16,
+    "isolated_race_glass_triangles": 136,
+    "isolated_race_glass_batches": 10,
+    "isolated_race_GPU_errors": 0,
+    "isolated_race_parse_errors": 0
+  },
+  "scope_limits": [
+    "GPU helper matches saved original UVs exactly; existing camera/part interpolation approximates original Q14 matrices.",
+    "Live environment phase stayed0 in the short race; frame selection boundaries were tested separately.",
+    "Race appearance validated through native4K offscreen captures; no new foreground FPS result claimed."
+  ],
+  "Screamer2_Rally_bundles_modified": false,
+  "physics_engine_modified": false,
+  "save_files_modified": false,
+  "prior_bundle": "build-fullscreen/backups/pre-s1-glass-build10-20261125/Screamer Metal.app"
+}

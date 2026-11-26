@@ -1,0 +1,1680 @@
+{
+  "results": [
+    {
+      "label": "control",
+      "port": 9091,
+      "started_utc": "2026-11-25T03:49:54.589730+00:00",
+      "core_config": "auto",
+      "cpu_cycles_protected": "max",
+      "widescreen": false,
+      "distance_level": 0,
+      "addresses": {
+        "helper": "0x20f2cc",
+        "tick_pointer": "0x20f302",
+        "smooth_pointer": "0x2f0494",
+        "raw_pointer": "0x2f0498",
+        "real_clock_pointer": "0x2f04a0",
+        "simulation_clock_pointer": "0x2f04a4"
+      },
+      "summary": {
+        "samples": 79,
+        "sample_window_seconds": 19.919101667000003,
+        "ticks_per_step": [
+          1
+        ],
+        "clocks_monotonic": true,
+        "real_clock_delta": 19.940364003181458,
+        "simulation_clock_delta": 36.49295258522034,
+        "raw_dt": {
+          "min": 0.009999999776482582,
+          "median": 0.009999999776482582,
+          "mean": 0.011012657981696008,
+          "max": 0.019999999552965164
+        },
+        "smoothed_dt": {
+          "min": 0.006690889596939087,
+          "median": 0.019999999552965164,
+          "mean": 0.019862406663125075,
+          "max": 0.021039273589849472
+        },
+        "real_clock_per_wall_second": 1.0010674344926247,
+        "simulation_clock_per_wall_second": 1.8320581517829315,
+        "simulation_clock_per_real_clock": 1.8301046349704517
+      },
+      "samples": [
+        {
+          "wall_seconds": 0.0022277920000002283,
+          "utc": "2026-11-25T03:49:59.631787+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 1.0999993085861206,
+          "simulation_clock": 2.199998617172241
+        },
+        {
+          "wall_seconds": 0.2598454590000001,
+          "utc": "2026-11-25T03:49:59.889392+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 1.3599990606307983,
+          "simulation_clock": 2.7199981212615967
+        },
+        {
+          "wall_seconds": 0.5168451670000005,
+          "utc": "2026-11-25T03:50:00.146392+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 1.629998803138733,
+          "simulation_clock": 3.259997606277466
+        },
+        {
+          "wall_seconds": 0.7736490840000005,
+          "utc": "2026-11-25T03:50:00.403198+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 1.8899985551834106,
+          "simulation_clock": 3.7799971103668213
+        },
+        {
+          "wall_seconds": 1.026097375,
+          "utc": "2026-11-25T03:50:00.655648+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 2.139998435974121,
+          "simulation_clock": 4.279996871948242
+        },
+        {
+          "wall_seconds": 1.2828876670000007,
+          "utc": "2026-11-25T03:50:00.912439+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 2.389998197555542,
+          "simulation_clock": 4.779996395111084
+        },
+        {
+          "wall_seconds": 1.5400477090000004,
+          "utc": "2026-11-25T03:50:01.169600+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 2.6499979496002197,
+          "simulation_clock": 5.2999958992004395
+        },
+        {
+          "wall_seconds": 1.797046,
+          "utc": "2026-11-25T03:50:01.426599+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 2.9099977016448975,
+          "simulation_clock": 5.819995403289795
+        },
+        {
+          "wall_seconds": 2.0533486670000007,
+          "utc": "2026-11-25T03:50:01.682903+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 3.169997453689575,
+          "simulation_clock": 6.33999490737915
+        },
+        {
+          "wall_seconds": 2.305372,
+          "utc": "2026-11-25T03:50:01.934928+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 3.419997215270996,
+          "simulation_clock": 6.839994430541992
+        },
+        {
+          "wall_seconds": 2.5618767500000006,
+          "utc": "2026-11-25T03:50:02.191434+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 3.679996967315674,
+          "simulation_clock": 7.359993934631348
+        },
+        {
+          "wall_seconds": 2.8190803340000006,
+          "utc": "2026-11-25T03:50:02.448639+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 3.919996738433838,
+          "simulation_clock": 7.820193290710449
+        },
+        {
+          "wall_seconds": 3.076375834000001,
+          "utc": "2026-11-25T03:50:02.705936+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.019999999552965164,
+          "smoothed_dt": 0.02019999921321869,
+          "real_clock": 4.179998874664307,
+          "simulation_clock": 8.221395492553711
+        },
+        {
+          "wall_seconds": 3.3294275000000004,
+          "utc": "2026-11-25T03:50:02.958988+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.019999999552965164,
+          "smoothed_dt": 0.02019999921321869,
+          "real_clock": 4.44000244140625,
+          "simulation_clock": 8.642401695251465
+        },
+        {
+          "wall_seconds": 3.5850947500000006,
+          "utc": "2026-11-25T03:50:03.214657+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.019999999552965164,
+          "smoothed_dt": 0.02019999921321869,
+          "real_clock": 4.690006256103516,
+          "simulation_clock": 9.06320858001709
+        },
+        {
+          "wall_seconds": 3.8422180839999998,
+          "utc": "2026-11-25T03:50:03.471782+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 4.950008869171143,
+          "simulation_clock": 9.444792747497559
+        },
+        {
+          "wall_seconds": 4.097477167,
+          "utc": "2026-11-25T03:50:03.727042+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 5.200013160705566,
+          "simulation_clock": 9.885400772094727
+        },
+        {
+          "wall_seconds": 4.354479917,
+          "utc": "2026-11-25T03:50:03.984045+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 5.45001745223999,
+          "simulation_clock": 10.326008796691895
+        },
+        {
+          "wall_seconds": 4.610651667,
+          "utc": "2026-11-25T03:50:04.240219+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 5.720021724700928,
+          "simulation_clock": 10.786816596984863
+        },
+        {
+          "wall_seconds": 4.866855042,
+          "utc": "2026-11-25T03:50:04.496423+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 5.970026969909668,
+          "simulation_clock": 11.267026901245117
+        },
+        {
+          "wall_seconds": 5.122188542000001,
+          "utc": "2026-11-25T03:50:04.751758+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 6.220032691955566,
+          "simulation_clock": 11.767038345336914
+        },
+        {
+          "wall_seconds": 5.378482084000001,
+          "utc": "2026-11-25T03:50:05.008053+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 6.480037689208984,
+          "simulation_clock": 12.247447967529297
+        },
+        {
+          "wall_seconds": 5.635065125,
+          "utc": "2026-11-25T03:50:05.264637+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 6.740043640136719,
+          "simulation_clock": 12.767459869384766
+        },
+        {
+          "wall_seconds": 5.892133584000001,
+          "utc": "2026-11-25T03:50:05.521707+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 7.0000481605529785,
+          "simulation_clock": 13.228068351745605
+        },
+        {
+          "wall_seconds": 6.147836542000001,
+          "utc": "2026-11-25T03:50:05.777410+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 7.250051975250244,
+          "simulation_clock": 13.64887523651123
+        },
+        {
+          "wall_seconds": 6.401124542000001,
+          "utc": "2026-11-25T03:50:06.030700+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 7.510056495666504,
+          "simulation_clock": 14.10948371887207
+        },
+        {
+          "wall_seconds": 6.657350042,
+          "utc": "2026-11-25T03:50:06.286927+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 7.77006196975708,
+          "simulation_clock": 14.609694480895996
+        },
+        {
+          "wall_seconds": 6.913129917,
+          "utc": "2026-11-25T03:50:06.542708+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 8.010066986083984,
+          "simulation_clock": 15.069904327392578
+        },
+        {
+          "wall_seconds": 7.169789625000001,
+          "utc": "2026-11-25T03:50:06.799369+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.019999999552965164,
+          "smoothed_dt": 0.02019999921321869,
+          "real_clock": 8.280073165893555,
+          "simulation_clock": 15.55051326751709
+        },
+        {
+          "wall_seconds": 7.426586167000001,
+          "utc": "2026-11-25T03:50:07.056167+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.019999999552965164,
+          "smoothed_dt": 0.02019999921321869,
+          "real_clock": 8.540079116821289,
+          "simulation_clock": 16.03092384338379
+        },
+        {
+          "wall_seconds": 7.6830254170000005,
+          "utc": "2026-11-25T03:50:07.312607+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 8.780084609985352,
+          "simulation_clock": 16.491134643554688
+        },
+        {
+          "wall_seconds": 7.937262792000001,
+          "utc": "2026-11-25T03:50:07.566846+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 9.040090560913086,
+          "simulation_clock": 16.971546173095703
+        },
+        {
+          "wall_seconds": 8.190980042,
+          "utc": "2026-11-25T03:50:07.820564+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 9.290096282958984,
+          "simulation_clock": 17.392356872558594
+        },
+        {
+          "wall_seconds": 8.443603792000001,
+          "utc": "2026-11-25T03:50:08.073189+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 9.550102233886719,
+          "simulation_clock": 17.81336784362793
+        },
+        {
+          "wall_seconds": 8.698681292,
+          "utc": "2026-11-25T03:50:08.328267+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 9.800107955932617,
+          "simulation_clock": 18.214378356933594
+        },
+        {
+          "wall_seconds": 8.954721208999999,
+          "utc": "2026-11-25T03:50:08.584308+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 10.050113677978516,
+          "simulation_clock": 18.615388870239258
+        },
+        {
+          "wall_seconds": 9.208011208999999,
+          "utc": "2026-11-25T03:50:08.837600+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 10.300119400024414,
+          "simulation_clock": 18.99677848815918
+        },
+        {
+          "wall_seconds": 9.460489917,
+          "utc": "2026-11-25T03:50:09.090080+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 10.540124893188477,
+          "simulation_clock": 19.35816764831543
+        },
+        {
+          "wall_seconds": 9.717047042,
+          "utc": "2026-11-25T03:50:09.346638+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 10.810131072998047,
+          "simulation_clock": 19.700895309448242
+        },
+        {
+          "wall_seconds": 9.973606375,
+          "utc": "2026-11-25T03:50:09.603199+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.019999999552965164,
+          "smoothed_dt": 0.021039273589849472,
+          "real_clock": 11.09013557434082,
+          "simulation_clock": 19.999544143676758
+        },
+        {
+          "wall_seconds": 10.229484667000001,
+          "utc": "2026-11-25T03:50:09.859078+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 11.340141296386719,
+          "simulation_clock": 20.341785430908203
+        },
+        {
+          "wall_seconds": 10.482643042,
+          "utc": "2026-11-25T03:50:10.112237+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 11.590147018432617,
+          "simulation_clock": 20.72299575805664
+        },
+        {
+          "wall_seconds": 10.73874975,
+          "utc": "2026-11-25T03:50:10.368346+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 11.840152740478516,
+          "simulation_clock": 21.124006271362305
+        },
+        {
+          "wall_seconds": 10.995907500000001,
+          "utc": "2026-11-25T03:50:10.625505+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 12.090158462524414,
+          "simulation_clock": 21.52501678466797
+        },
+        {
+          "wall_seconds": 11.252687709,
+          "utc": "2026-11-25T03:50:10.882286+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 12.350164413452148,
+          "simulation_clock": 21.985628128051758
+        },
+        {
+          "wall_seconds": 11.504147792000001,
+          "utc": "2026-11-25T03:50:11.133747+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 12.610170364379883,
+          "simulation_clock": 22.505640029907227
+        },
+        {
+          "wall_seconds": 11.756789459,
+          "utc": "2026-11-25T03:50:11.386390+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.006690889596939087,
+          "real_clock": 12.860176086425781,
+          "simulation_clock": 23.005651473999023
+        },
+        {
+          "wall_seconds": 12.013235709,
+          "utc": "2026-11-25T03:50:11.642838+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 13.11018180847168,
+          "simulation_clock": 23.50566291809082
+        },
+        {
+          "wall_seconds": 12.269727167000003,
+          "utc": "2026-11-25T03:50:11.899330+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 13.370187759399414,
+          "simulation_clock": 23.96627426147461
+        },
+        {
+          "wall_seconds": 12.526712709000002,
+          "utc": "2026-11-25T03:50:12.156317+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 13.630193710327148,
+          "simulation_clock": 24.446685791015625
+        },
+        {
+          "wall_seconds": 12.782335209000003,
+          "utc": "2026-11-25T03:50:12.411940+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 13.890199661254883,
+          "simulation_clock": 24.946897506713867
+        },
+        {
+          "wall_seconds": 13.038801584000002,
+          "utc": "2026-11-25T03:50:12.668408+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 14.140205383300781,
+          "simulation_clock": 25.427108764648438
+        },
+        {
+          "wall_seconds": 13.295670292,
+          "utc": "2026-11-25T03:50:12.925279+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 14.400211334228516,
+          "simulation_clock": 25.947120666503906
+        },
+        {
+          "wall_seconds": 13.552238959,
+          "utc": "2026-11-25T03:50:13.181848+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 14.650217056274414,
+          "simulation_clock": 26.447132110595703
+        },
+        {
+          "wall_seconds": 13.803656375000003,
+          "utc": "2026-11-25T03:50:13.433267+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 14.910223007202148,
+          "simulation_clock": 26.967144012451172
+        },
+        {
+          "wall_seconds": 14.060594834,
+          "utc": "2026-11-25T03:50:13.690206+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 15.170228958129883,
+          "simulation_clock": 27.48715591430664
+        },
+        {
+          "wall_seconds": 14.314279834,
+          "utc": "2026-11-25T03:50:13.943893+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 15.420234680175781,
+          "simulation_clock": 27.987167358398438
+        },
+        {
+          "wall_seconds": 14.566092750000003,
+          "utc": "2026-11-25T03:50:14.195706+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 15.67024040222168,
+          "simulation_clock": 28.487178802490234
+        },
+        {
+          "wall_seconds": 14.822957917,
+          "utc": "2026-11-25T03:50:14.452573+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 15.930246353149414,
+          "simulation_clock": 29.007190704345703
+        },
+        {
+          "wall_seconds": 15.076227417000002,
+          "utc": "2026-11-25T03:50:14.705844+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 16.180252075195312,
+          "simulation_clock": 29.5072021484375
+        },
+        {
+          "wall_seconds": 15.333657167000002,
+          "utc": "2026-11-25T03:50:14.963275+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 16.440258026123047,
+          "simulation_clock": 30.02721405029297
+        },
+        {
+          "wall_seconds": 15.586222917,
+          "utc": "2026-11-25T03:50:15.215842+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 16.690263748168945,
+          "simulation_clock": 30.527225494384766
+        },
+        {
+          "wall_seconds": 15.842819542,
+          "utc": "2026-11-25T03:50:15.472440+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 16.95026969909668,
+          "simulation_clock": 31.047237396240234
+        },
+        {
+          "wall_seconds": 16.097262875000002,
+          "utc": "2026-11-25T03:50:15.726884+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 17.190275192260742,
+          "simulation_clock": 31.52724838256836
+        },
+        {
+          "wall_seconds": 16.349793959000003,
+          "utc": "2026-11-25T03:50:15.979417+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 17.460281372070312,
+          "simulation_clock": 32.02766036987305
+        },
+        {
+          "wall_seconds": 16.606498792,
+          "utc": "2026-11-25T03:50:16.236123+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 17.720287322998047,
+          "simulation_clock": 32.547672271728516
+        },
+        {
+          "wall_seconds": 16.863912459,
+          "utc": "2026-11-25T03:50:16.493539+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 17.96029281616211,
+          "simulation_clock": 33.02768325805664
+        },
+        {
+          "wall_seconds": 17.116159500000002,
+          "utc": "2026-11-25T03:50:16.745785+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 18.220298767089844,
+          "simulation_clock": 33.4488639831543
+        },
+        {
+          "wall_seconds": 17.372998667,
+          "utc": "2026-11-25T03:50:17.002626+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 18.490304946899414,
+          "simulation_clock": 33.96907424926758
+        },
+        {
+          "wall_seconds": 17.626956709,
+          "utc": "2026-11-25T03:50:17.256585+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 18.730310440063477,
+          "simulation_clock": 34.4490852355957
+        },
+        {
+          "wall_seconds": 17.880118875,
+          "utc": "2026-11-25T03:50:17.509748+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.019999999552965164,
+          "smoothed_dt": 0.02019999921321869,
+          "real_clock": 18.99031639099121,
+          "simulation_clock": 34.909690856933594
+        },
+        {
+          "wall_seconds": 18.137278459,
+          "utc": "2026-11-25T03:50:17.766909+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 19.250322341918945,
+          "simulation_clock": 35.390098571777344
+        },
+        {
+          "wall_seconds": 18.3937905,
+          "utc": "2026-11-25T03:50:18.023423+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 19.500328063964844,
+          "simulation_clock": 35.89011001586914
+        },
+        {
+          "wall_seconds": 18.646121167,
+          "utc": "2026-11-25T03:50:18.275754+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 19.750333786010742,
+          "simulation_clock": 36.35051727294922
+        },
+        {
+          "wall_seconds": 18.900485917,
+          "utc": "2026-11-25T03:50:18.530120+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 20.00033950805664,
+          "simulation_clock": 36.8109245300293
+        },
+        {
+          "wall_seconds": 19.153606709,
+          "utc": "2026-11-25T03:50:18.783242+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 20.25034523010254,
+          "simulation_clock": 37.271331787109375
+        },
+        {
+          "wall_seconds": 19.409862209,
+          "utc": "2026-11-25T03:50:19.039499+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 20.510351181030273,
+          "simulation_clock": 37.751739501953125
+        },
+        {
+          "wall_seconds": 19.664612417,
+          "utc": "2026-11-25T03:50:19.294251+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.009999999776482582,
+          "smoothed_dt": 0.019999999552965164,
+          "real_clock": 20.760356903076172,
+          "simulation_clock": 38.23194885253906
+        },
+        {
+          "wall_seconds": 19.921329459000003,
+          "utc": "2026-11-25T03:50:19.550969+00:00",
+          "ticks_per_step": 1,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.019999999552965164,
+          "smoothed_dt": 0.02019999921321869,
+          "real_clock": 21.040363311767578,
+          "simulation_clock": 38.69295120239258
+        }
+      ],
+      "scope": "Read-only timing fields. Automatic scene state is not a visually observed race.",
+      "engine_exit": 0,
+      "elapsed_seconds": 25.247982,
+      "ended_utc": "2026-11-25T03:50:19.837828+00:00"
+    },
+    {
+      "label": "candidate",
+      "port": 9092,
+      "started_utc": "2026-11-25T03:50:19.838624+00:00",
+      "core_config": "auto",
+      "cpu_cycles_protected": "max",
+      "widescreen": false,
+      "distance_level": 0,
+      "addresses": {
+        "helper": "0x20f2cc",
+        "tick_pointer": "0x20f302",
+        "smooth_pointer": "0x2f0494",
+        "raw_pointer": "0x2f0498",
+        "real_clock_pointer": "0x2f04a0",
+        "simulation_clock_pointer": "0x2f04a4"
+      },
+      "summary": {
+        "samples": 79,
+        "sample_window_seconds": 19.978515083999998,
+        "ticks_per_step": [
+          3
+        ],
+        "clocks_monotonic": true,
+        "real_clock_delta": 19.980074405670166,
+        "simulation_clock_delta": 21.976523280143738,
+        "raw_dt": {
+          "min": 0.029999999329447746,
+          "median": 0.029999999329447746,
+          "mean": 0.029999999329447746,
+          "max": 0.029999999329447746
+        },
+        "smoothed_dt": {
+          "min": 0.032859917730093,
+          "median": 0.03299998119473457,
+          "mean": 0.03299693942447252,
+          "max": 0.03299998119473457
+        },
+        "real_clock_per_wall_second": 1.0000780499283162,
+        "simulation_clock_per_wall_second": 1.1000078428122952,
+        "simulation_clock_per_real_clock": 1.0999219939795117
+      },
+      "samples": [
+        {
+          "wall_seconds": 0.0023368750000010152,
+          "utc": "2026-11-25T03:50:24.869295+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.032859917730093,
+          "real_clock": 1.3199992179870605,
+          "simulation_clock": 1.3232604265213013
+        },
+        {
+          "wall_seconds": 0.2566888339999984,
+          "utc": "2026-11-25T03:50:25.123643+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.032939694821834564,
+          "real_clock": 1.5599989891052246,
+          "simulation_clock": 1.5865422487258911
+        },
+        {
+          "wall_seconds": 0.5137807499999987,
+          "utc": "2026-11-25T03:50:25.380736+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03297663480043411,
+          "real_clock": 1.8299987316131592,
+          "simulation_clock": 1.8832095861434937
+        },
+        {
+          "wall_seconds": 0.7704135839999999,
+          "utc": "2026-11-25T03:50:25.637370+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03298993781208992,
+          "real_clock": 2.0699985027313232,
+          "simulation_clock": 2.147089719772339
+        },
+        {
+          "wall_seconds": 1.025605542000001,
+          "utc": "2026-11-25T03:50:25.892563+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.032996099442243576,
+          "real_clock": 2.339998245239258,
+          "simulation_clock": 2.4440343379974365
+        },
+        {
+          "wall_seconds": 1.2825179589999998,
+          "utc": "2026-11-25T03:50:26.149477+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299832344055176,
+          "real_clock": 2.579998016357422,
+          "simulation_clock": 2.7080140113830566
+        },
+        {
+          "wall_seconds": 1.538887458999998,
+          "utc": "2026-11-25T03:50:26.405847+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.032999347895383835,
+          "real_clock": 2.8499977588653564,
+          "simulation_clock": 3.005004644393921
+        },
+        {
+          "wall_seconds": 1.7954652089999996,
+          "utc": "2026-11-25T03:50:26.662427+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.032999712973833084,
+          "real_clock": 3.0899975299835205,
+          "simulation_clock": 3.2690014839172363
+        },
+        {
+          "wall_seconds": 2.049359334000002,
+          "utc": "2026-11-25T03:50:26.916322+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299988806247711,
+          "real_clock": 3.359997272491455,
+          "simulation_clock": 3.565999746322632
+        },
+        {
+          "wall_seconds": 2.3055006250000005,
+          "utc": "2026-11-25T03:50:27.172464+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.032999955117702484,
+          "real_clock": 3.6299970149993896,
+          "simulation_clock": 3.862999677658081
+        },
+        {
+          "wall_seconds": 2.5620624589999963,
+          "utc": "2026-11-25T03:50:27.429027+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 3.8699967861175537,
+          "simulation_clock": 4.126999378204346
+        },
+        {
+          "wall_seconds": 2.819131542000001,
+          "utc": "2026-11-25T03:50:27.686098+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 4.109997272491455,
+          "simulation_clock": 4.3909993171691895
+        },
+        {
+          "wall_seconds": 3.0758761250000006,
+          "utc": "2026-11-25T03:50:27.942844+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 4.379999160766602,
+          "simulation_clock": 4.687999248504639
+        },
+        {
+          "wall_seconds": 3.3321534170000007,
+          "utc": "2026-11-25T03:50:28.199122+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 4.650001049041748,
+          "simulation_clock": 4.984999179840088
+        },
+        {
+          "wall_seconds": 3.589418875,
+          "utc": "2026-11-25T03:50:28.456389+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 4.890002727508545,
+          "simulation_clock": 5.248999118804932
+        },
+        {
+          "wall_seconds": 3.8463637919999982,
+          "utc": "2026-11-25T03:50:28.713335+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 5.160004615783691,
+          "simulation_clock": 5.545999050140381
+        },
+        {
+          "wall_seconds": 4.103074124999999,
+          "utc": "2026-11-25T03:50:28.970046+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 5.400006294250488,
+          "simulation_clock": 5.809998989105225
+        },
+        {
+          "wall_seconds": 4.360701374999998,
+          "utc": "2026-11-25T03:50:29.227675+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 5.670008182525635,
+          "simulation_clock": 6.106998920440674
+        },
+        {
+          "wall_seconds": 4.617508999999998,
+          "utc": "2026-11-25T03:50:29.484484+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 5.910009860992432,
+          "simulation_clock": 6.370998859405518
+        },
+        {
+          "wall_seconds": 4.871306584000003,
+          "utc": "2026-11-25T03:50:29.738283+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 6.180011749267578,
+          "simulation_clock": 6.667998790740967
+        },
+        {
+          "wall_seconds": 5.125576334000002,
+          "utc": "2026-11-25T03:50:29.992554+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 6.450013637542725,
+          "simulation_clock": 6.964998722076416
+        },
+        {
+          "wall_seconds": 5.3823286249999995,
+          "utc": "2026-11-25T03:50:30.249307+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 6.6900153160095215,
+          "simulation_clock": 7.22899866104126
+        },
+        {
+          "wall_seconds": 5.638420959000001,
+          "utc": "2026-11-25T03:50:30.505401+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 6.960017204284668,
+          "simulation_clock": 7.525998592376709
+        },
+        {
+          "wall_seconds": 5.892435083999999,
+          "utc": "2026-11-25T03:50:30.759416+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 7.200018882751465,
+          "simulation_clock": 7.789998531341553
+        },
+        {
+          "wall_seconds": 6.149743708999999,
+          "utc": "2026-11-25T03:50:31.016726+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 7.440020561218262,
+          "simulation_clock": 8.053997993469238
+        },
+        {
+          "wall_seconds": 6.406532917,
+          "utc": "2026-11-25T03:50:31.273516+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 7.710022449493408,
+          "simulation_clock": 8.350997924804688
+        },
+        {
+          "wall_seconds": 6.661502583999997,
+          "utc": "2026-11-25T03:50:31.528487+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 7.980024337768555,
+          "simulation_clock": 8.647997856140137
+        },
+        {
+          "wall_seconds": 6.9139945419999975,
+          "utc": "2026-11-25T03:50:31.780980+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 8.220022201538086,
+          "simulation_clock": 8.91199779510498
+        },
+        {
+          "wall_seconds": 7.171794958999996,
+          "utc": "2026-11-25T03:50:32.038782+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 8.490019798278809,
+          "simulation_clock": 9.20899772644043
+        },
+        {
+          "wall_seconds": 7.428854749999999,
+          "utc": "2026-11-25T03:50:32.295843+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 8.73001766204834,
+          "simulation_clock": 9.472997665405273
+        },
+        {
+          "wall_seconds": 7.685571375000002,
+          "utc": "2026-11-25T03:50:32.552561+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 9.000015258789062,
+          "simulation_clock": 9.769997596740723
+        },
+        {
+          "wall_seconds": 7.942342750000002,
+          "utc": "2026-11-25T03:50:32.809333+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 9.240013122558594,
+          "simulation_clock": 10.033997535705566
+        },
+        {
+          "wall_seconds": 8.196680084,
+          "utc": "2026-11-25T03:50:33.063672+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 9.510010719299316,
+          "simulation_clock": 10.330997467041016
+        },
+        {
+          "wall_seconds": 8.450649167000002,
+          "utc": "2026-11-25T03:50:33.317642+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 9.750008583068848,
+          "simulation_clock": 10.59499740600586
+        },
+        {
+          "wall_seconds": 8.707945834,
+          "utc": "2026-11-25T03:50:33.574940+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 10.02000617980957,
+          "simulation_clock": 10.891997337341309
+        },
+        {
+          "wall_seconds": 8.964125375000002,
+          "utc": "2026-11-25T03:50:33.831121+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 10.290003776550293,
+          "simulation_clock": 11.188997268676758
+        },
+        {
+          "wall_seconds": 9.219311124999997,
+          "utc": "2026-11-25T03:50:34.086308+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 10.530001640319824,
+          "simulation_clock": 11.452997207641602
+        },
+        {
+          "wall_seconds": 9.472616084000002,
+          "utc": "2026-11-25T03:50:34.339614+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 10.799999237060547,
+          "simulation_clock": 11.74999713897705
+        },
+        {
+          "wall_seconds": 9.725873125,
+          "utc": "2026-11-25T03:50:34.592872+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 11.039997100830078,
+          "simulation_clock": 12.013997077941895
+        },
+        {
+          "wall_seconds": 9.978685124999998,
+          "utc": "2026-11-25T03:50:34.845685+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 11.27999496459961,
+          "simulation_clock": 12.277997016906738
+        },
+        {
+          "wall_seconds": 10.234723166999999,
+          "utc": "2026-11-25T03:50:35.101725+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 11.549992561340332,
+          "simulation_clock": 12.574996948242188
+        },
+        {
+          "wall_seconds": 10.491904708999996,
+          "utc": "2026-11-25T03:50:35.358907+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 11.789990425109863,
+          "simulation_clock": 12.838996887207031
+        },
+        {
+          "wall_seconds": 10.748956,
+          "utc": "2026-11-25T03:50:35.615960+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 12.059988021850586,
+          "simulation_clock": 13.13599681854248
+        },
+        {
+          "wall_seconds": 11.003778208999996,
+          "utc": "2026-11-25T03:50:35.870783+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 12.299985885620117,
+          "simulation_clock": 13.399996757507324
+        },
+        {
+          "wall_seconds": 11.260317584,
+          "utc": "2026-11-25T03:50:36.127324+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 12.56998348236084,
+          "simulation_clock": 13.696996688842773
+        },
+        {
+          "wall_seconds": 11.51623825,
+          "utc": "2026-11-25T03:50:36.383246+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 12.839981079101562,
+          "simulation_clock": 13.993996620178223
+        },
+        {
+          "wall_seconds": 11.773581708999998,
+          "utc": "2026-11-25T03:50:36.640591+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 13.079978942871094,
+          "simulation_clock": 14.257996559143066
+        },
+        {
+          "wall_seconds": 12.026415166999996,
+          "utc": "2026-11-25T03:50:36.893425+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 13.319976806640625,
+          "simulation_clock": 14.52199649810791
+        },
+        {
+          "wall_seconds": 12.283237249999999,
+          "utc": "2026-11-25T03:50:37.150248+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 13.589974403381348,
+          "simulation_clock": 14.81899642944336
+        },
+        {
+          "wall_seconds": 12.539715874999999,
+          "utc": "2026-11-25T03:50:37.406728+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 13.85997200012207,
+          "simulation_clock": 15.115996360778809
+        },
+        {
+          "wall_seconds": 12.796809916999997,
+          "utc": "2026-11-25T03:50:37.663824+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 14.099969863891602,
+          "simulation_clock": 15.379996299743652
+        },
+        {
+          "wall_seconds": 13.053353334,
+          "utc": "2026-11-25T03:50:37.920368+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 14.339967727661133,
+          "simulation_clock": 15.643996238708496
+        },
+        {
+          "wall_seconds": 13.310246458999998,
+          "utc": "2026-11-25T03:50:38.177262+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 14.609965324401855,
+          "simulation_clock": 15.940996170043945
+        },
+        {
+          "wall_seconds": 13.567219709,
+          "utc": "2026-11-25T03:50:38.434237+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 14.879962921142578,
+          "simulation_clock": 16.23798942565918
+        },
+        {
+          "wall_seconds": 13.824416,
+          "utc": "2026-11-25T03:50:38.691434+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 15.1499605178833,
+          "simulation_clock": 16.53498077392578
+        },
+        {
+          "wall_seconds": 14.081632792,
+          "utc": "2026-11-25T03:50:38.948653+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 15.389958381652832,
+          "simulation_clock": 16.798973083496094
+        },
+        {
+          "wall_seconds": 14.337620666999996,
+          "utc": "2026-11-25T03:50:39.204642+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 15.629956245422363,
+          "simulation_clock": 17.062965393066406
+        },
+        {
+          "wall_seconds": 14.593926042,
+          "utc": "2026-11-25T03:50:39.460948+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 15.899953842163086,
+          "simulation_clock": 17.359956741333008
+        },
+        {
+          "wall_seconds": 14.850664834,
+          "utc": "2026-11-25T03:50:39.717688+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 16.16995620727539,
+          "simulation_clock": 17.65694808959961
+        },
+        {
+          "wall_seconds": 15.107260875000001,
+          "utc": "2026-11-25T03:50:39.974285+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 16.409961700439453,
+          "simulation_clock": 17.920940399169922
+        },
+        {
+          "wall_seconds": 15.359480792,
+          "utc": "2026-11-25T03:50:40.226507+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 16.679967880249023,
+          "simulation_clock": 18.217931747436523
+        },
+        {
+          "wall_seconds": 15.616401375000002,
+          "utc": "2026-11-25T03:50:40.483428+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 16.919973373413086,
+          "simulation_clock": 18.481924057006836
+        },
+        {
+          "wall_seconds": 15.872271959000003,
+          "utc": "2026-11-25T03:50:40.739300+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 17.189979553222656,
+          "simulation_clock": 18.778915405273438
+        },
+        {
+          "wall_seconds": 16.129384375,
+          "utc": "2026-11-25T03:50:40.996414+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 17.42998504638672,
+          "simulation_clock": 19.04290771484375
+        },
+        {
+          "wall_seconds": 16.385692084,
+          "utc": "2026-11-25T03:50:41.252723+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 17.69999122619629,
+          "simulation_clock": 19.33989906311035
+        },
+        {
+          "wall_seconds": 16.642576458999997,
+          "utc": "2026-11-25T03:50:41.509608+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 17.93999671936035,
+          "simulation_clock": 19.603891372680664
+        },
+        {
+          "wall_seconds": 16.900036999999998,
+          "utc": "2026-11-25T03:50:41.767070+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 18.210002899169922,
+          "simulation_clock": 19.900882720947266
+        },
+        {
+          "wall_seconds": 17.156512999999997,
+          "utc": "2026-11-25T03:50:42.023547+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 18.450008392333984,
+          "simulation_clock": 20.164875030517578
+        },
+        {
+          "wall_seconds": 17.413634625,
+          "utc": "2026-11-25T03:50:42.280670+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 18.720014572143555,
+          "simulation_clock": 20.46186637878418
+        },
+        {
+          "wall_seconds": 17.670695375,
+          "utc": "2026-11-25T03:50:42.537732+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 18.990020751953125,
+          "simulation_clock": 20.75885772705078
+        },
+        {
+          "wall_seconds": 17.927972834000002,
+          "utc": "2026-11-25T03:50:42.795010+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 19.230026245117188,
+          "simulation_clock": 21.022850036621094
+        },
+        {
+          "wall_seconds": 18.184142,
+          "utc": "2026-11-25T03:50:43.051181+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 19.500032424926758,
+          "simulation_clock": 21.319841384887695
+        },
+        {
+          "wall_seconds": 18.441327084,
+          "utc": "2026-11-25T03:50:43.308368+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 19.74003791809082,
+          "simulation_clock": 21.583833694458008
+        },
+        {
+          "wall_seconds": 18.698179209000003,
+          "utc": "2026-11-25T03:50:43.565221+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 1,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 20.01004409790039,
+          "simulation_clock": 21.88082504272461
+        },
+        {
+          "wall_seconds": 18.955404334,
+          "utc": "2026-11-25T03:50:43.822447+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 20.250049591064453,
+          "simulation_clock": 22.144817352294922
+        },
+        {
+          "wall_seconds": 19.212284959,
+          "utc": "2026-11-25T03:50:44.079329+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 20.520055770874023,
+          "simulation_clock": 22.441808700561523
+        },
+        {
+          "wall_seconds": 19.468866249999998,
+          "utc": "2026-11-25T03:50:44.335911+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 20.790061950683594,
+          "simulation_clock": 22.738800048828125
+        },
+        {
+          "wall_seconds": 19.725537084000003,
+          "utc": "2026-11-25T03:50:44.592583+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 2,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 21.030067443847656,
+          "simulation_clock": 23.002792358398438
+        },
+        {
+          "wall_seconds": 19.980851959,
+          "utc": "2026-11-25T03:50:44.847899+00:00",
+          "ticks_per_step": 3,
+          "pending_tick_counter": 0,
+          "raw_dt": 0.029999999329447746,
+          "smoothed_dt": 0.03299998119473457,
+          "real_clock": 21.300073623657227,
+          "simulation_clock": 23.29978370666504
+        }
+      ],
+      "scope": "Read-only timing fields. Automatic scene state is not a visually observed race.",
+      "engine_exit": 0,
+      "elapsed_seconds": 25.298747415999998,
+      "ended_utc": "2026-11-25T03:50:45.137497+00:00"
+    }
+  ]
+}

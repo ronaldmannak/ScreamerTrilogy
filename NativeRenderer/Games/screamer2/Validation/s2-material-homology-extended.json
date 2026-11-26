@@ -1,0 +1,6018 @@
+{
+  "1": {
+    "256": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd0710",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd7c50",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      }
+    ],
+    "512": [
+      {
+        "screamer2_va": "0xd0710",
+        "compared_bytes": 512,
+        "unmasked_bytes": 396,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 498,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd7c50",
+        "compared_bytes": 512,
+        "unmasked_bytes": 396,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 498,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          }
+        ]
+      }
+    ],
+    "768": [
+      {
+        "screamer2_va": "0xd7c50",
+        "compared_bytes": 768,
+        "unmasked_bytes": 569,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 498,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 513,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 519,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 525,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 530,
+            "rally_target": "0xaa5dc",
+            "screamer2_target": "0xac00c"
+          },
+          {
+            "instruction_operand_offset": 536,
+            "rally_target": "0xaa6b4",
+            "screamer2_target": "0xac0e4"
+          },
+          {
+            "instruction_operand_offset": 546,
+            "rally_target": "0xaa5b0",
+            "screamer2_target": "0xabfe0"
+          },
+          {
+            "instruction_operand_offset": 558,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 646,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 651,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 660,
+            "rally_target": "0x8309c",
+            "screamer2_target": "0x84acc"
+          },
+          {
+            "instruction_operand_offset": 672,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 688,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 694,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 712,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 718,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 732,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 737,
+            "rally_target": "0xaa5c0",
+            "screamer2_target": "0xabff0"
+          },
+          {
+            "instruction_operand_offset": 742,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 747,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 755,
+            "rally_target": "0xaa5c8",
+            "screamer2_target": "0xabff8"
+          },
+          {
+            "instruction_operand_offset": 765,
+            "rally_target": "0xaa6ac",
+            "screamer2_target": "0xac0dc"
+          }
+        ]
+      }
+    ]
+  },
+  "3": {
+    "256": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd0710",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd7c50",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      }
+    ],
+    "512": [
+      {
+        "screamer2_va": "0xd0710",
+        "compared_bytes": 512,
+        "unmasked_bytes": 396,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 498,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd7c50",
+        "compared_bytes": 512,
+        "unmasked_bytes": 396,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 498,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          }
+        ]
+      }
+    ],
+    "768": [
+      {
+        "screamer2_va": "0xd0710",
+        "compared_bytes": 768,
+        "unmasked_bytes": 569,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 558,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 646,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 651,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 660,
+            "rally_target": "0x8309c",
+            "screamer2_target": "0x84acc"
+          },
+          {
+            "instruction_operand_offset": 672,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 688,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 694,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 712,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 718,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 732,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 737,
+            "rally_target": "0xaa5c0",
+            "screamer2_target": "0xabff0"
+          },
+          {
+            "instruction_operand_offset": 742,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 747,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 755,
+            "rally_target": "0xaa5c8",
+            "screamer2_target": "0xabff8"
+          },
+          {
+            "instruction_operand_offset": 765,
+            "rally_target": "0xaa6ac",
+            "screamer2_target": "0xac0dc"
+          },
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 498,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 513,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 519,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 525,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 530,
+            "rally_target": "0xaa5dc",
+            "screamer2_target": "0xac00c"
+          },
+          {
+            "instruction_operand_offset": 536,
+            "rally_target": "0xaa6b4",
+            "screamer2_target": "0xac0e4"
+          },
+          {
+            "instruction_operand_offset": 546,
+            "rally_target": "0xaa5b0",
+            "screamer2_target": "0xabfe0"
+          }
+        ]
+      }
+    ]
+  },
+  "4": {
+    "256": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd0710",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd7c50",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      }
+    ],
+    "512": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      }
+    ],
+    "768": [
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 768,
+        "unmasked_bytes": 564,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 721,
+            "rally_target": "0xaa5c0",
+            "screamer2_target": "0xabff0"
+          },
+          {
+            "instruction_operand_offset": 726,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 731,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 739,
+            "rally_target": "0xaa5c8",
+            "screamer2_target": "0xabff8"
+          },
+          {
+            "instruction_operand_offset": 749,
+            "rally_target": "0xaa6ac",
+            "screamer2_target": "0xac0dc"
+          },
+          {
+            "instruction_operand_offset": 758,
+            "rally_target": "0xb26d8",
+            "screamer2_target": "0xb4108"
+          },
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 514,
+            "rally_target": "0xaa5dc",
+            "screamer2_target": "0xac00c"
+          },
+          {
+            "instruction_operand_offset": 520,
+            "rally_target": "0xaa6b4",
+            "screamer2_target": "0xac0e4"
+          },
+          {
+            "instruction_operand_offset": 530,
+            "rally_target": "0xaa5b0",
+            "screamer2_target": "0xabfe0"
+          },
+          {
+            "instruction_operand_offset": 542,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 630,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 635,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 644,
+            "rally_target": "0x8309c",
+            "screamer2_target": "0x84acc"
+          },
+          {
+            "instruction_operand_offset": 656,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 672,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 678,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 696,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 702,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 716,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      }
+    ]
+  },
+  "6": {
+    "256": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd0710",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd7c50",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      }
+    ],
+    "512": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      }
+    ],
+    "768": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 768,
+        "unmasked_bytes": 564,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 644,
+            "rally_target": "0x8309c",
+            "screamer2_target": "0x84acc"
+          },
+          {
+            "instruction_operand_offset": 656,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 672,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 678,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 696,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 702,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 716,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 721,
+            "rally_target": "0xaa5c0",
+            "screamer2_target": "0xabff0"
+          },
+          {
+            "instruction_operand_offset": 726,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 731,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 739,
+            "rally_target": "0xaa5c8",
+            "screamer2_target": "0xabff8"
+          },
+          {
+            "instruction_operand_offset": 749,
+            "rally_target": "0xaa6ac",
+            "screamer2_target": "0xac0dc"
+          },
+          {
+            "instruction_operand_offset": 758,
+            "rally_target": "0xb26d8",
+            "screamer2_target": "0xb4108"
+          },
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 514,
+            "rally_target": "0xaa5dc",
+            "screamer2_target": "0xac00c"
+          },
+          {
+            "instruction_operand_offset": 520,
+            "rally_target": "0xaa6b4",
+            "screamer2_target": "0xac0e4"
+          },
+          {
+            "instruction_operand_offset": 530,
+            "rally_target": "0xaa5b0",
+            "screamer2_target": "0xabfe0"
+          },
+          {
+            "instruction_operand_offset": 542,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 630,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 635,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          }
+        ]
+      }
+    ]
+  },
+  "7": {
+    "256": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd0710",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd7c50",
+        "compared_bytes": 256,
+        "unmasked_bytes": 170,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          }
+        ]
+      }
+    ],
+    "512": [
+      {
+        "screamer2_va": "0xcfeb0",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd42e0",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      },
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 512,
+        "unmasked_bytes": 385,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          }
+        ]
+      }
+    ],
+    "768": [
+      {
+        "screamer2_va": "0xd4b40",
+        "compared_bytes": 768,
+        "unmasked_bytes": 564,
+        "relocated_operand_pairs": [
+          {
+            "instruction_operand_offset": 8,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 13,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 20,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 26,
+            "rally_target": "0x7bad4",
+            "screamer2_target": "0x7d504"
+          },
+          {
+            "instruction_operand_offset": 32,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 41,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 46,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 57,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 63,
+            "rally_target": "0xaa5bc",
+            "screamer2_target": "0xabfec"
+          },
+          {
+            "instruction_operand_offset": 71,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 82,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 87,
+            "rally_target": "0xaa660",
+            "screamer2_target": "0xac090"
+          },
+          {
+            "instruction_operand_offset": 113,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 126,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 131,
+            "rally_target": "0xaa664",
+            "screamer2_target": "0xac094"
+          },
+          {
+            "instruction_operand_offset": 157,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 171,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 176,
+            "rally_target": "0xaa668",
+            "screamer2_target": "0xac098"
+          },
+          {
+            "instruction_operand_offset": 202,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 214,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 228,
+            "rally_target": "0x68fd0",
+            "screamer2_target": "0x6aa00"
+          },
+          {
+            "instruction_operand_offset": 254,
+            "rally_target": "0x6ed94",
+            "screamer2_target": "0x707c4"
+          },
+          {
+            "instruction_operand_offset": 265,
+            "rally_target": "0x82eb8",
+            "screamer2_target": "0x848e8"
+          },
+          {
+            "instruction_operand_offset": 270,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 482,
+            "rally_target": "0x82eb4",
+            "screamer2_target": "0x848e4"
+          },
+          {
+            "instruction_operand_offset": 497,
+            "rally_target": "0xcf4b0",
+            "screamer2_target": "0xd11d0"
+          },
+          {
+            "instruction_operand_offset": 503,
+            "rally_target": "0xaa5e0",
+            "screamer2_target": "0xac010"
+          },
+          {
+            "instruction_operand_offset": 509,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 514,
+            "rally_target": "0xaa5dc",
+            "screamer2_target": "0xac00c"
+          },
+          {
+            "instruction_operand_offset": 520,
+            "rally_target": "0xaa6b4",
+            "screamer2_target": "0xac0e4"
+          },
+          {
+            "instruction_operand_offset": 530,
+            "rally_target": "0xaa5b0",
+            "screamer2_target": "0xabfe0"
+          },
+          {
+            "instruction_operand_offset": 542,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 630,
+            "rally_target": "0x14739c",
+            "screamer2_target": "0x15476c"
+          },
+          {
+            "instruction_operand_offset": 635,
+            "rally_target": "0x7bb80",
+            "screamer2_target": "0x7d5b0"
+          },
+          {
+            "instruction_operand_offset": 644,
+            "rally_target": "0x8309c",
+            "screamer2_target": "0x84acc"
+          },
+          {
+            "instruction_operand_offset": 656,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 672,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 678,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 696,
+            "rally_target": "0x7bb94",
+            "screamer2_target": "0x7d5c4"
+          },
+          {
+            "instruction_operand_offset": 702,
+            "rally_target": "0xb9b70",
+            "screamer2_target": "0xbb5a0"
+          },
+          {
+            "instruction_operand_offset": 716,
+            "rally_target": "0xaa5cc",
+            "screamer2_target": "0xabffc"
+          },
+          {
+            "instruction_operand_offset": 721,
+            "rally_target": "0xaa5c0",
+            "screamer2_target": "0xabff0"
+          },
+          {
+            "instruction_operand_offset": 726,
+            "rally_target": "0xaa5d0",
+            "screamer2_target": "0xac000"
+          },
+          {
+            "instruction_operand_offset": 731,
+            "rally_target": "0xaa5b8",
+            "screamer2_target": "0xabfe8"
+          },
+          {
+            "instruction_operand_offset": 739,
+            "rally_target": "0xaa5c8",
+            "screamer2_target": "0xabff8"
+          },
+          {
+            "instruction_operand_offset": 749,
+            "rally_target": "0xaa6ac",
+            "screamer2_target": "0xac0dc"
+          },
+          {
+            "instruction_operand_offset": 758,
+            "rally_target": "0xb26d8",
+            "screamer2_target": "0xb4108"
+          }
+        ]
+      }
+    ]
+  }
+}

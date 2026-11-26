@@ -1,0 +1,68 @@
+{
+  "result": "passed",
+  "source": "three atomic same-session RAM snapshots",
+  "replay_sha256": "9aa13ce92dec9722832d922cad79a901a4c303a7cc33ecf86b344c599c79cff6",
+  "captured_sample_count": 3,
+  "output_sample_count": 55,
+  "resample_hz": 60.0,
+  "capture_span_seconds": 0.886798792,
+  "source_ram_sha256": [
+    "e4d7d8eeb5539919588c22a31cc347e76addc01c9b967f25e9769c5598d07e2a",
+    "c0e763ad7b6c9f8531837534a94c26c3a8e2a1bf8246a989df697cc7b5786b28",
+    "fffb6751d0f5d85ddff8dddf65e427e3de805b2114c8edb4ffa0bba7ac34d9bb"
+  ],
+  "camera_start_origin": [
+    -36485.0,
+    288.0,
+    40963.0
+  ],
+  "camera_end_origin": [
+    -48891.0,
+    545.0,
+    41428.0
+  ],
+  "cars": [
+    {
+      "id": "scene:157",
+      "name": "auto1",
+      "endpoint_distance_units": 11052.726948586036
+    },
+    {
+      "id": "scene:159",
+      "name": "auto2",
+      "endpoint_distance_units": 10297.341647240806
+    },
+    {
+      "id": "scene:161",
+      "name": "auto3",
+      "endpoint_distance_units": 7943.258588262124
+    },
+    {
+      "id": "scene:163",
+      "name": "auto4",
+      "endpoint_distance_units": 8708.334743221576
+    },
+    {
+      "id": "scene:165",
+      "name": "auto1",
+      "endpoint_distance_units": 10998.74379190642
+    },
+    {
+      "id": "scene:167",
+      "name": "auto2",
+      "endpoint_distance_units": 10554.96271902464
+    }
+  ],
+  "checks": [
+    "Profile identifiers, RAM sizes/hashes and explicit LE object mappings validate",
+    "Timestamps strictly increase and object mappings remain stable",
+    "Six stable car IDs have changed captured endpoint positions",
+    "Camera and stable non-billboard root rotations resampled at60Hz via shortest wrapped angles; captured endpoints retained"
+  ],
+  "scope": [
+    "Offline interpolation of actual guest poses; viewer executes no game physics",
+    "Only3 captures; output55 is not55 captured simulation frames",
+    "Reference unmodified main-race projection; HUD/mirror/split-screen, wheel/part animation and particle fidelity pending",
+    "Live sparse capture measured separately"
+  ]
+}

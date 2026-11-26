@@ -1,0 +1,110 @@
+[
+  {
+    "game": "screamer",
+    "source_executable": "/Applications/Screamer.app/Contents/Resources/game/STARTH.EXE",
+    "executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+    "setter_link": "0x8bd54",
+    "setter_first16": "60a3f73b0700a3053c0700a3133c0700",
+    "signed_depth_stores": {
+      "0xd7cf4": {
+        "operand_link": "0x8bd82",
+        "original_bytes": "f7d8a3f47c0c00",
+        "fixup": {
+          "source_object": 1,
+          "source_offset": 507266,
+          "target_object": 1,
+          "target_offset": 818420
+        }
+      },
+      "0xd7cf0": {
+        "operand_link": "0x8bd79",
+        "original_bytes": "0700a3f07c0c00",
+        "fixup": {
+          "source_object": 1,
+          "source_offset": 507257,
+          "target_object": 1,
+          "target_offset": 818416
+        }
+      }
+    },
+    "captured_source": "/private/tmp/screamer-4k-research/S1-native/Captures/attract-v1",
+    "captured_pair": [
+      -43808,
+      43808
+    ],
+    "original_draw_distance": 43808,
+    "original_far_plane": 43936
+  },
+  {
+    "game": "screamer2",
+    "source_executable": "/Applications/Screamer 2.app/Contents/Resources/game/S2_3DFX.EXE",
+    "executable_sha256": "e6c24c84650938f2baee5f4b571baa45bb09a93ba12dd24e3e1d2cefd9b6f3ec",
+    "setter_link": "0x849d4",
+    "setter_first16": "60a397cb0500a3a5cb0500a3b3cb0500",
+    "signed_depth_stores": {
+      "0xd1190": {
+        "operand_link": "0x849f9",
+        "original_bytes": "0500a390110b00",
+        "fixup": {
+          "source_object": 2,
+          "source_offset": 412153,
+          "target_object": 2,
+          "target_offset": 725392
+        }
+      },
+      "0xd1194": {
+        "operand_link": "0x84a51",
+        "original_bytes": "f7d8a394110b00",
+        "fixup": {
+          "source_object": 2,
+          "source_offset": 412241,
+          "target_object": 2,
+          "target_offset": 725396
+        }
+      }
+    },
+    "captured_source": "/private/tmp/screamer-4k-research/S2-live/attract-capture-v1",
+    "captured_pair": [
+      -50000,
+      50000
+    ],
+    "original_draw_distance": 50000,
+    "original_far_plane": 50128
+  },
+  {
+    "game": "screamerrally",
+    "source_executable": "/Applications/Screamer Rally.app/Contents/Resources/game/SR/STRT3FX.EXE",
+    "executable_sha256": "9eac6e12ab309389bdda019cfa695bfbbc791fbda1a4634464a444fce35165d1",
+    "setter_link": "0x82fa4",
+    "setter_first16": "60a367b10500a375b10500a383b10500",
+    "signed_depth_stores": {
+      "0xcf470": {
+        "operand_link": "0x82fc9",
+        "original_bytes": "0500a370f40a00",
+        "fixup": {
+          "source_object": 2,
+          "source_offset": 405449,
+          "target_object": 2,
+          "target_offset": 717936
+        }
+      },
+      "0xcf474": {
+        "operand_link": "0x83021",
+        "original_bytes": "f7d8a374f40a00",
+        "fixup": {
+          "source_object": 2,
+          "source_offset": 405537,
+          "target_object": 2,
+          "target_offset": 717940
+        }
+      }
+    },
+    "captured_source": "/private/tmp/rally-api-input-test-visual-engine-074610/Session/assets/race-74930c1149e441208d27abd37bde9a2f",
+    "captured_pair": [
+      -50000,
+      50000
+    ],
+    "original_draw_distance": 50000,
+    "original_far_plane": 50128
+  }
+]

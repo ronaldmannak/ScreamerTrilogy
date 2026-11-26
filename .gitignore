@@ -1,0 +1,62 @@
+.DS_Store
+Archives/
+**/Runtime/
+**/dist/
+**/rebuild/
+**/backups/
+**/recovery/
+**/__pycache__/
+*.pyc
+*.app/
+wrappers/**/artwork/**/*.png
+# Extracted game data and native-renderer captures remain local.
+NativeRenderer/Captures/
+NativeRenderer/Assets/Extracted/
+NativeRenderer/build/
+
+# Renderer capture/replay payloads belong under ignored Captures, not source.
+NativeRenderer/bridge/replay*.json
+!NativeRenderer/bridge/*-verification.json
+NativeRenderer/**/*.trace/
+NativeRenderer/Validation/*.png
+
+# Separate playable native builds and pinned external build trees.
+NativeRenderer/build-*/
+NativeRenderer/EngineBuild/
+
+# These Runtime directories contain reviewed source, not bundled binaries.
+!NativeRenderer/Games/*/Runtime/
+!NativeRenderer/Games/*/Runtime/**
+NativeRenderer/Games/**/__pycache__/
+NativeRenderer/Games/**/*.pyc
+
+# Owned game imports, installers, discs and extracted media are never source.
+Content/
+GameData/
+Imports/
+*.[eE][xX][eE]
+*.[dD][lL][lL]
+*.[oO][vV][lL]
+*.[iI][sS][oO]
+*.[iI][mM][gG]
+*.[cC][uU][eE]
+*.[gG][oO][gG]
+*.[dD][aA][tT]
+*.[bB][iI][nN]
+*.[mM][lL][bB]
+*.[uU][nN][rR]
+*.[pP][cC][xX]
+*.[bB][kK][kK]
+*.[iI][cC][oO]
+*.[iI][cC][nN][sS]
+*.[pP][nN][gG]
+*.[wW][aA][vV]
+*.[oO][gG][gG]
+*.[mM][pP]3
+*.[fF][lL][aA][cC]
+*.[zZ][iI][pP]
+*.7z
+*.[dD][mM][gG]
+*.[pP][kK][gG]
+*.tar.gz
+*.tar.xz

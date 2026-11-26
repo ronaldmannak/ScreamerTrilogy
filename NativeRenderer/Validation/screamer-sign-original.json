@@ -1,0 +1,26 @@
+{
+  "executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+  "ranges": [
+    {
+      "name": "polygon-facing",
+      "start": "0x83790",
+      "end": "0x83c40"
+    },
+    {
+      "name": "polygon-order-selection",
+      "start": "0x8a848",
+      "end": "0x8a8d8"
+    },
+    {
+      "name": "polygon-backend",
+      "start": "0x843a8",
+      "end": "0x84454"
+    },
+    {
+      "name": "cull-direction",
+      "start": "0x8afa0",
+      "end": "0x8afc4"
+    }
+  ],
+  "method": "Read-only original LE code disassembly; documented absolute relocations rewritten to link addresses for readability. No game or memory changes."
+}

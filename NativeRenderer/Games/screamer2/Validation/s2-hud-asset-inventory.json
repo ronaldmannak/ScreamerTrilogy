@@ -1,0 +1,810 @@
+{
+  "GFX/GAME1.DAT": {
+    "GAMEL.SPR": {
+      "size": 197668,
+      "flags": 2
+    },
+    "GAMEH.SPR": {
+      "size": 779752,
+      "flags": 2
+    },
+    "COCK1_L.PKC": {
+      "size": 25047,
+      "flags": 2
+    },
+    "COCK2_L.PKC": {
+      "size": 24067,
+      "flags": 2
+    },
+    "COCK3_L.PKC": {
+      "size": 25921,
+      "flags": 2
+    },
+    "COCK4_L.PKC": {
+      "size": 26381,
+      "flags": 2
+    },
+    "COCK5_L.PKC": {
+      "size": 24090,
+      "flags": 2
+    },
+    "COCK6_L.PKC": {
+      "size": 27160,
+      "flags": 2
+    },
+    "COCK7_L.PKC": {
+      "size": 25355,
+      "flags": 2
+    },
+    "COCK8_L.PKC": {
+      "size": 22788,
+      "flags": 2
+    },
+    "COCK1_H.PKC": {
+      "size": 100616,
+      "flags": 2
+    },
+    "COCK2_H.PKC": {
+      "size": 96805,
+      "flags": 2
+    },
+    "COCK3_H.PKC": {
+      "size": 103073,
+      "flags": 2
+    },
+    "COCK4_H.PKC": {
+      "size": 105769,
+      "flags": 2
+    },
+    "COCK5_H.PKC": {
+      "size": 95570,
+      "flags": 2
+    },
+    "COCK6_H.PKC": {
+      "size": 109190,
+      "flags": 2
+    },
+    "COCK7_H.PKC": {
+      "size": 101908,
+      "flags": 2
+    },
+    "COCK8_H.PKC": {
+      "size": 91026,
+      "flags": 2
+    },
+    "MIRROR_H.PKC": {
+      "size": 6258,
+      "flags": 2
+    },
+    "MIRROR_L.PKC": {
+      "size": 1873,
+      "flags": 2
+    },
+    "GAMEL.FNT": {
+      "size": 37941,
+      "flags": 2
+    },
+    "GAMEH.FNT": {
+      "size": 131669,
+      "flags": 2
+    }
+  },
+  "GFX/GAME2.DAT": {
+    "GAMEL.SPR": {
+      "size": 215028,
+      "flags": 2
+    },
+    "GAMEH.SPR": {
+      "size": 797628,
+      "flags": 2
+    },
+    "COCK1_L.PKC": {
+      "size": 25563,
+      "flags": 2
+    },
+    "COCK2_L.PKC": {
+      "size": 24583,
+      "flags": 2
+    },
+    "COCK3_L.PKC": {
+      "size": 26429,
+      "flags": 2
+    },
+    "COCK4_L.PKC": {
+      "size": 26915,
+      "flags": 2
+    },
+    "COCK5_L.PKC": {
+      "size": 24629,
+      "flags": 2
+    },
+    "COCK6_L.PKC": {
+      "size": 27676,
+      "flags": 2
+    },
+    "COCK7_L.PKC": {
+      "size": 25871,
+      "flags": 2
+    },
+    "COCK8_L.PKC": {
+      "size": 23304,
+      "flags": 2
+    },
+    "COCK1_H.PKC": {
+      "size": 101132,
+      "flags": 2
+    },
+    "COCK2_H.PKC": {
+      "size": 97321,
+      "flags": 2
+    },
+    "COCK3_H.PKC": {
+      "size": 103634,
+      "flags": 2
+    },
+    "COCK4_H.PKC": {
+      "size": 106265,
+      "flags": 2
+    },
+    "COCK5_H.PKC": {
+      "size": 96647,
+      "flags": 2
+    },
+    "COCK6_H.PKC": {
+      "size": 109706,
+      "flags": 2
+    },
+    "COCK7_H.PKC": {
+      "size": 102424,
+      "flags": 2
+    },
+    "COCK8_H.PKC": {
+      "size": 91566,
+      "flags": 2
+    },
+    "MIRROR_H.PKC": {
+      "size": 6774,
+      "flags": 2
+    },
+    "MIRROR_L.PKC": {
+      "size": 2389,
+      "flags": 2
+    },
+    "GAMEL.FNT": {
+      "size": 38453,
+      "flags": 2
+    },
+    "GAMEH.FNT": {
+      "size": 132139,
+      "flags": 2
+    }
+  },
+  "GFX/GRAF1.DAT": {
+    "MENUL.SPR": {
+      "size": 445986,
+      "flags": 2
+    },
+    "MENUH.SPR": {
+      "size": 1776033,
+      "flags": 2
+    },
+    "MENUL.FNT": {
+      "size": 69748,
+      "flags": 2
+    },
+    "MENUH.FNT": {
+      "size": 260189,
+      "flags": 2
+    },
+    "LOGOH.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LOGOL.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "BKG_2H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "BKG_1L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LOAD_1L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LOAD_2L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LOAD_3L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LOAD_4L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LOAD_5L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LOAD_6L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "BKG_3H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "BKG_3L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "ARCADE_L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "BKG_2L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "BKG_4H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "BKG_5H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "BKG_5L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "BKG_6H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "BKG_6L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LEAG_0H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LEAG_0L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LEAG_1H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LEAG_1L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LEAG_2H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LEAG_2L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LEAG_3H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LEAG_3L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LEAG_4H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LEAG_4L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LOAD_1H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LOAD_2H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LOAD_3H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LOAD_4H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LOAD_5H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LOAD_6H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "TKG_1H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "TKG_1L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "TKG_2H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "TKG_2L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "TKG_3H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "TKG_3L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "TKG_4H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "TKG_4L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "TKG_5H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "TKG_5L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "TKG_6H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "TKG_6L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "ARCADE_H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "BKG_1H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "HISCOREH.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "HISCOREL.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "LOAD_7H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "LOAD_7L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "BKG_7H.BKK": {
+      "size": 256792,
+      "flags": 2
+    },
+    "BKG_7L.BKK": {
+      "size": 64792,
+      "flags": 2
+    },
+    "BKG_4L.BKK": {
+      "size": 64792,
+      "flags": 2
+    }
+  },
+  "GFX/GRAF2.DAT": {
+    "MENUL.SPR": {
+      "size": 486561,
+      "flags": 2
+    },
+    "MENUH.SPR": {
+      "size": 1817391,
+      "flags": 2
+    },
+    "MENUL.FNT": {
+      "size": 70260,
+      "flags": 2
+    },
+    "MENUH.FNT": {
+      "size": 260701,
+      "flags": 2
+    },
+    "LOGOL.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "BKG_6H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "BKG_1H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "BKG_3L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LOAD_1L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LOAD_2L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LOAD_3L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LOAD_4L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LOAD_5L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LOAD_6L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "TKG_4L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LOAD_4H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LEAG_1L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "TKG_1L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "TKG_5L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "TKG_2L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "TKG_6L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "TKG_3L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LEAG_2L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LEAG_3L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LEAG_4L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "TKG_1H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "TKG_2H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "TKG_3H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "TKG_4H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "TKG_5H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "TKG_6H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LEAG_1H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LEAG_2H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LEAG_3H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LEAG_4H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LOAD_1H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LOAD_2H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LOAD_3H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LOAD_7L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LEAG_0L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "BKG_4H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "BKG_5H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "BKG_5L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "HISCOREH.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "BKG_4L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "ARCADE_H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "BKG_6L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "BKG_1L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "LOAD_5H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LOAD_6H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "BKG_2H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "ARCADE_L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "BKG_2L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "BKG_3H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LOGOH.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "HISCOREL.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "BKG_7L.BKK": {
+      "size": 64536,
+      "flags": 2
+    },
+    "BKG_7H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LOAD_7H.BKK": {
+      "size": 256536,
+      "flags": 2
+    },
+    "LEAG_0H.BKK": {
+      "size": 256536,
+      "flags": 2
+    }
+  },
+  "GFX/PLATES1.DAT": {
+    "PLATES.COL": {
+      "size": 768,
+      "flags": 0
+    },
+    "PLATES.MLB": {
+      "size": 426280,
+      "flags": 2
+    },
+    "A1PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A2PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A3PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A4PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A5PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A6PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A7PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    }
+  },
+  "GFX/PLATES2.DAT": {
+    "PLATES.HIC": {
+      "size": 4616,
+      "flags": 0
+    },
+    "PLATES.MLB": {
+      "size": 366296,
+      "flags": 2
+    },
+    "A1PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A2PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A3PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A4PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A5PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A6PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    },
+    "A7PLATE.3DX": {
+      "size": 5044,
+      "flags": 2
+    }
+  },
+  "DATA/GAME.DAT": {
+    "CARS.DTR": {
+      "size": 11129,
+      "flags": 3
+    },
+    "MISC.DTR": {
+      "size": 592,
+      "flags": 3
+    },
+    "CRUSC.DTR": {
+      "size": 2064,
+      "flags": 3
+    }
+  },
+  "DATA/GEN.DAT": {
+    "CARS.DTR": {
+      "size": 8408,
+      "flags": 3
+    },
+    "MENU.DTR": {
+      "size": 969,
+      "flags": 3
+    },
+    "SFXSBASE.DTR": {
+      "size": 672,
+      "flags": 3
+    },
+    "SPFXBASE.DTR": {
+      "size": 597,
+      "flags": 3
+    },
+    "SPFXFULL.DTR": {
+      "size": 2356,
+      "flags": 3
+    },
+    "P_1.MCM": {
+      "size": 444,
+      "flags": 2
+    },
+    "P_2.MCM": {
+      "size": 444,
+      "flags": 2
+    },
+    "P_3.MCM": {
+      "size": 444,
+      "flags": 2
+    },
+    "P_4.MCM": {
+      "size": 444,
+      "flags": 2
+    },
+    "SCENE0.PTH": {
+      "size": 3932,
+      "flags": 2
+    },
+    "SCENE1.PTH": {
+      "size": 3756,
+      "flags": 2
+    },
+    "SCENE2.PTH": {
+      "size": 3800,
+      "flags": 2
+    },
+    "SCENE3.PTH": {
+      "size": 3536,
+      "flags": 2
+    }
+  }
+}

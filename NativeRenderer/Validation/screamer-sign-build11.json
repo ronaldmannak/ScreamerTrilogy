@@ -1,0 +1,35 @@
+{
+  "game": "Screamer",
+  "version": "0.3.6",
+  "build": 11,
+  "fix": "Restore original clockwise backface visibility for coincident sign fronts/backs; keep zero/folded-normal polygons two-sided in separate batches",
+  "source_sha256": {
+    "Games/screamer/Runtime/Tools/live_s1.py": "c46ec51853ab5f6e7034d3e04d6b06929781c1a7e70c977e8fa0ea5162f71231",
+    "Games/screamer/Runtime/Tools/export_scene.py": "f81fe9ae8a9022e28eb45e6ea8cc14f8a4e8c29e946b91db0d0389f904a11d48",
+    "NativePreview/Sources/NativePreview.mm": "1aeb8bf5f8f5de050cbead2723dade1672f8405a5806d52fdb9110b76b4f334c",
+    "Launcher/Launcher.m": "a5d90749bc6add63e203e37dd430c0a86785362eecdec8b06e19c6f9311fa83e"
+  },
+  "tests": {
+    "S1_runtime": 50,
+    "moving_sign_views": 108,
+    "sign_pixel_reference_mismatches": 0,
+    "actual_exception_views": 18,
+    "exception_pixel_reference_mismatches": 0,
+    "portable_harness_recheck_views": 18,
+    "strict_bundle_signature": "passed"
+  },
+  "scene_export_validation": {
+    "static_tracks": 6,
+    "dynamic_captures": 2,
+    "legacy_vertex_streams_identical": true,
+    "original_triangle_multisets_preserved": true,
+    "authored_reflection_normals_preserved": true
+  },
+  "physics_engine_modified": false,
+  "save_files_modified": false,
+  "Screamer2_Rally_bundles_modified": false,
+  "game_inputs_or_game_execution_for_this_fix": false,
+  "FPS_measured": false,
+  "launcher_resolution_copy": "Fixed 4K / 2160p:3840x2160 at16:9 or2880x2160 at4:3; off fits selected aspect into window/display pixels",
+  "previous_signed_app": "build-fullscreen/backups/pre-s1-sign-build11-20261125/Screamer Metal.app"
+}

@@ -1,0 +1,18 @@
+{
+  "Assets/Extracted/china/scene.json": {
+    "size": 1286673,
+    "sha256": "5d832f9333e1dd3bc61f7fa401d7e760e4244e4832c0b78e20d2474aec145695"
+  },
+  "Assets/Extracted/cars/scene.json": {
+    "size": 292781,
+    "sha256": "febcbbbbb2c765c57928fad75fe5430ce8675a886dbe15bae81aacaeda18bf14"
+  },
+  "Captures/track-source/ram.bin": {
+    "size": 16777216,
+    "sha256": "e4d7d8eeb5539919588c22a31cc347e76addc01c9b967f25e9769c5598d07e2a"
+  },
+  "Captures/replay-sparse.json": {
+    "size": 1118369,
+    "sha256": "69fd3f4c11b6dfec8f670a1a17373051e7f2a59236e2b642a2b3a4fd8cf9053f"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "screamer-source-exception-pixel-proof/v1",
+  "production_per_batch_culling": true,
+  "actual_original_record": "Track2 model75/a2tun source UNR0x54924",
+  "pose_count": 18,
+  "marked_preserves_original_no_cull_exactly_all_views": true,
+  "unmarked_culling_changes_visible_pixels_in_views": 17,
+  "max_pixels_unmarked_culling_drops": 6222,
+  "rows": [
+    {
+      "pose": 0,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 6201
+    },
+    {
+      "pose": 1,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 4269
+    },
+    {
+      "pose": 2,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 4896
+    },
+    {
+      "pose": 3,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 1589
+    },
+    {
+      "pose": 4,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 34
+    },
+    {
+      "pose": 5,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 1175
+    },
+    {
+      "pose": 6,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 245
+    },
+    {
+      "pose": 7,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 2474
+    },
+    {
+      "pose": 8,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 2671
+    },
+    {
+      "pose": 9,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 2471
+    },
+    {
+      "pose": 10,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 640
+    },
+    {
+      "pose": 11,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 1503
+    },
+    {
+      "pose": 12,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 795
+    },
+    {
+      "pose": 13,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 0
+    },
+    {
+      "pose": 14,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 2398
+    },
+    {
+      "pose": 15,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 3041
+    },
+    {
+      "pose": 16,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 4805
+    },
+    {
+      "pose": 17,
+      "double_sided_true_difference_from_original_no_cull": 0,
+      "double_sided_false_backcull_differing_pixels": 6222
+    }
+  ],
+  "game_execution": false,
+  "game_inputs": false
+}

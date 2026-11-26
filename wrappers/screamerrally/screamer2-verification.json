@@ -1,0 +1,130 @@
+{
+  "app": "/private/tmp/screamer-trilogy-update/release-v2/screamer2/Screamer 2.app",
+  "runtime": "DOSBox Staging 0.83.1",
+  "host_architecture": "arm64",
+  "game": {
+    "key": "screamer2",
+    "title": "Screamer 2",
+    "program": "START65H.EXE",
+    "cue": "GAME.DAT",
+    "image": "GAME.GOG",
+    "irq": 7,
+    "distance_options": [
+      "Original",
+      "Extended (2\u00d7)"
+    ],
+    "distance_help": "Extends scenery and object visibility. Some terrain and clipping limits remain.",
+    "enhancements": {
+      "original": "START65H.EXE",
+      "derived": "NATIVE.EXE",
+      "sha256": "05f576866f26602be303343c5e9104132616f464b71ed6ae958e99a668e5c7c8",
+      "patches": [
+        {
+          "option": "widescreen",
+          "offset": 602958,
+          "expected": "D7/JD7/2D7/bD7//D7/tD7/A0fnR/tH70f/R/dH4Ug==",
+          "replacement": "iwbB+AIpBotGDMH4AilGDItGGMH4AilGGCvAiUYkww=="
+        },
+        {
+          "option": "widescreen",
+          "offset": 600306,
+          "expected": "K8CJRiQ=",
+          "replacement": "6FcKAAA="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 568559,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 568659,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 568793,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 568893,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 599442,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 603470,
+          "expected": "LQAgAAD36IvIi+oPrOkD",
+          "replacement": "uQDilVCQkJCQkJCQkJCQ"
+        }
+      ]
+    }
+  },
+  "binaries": [
+    {
+      "path": "Contents/Helpers/Game Options.app/Contents/MacOS/GameOptions",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/GameLauncher",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/dosbox",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libglib-2.0.0.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libgthread-2.0.0.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libintl.8.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libpcre2-8.0.15.0.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libslirp.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/PlugIns/Nuked-SC55.clap/Contents/MacOS/Nuked-SC55",
+      "architectures": [
+        "arm64"
+      ]
+    }
+  ],
+  "signature": "ad-hoc, verified"
+}

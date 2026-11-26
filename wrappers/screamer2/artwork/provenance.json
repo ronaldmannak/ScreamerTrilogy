@@ -1,0 +1,38 @@
+[
+  {
+    "game": "screamer",
+    "source_archive": "/private/tmp/screamer-gog-package-review/package.pkg/Scripts/payload/Contents/Resources/game/GFX/GRAF.DAT",
+    "archive_sha256": "7ed551be3e8c83ff65dbaef73d68d8cf97471861f022f6da6e482d332a396e06",
+    "member": "LOAD1H.PCX",
+    "member_sha256": "483172cb79fdec74c1787ff2f6482bcddaf98a24b2c13a08dd28e4ca9ca92c20",
+    "output": "screamer/SelectionBackground.png",
+    "png_sha256": "f5b0fb30545e319c44c3f4125faa294fb1f72d2f0bbb6839e19e27c6bac0fcb2",
+    "width": 640,
+    "height": 400,
+    "processing": "Original palette and pixels decoded to lossless PNG; no cropping, compositing, recoloring or AI generation."
+  },
+  {
+    "game": "screamer2",
+    "source_archive": "/private/tmp/screamer2-gog-review.FGS1VU/expanded/package.pkg/Scripts/payload/Contents/Resources/game/GFX/GRAF2.DAT",
+    "archive_sha256": "b02de9034630bb1265551299b9793fae7870d44bafc887d171877b6d358262d2",
+    "member": "LOAD_1H.BKK",
+    "member_sha256": "84e48c6a87e3da82f6a628debc258560c9b48d446e0c4c81b41f9b93d06876c1",
+    "output": "screamer2/SelectionBackground.png",
+    "png_sha256": "ba38bb12447c0cdabda20fd3a5e7c96b72a0c6371a1e04ac078bc9a33cc98a9d",
+    "width": 640,
+    "height": 400,
+    "processing": "Original palette and pixels decoded to lossless PNG; no cropping, compositing, recoloring or AI generation."
+  },
+  {
+    "game": "screamerrally",
+    "source_archive": "<owned-games>/ScreamerRally/Screamer_Rally_1997/ScrmRal/SR/GFX/GRAF2.DAT",
+    "archive_sha256": "170a0f1b96c144c016b239966bf13a7dead197730e89a67d22b91ce5acad79cd",
+    "member": "LOAD_1H.BKK",
+    "member_sha256": "454ec7648dcccb288893febb1009ab31b8594f1a8557f85ae192b26665b58471",
+    "output": "screamerrally/SelectionBackground.png",
+    "png_sha256": "909ad864de41c67b9be3b37755e2c59b89c641a82c64818709d8fd2439f78223",
+    "width": 640,
+    "height": 400,
+    "processing": "Original palette and pixels decoded to lossless PNG; no cropping, compositing, recoloring or AI generation."
+  }
+]

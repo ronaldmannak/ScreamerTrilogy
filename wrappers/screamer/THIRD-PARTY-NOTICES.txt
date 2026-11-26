@@ -1,0 +1,32 @@
+Screamer Rally optional enhancements
+
+The 16:9 camera patch and extended object/scenery admission patch are adapted
+from rea-screamer-trilogy by AkitaOnRails and contributors (MIT option):
+https://github.com/akitaonrails/rea-screamer-trilogy/blob/c9a21733d7b89cecd4646f1a5249fe482bb9c534/crates/screamer-launcher/src/fixes.rs
+
+This implementation uses checked DOS executable patches; it does not include
+Rick Barber's Windows runtime or renderer. The 16:9 presentation shader adapts
+DOSBox Staging's sharp shader; its source retains the upstream SPDX notice.
+DOSBox Staging's original license materials remain bundled with the runtime.
+
+MIT License
+
+Copyright (c) 2026 AkitaOnRails and contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

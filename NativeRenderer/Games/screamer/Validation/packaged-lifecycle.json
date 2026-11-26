@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-25",
+  "bundle_id": "local.screamer.metal-player",
+  "bounded_gui_seconds": 70,
+  "engine_exit": 0,
+  "bridge_exit": 0,
+  "session_error": null,
+  "game_inputs_sent": false,
+  "scope": "Own packaged private engine/Python, six tracks, live actor parts, real4K offscreen; automatic demo only. Original overlays intentionally omitted in diagnostic capture. No actual player-race or displayed4KFPS claim."
+}

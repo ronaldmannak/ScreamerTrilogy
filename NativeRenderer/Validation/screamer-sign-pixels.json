@@ -1,0 +1,847 @@
+{
+  "schema": "screamer-sign-pixel-proof/v1",
+  "production_shader": {
+    "NativePreview.mm": {
+      "path": "<repository>/NativeRenderer/NativePreview/Sources/NativePreview.mm",
+      "sha256": "1aeb8bf5f8f5de050cbead2723dade1672f8405a5806d52fdb9110b76b4f334c"
+    },
+    "World.metal": {
+      "path": "<repository>/NativeRenderer/NativePreview/Sources/World.metal",
+      "sha256": "20bc8eff0e7c1e2f78a1b3601d8ae51ceab25ea533065db902704b413620cd5d"
+    }
+  },
+  "fixtures": [
+    {
+      "name": "overroad-acheck",
+      "poses": 18,
+      "front_and_back_validated": true,
+      "production_fix_mismatches": 0,
+      "without_culling_wrong_pixels_range": [
+        7,
+        335
+      ],
+      "rows": [
+        {
+          "pose": 0,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 32,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 1,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 117,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 2,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 29,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 3,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 4,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 11,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 5,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 124,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 6,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 12,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 7,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 117,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 8,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 21,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 9,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 335,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 10,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 59,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 11,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 47,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 12,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 218,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 13,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 272,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 14,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 258,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 15,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 180,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 16,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 238,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 17,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 174,
+          "pixel_count": 307200
+        }
+      ]
+    },
+    {
+      "name": "roadside-A2SEG",
+      "poses": 18,
+      "front_and_back_validated": true,
+      "production_fix_mismatches": 0,
+      "without_culling_wrong_pixels_range": [
+        248,
+        9041
+      ],
+      "rows": [
+        {
+          "pose": 0,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8699,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 1,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7512,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 2,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 9006,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 3,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 9041,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 4,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8971,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 5,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8061,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 6,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8685,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 7,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8983,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 8,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7771,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 9,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1248,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 10,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 273,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 11,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 2955,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 12,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 329,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 13,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1488,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 14,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 248,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 15,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 466,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 16,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1334,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 17,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 311,
+          "pixel_count": 307200
+        }
+      ]
+    },
+    {
+      "name": "roadside-acart",
+      "poses": 18,
+      "front_and_back_validated": true,
+      "production_fix_mismatches": 0,
+      "without_culling_wrong_pixels_range": [
+        1496,
+        5568
+      ],
+      "rows": [
+        {
+          "pose": 0,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1500,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 1,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 2183,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 2,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 4126,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 3,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 2098,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 4,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1496,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 5,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1509,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 6,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1630,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 7,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1550,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 8,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1507,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 9,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 4193,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 10,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5513,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 11,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 4166,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 12,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 4550,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 13,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5485,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 14,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5568,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 15,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5482,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 16,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5534,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 17,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 4351,
+          "pixel_count": 307200
+        }
+      ]
+    },
+    {
+      "name": "track1-roadside-acart",
+      "poses": 18,
+      "front_and_back_validated": true,
+      "production_fix_mismatches": 0,
+      "without_culling_wrong_pixels_range": [
+        3669,
+        8107
+      ],
+      "rows": [
+        {
+          "pose": 0,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 3749,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 1,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5850,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 2,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 3704,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 3,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 3669,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 4,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 3674,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 5,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 4495,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 6,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 3727,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 7,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5193,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 8,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 3707,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 9,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7840,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 10,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5743,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 11,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 6407,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 12,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7916,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 13,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8071,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 14,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8107,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 15,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 6638,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 16,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8102,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 17,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7210,
+          "pixel_count": 307200
+        }
+      ]
+    },
+    {
+      "name": "track5-overroad-aponcart",
+      "poses": 18,
+      "front_and_back_validated": true,
+      "production_fix_mismatches": 0,
+      "without_culling_wrong_pixels_range": [
+        179,
+        12723
+      ],
+      "rows": [
+        {
+          "pose": 0,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 6628,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 1,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 12723,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 2,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 8429,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 3,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 12229,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 4,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 12195,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 5,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 12104,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 6,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 11997,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 7,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 10750,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 8,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7939,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 9,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 275,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 10,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1529,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 11,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 640,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 12,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1002,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 13,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 1576,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 14,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 2443,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 15,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 599,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 16,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 179,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 17,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 813,
+          "pixel_count": 307200
+        }
+      ]
+    },
+    {
+      "name": "track6-roadside-acarte",
+      "poses": 18,
+      "front_and_back_validated": true,
+      "production_fix_mismatches": 0,
+      "without_culling_wrong_pixels_range": [
+        5380,
+        22455
+      ],
+      "rows": [
+        {
+          "pose": 0,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5452,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 1,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7134,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 2,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5672,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 3,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5591,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 4,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5380,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 5,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5585,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 6,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5721,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 7,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 5713,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 8,
+          "correct_original_face": "face-b",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 7458,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 9,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 22031,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 10,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 19223,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 11,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 21311,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 12,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 22175,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 13,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 22455,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 14,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 22298,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 15,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 22125,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 16,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 22177,
+          "pixel_count": 307200
+        },
+        {
+          "pose": 17,
+          "correct_original_face": "face-a",
+          "fixed_mismatching_pixels": 0,
+          "without_culling_mismatching_pixels": 20405,
+          "pixel_count": 307200
+        }
+      ]
+    }
+  ],
+  "total_observer_poses": 108,
+  "fixed_all_match_original_face_reference": true,
+  "game_execution": false,
+  "game_inputs": false
+}

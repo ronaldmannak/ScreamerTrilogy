@@ -1,0 +1,58 @@
+{
+  "checkpoint": "working-wrappers-2026-11-24",
+  "created_utc": "2026-11-25T04:18:17.806353+00:00",
+  "status": "User confirmed all three games work; Rally acceleration correction confirmed working.",
+  "games": [
+    {
+      "game": "screamer",
+      "title": "Screamer",
+      "installed_app": "/Applications/Screamer.app",
+      "version": "1.2",
+      "build": "5",
+      "bundle_identifier": "local.screamer-native.screamer",
+      "launcher_sha256": "50f9f6be9cfeb516fc112e2d0cd3f4bd3f68eba361da90ddc0a2d5fe321c061c",
+      "dosbox_sha256": "3663fcedc8ed8e63c1335331c2a34f45c900ea9b01c6cde438a1bbb7a35d0517",
+      "original_dos_executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+      "signature": "deep strict verification passed",
+      "archive": "Archives/working-2026-11-24/screamer.app.zip",
+      "wrapper_source": "wrappers/screamer",
+      "archive_sha256": "a447b05fad8758cb2c9b140f1f9c23ada853151d7bb85e5d2ca297e511bf5961",
+      "archive_bytes": 437276456,
+      "archive_crc_verified": true
+    },
+    {
+      "game": "screamer2",
+      "title": "Screamer 2",
+      "installed_app": "/Applications/Screamer 2.app",
+      "version": "1.2",
+      "build": "5",
+      "bundle_identifier": "local.screamer-native.screamer2",
+      "launcher_sha256": "76ebd23b839aef5e9a41b6c37ce076288b039c4fe1e1bba5572992868e7c7d84",
+      "dosbox_sha256": "3663fcedc8ed8e63c1335331c2a34f45c900ea9b01c6cde438a1bbb7a35d0517",
+      "original_dos_executable_sha256": "05f576866f26602be303343c5e9104132616f464b71ed6ae958e99a668e5c7c8",
+      "signature": "deep strict verification passed",
+      "archive": "Archives/working-2026-11-24/screamer2.app.zip",
+      "wrapper_source": "wrappers/screamer2",
+      "archive_sha256": "e30eacce840247378711156dc8d497ea4e6485b66a6322a3319ff9b673b31ad1",
+      "archive_bytes": 750621720,
+      "archive_crc_verified": true
+    },
+    {
+      "game": "screamerrally",
+      "title": "Screamer Rally",
+      "installed_app": "/Applications/Screamer Rally.app",
+      "version": "1.2.1",
+      "build": "6",
+      "bundle_identifier": "local.screamer-native.screamerrally",
+      "launcher_sha256": "1cf1c901ca81a8e5bea045fca8de003d37c156cecbc0dd92fab53e737041bb9e",
+      "dosbox_sha256": "3663fcedc8ed8e63c1335331c2a34f45c900ea9b01c6cde438a1bbb7a35d0517",
+      "original_dos_executable_sha256": "0785e38567c475f25663e4022ec125e447a799004e34efa59758b50cfd84901d",
+      "signature": "deep strict verification passed",
+      "archive": "Archives/working-2026-11-24/screamerrally.app.zip",
+      "wrapper_source": "wrappers/screamerrally",
+      "archive_sha256": "6fabf4beb5d3d1e4c3ef32d129b45bf935c65ed55b14a78288bf39b564b557bb",
+      "archive_bytes": 664841796,
+      "archive_crc_verified": true
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "schema": "final-packaged-rally-api-test/v1",
+  "scope": "Explicit Rally-only bounded API test; disposable data; no OS input or installed save changes",
+  "root": "/private/tmp/rally-api-input-test-20261125-011846-final",
+  "session": "/private/tmp/rally-api-input-test-20261125-011846-final/Session",
+  "endpoint": "http://127.0.0.1:64703",
+  "maximum_seconds": 180,
+  "supervisor_pid": 43269,
+  "source_resources": "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources",
+  "private_python": "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources/Python/bin/python3.14",
+  "source_sha256": {
+    "Live/bridge/live_bridge.py": "5f71ef2e79ea2406ac623cec5f5bb0101c2b1ea26a25a1fb95d13566b8e17803",
+    "Live/Execution/launch_engine.py": "26a2370df853186f9dfac67f06c450dbcbe4e1f268f11d2e476d51a283850902",
+    "../MacOS/dosbox": "c8473ef1ff77d3a2a624f041d7be975438bc41fc79eefe1264755edd73425c66"
+  },
+  "commands": {
+    "engine": [
+      "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources/Python/bin/python3.14",
+      "-B",
+      "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources/Live/Execution/launch_engine.py",
+      "--engine",
+      "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/MacOS/dosbox",
+      "--game-root",
+      "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources/game",
+      "--data-dir",
+      "/private/tmp/rally-api-input-test-20261125-011846-final/GameData",
+      "--session-dir",
+      "/private/tmp/rally-api-input-test-20261125-011846-final/Session",
+      "--port",
+      "64703",
+      "--video",
+      "hidden",
+      "--audio",
+      "dummy",
+      "--max-seconds",
+      "180",
+      "--parent-pid",
+      "43269"
+    ],
+    "bridge": [
+      "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources/Python/bin/python3.14",
+      "-B",
+      "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources/Live/bridge/live_bridge.py",
+      "--base-url",
+      "http://127.0.0.1:64703",
+      "--layout",
+      "/private/tmp/rally-api-input-test-20261125-011846-final/Session/layout.json",
+      "--state",
+      "/private/tmp/rally-api-input-test-20261125-011846-final/Session/state.json",
+      "--input",
+      "/private/tmp/rally-api-input-test-20261125-011846-final/Session/input.json",
+      "--cache-root",
+      "/private/tmp/rally-api-input-test-20261125-011846-final/Session/assets",
+      "--extractor-dir",
+      "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources/Live/extractor",
+      "--parent-pid",
+      "43269",
+      "--seconds",
+      "180",
+      "--hud-profile",
+      "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app/Contents/Resources/Live/hud-profile.json"
+    ]
+  },
+  "steps": [
+    {
+      "label": "01-leave-attract",
+      "keys": [
+        "escape"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "assets_ready": false,
+      "telemetry": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/01-leave-attract.png"
+    },
+    {
+      "label": "02-confirm-name",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "assets_ready": false,
+      "telemetry": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/02-confirm-name.png"
+    },
+    {
+      "label": "03-arcade",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "assets_ready": false,
+      "telemetry": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/03-arcade.png"
+    },
+    {
+      "label": "04-china",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "assets_ready": false,
+      "telemetry": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/04-china.png"
+    },
+    {
+      "label": "05-motrail",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "assets_ready": false,
+      "telemetry": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/05-motrail.png"
+    },
+    {
+      "label": "06-automatic-GO",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "race",
+      "mode": "race",
+      "assets_ready": true,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/06-automatic-GO.png"
+    },
+    {
+      "label": "07-throttle",
+      "keys": [
+        "up"
+      ],
+      "hold_seconds": 1.6,
+      "released": true,
+      "status": "race",
+      "mode": "race",
+      "assets_ready": true,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 32.21186828613281,
+        "velocity_world_units_per_second": [
+          -3575.8779296875,
+          60.60609436035156,
+          -151.87034606933594
+        ],
+        "position_world_units": [
+          -10075.7646484375,
+          -114.0,
+          38221.09765625
+        ],
+        "engine_rpm": 5457.3720703125,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/07-throttle.png"
+    },
+    {
+      "label": "08-steer-right",
+      "keys": [
+        "up",
+        "right"
+      ],
+      "hold_seconds": 0.7,
+      "released": true,
+      "status": "race",
+      "mode": "race",
+      "assets_ready": true,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 48.824302673339844,
+        "velocity_world_units_per_second": [
+          -4862.01171875,
+          90.90914154052734,
+          1582.1505126953125
+        ],
+        "position_world_units": [
+          -14541.16796875,
+          -56.0,
+          38788.72265625
+        ],
+        "engine_rpm": 5355.4091796875,
+        "gear_raw": 2,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/08-steer-right.png"
+    },
+    {
+      "label": "09-pause",
+      "keys": [
+        "escape"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "paused",
+      "mode": "framebuffer",
+      "assets_ready": false,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 49.5156135559082,
+        "velocity_world_units_per_second": [
+          -4894.9189453125,
+          60.60609436035156,
+          1804.3333740234375
+        ],
+        "position_world_units": [
+          -15026.6240234375,
+          -48.0,
+          38959.921875
+        ],
+        "engine_rpm": 6682.623046875,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/09-pause.png"
+    },
+    {
+      "label": "10-resumed",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "race",
+      "mode": "race",
+      "assets_ready": true,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 28.511430740356445,
+        "velocity_world_units_per_second": [
+          -2314.454345703125,
+          484.8487548828125,
+          2033.263427734375
+        ],
+        "position_world_units": [
+          -19113.1875,
+          112.0,
+          41346.1640625
+        ],
+        "engine_rpm": 3373.476806640625,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-011846-final/API-artifacts/10-resumed.png"
+    }
+  ],
+  "child_pids": [
+    43272,
+    43274
+  ],
+  "verified": {
+    "real_race_mode": true,
+    "assets_ready": true,
+    "raw_dt_seconds": 0.029999999329447746,
+    "smoothed_dt_seconds": 0.03299998119473457,
+    "throttle_speed": 32.21186828613281,
+    "steering_velocity": [
+      -4862.01171875,
+      90.90914154052734,
+      1582.1505126953125
+    ],
+    "pause_framebuffer": true,
+    "resumed_native": true,
+    "all_actions_released": true
+  },
+  "final_release_sent": true,
+  "success": true,
+  "error": null,
+  "elapsed_seconds": 51.364908875,
+  "exit_codes": [
+    0,
+    0
+  ],
+  "clean_child_shutdown": true,
+  "source_unchanged": true,
+  "steering_pose_validation": {
+    "root_id_before": "scene:157",
+    "root_id_after": "scene:157",
+    "yaw_before": 1543,
+    "yaw_after": 1333,
+    "yaw_delta_engine_units": -210,
+    "yaw_delta_degrees": -36.9140625,
+    "source_unchanged": true,
+    "clean_child_shutdown": true,
+    "all_actions_released": true,
+    "engine_final_state": "stopped",
+    "engine_exit": 0
+  }
+}

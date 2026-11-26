@@ -1,0 +1,41 @@
+[
+  {
+    "game": "screamer",
+    "installed_app": "/Applications/Screamer.app",
+    "result": "passed",
+    "distance_level_tested": 3,
+    "enhanced_sha256": "99576a42aa103b47f286747a187e579964e475d784f1083209bdd0475bc793ae",
+    "checks": [
+      "enhanced preparation",
+      "original fallback",
+      "no saved-preference changes",
+      "diagnostic webserver absent"
+    ]
+  },
+  {
+    "game": "screamer2",
+    "installed_app": "/Applications/Screamer 2.app",
+    "result": "passed",
+    "distance_level_tested": 1,
+    "enhanced_sha256": "887921864b27bf57835e5175895037a5a6d0609207f790d85b265088d5b6663b",
+    "checks": [
+      "enhanced preparation",
+      "original fallback",
+      "no saved-preference changes",
+      "diagnostic webserver absent"
+    ]
+  },
+  {
+    "game": "screamerrally",
+    "installed_app": "<owned-games>/ScreamerRally/NativeWrapper/dist/Screamer Rally.app",
+    "result": "passed",
+    "distance_level_tested": 2,
+    "enhanced_sha256": "34861f1b2d0189e4f2479cbc268da3894a4d0bfa4cceda7b61e5a79a6e64562d",
+    "checks": [
+      "enhanced preparation",
+      "original fallback",
+      "no saved-preference changes",
+      "diagnostic webserver absent"
+    ]
+  }
+]

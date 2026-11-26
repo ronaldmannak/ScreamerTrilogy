@@ -1,0 +1,141 @@
+{
+  "app": "/private/tmp/screamer-trilogy-update/release-v2/screamerrally/Screamer Rally.app",
+  "runtime": "DOSBox Staging 0.83.1",
+  "host_architecture": "arm64",
+  "game": {
+    "key": "screamerrally",
+    "title": "Screamer Rally",
+    "program": "SR/START65H.EXE",
+    "dos_command": "cd SR\nSTART65H.EXE",
+    "cue": "cd/srally.cue",
+    "image": "cd/srally.img",
+    "irq": 7,
+    "readonly_entries": [
+      "cd"
+    ],
+    "distance_options": [
+      "Original",
+      "Extended (2\u00d7)",
+      "Farther (2.5\u00d7, experimental)"
+    ],
+    "distance_help": "Farther is experimental and can reveal scenery gaps or affect performance.",
+    "enhancements": {
+      "original": "SR/START65H.EXE",
+      "derived": "SR/RALLYMAC.EXE",
+      "sha256": "0785e38567c475f25663e4022ec125e447a799004e34efa59758b50cfd84901d",
+      "patches": [
+        {
+          "option": "widescreen",
+          "offset": 546382,
+          "expected": "D7/JD7/2D7/bD7//D7/tD7/A0fnR/tH70f/R/dH4Ug==",
+          "replacement": "iwbB+AIpBotGDMH4AilGDItGGMH4AilGGCvAiUYkww=="
+        },
+        {
+          "option": "widescreen",
+          "offset": 543730,
+          "expected": "K8CJRiQ=",
+          "replacement": "6FcKAAA="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 511951,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA=",
+          "replacement_farther": "PSAx6n0="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 512051,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA=",
+          "replacement_farther": "PSAx6n0="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 512185,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA=",
+          "replacement_farther": "PSAx6n0="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 512285,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA=",
+          "replacement_farther": "PSAx6n0="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 542866,
+          "expected": "PYB4JRQ=",
+          "replacement": "PQDilVA=",
+          "replacement_farther": "PSAx6n0="
+        },
+        {
+          "option": "extended_distance",
+          "offset": 546894,
+          "expected": "LQAgAAD36IvIi+oPrOkD",
+          "replacement": "uQDilVCQkJCQkJCQkJCQ",
+          "replacement_farther": "uSAx6n2QkJCQkJCQkJCQ"
+        }
+      ]
+    }
+  },
+  "binaries": [
+    {
+      "path": "Contents/Helpers/Game Options.app/Contents/MacOS/GameOptions",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/GameLauncher",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/dosbox",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libglib-2.0.0.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libgthread-2.0.0.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libintl.8.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libpcre2-8.0.15.0.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/MacOS/lib/libslirp.dylib",
+      "architectures": [
+        "arm64"
+      ]
+    },
+    {
+      "path": "Contents/PlugIns/Nuked-SC55.clap/Contents/MacOS/Nuked-SC55",
+      "architectures": [
+        "arm64"
+      ]
+    }
+  ],
+  "signature": "ad-hoc, verified"
+}

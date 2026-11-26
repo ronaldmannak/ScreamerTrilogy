@@ -1,0 +1,17 @@
+{
+  "result": "passed",
+  "installed_app": "/Applications/Screamer Rally.app",
+  "version": "1.2.1",
+  "build": "6",
+  "saved_options": {
+    "distance_level": 0,
+    "extended_distance": 0,
+    "widescreen": 0,
+    "show_options": 1
+  },
+  "program": "SR/RALLYMAC.EXE",
+  "minimum_timer_ticks": 3,
+  "original_minimum_timer_ticks": 1,
+  "settings_preserved": true,
+  "webserver_enabled": false
+}

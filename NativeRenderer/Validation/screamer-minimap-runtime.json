@@ -1,0 +1,81 @@
+{
+  "run": "/private/tmp/screamer-api-input-test-153829",
+  "raw_engine": "/private/tmp/screamer-map-fix/dosbox",
+  "raw_engine_sha256": "6e713c4f5b99fb02a3baa8ec5db7f57fd3537e33f399da6713b050e085546e2e",
+  "source_sha256": "5ba41898473f33283be74d8ddd4f400bf71a17a40436545d2d7a5c5e88094b6b",
+  "runtime_engine": {
+    "hud_calls": 876,
+    "hud_captures": 876,
+    "hud_rejected": 0,
+    "minimap_shade_calls": 876,
+    "minimap_shade_rejected": 0,
+    "minimap_shade_alpha": 64
+  },
+  "native_race_observed_seconds": 15.313346082999995,
+  "performance": {
+    "native_world_frames": 841,
+    "render_width": 3840,
+    "render_height": 2160,
+    "gpu_errors": 0,
+    "live_parse_errors": 0,
+    "foreground_presented_fps": 59.210699513043856
+  },
+  "captures": [
+    {
+      "file": "/private/tmp/screamer-api-input-test-153829/Snapshots/drive-00-hud.bgra",
+      "alpha_histogram": {
+        "0": 250868,
+        "255": 32234,
+        "64": 24098
+      },
+      "background_nonzero_rgb": 0,
+      "background_outside_original_scope": 0
+    },
+    {
+      "file": "/private/tmp/screamer-api-input-test-153829/Snapshots/drive-05-hud.bgra",
+      "alpha_histogram": {
+        "0": 251022,
+        "255": 32086,
+        "64": 24092
+      },
+      "background_nonzero_rgb": 0,
+      "background_outside_original_scope": 0
+    },
+    {
+      "file": "/private/tmp/screamer-api-input-test-153829/Snapshots/drive-10-hud.bgra",
+      "alpha_histogram": {
+        "0": 265949,
+        "255": 17251,
+        "64": 24000
+      },
+      "background_nonzero_rgb": 0,
+      "background_outside_original_scope": 0
+    },
+    {
+      "file": "/private/tmp/screamer-api-input-test-153829/Snapshots/drive-15-hud.bgra",
+      "alpha_histogram": {
+        "0": 265258,
+        "255": 17991,
+        "64": 23951
+      },
+      "background_nonzero_rgb": 0,
+      "background_outside_original_scope": 0
+    }
+  ],
+  "native_visual": "/private/tmp/screamer-api-input-test-153829/native4k-12.png",
+  "visual_result": "Original minimap lines and markers over darkened current Metal world; stale green/sky background rectangle absent. Complete timer glyphs remain.",
+  "engine_bridge_exit": [
+    0,
+    0
+  ],
+  "child_exit_codes": [
+    0,
+    -15,
+    0,
+    0
+  ],
+  "all_inputs_released": true,
+  "disposable_game_data": "/private/tmp/screamer-api-input-test-153829/GameData",
+  "installed_apps_and_saves": "untouched: all Session and GameData paths explicitly inside disposable/tmp tree",
+  "test_app_unchanged": true
+}

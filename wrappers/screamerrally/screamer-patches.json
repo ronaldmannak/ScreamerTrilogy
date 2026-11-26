@@ -1,0 +1,52 @@
+{
+  "original": "STARTH.EXE",
+  "derived": "NATIVE.EXE",
+  "sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+  "patches": [
+    {
+      "option": "widescreen",
+      "offset": 614178,
+      "expected": "D7/JD7/2D7/bD7//D7/tD7/A0fnR/tH70f/R/dH4Ug==",
+      "replacement": "iwbB+AIpBotGDMH4AilGDItGGMH4AilGGCvAiUYkww=="
+    },
+    {
+      "option": "widescreen",
+      "offset": 611522,
+      "expected": "K8CJRiQ=",
+      "replacement": "6FsKAAA="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 1013033,
+      "expected": "AEAcRw==",
+      "replacement": "AIA7Rw==",
+      "replacements": {
+        "1": "AIA7Rw==",
+        "2": "ACBLRw==",
+        "3": "AMBaRw=="
+      }
+    },
+    {
+      "option": "extended_distance",
+      "offset": 176571,
+      "expected": "IMsAAA==",
+      "replacement": "wPMAAA==",
+      "replacements": {
+        "1": "wPMAAA==",
+        "2": "EAgBAA==",
+        "3": "YBwBAA=="
+      }
+    },
+    {
+      "option": "extended_distance",
+      "offset": 176594,
+      "expected": "IMsAAA==",
+      "replacement": "wPMAAA==",
+      "replacements": {
+        "1": "wPMAAA==",
+        "2": "EAgBAA==",
+        "3": "YBwBAA=="
+      }
+    }
+  ]
+}

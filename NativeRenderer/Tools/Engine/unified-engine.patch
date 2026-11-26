@@ -1,0 +1,687 @@
+--- a/src/hardware/video/voodoo.cpp
++++ b/src/hardware/video/voodoo.cpp
+@@ -55,6 +55,7 @@
+   TODO: Import and adapt Aaron's latest MAME Voodoo sources.
+ */
+ 
++#include "webserver/rally.h"
+ #include "dosbox.h"
+ 
+ #include <algorithm>
+@@ -904,6 +905,8 @@
+ 	const int num_work_units = 0;
+ 
+ 	bool disable_bilinear_filter = {};
++	bool rally_overlay_line = {};
++	bool rally_capture_pixels = {};
+ 
+ 	std::atomic_bool threads_active = {};
+ 
+@@ -3005,6 +3008,40 @@
+ **************************************************************************/
+ 
+ static voodoo_state* v = nullptr; //-V707
++
++// Per-physical-buffer write coverage. Only normal CPU LFB RGB writes mark it;
++// triangle rasterization never does. This preserves exact sprite/font skips.
++static std::array<std::vector<uint8_t>,3> rally_lfb_coverage;
++static uint32_t rally_lfb_width=0,rally_lfb_height=0;
++static uint64_t rally_swap_sequence=0;
++static bool rally_prepare_coverage() {
++    if(!Webserver::RallyEnabled()||!v||!v->active||v->fbi.width==0||v->fbi.height==0||v->fbi.width>2048||v->fbi.height>1536)return false;
++    if(rally_lfb_width!=v->fbi.width||rally_lfb_height!=v->fbi.height){
++        rally_lfb_width=v->fbi.width;rally_lfb_height=v->fbi.height;
++        for(auto& buffer:rally_lfb_coverage)buffer.assign(static_cast<size_t>(rally_lfb_width)*rally_lfb_height,0);
++    }
++    return true;
++}
++static void rally_mark_lfb(uint32_t buffer,int x,int y) {
++    if(buffer<rally_lfb_coverage.size()&&x>=0&&y>=0&&static_cast<uint32_t>(x)<rally_lfb_width&&static_cast<uint32_t>(y)<rally_lfb_height)
++        rally_lfb_coverage[buffer][static_cast<size_t>(y)*rally_lfb_width+x]=255;
++}
++static void rally_raster_pixel(uint32_t buffer,int x,int y,bool overlay) {
++    if(buffer<rally_lfb_coverage.size()&&x>=0&&y>=0&&static_cast<uint32_t>(x)<rally_lfb_width&&static_cast<uint32_t>(y)<rally_lfb_height)
++        rally_lfb_coverage[buffer][static_cast<size_t>(y)*rally_lfb_width+x]=overlay?255:0;
++}
++
++bool VOODOO_RallyReadTmu(uint32_t unit,uint32_t address,uint32_t size,std::string& data) {
++    if(!Webserver::RallyEnabled()||!v||!v->active||unit>=MAX_TMU||!v->tmu[unit].ram||size==0||size>2*1024*1024)return false;
++    const auto& texture=v->tmu[unit];
++    if(static_cast<uint64_t>(address)+size>static_cast<uint64_t>(texture.mask)+1)return false;
++    data.assign(reinterpret_cast<const char*>(texture.ram+address),size);return true;
++}
++bool VOODOO_RallyCopyLfbCoverage(uint32_t width,uint32_t height,std::string& mask,uint64_t& sequence) {
++    if(!rally_prepare_coverage()||width!=rally_lfb_width||height!=rally_lfb_height||v->fbi.frontbuf>=3)return false;
++    const auto& coverage=rally_lfb_coverage[v->fbi.frontbuf];mask.assign(reinterpret_cast<const char*>(coverage.data()),coverage.size());sequence=rally_swap_sequence;return true;
++}
++
+ static auto vtype = VOODOO_1;
+ 
+ static auto voodoo_bilinear_filtering = false;
+@@ -3423,6 +3460,7 @@
+ 							r_fbzMode, r_fbzColorPath, r_alphaMode, r_fogMode,
+ 							iterz, iterw, iterargb);
+ 		PIXEL_PIPELINE_FINISH(vs, dither_lookup, x, dest, depth, r_fbzMode);
++        if(vs->tworker.rally_capture_pixels&&FBZMODE_RGB_BUFFER_MASK(r_fbzMode))rally_raster_pixel(FBZMODE_DRAW_BUFFER(r_fbzMode)==0?fbi.frontbuf:fbi.backbuf,x,scry,vs->tworker.rally_overlay_line);
+ 		PIXEL_PIPELINE_END(stats);
+ 
+ 		/* update the iterated parameters */
+@@ -3826,6 +3864,10 @@
+ 			fbi.backbuf = static_cast<uint8_t>((fbi.frontbuf + 1) % 3);
+ 		}
+ 	}
++    if(rally_prepare_coverage()){
++        ++rally_swap_sequence;
++        auto& next=rally_lfb_coverage[fbi.backbuf];std::fill(next.begin(),next.end(),0);
++    }
+ }
+ 
+ 
+@@ -4760,6 +4802,11 @@
+ 	}
+ 
+ 	triangle_worker& tworker = vs->tworker;
++    // The exact three original HUD grDrawLine return PCs are derived from
++    // a guarded relocated Rally wait helper. Car/ground polygons never match.
++    tworker.rally_capture_pixels=rally_prepare_coverage();
++    tworker.rally_overlay_line=tworker.rally_capture_pixels&&Webserver::RallyNeedlePrimitive();
++
+ 	tworker.v1 = *v1, tworker.v2 = *v2, tworker.v3 = *v3;
+ 	tworker.drawbuf = drawbuf;
+ 	tworker.v1y = v1y;
+@@ -6003,6 +6050,7 @@
+  *
+  *************************************/
+ static void lfb_w(uint32_t offset, uint32_t data, uint32_t mem_mask) {
++    const bool rally_capture=rally_prepare_coverage();
+ 	//LOG(LOG_VOODOO,LOG_WARN)("V3D:WR LFB offset %X value %08X", offset, data);
+ 	uint16_t* dest  = {};
+ 	uint16_t* depth = {};
+@@ -6305,6 +6353,7 @@
+ 						/* apply dithering and write to the screen */
+ 						APPLY_DITHER(v->reg[fbzMode].u, x, dither_lookup, sr[pix], sg[pix], sb[pix]);
+ 						dest[bufoffs] = (uint16_t)((sr[pix] << 11) | (sg[pix] << 5) | sb[pix]);
++                        if(rally_capture)rally_mark_lfb(destbuf==0?v->fbi.frontbuf:v->fbi.backbuf,x,scry);
+ 					}
+ 
+ 					/* make sure we have an aux buffer to write to */
+@@ -6645,6 +6694,7 @@
+ 					PIXEL_PIPELINE_MODIFY(v, dither, dither4, x, v->reg[fbzMode].u, v->reg[fbzColorPath].u, v->reg[alphaMode].u, v->reg[fogMode].u, iterz, iterw, v->reg[zaColor]);
+ 
+ 					PIXEL_PIPELINE_FINISH(v, dither_lookup, x, dest, depth, v->reg[fbzMode].u);
++                    if(rally_capture&&FBZMODE_RGB_BUFFER_MASK(v->reg[fbzMode].u))rally_mark_lfb(destbuf==0?v->fbi.frontbuf:v->fbi.backbuf,x,scry);
+ 				}
+ 
+ 				PIXEL_PIPELINE_END(stats);
+--- a/src/hardware/video/voodoo.h
++++ b/src/hardware/video/voodoo.h
+@@ -5,10 +5,16 @@
+ #define DOSBOX_VOODOO_H
+ 
+ #include "config/config.h"
++#include <cstdint>
++#include <string>
+ 
+ void VOODOO_AddConfigSection(const ConfigPtr& conf);
+ 
+ void VOODOO_Init();
+ void VOODOO_Destroy();
++// CPU-thread-only diagnostic reads; inactive outside the explicit Rally bridge.
++bool VOODOO_RallyReadTmu(uint32_t unit,uint32_t address,uint32_t size,std::string& data);
++bool VOODOO_RallyCopyLfbCoverage(uint32_t width,uint32_t height,std::string& mask,uint64_t& swap_sequence);
++
+ 
+ #endif // DOSBOX_VOODOO_H
+--- a/src/webserver/rally.cpp
++++ b/src/webserver/rally.cpp
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ // Bounded local display/input bridge. No timing or CPU execution semantics change.
+ #include "rally.h"
++#include "s1_native.h"
+ #include "bridge.h"
+ #include "cpu.h"
+ #include "webserver.h"
+@@ -8,10 +9,12 @@
+ #include "gui/render/render.h"
+ #include "hardware/input/keyboard.h"
+ #include "hardware/memory.h"
++#include "hardware/video/voodoo.h"
+ #include "libs/base64/base64.h"
+ #include "libs/json/json.h"
+ #include "misc/video.h"
+ #include <algorithm>
++#include <array>
+ #include <chrono>
+ #include <cstdlib>
+ #include <cstring>
+@@ -30,10 +33,54 @@
+     static const bool enabled=[] { const auto value=std::getenv("SCREAMER_METAL_BRIDGE");return value&&std::strcmp(value,"1")==0; }();
+     return enabled;
+ }
++
++static uint32_t rally_helper=0;
++static uint64_t needle_primitives=0;
++static std::array<uint32_t,3> needle_returns{};
++static void observe_rally_helper(uint32_t address,const std::string& bytes){
++    static const uint8_t tail[]={0x83,0xf8,0x03,0x7c,0xf6,0x58,0xc3};
++    if(rally_helper||bytes.size()!=13||static_cast<uint8_t>(bytes[0])!=0x50||static_cast<uint8_t>(bytes[1])!=0xa1||std::memcmp(bytes.data()+6,tail,7)!=0)return;
++    uint32_t pending=0;std::memcpy(&pending,bytes.data()+2,4);
++    if(pending!=address+0x36||address<0x504dc)return;
++    const uint32_t bias=address-0x504dc;
++    const uint64_t limit=static_cast<uint64_t>(MEM_TotalPages())*MemPageSize;
++    for(const auto link:{0x4e016u,0x4e02fu,0x4e048u}){
++        uint8_t call[5];const uint32_t pc=bias+link;
++        if(static_cast<uint64_t>(pc)+1>limit)return;
++        MEM_BlockRead(pc-5,call,5);int32_t relative=0;std::memcpy(&relative,call+1,4);
++        if(call[0]!=0xe8||static_cast<uint32_t>(pc+relative)!=bias+0xc0dca)return;
++    }
++    rally_helper=address;needle_returns={bias+0x4e016,bias+0x4e02f,bias+0x4e048};
++}
++bool RallyNeedlePrimitive(){
++    if(!RallyEnabled()||!rally_helper)return false;
++    const uint32_t sp=SegPhys(SegNames::ss)+reg_esp,bias=rally_helper-0x504dc;
++    const uint64_t limit=static_cast<uint64_t>(MEM_TotalPages())*MemPageSize;
++    if(static_cast<uint64_t>(sp)+1024>limit)return false;
++    std::array<uint32_t,256> stack;MEM_BlockRead(sp,stack.data(),sizeof(stack));
++    // Locate the closest validated application CALL return, not arbitrary
++    // stale values elsewhere in the stack. Original imports tail-jump into
++    // GLIDE2X; the active grDrawLine application return is C0EA0. Its caller
++    // is exactly 28 bytes later (two pointer args + four saved registers).
++    for(size_t i=0;i+7<stack.size();++i){
++        const uint32_t value=stack[i];
++        if(value<bias+0x20005||value>=bias+0xeedc0)continue;
++        uint8_t call[5];MEM_BlockRead(value-5,call,5);int32_t relative=0;std::memcpy(&relative,call+1,4);
++        const uint32_t target=value+relative;
++        if(call[0]!=0xe8||target<bias+0x20000||target>=bias+0xeedc0)continue;
++        if(value!=bias+0xc0ea0||target!=bias+0xee9b8)return false;
++        for(const auto ret:needle_returns)if(stack[i+7]==ret){++needle_primitives;return true;}
++        return false;
++    }
++    return false;
++}
++
+ struct DisplayFrame {
+     uint32_t width=0,height=0;
+     uint64_t sequence=0,capture_ns=0;
+-    std::string pixels;
++    std::string pixels,overlay;
++    uint64_t swap_sequence=0,coverage_pixels=0;
++    bool hud_complete=false;
+ };
+ static DisplayFrame latest;
+ static std::mutex display_mutex;
+@@ -42,6 +89,7 @@
+ 
+ void RallyPublishFrame(const Render& source) {
+     if(!RallyEnabled())return;
++    S1NativePublishFrame(source);
+     const auto width=source.src.width,height=source.src.height;
+     if(width<=0||height<=0||width>2048||height>1536||source.scale.cache_pitch<=0)return;
+     DisplayFrame frame;
+@@ -70,10 +118,20 @@
+             dest[0]=b;dest[1]=g;dest[2]=r;dest[3]=255;
+         }
+     }
++    std::string coverage;
++    if(VOODOO_RallyCopyLfbCoverage(frame.width,frame.height,coverage,frame.swap_sequence)){
++        frame.hud_complete=rally_helper&&needle_primitives>0;
++        frame.overlay=frame.pixels;
++        for(size_t i=0;i<coverage.size();++i){
++            auto* pixel=reinterpret_cast<uint8_t*>(frame.overlay.data())+4*i;
++            if(coverage[i]){pixel[3]=255;++frame.coverage_pixels;}
++            else std::memset(pixel,0,4);
++        }
++    }
+     std::lock_guard<std::mutex> lock(display_mutex);
+     frame.sequence=latest.sequence+1;latest=std::move(frame);
+ }
+-void RallyFrame(const httplib::Request&,httplib::Response& response) {
++void RallyFrame(const httplib::Request& request,httplib::Response& response) {
+     if(!RallyEnabled()){response.status=404;return;}
+     DisplayFrame frame;
+     {std::lock_guard<std::mutex> lock(display_mutex);frame=latest;}
+@@ -84,8 +142,44 @@
+     response.set_header("X-Rally-Sequence",std::to_string(frame.sequence));
+     response.set_header("X-Rally-Capture-Ns",std::to_string(frame.capture_ns));
+     response.set_header("Cache-Control","no-store");
++    if(request.has_param("include_overlay")&&request.get_param_value("include_overlay")=="1"&&!frame.overlay.empty()){
++        response.set_header("X-Rally-Overlay-Offset",std::to_string(frame.pixels.size()));response.set_header("X-Rally-Overlay-Size",std::to_string(frame.overlay.size()));
++        response.set_header("X-Rally-Overlay-Format","bgra8-premultiplied");response.set_header("X-Rally-Coverage-Pixels",std::to_string(frame.coverage_pixels));
++        response.set_header("X-Rally-Hud-Complete",frame.hud_complete?"1":"0");
++        response.set_header("X-Rally-Swap-Sequence",std::to_string(frame.swap_sequence));frame.pixels+=frame.overlay;
++    }
+     response.set_content(std::move(frame.pixels),"application/octet-stream");
+ }
++
++void RallyOverlay(const httplib::Request&,httplib::Response& response) {
++    if(!RallyEnabled()){response.status=404;return;}
++    DisplayFrame frame;{std::lock_guard<std::mutex> lock(display_mutex);frame=latest;}
++    if(frame.overlay.empty()){response.status=503;response.set_content("Voodoo LFB coverage not ready","text/plain");return;}
++    response.set_header("X-Rally-Width",std::to_string(frame.width));response.set_header("X-Rally-Height",std::to_string(frame.height));
++    response.set_header("X-Rally-Pitch",std::to_string(frame.width*4));response.set_header("X-Rally-Sequence",std::to_string(frame.sequence));
++    response.set_header("X-Rally-Capture-Ns",std::to_string(frame.capture_ns));response.set_header("X-Rally-Swap-Sequence",std::to_string(frame.swap_sequence));
++    response.set_header("X-Rally-Coverage-Pixels",std::to_string(frame.coverage_pixels));response.set_header("X-Rally-Format","bgra8-premultiplied");
++    response.set_header("X-Rally-Hud-Complete",frame.hud_complete?"1":"0");
++    response.set_header("Cache-Control","no-store");response.set_content(std::move(frame.overlay),"application/octet-stream");
++}
++class TmuReadCommand final:public Command {
++public:
++    uint32_t unit=0,address=0,size=0;std::string pixels;uint64_t captured=0;
++    void Execute() override {
++        if(!VOODOO_RallyReadTmu(unit,address,size,pixels)){error="Requested TMU range unavailable";return;}
++        captured=monotonic_ns();
++    }
++};
++void RallyTmuRead(const httplib::Request& request,httplib::Response& response){
++    if(!RallyEnabled()){response.status=404;return;}
++    if(request.body.size()>4096)throw std::invalid_argument("Oversized TMU read");
++    const auto input=json::parse(request.body);const auto unit=input.at("unit").get<uint64_t>(),address=input.at("address").get<uint64_t>(),size=input.at("size").get<uint64_t>();
++    if(unit>=2||address>UINT32_MAX||size==0||size>2*1024*1024||address+size>UINT32_MAX)throw std::invalid_argument("Invalid TMU range");
++    TmuReadCommand command;command.unit=static_cast<uint32_t>(unit);command.address=static_cast<uint32_t>(address);command.size=static_cast<uint32_t>(size);command.WaitForCompletion();
++    if(!command.error.empty()){response.status=409;send_json(response,{{"ready",false},{"error",command.error}});return;}
++    send_json(response,{{"unit",unit},{"address",address},{"size",size},{"capture_ns",command.captured},{"atomic_cpu_step",true},{"data",base64::to_base64(command.pixels)}});
++}
++
+ static const std::map<std::string,KBD_KEYS>& keys() {
+     static const std::map<std::string,KBD_KEYS> mapping={
+         {"up",KBD_up},{"down",KBD_down},{"left",KBD_left},{"right",KBD_right},
+@@ -144,7 +238,7 @@
+             if(!ready)return;
+         }
+         const uint64_t limit=static_cast<uint64_t>(MEM_TotalPages())*MemPageSize;
+-        for(auto& range:ranges){if(static_cast<uint64_t>(range.address)+range.size>limit){error="Batch range exceeds RAM";return;}range.data.resize(range.size);MEM_BlockRead(range.address,range.data.data(),range.size);}
++        for(auto& range:ranges){if(static_cast<uint64_t>(range.address)+range.size>limit){error="Batch range exceeds RAM";return;}range.data.resize(range.size);MEM_BlockRead(range.address,range.data.data(),range.size);if(range.size==13)observe_rally_helper(range.address,range.data);}
+         if(static_cast<uint64_t>(linear_esp)+8<=limit){stack.resize(8);MEM_BlockRead(linear_esp,stack.data(),8);}
+         captured=monotonic_ns();
+     }
+--- a/src/webserver/rally.h
++++ b/src/webserver/rally.h
+@@ -6,10 +6,13 @@
+ struct Render;
+ namespace Webserver {
+ bool RallyEnabled();
++bool RallyNeedlePrimitive();
+ void RallyPublishFrame(const Render& source);
+ void RallyInputWatchdog();
+ void RallyRead(const httplib::Request&, httplib::Response&);
+ void RallyKeys(const httplib::Request&, httplib::Response&);
+ void RallyFrame(const httplib::Request&, httplib::Response&);
++void RallyOverlay(const httplib::Request&, httplib::Response&);
++void RallyTmuRead(const httplib::Request&, httplib::Response&);
+ }
+ #endif
+--- a/src/webserver/webserver.cpp
++++ b/src/webserver/webserver.cpp
+@@ -7,6 +7,7 @@
+ #include "dos.h"
+ #include "memory.h"
+ #include "rally.h"
++#include "s1_native.h"
+ 
+ #include <set>
+ #include <string>
+@@ -60,6 +61,11 @@
+         server.Post("/api/v1/rally/read",RallyRead);
+         server.Post("/api/v1/rally/keys",RallyKeys);
+         server.Get("/api/v1/rally/frame",RallyFrame);
++        server.Get("/api/v1/rally/overlay",RallyOverlay);
++        server.Post("/api/v1/rally/tmu/read",RallyTmuRead);
++        server.Post("/api/v1/s1/native/control",S1NativeControl);
++        server.Get("/api/v1/s1/native/status",S1NativeStatus);
++        server.Get("/api/v1/s1/native/hud",S1NativeHud);
+     }
+ 	server.Get("/api/v1/cpu/state", CpuStateCommand::Get);
+ 
+--- a/src/webserver/bridge.cpp
++++ b/src/webserver/bridge.cpp
+@@ -3,6 +3,7 @@
+ 
+ #include "bridge.h"
+ #include "rally.h"
++#include "s1_native.h"
+ 
+ #include <algorithm>
+ #include <chrono>
+@@ -45,6 +46,7 @@
+ void Bridge::ProcessRequests()
+ {
+     RallyInputWatchdog();
++    S1NativeWatchdog();
+ 	std::lock_guard<std::mutex> lock(mtx);
+ 
+ 	if (queue.empty()) {
+--- a/src/webserver/CMakeLists.txt
++++ b/src/webserver/CMakeLists.txt
+@@ -3,6 +3,7 @@
+   webserver.cpp
+   cpu.cpp
+   rally.cpp
++  s1_native.cpp
+   memory.cpp
+   dos.cpp)
+ 
+--- /dev/null
++++ b/src/webserver/s1_native.cpp
+@@ -0,0 +1,304 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++// Original STARTH.EXE graphics backend bridge. The physics/camera/scene setup,
++// part animation, sky, HUD, menus and intro execute through the original code.
++#include "s1_native.h"
++#include "rally.h"
++#include "bridge.h"
++#include "webserver.h"
++#include "cpu/callback.h"
++#include "cpu/cpu.h"
++#include "cpu/registers.h"
++#include "cpu/paging.h"
++#include "gui/render/render.h"
++#include "misc/video.h"
++#include "hardware/memory.h"
++#include "libs/json/json.h"
++#include <array>
++#include <chrono>
++#include <cstdint>
++#include <cstring>
++#include <algorithm>
++#include <mutex>
++#include <vector>
++#include <stdexcept>
++#include <string>
++
++using json = nlohmann::json;
++namespace Webserver {
++namespace {
++constexpr const char* ProfileHash = "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3";
++constexpr uint32_t CodeLink = 0x10000, DataLink = 0x100000;
++constexpr uint32_t BackendCall = 0x81b6b, BackendTarget = 0x843a8;
++constexpr uint32_t MainRaceReturn = 0x1fffc;
++constexpr uint32_t HudCall = 0x2001a, HudTarget = 0x23420;
++constexpr uint32_t FrameCall = 0x1ff54, FrameTarget = 0x1ff70;
++constexpr size_t HudPixels = 640*400;
++constexpr uint64_t LeaseNs = 600000000;
++constexpr std::array<uint8_t, 5> OriginalCall = {0xe8,0x38,0x28,0x00,0x00};
++constexpr std::array<uint8_t, 5> MainRaceCall = {0xe8,0xb4,0x1a,0x06,0x00};
++constexpr std::array<uint8_t, 5> OriginalFrameCall = {0xe8,0x17,0x00,0x00,0x00};
++constexpr std::array<uint8_t, 5> MainHudCall = {0xe8,0x01,0x34,0x00,0x00};
++constexpr std::array<uint8_t, 7> WorldSave = {0x60,0x1e,0x06,0x0f,0xa0,0x0f,0xa8};
++struct State {
++    bool installed=false, ready=false;
++    uint32_t code_base=0, data_base=0;
++    callback_number_t callback=0, hud_begin=0, hud_end=0, frame_begin=0;
++    uint32_t last_outer_return=0, last_hud_mode=0;
++    uint64_t main_race_calls=0, hud_calls=0, hud_captures=0, hud_rejected=0;
++    uint64_t lease=0, callbacks=0, skipped=0, fallback=0, expired=0, stack_rejected=0;
++    std::string error;
++} state;
++uint64_t now_ns() {
++    return std::chrono::duration_cast<std::chrono::nanoseconds>(
++        std::chrono::steady_clock::now().time_since_epoch()).count();
++}
++uint32_t code(uint32_t link) { return state.code_base + link-CodeLink; }
++uint32_t data(uint32_t link) { return state.data_base + link-DataLink; }
++bool in_ram(uint64_t address, uint64_t size) {
++    return address+size <= static_cast<uint64_t>(MEM_TotalPages())*MemPageSize;
++}
++template<size_t N> bool matches(uint32_t address, const std::array<uint8_t,N>& expected) {
++    if(!in_ram(address,N))return false;
++    std::array<uint8_t,N> actual{};MEM_BlockRead(address,actual.data(),N);
++    return actual==expected;
++}
++std::array<uint8_t,5> hook_bytes() {
++    return {0xfe,0x38,state.callback,0x00,0x90};
++}
++bool live_ready() {
++    if(state.ready && now_ns()>state.lease) {
++        state.ready=false;state.expired++;
++    }
++    return state.ready;
++}
++// This page handler is active only between the original main-HUD call and
++// its return. It intercepts every byte store, including same-value stores.
++// Ordinary RAM reads and writes retain the original host backing addresses.
++struct HudPage { uint32_t page;PageHandler* original;HostPt host; };
++struct HudCoverage {
++    bool active=false, pending=false;
++    uint32_t framebuffer=0, mode=0;
++    uint64_t captured=0, sequence=0;
++    std::vector<HudPage> pages;
++    std::array<uint8_t,HudPixels> alpha{}, indices{};
++} hud;
++struct HudImage {
++    uint64_t sequence=0,captured=0;uint32_t mode=0;
++    std::string bgra;
++};
++HudImage latest_hud;
++std::mutex hud_mutex;
++class HudPageHandler final:public PageHandler {
++public:
++    HudPageHandler() { flags=PFLAG_READABLE|PFLAG_NOCODE; }
++    HostPt GetHostReadPt(Bitu page) override {
++        const auto index=page-hud.pages.front().page;
++        return index<hud.pages.size()?hud.pages[index].host:nullptr;
++    }
++    uint8_t readb(PhysPt address) override {
++        return GetHostReadPt(address/MemPageSize)[address%MemPageSize];
++    }
++    void writeb(PhysPt address,uint8_t value) override {
++        auto host=GetHostReadPt(address/MemPageSize);
++        host[address%MemPageSize]=value;
++        if(address>=hud.framebuffer&&static_cast<uint64_t>(address)-hud.framebuffer<HudPixels)
++            hud.alpha[address-hud.framebuffer]=255;
++    }
++} hud_handler;
++void stop_hud_coverage() {
++    if(!hud.active)return;
++    for(const auto& page:hud.pages)MEM_SetPageHandler(page.page,1,page.original);
++    PAGING_ClearTLB();hud.active=false;
++}
++bool start_hud_coverage() {
++    stop_hud_coverage();hud.pending=false;hud.pages.clear();
++    // Paging and sub-1MiB aliases require separate translation handling. These
++    // are not used by the verified S1 protected-mode software framebuffer.
++    const auto fb=mem_readd(data(0x121528));
++    if(PAGING_Enabled()||fb<0x100000||!in_ram(fb,HudPixels))return false;
++    const uint32_t first=fb/MemPageSize,last=(fb+HudPixels-1)/MemPageSize;
++    for(uint32_t page=first;page<=last;page++) {
++        auto previous=MEM_GetPageHandler(page);
++        const auto host=previous->GetHostReadPt(page);
++        if(!host||host!=previous->GetHostWritePt(page)||
++           (previous->flags&(PFLAG_READABLE|PFLAG_WRITEABLE|PFLAG_HASROM|PFLAG_HASCODE))!=
++                (PFLAG_READABLE|PFLAG_WRITEABLE)) {hud.pages.clear();return false;}
++        hud.pages.push_back({page,previous,host});
++    }
++    hud.framebuffer=fb;hud.mode=mem_readd(data(0x1100c0));hud.alpha.fill(0);
++    for(const auto& page:hud.pages)MEM_SetPageHandler(page.page,1,&hud_handler);
++    PAGING_ClearTLB();hud.active=true;return true;
++}
++Bitu hud_end_callback() {
++    if(hud.active) {
++        stop_hud_coverage();
++        MEM_BlockRead(hud.framebuffer,hud.indices.data(),HudPixels);
++        hud.captured=now_ns();hud.sequence++;hud.pending=true;state.hud_captures++;
++    }
++    reg_eip=code(FrameCall+5)-SegPhys(cs);return CBRET_NONE;
++}
++Bitu frame_begin_callback() {
++    stop_hud_coverage();
++    CPU_Push32(CALLBACK_PhysPointer(state.hud_end)-SegPhys(cs));
++    reg_eip=code(FrameTarget)-SegPhys(cs);return CBRET_NONE;
++}
++Bitu hud_begin_callback() {
++    state.hud_calls++;
++    // This call site belongs only to the main-race frame function. Capture
++    // while falling back as well, so Metal can wait for a real HUD before
++    // advertising renderer readiness. Coverage does not modify guest pixels.
++    if(!start_hud_coverage())state.hud_rejected++;
++    CPU_Push32(code(HudCall+5)-SegPhys(cs));
++    reg_eip=code(HudTarget)-SegPhys(cs);return CBRET_NONE;
++}
++Bitu backend_callback() {
++    state.callbacks++;
++    const uint32_t cs_base=SegPhys(cs);
++    const uint32_t resume=code(BackendCall+5)-cs_base;
++    // A near CALL normally preserves every register and flag except ESP/EIP.
++    // DOSBox's native FE38 callback materializes lazy flags in both CPU cores.
++    // Main 81ab0 saves pushad (32 bytes) + four 32-bit segment pushes (16).
++    // Only this exact main-race caller may bypass the polygon backend.
++    bool main_race=false;
++    const uint64_t stack=static_cast<uint64_t>(SegPhys(ss))+(reg_esp&cpu.stack.mask);
++    if(cpu.pmode && cpu.code.big && cpu.stack.big && in_ram(stack,52)) {
++        const uint32_t caller=mem_readd(static_cast<uint32_t>(stack)+48);
++        state.last_outer_return=caller+cs_base;
++        main_race=(caller==code(MainRaceReturn)-cs_base);
++        if(main_race)state.main_race_calls++;
++    } else state.stack_rejected++;
++    const bool digital=(in_ram(data(0x1100c0),4)&&mem_readd(data(0x1100c0))==2);
++    state.last_hud_mode=mem_readd(data(0x1100c0));
++    if(main_race && digital && live_ready()) {
++        state.skipped++;
++        // Original843CD always clears direction before returning.
++        reg_flags&=~FLAG_DF;cpu.direction=1;
++        reg_eip=resume;
++        return CBRET_NONE;
++    }
++    state.fallback++;
++    // Reproduce precisely the intercepted near CALL, including its five-byte
++    // return address (FE38 itself is four bytes followed by one padding NOP).
++    CPU_Push32(resume);
++    reg_eip=code(BackendTarget)-cs_base;
++    return CBRET_NONE;
++}
++void install(uint32_t code_base,uint32_t data_base) {
++    if(state.installed) {
++        if(code_base!=state.code_base||data_base!=state.data_base)
++            throw std::invalid_argument("S1 mapping changed; restart private runtime");
++        const std::array<uint8_t,5> hud_hook={0xfe,0x38,state.hud_begin,0x00,0x90};
++        const std::array<uint8_t,5> frame_hook={0xfe,0x38,state.frame_begin,0x00,0x90};
++        if(!matches(code(BackendCall),hook_bytes())||!matches(code(HudCall),hud_hook)||!matches(code(FrameCall),frame_hook))
++            throw std::invalid_argument("S1 backend hook no longer matches");
++        return;
++    }
++    if(code_base%16||data_base%16||!in_ram(code_base,899731)||!in_ram(data_base,291520))
++        throw std::invalid_argument("Invalid S1 LE object ranges");
++    if(!(static_cast<uint64_t>(code_base)+899731<=data_base || static_cast<uint64_t>(data_base)+291520<=code_base))
++        throw std::invalid_argument("Overlapping S1 LE object ranges");
++    state.code_base=code_base;state.data_base=data_base;
++    // Independent immutable call/prologue guards plus the relocated original
++    // two-tick wait helper. The Python owner validates the full EXE SHA before
++    // supplying its independently resolved LE mappings.
++    const std::array<uint8_t,5> wait_tail={0x83,0xfa,0x02,0x72,0xf5};
++    if(!matches(code(BackendCall),OriginalCall)||!matches(code(0x1fff7),MainRaceCall)||
++       !matches(code(0x2001a),MainHudCall)||!matches(code(FrameCall),OriginalFrameCall)||!matches(code(0x81ab5),WorldSave)||
++       !matches(code(0x1fc46),wait_tail)||mem_readw(code(0x1fc40))!=0x158b||
++       mem_readd(code(0x1fc42))!=code(0x107f9))
++        throw std::invalid_argument("Original S1 graphics/wait guards differ");
++    state.callback=CALLBACK_Allocate();
++    if(!CALLBACK_Setup(state.callback,backend_callback,CB_RETN,"S1 original polygon backend bridge"))
++        throw std::runtime_error("Cannot allocate S1 callback");
++    state.hud_begin=CALLBACK_Allocate();state.hud_end=CALLBACK_Allocate();state.frame_begin=CALLBACK_Allocate();
++    if(!CALLBACK_Setup(state.hud_begin,hud_begin_callback,CB_RETN,"S1 original HUD coverage begin")||
++       !CALLBACK_Setup(state.hud_end,hud_end_callback,CB_RETN,"S1 original HUD coverage end")||
++       !CALLBACK_Setup(state.frame_begin,frame_begin_callback,CB_RETN,"S1 original frame wrapper"))
++        throw std::runtime_error("Cannot allocate S1 HUD callbacks");
++    const auto hook=hook_bytes();MEM_BlockWrite(code(BackendCall),hook.data(),hook.size());
++    const std::array<uint8_t,5> hud_hook={0xfe,0x38,state.hud_begin,0x00,0x90};
++    MEM_BlockWrite(code(HudCall),hud_hook.data(),hud_hook.size());
++    const std::array<uint8_t,5> frame_hook={0xfe,0x38,state.frame_begin,0x00,0x90};
++    MEM_BlockWrite(code(FrameCall),frame_hook.data(),frame_hook.size());
++    if(!matches(code(BackendCall),hook)||!matches(code(HudCall),hud_hook)||!matches(code(FrameCall),frame_hook))throw std::runtime_error("S1 hook verification failed");
++    state.installed=true;
++}
++json status() {
++    const bool ready=live_ready();const auto now=now_ns();
++    return {{"profile_sha256",ProfileHash},{"installed",state.installed},{"renderer_ready",ready},
++        {"lease_ms",600},{"lease_remaining_ms",ready&&state.lease>now?(state.lease-now)/1000000:0},
++        {"code_base",state.code_base},{"data_base",state.data_base},
++        {"callbacks",state.callbacks},{"backend_skipped",state.skipped},{"backend_original",state.fallback},
++        {"expired_leases",state.expired},{"stack_rejected",state.stack_rejected},
++        {"main_race_calls",state.main_race_calls},{"last_outer_return_physical",state.last_outer_return},
++        {"last_hud_mode",state.last_hud_mode},{"hud_calls",state.hud_calls},{"hud_captures",state.hud_captures},
++        {"hud_rejected",state.hud_rejected},{"hud_framebuffer",hud.framebuffer},{"hud_sequence",hud.sequence},
++        {"supported_hud_mode",2},{"physics_wait_ticks",2},{"error",state.error}};
++}
++class ControlCommand final:public Command {
++public:
++    bool ready=false,has_mapping=false;
++    uint32_t code_base=0,data_base=0;
++    json result;
++    void Execute() override {
++        try {
++            if(has_mapping)install(code_base,data_base);
++            if(ready&&!state.installed)throw std::invalid_argument("Install guarded S1 mapping first");
++            state.ready=ready;state.lease=ready?now_ns()+LeaseNs:0;state.error.clear();result=status();
++        } catch(const std::exception& e) { state.ready=false;state.lease=0;state.error=e.what();error=e.what(); }
++    }
++};
++class StatusCommand final:public Command {
++public:json result;void Execute() override {result=status();}
++};
++} // namespace
++void S1NativePublishFrame(const Render& source) {
++    if(!RallyEnabled()||!state.installed||!hud.pending)return;
++    // Same VGA palette epoch as the original display publish. 8beb8 uses
++    // q=floor(400*65536/480), adding q BEFORE each output scanline.
++    if(source.src.pixel_format!=PixelFormat::Indexed8||source.src.width!=640||source.src.height!=480)return;
++    HudImage image;image.sequence=hud.sequence;image.captured=hud.captured;image.mode=hud.mode;
++    image.bgra.resize(640*480*4);auto out=reinterpret_cast<uint8_t*>(image.bgra.data());
++    constexpr uint32_t step=(400u<<16)/480u;
++    for(uint32_t y=0;y<480;y++) {
++        const auto sy=std::min(399u,((y+1)*step)>>16);
++        for(uint32_t x=0;x<640;x++,out+=4) {
++            const size_t at=sy*640+x;const auto c=source.palette.rgb[hud.indices[at]];
++            const uint8_t alpha=hud.alpha[at];
++            out[0]=alpha?c.blue:0;out[1]=alpha?c.green:0;out[2]=alpha?c.red:0;out[3]=alpha;
++        }
++    }
++    hud.pending=false;
++    std::lock_guard<std::mutex> lock(hud_mutex);latest_hud=std::move(image);
++}
++void S1NativeHud(const httplib::Request&,httplib::Response& response) {
++    if(!RallyEnabled()){response.status=404;return;}
++    HudImage image;{std::lock_guard<std::mutex> lock(hud_mutex);image=latest_hud;}
++    if(image.bgra.empty()){response.status=503;response.set_content("Original S1 HUD not ready","text/plain");return;}
++    response.set_header("X-S1-Hud-Width","640");response.set_header("X-S1-Hud-Height","480");
++    response.set_header("X-S1-Hud-Sequence",std::to_string(image.sequence));
++    response.set_header("X-S1-Hud-Capture-Ns",std::to_string(image.captured));
++    response.set_header("X-S1-Hud-Mode",std::to_string(image.mode));
++    response.set_header("X-S1-Hud-Coverage","original-ram-byte-writes");
++    response.set_header("Cache-Control","no-store");
++    response.set_content(std::move(image.bgra),"application/octet-stream");
++}
++void S1NativeWatchdog() { if(RallyEnabled())live_ready(); }
++void S1NativeControl(const httplib::Request& request,httplib::Response& response) {
++    if(!RallyEnabled()){response.status=404;return;}
++    if(request.body.size()>4096)throw std::invalid_argument("Oversized S1 renderer control");
++    const auto input=json::parse(request.body);
++    if(input.value("profile_sha256",std::string{})!=ProfileHash)
++        throw std::invalid_argument("Unsupported original S1 profile");
++    ControlCommand cmd;cmd.ready=input.at("renderer_ready").get<bool>();
++    if(input.contains("code_base")||input.contains("data_base")) {
++        const auto cb=input.at("code_base").get<uint64_t>(),db=input.at("data_base").get<uint64_t>();
++        if(cb>UINT32_MAX||db>UINT32_MAX)throw std::invalid_argument("Invalid S1 object base");
++        cmd.code_base=static_cast<uint32_t>(cb);cmd.data_base=static_cast<uint32_t>(db);cmd.has_mapping=true;
++    }
++    cmd.WaitForCompletion();if(!cmd.error.empty())throw std::invalid_argument(cmd.error);send_json(response,cmd.result);
++}
++void S1NativeStatus(const httplib::Request&,httplib::Response& response) {
++    if(!RallyEnabled()){response.status=404;return;}StatusCommand cmd;cmd.WaitForCompletion();send_json(response,cmd.result);
++}
++} // namespace Webserver
+--- /dev/null
++++ b/src/webserver/s1_native.h
+@@ -0,0 +1,14 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++#ifndef DOSBOX_S1_NATIVE_H
++#define DOSBOX_S1_NATIVE_H
++#include "libs/http/http.h"
++struct Render;
++namespace Webserver {
++// CPU-thread-only service; inert unless SCREAMER_METAL_BRIDGE=1.
++void S1NativeWatchdog();
++void S1NativePublishFrame(const Render&);
++void S1NativeHud(const httplib::Request&, httplib::Response&);
++void S1NativeControl(const httplib::Request&, httplib::Response&);
++void S1NativeStatus(const httplib::Request&, httplib::Response&);
++}
++#endif

@@ -1,0 +1,57 @@
+{
+  "local_date": "2026-11-25",
+  "apps": [
+    {
+      "name": "Screamer Metal.app",
+      "version": "0.3.4",
+      "build": "9",
+      "architecture": "arm64",
+      "deep_signature": "passed",
+      "classic_prepare": "passed",
+      "classic_and_upgraded_dispatch": "passed"
+    },
+    {
+      "name": "Screamer 2 Metal.app",
+      "version": "0.3.4",
+      "build": "9",
+      "architecture": "arm64",
+      "deep_signature": "passed",
+      "classic_prepare": "passed",
+      "classic_and_upgraded_dispatch": "passed"
+    },
+    {
+      "name": "Screamer Rally Metal.app",
+      "version": "0.3.4",
+      "build": "9",
+      "architecture": "arm64",
+      "deep_signature": "passed",
+      "classic_prepare": "passed",
+      "classic_and_upgraded_dispatch": "passed"
+    }
+  ],
+  "launcher_ui": "Validation/launch-selection.json",
+  "fullscreen_16by9": "Validation/launch-options-fullscreen-16by9.json",
+  "original_distance": "Validation/original-draw-distance.json",
+  "S1_minimap": "Validation/screamer-minimap-runtime.json",
+  "S2_sky_HUD": "Validation/screamer2-sky-hud.json",
+  "regressions": {
+    "S1": 41,
+    "S2": 29,
+    "Rally": 85,
+    "original_distance": 6
+  },
+  "engine_recipe": {
+    "patches": 10,
+    "cached_original_archive_verified": true,
+    "all_patches_replayed": true,
+    "final_source_hashes_match_validated_engine": true,
+    "raw_engine_sha256": "4a60a3b24f49b913c9462bd517a54a83daa14f92758f8e11e1f3baa71bfe2b8c"
+  },
+  "test_limits": [
+    "S2 player-race needle/mirror and foreground FPS remain untested; only read-only automatic demo/offscreen used.",
+    "4:3 targets encoded at2880x2160 with matching view/backing geometry. Native fullscreen attempts were inconclusive because AppKit reported inactive app, non-key window, and no visible window throughout; no4:3 fullscreen pass is claimed."
+  ],
+  "previous_signed_apps": "build-fullscreen/backups/pre-selection-20261125",
+  "installed_classic_apps_modified": false,
+  "installed_game_saves_modified": false
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "screamer-hud-profile/v1",
+  "game": "screamer2-3dfx-gog",
+  "scope": "single-player-race-experimental",
+  "complete": false,
+  "primary_hud_validated": true,
+  "validation_kind": "owned executable call-site coordinates and original sprite/dashboard asset bounds; actual race frame not yet inspected",
+  "source_width": 640,
+  "source_height": 480,
+  "coordinate_system": "original framebuffer pixels; top-left origin; original640x400 Y mapped through1.2 table",
+  "requires": {
+    "phase": "race",
+    "game_flags_mask_clear": 192,
+    "explicit_experimental_partial_hud_opt_in": true,
+    "single_player_only": true
+  },
+  "rects": [
+    {
+      "x": 4,
+      "y": 0,
+      "width": 224,
+      "height": 88,
+      "anchor": "center",
+      "content": "lap and related top-left labels/values",
+      "evidence": "4c81f..4c8e9: gridx16, Y4/22/40, original text bounds and conservative margin"
+    },
+    {
+      "x": 444,
+      "y": 0,
+      "width": 196,
+      "height": 124,
+      "anchor": "center",
+      "content": "position and related top-right labels/values",
+      "evidence": "4c736..4c7c5: gridx540/572/624, Y4/8/22; SPR114 first-place emblem is84x83 with hotspot3,1, so sourcecutout extends throughy124"
+    },
+    {
+      "x": 208,
+      "y": 0,
+      "width": 224,
+      "height": 34,
+      "anchor": "center",
+      "content": "horizontal opponent/progress position strip and car markers",
+      "evidence": "4c2e0 called at4cd32: SPR37 atgrid216,4, sprite206x18, marker SPR4..9"
+    },
+    {
+      "x": 144,
+      "y": 20,
+      "width": 352,
+      "height": 108,
+      "anchor": "center",
+      "content": "original rear-view mirror pixels and conservative frame margin when enabled",
+      "evidence": "34a12..34a21 passes x160/y28 to7a8e0; its Xoffset322 and half-width table yield x161..481, Ytable1.2 yields33.6..117.6; margin includes frame area",
+      "limitation": "Exact PKC mirror-frame opaque bounds not independently decoded; conservative margin remains provisional."
+    },
+    {
+      "x": 4,
+      "y": 128,
+      "width": 224,
+      "height": 120,
+      "anchor": "center",
+      "content": "left lap/race/best/split/sector timing labels and values",
+      "evidence": "4c91f..4c9c9 and4cbe0..4cc71: gridx16/36, Y112/128/144/160 and five rows112..176"
+    },
+    {
+      "x": 444,
+      "y": 128,
+      "width": 196,
+      "height": 120,
+      "anchor": "center",
+      "content": "right comparison/best/split/sector timing labels and values",
+      "evidence": "4c9ce..4ca47 and4cc08..4cc71: gridx522/532/540, Y112/128/144/160 and five rows112..176"
+    },
+    {
+      "x": 208,
+      "y": 104,
+      "width": 224,
+      "height": 168,
+      "anchor": "center",
+      "content": "original turn-advice icons and race-start countdown",
+      "evidence": "4c2b9 calls centered-sprite3b950 with SPR27..32 atcoarseY50\u2192gridY100;4ce70..4ce78 uses SPR66+ atcoarseY60\u2192gridY120. Original sprite dimensions/hotspots are inside these bounds."
+    },
+    {
+      "x": 0,
+      "y": 288,
+      "width": 640,
+      "height": 192,
+      "anchor": "center",
+      "content": "speed/gear/rev gauge, dashboard/cockpit artwork, lower status text and indicators",
+      "evidence": "4d420..4d8c5 gauge/cockpit branches; SPR26 atgrid476,264 (142x112, hotspot1,8), speed/gear at534/598,354; needlecentre542,336. CRUSC.DTR eight dashboard starts246..286grid\u2192295.2..343.2sourcepixels; broad cutout begins288. 4cea4 lower status rectangle spansgridY360..400.",
+      "limitation": "Conservative full-width cockpit support preserves a broad strip of original low-resolution road/background, and remains centred in wide windows."
+    }
+  ],
+  "missing": [
+    "Dynamic projected opponent/car labels drawn by4f658 at world-dependent screen positions; fixed cutouts cannot guarantee their coverage.",
+    "Actual gameplay HUD frame has not been inspected; code/asset coverage is not end-to-end visual validation.",
+    "Split-screen has separate Y offsets and is excluded.",
+    "Exact mirror PKC frame extent, unusual messages and all camera/race-mode combinations remain untested."
+  ],
+  "sources": [
+    "s2-hud-main.asm",
+    "s2-race-hud.asm",
+    "s2-hud-map.asm",
+    "s2-hud-area.asm",
+    "s2-mirror.asm",
+    "s2-mirror-callers.asm",
+    "s2-centered-sprite-helper.asm",
+    "s2-hud-asset-inventory.json",
+    "/Applications/Screamer 2.app/Contents/Resources/game/GFX/GAME2.DAT:GAMEH.SPR",
+    "/Applications/Screamer 2.app/Contents/Resources/game/DATA/GAME.DAT:CRUSC.DTR"
+  ],
+  "validation": "Fixed primary single-player HUD destinations and original sprite/dashboard extents were read from the recognized S2_3DFX executable and owned assets, not copied from Rally. This is an explicit partial-HUD experimental profile; complete remains false. Preserve framebuffer fallback/recovery and require a visible limitation notice if enabling it.",
+  "placement": "All partial-profile rectangles keep the original centred640x480 HUD layout. Their conservative source ranges overlap; sharing the same anchor makes overlapping samples coincide instead of duplicating UI fragments at wide aspect ratios. Per-element edge anchoring requires disjoint validated source masks."
+}

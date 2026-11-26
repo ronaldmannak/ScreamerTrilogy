@@ -1,0 +1,91 @@
+From 482477a6f48ba30520920c0a09732371ba1cd772 Mon Sep 17 00:00:00 2001
+From: John Novak <john@johnnovak.net>
+Date: Fri, 8 May 2026 19:21:18 +1000
+Subject: [PATCH] build: Properly detect zlib-ng and set C_SYSTEM_ZLIB_NG
+
+C_SYSTEM_ZLIB_NG was never set in the cmake build (lost in the
+meson -> cmake transition). The code still used zlib-ng by accident:
+checked #if defined(C_SYSTEM_ZLIB_NG) (existence) instead of
+checks, so this was inconsistent and only worked by coincidence.
+
+Fix by:
+
+- Hoisting zlib-ng detection from src/libs/zmbv/CMakeLists.txt to
+  the root CMakeLists.txt, before configure_file, so C_SYSTEM_ZLIB_NG
+  is set when the config header is generated.
+
+- On vcpkg builds: use find_package(zlib-ng CONFIG), always available
+  (listed in vcpkg.json). Sets C_SYSTEM_ZLIB_NG=ON.
+
+- On system-libs builds (Linux): try zlib-ng via pkg-config, fall
+  back to plain zlib if unavailable. Previously cmake would error out
+  with REQUIRED on pkg_check_modules when zlib-ng wasn't installed.
+
+- Fix #if defined(C_SYSTEM_ZLIB_NG) -> #if C_SYSTEM_ZLIB_NG in zmbv.h
+  to match the convention used by all other config defines.
+
+- Simplify src/libs/zmbv/CMakeLists.txt to consume the ZMBV_ZLIB_TARGET
+  variable set by root, instead of doing its own detection.
+---
+ CMakeLists.txt               | 21 +++++++++++++++++++++
+ src/libs/zmbv/CMakeLists.txt |  5 +----
+ src/libs/zmbv/zmbv.h         |  2 +-
+ 3 files changed, 23 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 22b6eb7fee315a0d7530022edcae1ea45f466363..afe2fa5ca3f5221ce874e64b56c47ceb113b0414 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -445,6 +445,27 @@ set(version      "${PROJECT_VERSION}")
+ # for zlib-ng detection on system-libs builds.
+ find_package(PkgConfig REQUIRED)
+ 
++# Detect zlib-ng (preferred) or plain zlib for the ZMBV video codec.
++#
++# On vcpkg builds, zlib-ng is always available (listed in vcpkg.json).
++# On system-libs builds (Linux), try zlib-ng first, fall back to plain zlib.
++# C_SYSTEM_ZLIB_NG controls whether the native zlib-ng API (zng_*) or the
++# standard zlib API is used in the ZMBV codec.
++if (USE_SYSTEM_LIBS)
++  pkg_check_modules(ZLIB_NG IMPORTED_TARGET zlib-ng)
++  if (ZLIB_NG_FOUND)
++    set(C_SYSTEM_ZLIB_NG ON)
++    set(ZMBV_ZLIB_TARGET PkgConfig::ZLIB_NG)
++  else()
++    find_package(ZLIB REQUIRED)
++    set(ZMBV_ZLIB_TARGET ZLIB::ZLIB)
++  endif()
++else()
++  find_package(zlib-ng CONFIG REQUIRED)
++  set(C_SYSTEM_ZLIB_NG ON)
++  set(ZMBV_ZLIB_TARGET zlib-ng::zlib)
++endif()
++
+ configure_file(
+   src/dosbox_config.h.in.cmake
+   ${CMAKE_CURRENT_BINARY_DIR}/include/dosbox_config.h
+diff --git a/src/libs/zmbv/CMakeLists.txt b/src/libs/zmbv/CMakeLists.txt
+index f3fce37ab8b5380a06fc067ef081befdb065b865..3cee6f4c9bec7f4efff41ecc32f125845bcbc4c0 100644
+--- a/src/libs/zmbv/CMakeLists.txt
++++ b/src/libs/zmbv/CMakeLists.txt
+@@ -1,6 +1,3 @@
+ add_library(zmbv STATIC zmbv.cpp)
+-
+-pkg_check_modules(ZLIB_NG REQUIRED IMPORTED_TARGET zlib-ng)
+-
+ target_include_directories(zmbv PUBLIC ..)
+-target_link_libraries(zmbv PRIVATE PkgConfig::ZLIB_NG)
++target_link_libraries(zmbv PRIVATE ${ZMBV_ZLIB_TARGET})
+diff --git a/src/libs/zmbv/zmbv.h b/src/libs/zmbv/zmbv.h
+index 1389533843b2bd0528bbe3e8ea5e58585aef45f1..8cb423303c68b4829a99e60a7073d1298ae6b0a8 100644
+--- a/src/libs/zmbv/zmbv.h
++++ b/src/libs/zmbv/zmbv.h
+@@ -9,7 +9,7 @@
+ 
+ #include "dosbox_config.h"
+ 
+-#if defined(C_SYSTEM_ZLIB_NG)
++#if C_SYSTEM_ZLIB_NG
+ #include <zlib-ng.h>
+ #define deflateInit2 zng_deflateInit2
+ #define deflateReset zng_deflateReset

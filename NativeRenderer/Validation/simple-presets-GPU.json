@@ -1,0 +1,32 @@
+[
+  {
+    "game": "Screamer",
+    "render_width": 1280,
+    "render_height": 720,
+    "fixed_4k": false,
+    "widescreen": true,
+    "full_track": true,
+    "gpu_errors": 0,
+    "scope": "Packaged frontend + original captured assets only; no engine, physics, input or displayed-FPS claim"
+  },
+  {
+    "game": "Screamer 2",
+    "render_width": 1280,
+    "render_height": 720,
+    "fixed_4k": false,
+    "widescreen": true,
+    "full_track": true,
+    "gpu_errors": 0,
+    "scope": "Packaged frontend + original captured assets only; no engine, physics, input or displayed-FPS claim"
+  },
+  {
+    "game": "Screamer Rally",
+    "render_width": 1280,
+    "render_height": 720,
+    "fixed_4k": false,
+    "widescreen": true,
+    "full_track": true,
+    "gpu_errors": 0,
+    "scope": "Packaged frontend + original captured assets only; no engine, physics, input or displayed-FPS claim"
+  }
+]

@@ -1,0 +1,132 @@
+{
+  "result": "passed",
+  "scope": "bounded immutable RAM and offline pose extraction; no emulator/GUI/input or installed-app changes",
+  "synthetic_tests": {
+    "guest_memory": 12,
+    "replay": 7,
+    "sparse_capture_guards": 4,
+    "total": 23
+  },
+  "real_capture": {
+    "ram": "probe/sequence/frame-000.bin",
+    "metadata": "probe/sequence/frame-000.json",
+    "ram_sha256": "e4d7d8eeb5539919588c22a31cc347e76addc01c9b967f25e9769c5598d07e2a",
+    "ram_size": 16777216,
+    "executable_sha256": "9eac6e12ab309389bdda019cfa695bfbbc791fbda1a4634464a444fce35165d1",
+    "source_capture_utc": "2026-11-25T04:35:56.893305+00:00"
+  },
+  "actual_pose_checks": [
+    "Snapshot size/hash/profile identifier and non-overlapping mapped ranges validate",
+    "Main-camera origin and angles exactly match independent static extractor read of the same immutable RAM",
+    "168 scene roots with stable IDs and no rejected entries",
+    "Six actual auto car roots identified"
+  ],
+  "scene_instance_count": 168,
+  "camera": {
+    "position": [
+      -36376.487774792695,
+      299.764346431633,
+      41029.86327193308
+    ],
+    "origin": [
+      -36485.0,
+      288.0,
+      40963.0
+    ],
+    "angles": [
+      2018.0,
+      1716.0,
+      0.0
+    ],
+    "rotation": [
+      -0.5245896826784691,
+      -0.0,
+      0.8513551931052651,
+      0.07824716740671997,
+      -0.9957674144676598,
+      0.04821449032414015,
+      -0.8477517594320451,
+      -0.09190895649713288,
+      -0.5223693119771492
+    ],
+    "projection": {
+      "width": 640,
+      "height": 480,
+      "fx": 256.0,
+      "fy": 307.2,
+      "cx": 319.0,
+      "cy": 312.0,
+      "near": 128.0
+    },
+    "projection_source": "unmodified main-race reference; not a live viewport capture",
+    "source_view": "main-view",
+    "guest_address": 3373340
+  },
+  "cars": [
+    {
+      "id": "scene:157",
+      "name": "auto1",
+      "model": 1590,
+      "position": [
+        -39164.0,
+        0.0,
+        39316.0
+      ]
+    },
+    {
+      "id": "scene:159",
+      "name": "auto2",
+      "model": 1591,
+      "position": [
+        -41799.0,
+        0.0,
+        39334.0
+      ]
+    },
+    {
+      "id": "scene:161",
+      "name": "auto3",
+      "model": 1592,
+      "position": [
+        -41949.0,
+        -2.0,
+        37181.0
+      ]
+    },
+    {
+      "id": "scene:163",
+      "name": "auto4",
+      "model": 1593,
+      "position": [
+        -45293.0,
+        1.0,
+        38399.0
+      ]
+    },
+    {
+      "id": "scene:165",
+      "name": "auto1",
+      "model": 1594,
+      "position": [
+        -47704.0,
+        0.0,
+        40215.0
+      ]
+    },
+    {
+      "id": "scene:167",
+      "name": "auto2",
+      "model": 1595,
+      "position": [
+        -56010.0,
+        0.0,
+        39397.0
+      ]
+    }
+  ],
+  "limitations": [
+    "Reference main-race projection; no live viewport/HUD/mirror claim",
+    "Sparse roots omit wheel/part animation, billboards and particle fidelity",
+    "Live capture measured separately in replay-sparse-verification.json"
+  ]
+}

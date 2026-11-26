@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-11-25T03:54:55.528195+00:00",
+  "build": "6",
+  "save_directories_touched": [],
+  "result": "installed",
+  "games": [
+    {
+      "game": "screamerrally",
+      "target": "/Applications/Screamer Rally.app",
+      "backup": {
+        "path": "<owned-games>/ScreamerRally/NativeWrapper/backups/screamerrally-before-build-6-20261125T035455Z-75fe397ac8.zip",
+        "sha256": "30efa3bc10950d4ef6799e13262047f5620de5c4b6ec3f0f1c24bffe0f90bca2",
+        "verified": true,
+        "previous_app_existed": true,
+        "previous_app_content_sha256": "7ade834a6369ac6adf03c11a5a9fa7bff45521531deeefc4d0bfc6ed229ce8a6",
+        "previous_source_content_sha256": "a0fce415f42b686d4ce44a56377adb1ef333787d49c04622bed34125c50246ef"
+      },
+      "result": "installed-and-verified"
+    }
+  ],
+  "user_game_and_preferences_byte_identical": true,
+  "scope": "Only /Applications/Screamer Rally.app and Rally NativeWrapper sources/docs updated"
+}

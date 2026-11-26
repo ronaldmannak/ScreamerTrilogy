@@ -1,0 +1,81 @@
+{
+  "schema": "screamer-live-profile/v1",
+  "id": "screamer2-3dfx-v1",
+  "title": "Screamer 2",
+  "executable": "S2_3DFX.EXE",
+  "executable_sha256": "e6c24c84650938f2baee5f4b571baa45bb09a93ba12dd24e3e1d2cefd9b6f3ec",
+  "runtime_executable_modified": false,
+  "ram_bytes": 16777216,
+  "links": {
+    "helper": 334260,
+    "pending": 334314,
+    "clocks": 1392020,
+    "track": 1382016,
+    "flags": 1382216,
+    "race_state": 1309376,
+    "step": 1392008,
+    "raw_step": 1392012,
+    "rows": 1259280,
+    "models": 1394528,
+    "view": 1283788,
+    "scene": 1302196,
+    "current_camera": 538684,
+    "view_height": 538708,
+    "center_y": 538732,
+    "view_width": 538752
+  },
+  "timing": {
+    "timer_hz": 100,
+    "original_wait_ticks": 2,
+    "minimum_period_ms": 20,
+    "menu_wait_return_link": 330699,
+    "race_wait_return_link": 330861,
+    "raw_dt_link": 1392012,
+    "smoothed_dt_link": 1392008,
+    "notes": "Original in-race1.1smoothing retained; no timing bytes written"
+  },
+  "wait_guard": {
+    "image_bytes": "50a1ea19030083f8027cf658c3",
+    "runtime_counter_operand_offset": 2,
+    "runtime_counter_link": 334314,
+    "runtime_suffix": "83f8027cf658c3"
+  },
+  "scene": {
+    "entry_bytes": 28,
+    "car_name_prefix": "auto",
+    "main_camera_structure_offset": 2660,
+    "minimum_cars": 1,
+    "maximum_cars": 16,
+    "captured_attract_cars": 4
+  },
+  "projection": {
+    "width": 640,
+    "height": 480,
+    "fx": 256,
+    "fy": 307.2,
+    "cx": 319,
+    "cy": 312,
+    "near": 128,
+    "evidence": "S2-renderer/CAMERA-COMPARISON.md; mainviewglobals at captured original wait"
+  },
+  "input": {
+    "method": "normal engine KEYBOARD_AddKey API",
+    "isr_fallback_enabled": false,
+    "scripted_s2_input_authorized": false,
+    "diagnostics": "--read-only disables entire key worker"
+  },
+  "hud": {
+    "file": "hud-profile.json",
+    "validated_phase": "attract",
+    "actual_race_hud_validated": false,
+    "race_primary_hud_source_validated": true,
+    "requires_frontend_partial_hud_opt_in": true,
+    "dynamic_opponent_labels_complete": false
+  },
+  "evidence": [
+    "live-field-homology.json",
+    "S2-renderer/CAMERA-COMPARISON.md",
+    "attract-capture-v1/snapshot-metadata.json",
+    "live-attract-v2/snapshot-metadata.json"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "screamer-public-import-validation/v1",
+  "date": "2026-11-25",
+  "version": "0.4.0",
+  "build": 13,
+  "games": [
+    "screamer",
+    "screamer2",
+    "screamerrally"
+  ],
+  "public_app_build": {
+    "from_source": true,
+    "original_game_data_included": false,
+    "bootstrap": "authored untextured triangle",
+    "strict_deep_signatures": "passed",
+    "minimum_macos": "27.2",
+    "minimum_macos_source": "maximum of actual bundled Mach-O deployment targets"
+  },
+  "checks": {
+    "source_publication_tests": 9,
+    "synthetic_import_tests": 17,
+    "public_packaging_tests": 9,
+    "first_launch_ui_all_games": "passed",
+    "ui_cancel_stops_active_task": "passed with inert child",
+    "legacy_classic_upgraded_selection": "passed all games",
+    "packaged_launcher_real_owned_file_imports": "passed all games",
+    "packaged_launcher_private_python": "passed all games",
+    "both_mode_dry_run_dispatch": "passed all games",
+    "all_six_screamer_tracks_exported_locally": true,
+    "real_screamer_export_cancel_preserves_previous_import": true,
+    "classic_prepare_only_isolated": "passed all games",
+    "synthetic_metal_bootstrap_1280x720": "passed all games",
+    "signed_bundles_unchanged_after_import": true,
+    "source_and_history_game_payload_and_known_secret_gate": "passed"
+  },
+  "scope": {
+    "game_engines_executed": false,
+    "game_input_sent": false,
+    "installed_apps_modified": false,
+    "original_game_files_in_repository": false,
+    "published_to_github": false
+  },
+  "remaining_release_steps": [
+    "Developer ID signing/notarization for public downloads",
+    "Complete corresponding source and dependency-specific notices for a binary release"
+  ],
+  "coverage_notes": [
+    "Owned app/folder imports verified against all three local copies. Package expansion regression uses synthetic payloads and verifies installer scripts are not executed.",
+    "DMG import uses read-only system mounting; no real GOG DMG was available for this validation.",
+    "The source audit is heuristic, with historical personal paths reported as warnings. A current-tree-only source export excludes all Git history."
+  ]
+}

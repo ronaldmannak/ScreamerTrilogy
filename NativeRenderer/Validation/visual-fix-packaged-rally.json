@@ -1,0 +1,503 @@
+{
+  "success": true,
+  "go_state": {
+    "status": "race",
+    "mode": "race",
+    "hud_complete": true,
+    "telemetry": {
+      "player_index": 0,
+      "speed_game_units": 0.0,
+      "velocity_world_units_per_second": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_world_units": [
+        -6645.845703125,
+        -132.0,
+        38408.95703125
+      ],
+      "engine_rpm": 0.0,
+      "gear_raw": 1,
+      "simulation_step_seconds": 0.03299998119473457,
+      "raw_frame_step_seconds": 0.029999999329447746,
+      "source": "original car record; no HUD conversion or synthetic values"
+    }
+  },
+  "frontend_exit_code": 0,
+  "frontend_seconds": 12.633734832999998,
+  "first_native_seconds": 2.299782417000003,
+  "readiness_samples": [
+    {
+      "time": 30.052843958,
+      "elapsed_seconds": 0.0005664580000015462,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 2,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": null,
+      "frontend_assets_ready": null,
+      "frontend_held_keys": null
+    },
+    {
+      "time": 31.096151708,
+      "elapsed_seconds": 1.0438742080000019,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 2,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": false,
+      "frontend_assets_ready": false,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 32.141397916,
+      "elapsed_seconds": 2.0891203750000003,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 2,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": false,
+      "frontend_assets_ready": false,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 33.183799,
+      "elapsed_seconds": 3.131521499999998,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 34.227732875,
+      "elapsed_seconds": 4.175455333000002,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 35.267472583,
+      "elapsed_seconds": 5.215195042000005,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 36.308710041,
+      "elapsed_seconds": 6.2564325000000025,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 37.350181125,
+      "elapsed_seconds": 7.297903583,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 38.396233166,
+      "elapsed_seconds": 8.343955667000003,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -134.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.034642674028873444,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 39.44564225,
+      "elapsed_seconds": 9.393364708,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.033356357365846634,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 40.490136583,
+      "elapsed_seconds": 10.437859042,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.033012233674526215,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 41.528577916,
+      "elapsed_seconds": 11.476300375000001,
+      "state_status": "paused",
+      "state_mode": "framebuffer",
+      "hud_complete": null,
+      "hud_layers": 0,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03300078958272934,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": true,
+      "frontend_assets_ready": true,
+      "frontend_held_keys": []
+    },
+    {
+      "time": 42.581110041,
+      "elapsed_seconds": 12.5288325,
+      "state_status": "race",
+      "state_mode": "race",
+      "hud_complete": true,
+      "hud_layers": 4,
+      "player_telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -134.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03493567183613777,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "frontend_ready": false,
+      "frontend_assets_ready": false,
+      "frontend_held_keys": []
+    }
+  ],
+  "performance": {
+    "original_game_view_selected": false,
+    "backface_culling": true,
+    "visible_cars": 5,
+    "cpu_encode_p95_ms": 0.9936250280588865,
+    "presentation_mode": "original-framebuffer-fallback",
+    "live_parse_errors": 0,
+    "diagnostic_live_scene_only": false,
+    "vertices": 174371,
+    "foreground_presented_frames": 0,
+    "hud_alpha_layers": 4,
+    "drawable_height": 1440,
+    "present_interval_p50_ms": 0,
+    "triangles": 83753,
+    "display_scheduler": "CAMetalDisplayLink-60",
+    "present_interval_p95_ms": 0,
+    "gpu_errors": 0,
+    "draw_callbacks": 34,
+    "original_fallback_frames": 7,
+    "car_pose_source": "live atomic game snapshots; id+model guards; delayed position/quaternion interpolation",
+    "live_states": 935,
+    "drawable_wait_p95_ms": 0,
+    "foreground_presented_fps": 0,
+    "render_height": 2160,
+    "interpolation_delay_ms": 30,
+    "submitted_frames": 34,
+    "render_width": 3840,
+    "gpu_p95_ms": 0.735500012524426,
+    "native_world_frames": 27,
+    "render_4k_selected": true,
+    "partial_hud_opt_in": false,
+    "scene": "/private/tmp/rally-api-input-test-packaged-083250/Session/assets/race-2e6a8570e96347bf9e2f2c5adcfc077d/world/scene.json",
+    "replay_camera_samples": 0,
+    "car_limitations": "frozen wheel/part poses; approximate reflection UV; batch-sorted transparency",
+    "gpu_mean_ms": 0.5991544184165404,
+    "replay_instance_samples": 0,
+    "device": "Apple M5 Max",
+    "sky_active": false,
+    "physics_execution": "external DOSBox game runtime; renderer never advances physics",
+    "draw_callback_hz": 2.958685542693961,
+    "cars": 6,
+    "draw_batches": 290,
+    "textures": 733,
+    "presented_frames": 0,
+    "window_content_height": 371,
+    "live_pose_age_ms": 477.47427102876827,
+    "foreground_present_interval_p95_ms": 0,
+    "window_content_width": 659,
+    "car_triangles": 2307,
+    "hud_coverage": "complete-or-not-active",
+    "display_target_hz": 2.954098942084383,
+    "input_published_sequence": 121,
+    "render_target_fps": 60,
+    "drawable_width": 1318,
+    "presented_fps": 0,
+    "game_aspect_ratio": 1.7777777777777777,
+    "live_state_age_ms": 20.677167049143463
+  },
+  "window_content_aspect": 1.7762803234501348,
+  "window_16_9_verified": true,
+  "foreground_presentation_verified": false,
+  "elapsed_seconds": 43.170282333,
+  "exit_codes": [
+    0,
+    0
+  ],
+  "all_scripted_keys_released": true,
+  "installed_data_untouched": true,
+  "package_hashes_unchanged": true,
+  "strict_last_snapshot_pass": false,
+  "native_sky_metric_snapshots": 9,
+  "native_sky_snapshot_verified": true,
+  "final_background_fallback_observed": true,
+  "pass_scope": "Full final build5 packaged Session boot and approved China navigation; actual16:9 window, native4K geometry, originalsky and exactHUD readiness observed in logged render snapshots; zeroGPUerrors and cleanstop.",
+  "limits": [
+    "No foreground presentation occurred in this background/occluded run;60FPS is not verified by this smoke.",
+    "The final metric snapshot fell back after a stale original game pose; earlier nine consecutive snapshots explicitly verified native world+sky+HUD."
+  ],
+  "release_input_hashes": "/private/tmp/rally-api-input-test-packaged-083250/package-input-hashes.json",
+  "render_metric_snapshots": "/private/tmp/rally-api-input-test-packaged-083250/metric-snapshots.json",
+  "final_session_running": false
+}

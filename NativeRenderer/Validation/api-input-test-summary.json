@@ -1,0 +1,384 @@
+{
+  "schema": "screamer-api-test-summary/v1",
+  "scope": "User-approved bounded normal game-API inputs in fresh disposableGameData only; no OS input or physics writes",
+  "session": "/private/tmp/rally-api-input-test-20261125-001938/Session",
+  "endpoint": "http://127.0.0.1:49327",
+  "configured_maximum_session_seconds": 600,
+  "all_actions_released": true,
+  "maximum_requested_hold_seconds": 2.5,
+  "route": [
+    "name confirmation",
+    "Arcade",
+    "China",
+    "Motrail",
+    "Automatic",
+    "GO",
+    "throttle",
+    "right steering",
+    "pause",
+    "resume"
+  ],
+  "clock_report": "real-race-clock-observation.json",
+  "clock_inference": "real-race-clock-analysis.json",
+  "lcd_reports": [
+    "lcd-pixel-comparison.json",
+    "lcd-pixel-comparison-10-throttle.json"
+  ],
+  "steps": [
+    {
+      "label": "01-initial",
+      "keys": [],
+      "hold_seconds": 0,
+      "released": true,
+      "status": "attract",
+      "mode": "framebuffer",
+      "race_flags": 128,
+      "telemetry": null,
+      "nearest_scene_root": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/01-initial.png",
+      "png_sha256": "444f787fbfb2af0d542c1a6d871e8f4f7a73523e157f4ab36b719688241f90ae"
+    },
+    {
+      "label": "02-main-menu",
+      "keys": [
+        "escape"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "attract",
+      "mode": "framebuffer",
+      "race_flags": 128,
+      "telemetry": null,
+      "nearest_scene_root": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/02-main-menu.png",
+      "png_sha256": "41a95774e4bf7a52d88813933edf6cdd63f4a9dc0057a5b98fffc848ff45250b"
+    },
+    {
+      "label": "03-main-menu",
+      "keys": [],
+      "hold_seconds": 0,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "race_flags": 128,
+      "telemetry": null,
+      "nearest_scene_root": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/03-main-menu.png",
+      "png_sha256": "bfee2eb0ffd689e14c9eeda4de0319762e3f553c660bb396a6158ad8ddb1aeca"
+    },
+    {
+      "label": "04-name-confirm",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "race_flags": 128,
+      "telemetry": null,
+      "nearest_scene_root": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/04-name-confirm.png",
+      "png_sha256": "4eb57253605c71963d1c5dc42c4bfc2f7f5af572846c270ea6e316045daf52bd"
+    },
+    {
+      "label": "05-after-name",
+      "keys": [],
+      "hold_seconds": 0,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "race_flags": 128,
+      "telemetry": null,
+      "nearest_scene_root": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/05-after-name.png",
+      "png_sha256": "614a803503939a3934060c72e3e2f4932b991766d029f4918ab66ade847daa07"
+    },
+    {
+      "label": "06-arcade",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "race_flags": 128,
+      "telemetry": null,
+      "nearest_scene_root": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/06-arcade.png",
+      "png_sha256": "87c41350d61ed3dab6b919b81b8f1c43585bc32c57df95cabafc7b969f4b63ef"
+    },
+    {
+      "label": "07-china",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "race_flags": 128,
+      "telemetry": null,
+      "nearest_scene_root": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/07-china.png",
+      "png_sha256": "b24eea528d156a812bdbfe922e1c0b7578eed657c6f96d0be8820bfddee18404"
+    },
+    {
+      "label": "08-car",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "menu",
+      "mode": "framebuffer",
+      "race_flags": 128,
+      "telemetry": null,
+      "nearest_scene_root": null,
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/08-car.png",
+      "png_sha256": "5d4406255a1ae126d7e7ec11ba003ebfc4c644147aab156206c90c796b6de7b9"
+    },
+    {
+      "label": "09-automatic-race",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "race",
+      "mode": "race",
+      "race_flags": 1,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -6645.845703125,
+          -132.0,
+          38408.95703125
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03299998119473457,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "nearest_scene_root": {
+        "id": "scene:157",
+        "model": 1590,
+        "position": [
+          -6221,
+          -156,
+          38187
+        ],
+        "angles": [
+          1,
+          1543,
+          0
+        ],
+        "distance_from_player_record": 479.932073511543
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/09-automatic-race.png",
+      "png_sha256": "0c0c0a6dcbbeabbbd50678ad0a61facadf2ebf0ce931afb34ce6c061ea9592ec"
+    },
+    {
+      "label": "10-throttle",
+      "keys": [
+        "up"
+      ],
+      "hold_seconds": 2.5,
+      "released": true,
+      "status": "race",
+      "mode": "race",
+      "race_flags": 1,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 48.86232376098633,
+        "velocity_world_units_per_second": [
+          -5425.24609375,
+          90.90904998779297,
+          -213.65994262695312
+        ],
+        "position_world_units": [
+          -14484.1396484375,
+          -58.0,
+          38064.33203125
+        ],
+        "engine_rpm": 5226.62353515625,
+        "gear_raw": 2,
+        "simulation_step_seconds": 0.03300001472234726,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "nearest_scene_root": {
+        "id": "scene:157",
+        "model": 1590,
+        "position": [
+          -14059,
+          -85,
+          37843
+        ],
+        "angles": [
+          4,
+          1544,
+          0
+        ],
+        "distance_from_player_record": 480.0631091125542
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/10-throttle.png",
+      "png_sha256": "6310908ef3964ec45fd927f72e2638d2e242c7604ad99f0491cd382463bbe01a"
+    },
+    {
+      "label": "11-steer-right",
+      "keys": [
+        "up",
+        "right"
+      ],
+      "hold_seconds": 1.2,
+      "released": true,
+      "status": "race",
+      "mode": "race",
+      "race_flags": 1,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 36.814125061035156,
+        "velocity_world_units_per_second": [
+          2727.271484375,
+          -280.30291748046875,
+          -3030.3017578125
+        ],
+        "position_world_units": [
+          -63770.80859375,
+          143.0,
+          25776.12890625
+        ],
+        "engine_rpm": 4077.580078125,
+        "gear_raw": 2,
+        "simulation_step_seconds": 0.03300001472234726,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "nearest_scene_root": {
+        "id": "scene:157",
+        "model": 1590,
+        "position": [
+          -63512,
+          51,
+          26173
+        ],
+        "angles": [
+          24,
+          2022,
+          1991
+        ],
+        "distance_from_player_record": 482.6515857771254
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/11-steer-right.png",
+      "png_sha256": "abaa74e2fdaa2a06389686994e17522b6e9777d48b7c0742daec072a82a3ff03"
+    },
+    {
+      "label": "12-pause",
+      "keys": [
+        "escape"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "paused",
+      "mode": "framebuffer",
+      "race_flags": 1,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -61045.6640625,
+          70.0,
+          17683.697265625
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03300001472234726,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "nearest_scene_root": {
+        "id": "scene:157",
+        "model": 1590,
+        "position": [
+          -60606,
+          56,
+          17874
+        ],
+        "angles": [
+          4,
+          1833,
+          29
+        ],
+        "distance_from_player_record": 479.28657248519465
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/12-pause.png",
+      "png_sha256": "f309a313f3bbe711cd6c632cf60274842ac0a4cd2c1ff9a1f35cf0c39d032b03"
+    },
+    {
+      "label": "13-resumed",
+      "keys": [
+        "enter"
+      ],
+      "hold_seconds": 0.12,
+      "released": true,
+      "status": "race",
+      "mode": "race",
+      "race_flags": 1,
+      "telemetry": {
+        "player_index": 0,
+        "speed_game_units": 0.0,
+        "velocity_world_units_per_second": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_world_units": [
+          -61045.6640625,
+          70.0,
+          17683.697265625
+        ],
+        "engine_rpm": 0.0,
+        "gear_raw": 1,
+        "simulation_step_seconds": 0.03300001472234726,
+        "raw_frame_step_seconds": 0.029999999329447746,
+        "source": "original car record; no HUD conversion or synthetic values"
+      },
+      "nearest_scene_root": {
+        "id": "scene:157",
+        "model": 1590,
+        "position": [
+          -60606,
+          56,
+          17874
+        ],
+        "angles": [
+          4,
+          1833,
+          29
+        ],
+        "distance_from_player_record": 479.28657248519465
+      },
+      "png": "/private/tmp/rally-api-input-test-20261125-001938/API-artifacts/13-resumed.png",
+      "png_sha256": "67cd663e28bfbacb0beb42fb034a69f2ee0c3ae8dda8a9bcc6df10b1c767699d"
+    }
+  ],
+  "limits": [
+    "Short disposable race test; not all tracks or long-session stability",
+    "Native presentation rate belongs to separate frontend benchmark",
+    "LCD comparison verifies captured000/gear1 and041/gear2; no engineLCD bug supported"
+  ]
+}

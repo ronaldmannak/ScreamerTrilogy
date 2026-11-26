@@ -1,0 +1,126 @@
+--- a/src/webserver/s1_native.cpp
++++ b/src/webserver/s1_native.cpp
+@@ -12,6 +12,7 @@
+ #include "gui/render/render.h"
+ #include "misc/video.h"
+ #include "hardware/memory.h"
++#include "hardware/video/vga.h"
+ #include "libs/json/json.h"
+ #include <array>
+ #include <chrono>
+@@ -51,7 +52,8 @@
+     bool hud_paging_enabled=false;
+     std::string hud_reject_reason;
+     uint32_t publish_width=0, publish_height=0, publish_pixel_format=0;
+-    uint64_t publish_attempts=0, publish_count=0;
++    uint64_t publish_attempts=0, publish_count=0, publish_display_sequence=0, publish_display_captured=0;
++    uint32_t captured_dac_bits=0, captured_dac_pel_mask=0;
+     std::string publish_reject_reason;
+ } state;
+ uint64_t now_ns() {
+@@ -87,9 +89,10 @@
+     uint64_t captured=0, sequence=0;
+     std::vector<HudPage> pages;
+     std::array<uint8_t,HudPixels> alpha{}, indices{};
++    std::array<Bgrx8888,256> palette{};
+ } hud;
+ struct HudImage {
+-    uint64_t sequence=0,captured=0,display_sequence=0,display_captured=0;uint32_t mode=0;
++    uint64_t sequence=0,captured=0;uint32_t mode=0;
+     std::string bgra;
+ };
+ HudImage latest_hud;
+@@ -145,6 +148,9 @@
+     }
+     return true;
+ }
++bool supported_hud_display() {
++    return vga.mode==M_LIN8&&vga.draw.image_info.width==640&&vga.draw.image_info.height==480;
++}
+ bool start_hud_coverage() {
+     stop_hud_coverage();hud.pending=false;hud.pages.clear();
+     const auto fb=mem_readd(data(0x121528));
+@@ -159,6 +165,7 @@
+         return reject("non-flat protected framebuffer segments");
+     if(state.hud_paging_enabled)return reject("paging enabled");
+     if(!MEM_A20_Enabled())return reject("A20 disabled");
++    if(!supported_hud_display())return reject("HUD display is not640x480 indexed VGA");
+     if(!in_ram(fb,HudPixels))return reject("framebuffer exceeds guest RAM");
+     // S1 can allocate its buffer in conventional DOS RAM (observed DC60),
+     // as well as extended RAM. Exclude IVT/BDA/first page and the video/ROM
+@@ -174,8 +181,18 @@
+ Bitu hud_end_callback() {
+     if(hud.active) {
+         stop_hud_coverage();
+-        MEM_BlockRead(hud.framebuffer,hud.indices.data(),HudPixels);
+-        hud.captured=now_ns();hud.sequence++;hud.pending=true;state.hud_captures++;
++        // Preserve one completed original HUD cohort. VGA scanout can be
++        // several milliseconds behind this CPU snapshot, so its later RGB
++        // cache cannot safely provide colors for this frame's write mask.
++        if(supported_hud_display()) {
++            MEM_BlockRead(hud.framebuffer,hud.indices.data(),HudPixels);
++            std::copy_n(vga.dac.palette_map,hud.palette.size(),hud.palette.begin());
++            state.captured_dac_bits=vga.dac.bits;state.captured_dac_pel_mask=vga.dac.pel_mask;
++            hud.captured=now_ns();hud.sequence++;hud.pending=true;state.hud_captures++;
++        } else {
++            hud.pending=false;state.hud_rejected++;
++            state.hud_reject_reason="Indexed HUD display changed during capture";
++        }
+     }
+     reg_eip=code(FrameCall+5)-SegPhys(cs);return CBRET_NONE;
+ }
+@@ -281,6 +298,9 @@
+         {"hud_publish_attempts",state.publish_attempts},{"hud_publish_count",state.publish_count},
+         {"hud_publish_width",state.publish_width},{"hud_publish_height",state.publish_height},
+         {"hud_publish_pixel_format",state.publish_pixel_format},{"hud_publish_reject_reason",state.publish_reject_reason},
++        {"hud_publish_display_sequence",state.publish_display_sequence},{"hud_publish_display_capture_ns",state.publish_display_captured},
++        {"hud_color_capture_ns",hud.captured},{"hud_color_source","captured-original-indices-dac"},
++        {"hud_captured_dac_bits",state.captured_dac_bits},{"hud_captured_dac_pel_mask",state.captured_dac_pel_mask},
+         {"hud_candidate",state.hud_candidate},{"hud_reject_reason",state.hud_reject_reason},{"hud_rejected_page",state.hud_rejected_page},
+         {"hud_ds_base",state.hud_ds_base},{"hud_es_base",state.hud_es_base},{"hud_paging_enabled",state.hud_paging_enabled},
+         {"current_ds_base",SegPhys(ds)},{"current_es_base",SegPhys(es)},{"current_cs_base",SegPhys(cs)},
+@@ -311,23 +331,25 @@
+     state.publish_attempts++;state.publish_width=source.src.width;
+     state.publish_height=source.src.height;
+     state.publish_pixel_format=static_cast<uint32_t>(source.src.pixel_format);
+-    // The display cache may already contain RGB32 after the VGA hardware
+-    // cursor/palette stage, even in an indexed guest mode. Use the exact
+-    // converted display RGB rather than interpreting its palette again.
++    // This VGA display publish is only a normalized-dimension gate. Its
++    // asynchronous RGB cache and Render palette do not color the HUD.
+     if(source.src.width!=640||source.src.height!=480||original_bgra.size()!=640*480*4) {
+         state.publish_reject_reason="original display is not640x480 BGRA";return;
+     }
+     HudImage image;image.sequence=hud.sequence;image.captured=hud.captured;image.mode=hud.mode;
+-    image.display_sequence=display_sequence;image.display_captured=display_capture_ns;
+-    image.bgra=original_bgra;auto out=reinterpret_cast<uint8_t*>(image.bgra.data());
++    state.publish_display_sequence=display_sequence;state.publish_display_captured=display_capture_ns;
++    image.bgra.resize(640*480*4);auto out=reinterpret_cast<uint8_t*>(image.bgra.data());
+     // Original8beb8 uses q=floor(400*65536/480), adding q BEFORE
+     // each output scanline. Apply that exact expansion to write provenance.
+     constexpr uint32_t step=(400u<<16)/480u;
+     for(uint32_t y=0;y<480;y++) {
+         const auto sy=std::min(399u,((y+1)*step)>>16);
+         for(uint32_t x=0;x<640;x++,out+=4) {
+-            const uint8_t alpha=hud.alpha[sy*640+x];
+-            if(alpha)out[3]=alpha;else std::memset(out,0,4);
++            const size_t at=sy*640+x;
++            const uint8_t alpha=hud.alpha[at];
++            const auto& color=hud.palette[hud.indices[at]];
++            out[0]=alpha?color.Blue():0;out[1]=alpha?color.Green():0;
++            out[2]=alpha?color.Red():0;out[3]=alpha;
+         }
+     }
+     hud.pending=false;state.publish_count++;state.publish_reject_reason.clear();
+@@ -341,9 +363,8 @@
+     response.set_header("X-S1-Hud-Sequence",std::to_string(image.sequence));
+     response.set_header("X-S1-Hud-Capture-Ns",std::to_string(image.captured));
+     response.set_header("X-S1-Hud-Mode",std::to_string(image.mode));
+-    response.set_header("X-S1-Display-Sequence",std::to_string(image.display_sequence));
+-    response.set_header("X-S1-Display-Capture-Ns",std::to_string(image.display_captured));
+-    response.set_header("X-S1-Hud-Color-Source","paired-original-display-bgra");
++    response.set_header("X-S1-Hud-Color-Capture-Ns",std::to_string(image.captured));
++    response.set_header("X-S1-Hud-Color-Source","captured-original-indices-dac");
+     response.set_header("X-S1-Hud-Coverage","original-ram-byte-writes");
+     response.set_header("Cache-Control","no-store");
+     response.set_content(std::move(image.bgra),"application/octet-stream");

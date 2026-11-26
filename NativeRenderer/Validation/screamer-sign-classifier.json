@@ -1,0 +1,14 @@
+{
+  "patch": "/private/tmp/screamer-sign-original/source-culling.patch",
+  "patch_sha256": "94f9fc6dc4beab6a8ec7b6578b535926b08c802d3313427824dbec4f96b563e0",
+  "base_export_scene_sha256": "36109c78fd8fe337527933f0e26279962118ae78f7dca060becddc4d854fa403",
+  "source_export_scene_sha256": "f81fe9ae8a9022e28eb45e6ea8cc14f8a4e8c29e946b91db0d0389f904a11d48",
+  "scope": "S1 export_scene.py only; preserves original vertex/UV/normal streams and fan index order; isolates source-normal exceptions into double_sided batches",
+  "source_contract_test": "/private/tmp/screamer-sign-original/Tools/test_source_culling.py",
+  "source_contract_tests_passed": 6,
+  "static_scenes": "/private/tmp/screamer-sign-original/Scenes",
+  "dynamic_inheritance": "Unchanged export_dynamic.DynamicScene inherits this classification automatically",
+  "all_staged_S1_regressions_passed": 50,
+  "patch_replays_byte_exactly": true,
+  "export_geometry_proof": "/private/tmp/screamer-sign-original/export-proof.json"
+}

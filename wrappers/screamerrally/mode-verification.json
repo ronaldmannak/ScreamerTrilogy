@@ -1,0 +1,36 @@
+[
+  {
+    "game": "screamer",
+    "app": "/private/tmp/screamer-trilogy-update/release-v2/screamer/Screamer.app",
+    "result": "passed",
+    "checks": [
+      "8 independent mode hashes; toggle/repeat launches, DOS paths, original executable, settings and save preservation passed",
+      "Legacy checkbox preferences migrate to extended level without showing or rewriting settings",
+      "Remembered distance level honored; CLI overrides remain temporary"
+    ],
+    "mode_count": 8
+  },
+  {
+    "game": "screamer2",
+    "app": "/private/tmp/screamer-trilogy-update/release-v2/screamer2/Screamer 2.app",
+    "result": "passed",
+    "checks": [
+      "4 independent mode hashes; toggle/repeat launches, DOS paths, original executable, settings and save preservation passed",
+      "Unsupported farther mode refused without changing config",
+      "Legacy checkbox preferences migrate to extended level without showing or rewriting settings",
+      "Remembered distance level honored; CLI overrides remain temporary"
+    ],
+    "mode_count": 4
+  },
+  {
+    "game": "screamerrally",
+    "app": "/private/tmp/screamer-trilogy-update/release-v2/screamerrally/Screamer Rally.app",
+    "result": "passed",
+    "checks": [
+      "6 independent mode hashes; toggle/repeat launches, DOS paths, original executable, settings and save preservation passed",
+      "Legacy checkbox preferences migrate to extended level without showing or rewriting settings",
+      "Remembered distance level honored; CLI overrides remain temporary"
+    ],
+    "mode_count": 6
+  }
+]

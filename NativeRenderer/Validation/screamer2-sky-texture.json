@@ -1,0 +1,25 @@
+{
+  "tmu_sha256": "d13a2b391565faeb714d26ba2a1aa4ed4095ec9651f313b068d55ac851c8a8fa",
+  "matches": [
+    {
+      "archive": "MAP3H02.DAT",
+      "entry": "MAP3.BCK",
+      "start_packed_size_flags": [
+        2530786,
+        124895,
+        262144,
+        2
+      ]
+    },
+    {
+      "archive": "MAP3L02.DAT",
+      "entry": "MAP3.BCK",
+      "start_packed_size_flags": [
+        2485625,
+        124895,
+        262144,
+        2
+      ]
+    }
+  ]
+}

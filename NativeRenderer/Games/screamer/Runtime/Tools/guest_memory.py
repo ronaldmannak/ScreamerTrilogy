@@ -1,0 +1,2 @@
+class SnapshotError(ValueError):
+    pass

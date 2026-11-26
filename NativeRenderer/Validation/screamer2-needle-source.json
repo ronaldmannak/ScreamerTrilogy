@@ -1,0 +1,27 @@
+{
+  "executable_sha256": "e6c24c84650938f2baee5f4b571baa45bb09a93ba12dd24e3e1d2cefd9b6f3ec",
+  "exact_original_calls": [
+    {
+      "return_link": "0x4f44a",
+      "bytes": "e8a0330700",
+      "target_link": "0xc27ea"
+    },
+    {
+      "return_link": "0x4f463",
+      "bytes": "e887330700",
+      "target_link": "0xc27ea"
+    },
+    {
+      "return_link": "0x4f47c",
+      "bytes": "e86e330700",
+      "target_link": "0xc27ea"
+    },
+    {
+      "return_link": "0xc28c0",
+      "bytes": "e818de0200",
+      "target_link": "0xf06d8"
+    }
+  ],
+  "stack_contract": "grDrawLine return then2pointerargs+4savedregisters = original needle caller at+28bytes",
+  "runtime_observation": "Attract has0needle primitives; actual player race remains pending explicit S2 approval"
+}

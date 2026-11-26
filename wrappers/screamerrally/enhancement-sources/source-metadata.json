@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/akitaonrails/rea-screamer-trilogy",
+  "commit": "c9a21733d7b89cecd4646f1a5249fe482bb9c534",
+  "commit_url": "https://github.com/akitaonrails/rea-screamer-trilogy/commit/c9a21733d7b89cecd4646f1a5249fe482bb9c534",
+  "commit_date": "2026-11-21T05:08:48Z",
+  "commit_message": "chore: release v0.9.2",
+  "retrieved_utc": "2026-11-24T21:07:41Z",
+  "selected_license": "MIT",
+  "files": [
+    {
+      "local_file": "fixes.rs",
+      "upstream_path": "crates/screamer-launcher/src/fixes.rs",
+      "source_url": "https://github.com/akitaonrails/rea-screamer-trilogy/blob/c9a21733d7b89cecd4646f1a5249fe482bb9c534/crates/screamer-launcher/src/fixes.rs"
+    },
+    {
+      "local_file": "LICENSE-MIT",
+      "upstream_path": "LICENSE-MIT",
+      "source_url": "https://github.com/akitaonrails/rea-screamer-trilogy/blob/c9a21733d7b89cecd4646f1a5249fe482bb9c534/LICENSE-MIT"
+    }
+  ],
+  "notes": "Fetched through the connected GitHub tool at the pinned commit. SR_START65H_FIXES E2/E6 supply the optional Rally widescreen and draw-distance recipes. Original game data is not part of this upstream snapshot."
+}

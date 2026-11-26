@@ -1,0 +1,105 @@
+From e97e927c198960c809d18fae53280554ed0c975f Mon Sep 17 00:00:00 2001
+From: Rui Chen <rui@chenrui.dev>
+Date: Tue, 8 Sep 2026 08:01:52 -0400
+Subject: [PATCH] build: Fix system-library packaging
+
+Signed-off-by: Rui Chen <rui@chenrui.dev>
+---
+ CMakeLists.txt                     | 1 +
+ cmake/add_install_rules.cmake      | 2 +-
+ src/gui/render/opengl_renderer.cpp | 2 +-
+ src/gui/render/sdl_renderer.cpp    | 2 +-
+ src/libs/decoders/CMakeLists.txt   | 2 +-
+ src/libs/manymouse/CMakeLists.txt  | 4 ++++
+ src/midi/CMakeLists.txt            | 4 ++++
+ 7 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 679470e64a7fd9cdbf7ff630a18fa0e527a80bff..95934e1345f428a1f29325930a419ddd0d60dfb8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -539,6 +539,7 @@ if(LIBATOMIC)
+ endif()
+ 
+ target_link_libraries(libdosboxcommon PRIVATE
++  $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
+   $<IF:$<TARGET_EXISTS:iir::iir>,iir::iir,iir::iir_static>
+   loguru
+   libdecoders
+diff --git a/cmake/add_install_rules.cmake b/cmake/add_install_rules.cmake
+index 3a66663828107c2d960f4ba19ebed8146e0bc644..ce153a6bd15a4ff7c6a8c3ecc51fe8004ea5af27 100644
+--- a/cmake/add_install_rules.cmake
++++ b/cmake/add_install_rules.cmake
+@@ -41,7 +41,7 @@ function(add_install_rules)
+     endforeach()
+ 
+     # Bundle the resources
+-    install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${RESOURCE_COPY_PATH}"
++    install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${RESOURCE_COPY_PATH}/"
+             DESTINATION "${INSTALL_DIR_RESOURCES}")
+ 
+     # Bundle required licenses
+diff --git a/src/gui/render/opengl_renderer.cpp b/src/gui/render/opengl_renderer.cpp
+index 914a3bd9a6b9a8ac4393243be87eb4d2fe21be81..f80c755585e57952dc0e544159229001a0f3fc09 100644
+--- a/src/gui/render/opengl_renderer.cpp
++++ b/src/gui/render/opengl_renderer.cpp
+@@ -93,7 +93,7 @@ SDL_Window* OpenGlRenderer::CreateSdlWindow(const int x, const int y,
+ 	auto flags = sdl_window_flags;
+ 	flags |= SDL_WINDOW_OPENGL;
+ 
+-#ifdef MACOSX
++#if defined(MACOSX) && defined(SDL_HINT_MAC_COLOR_SPACE)
+ 	SDL_SetHint(SDL_HINT_MAC_COLOR_SPACE, "displayp3");
+ #endif
+ 
+diff --git a/src/gui/render/sdl_renderer.cpp b/src/gui/render/sdl_renderer.cpp
+index 2736d57830d7313fc53a5521b8363d13b39c270c..f8590a5cd106cac1a62e8b126770eaf53269c80c 100644
+--- a/src/gui/render/sdl_renderer.cpp
++++ b/src/gui/render/sdl_renderer.cpp
+@@ -23,7 +23,7 @@ SdlRenderer::SdlRenderer(const int x, const int y, const int width,
+ {
+ 	auto flags = sdl_window_flags | OpenGlDriverCrashWorkaround(render_driver);
+ 
+-#ifdef MACOSX
++#if defined(MACOSX) && defined(SDL_HINT_MAC_COLOR_SPACE)
+ 	SDL_SetHint(SDL_HINT_MAC_COLOR_SPACE, "srgb");
+ #endif
+ 
+diff --git a/src/libs/decoders/CMakeLists.txt b/src/libs/decoders/CMakeLists.txt
+index 7b2433588d20bc4374b71021322497084b563bc8..a669d24636e7abdf5548b4d6f251c62619f0a85a 100644
+--- a/src/libs/decoders/CMakeLists.txt
++++ b/src/libs/decoders/CMakeLists.txt
+@@ -20,7 +20,7 @@ if(USE_SYSTEM_LIBS)
+     libdecoders PRIVATE ${OPUSFILE_CFLAGS_OTHER}
+   )
+   target_link_libraries(
+-    libdecoders PRIVATE ${OPUSFILE_LIBRARIES}
++    libdecoders PRIVATE PkgConfig::OPUSFILE
+   )
+ else()
+   find_package(OpusFile REQUIRED)
+diff --git a/src/libs/manymouse/CMakeLists.txt b/src/libs/manymouse/CMakeLists.txt
+index 5eee6c1994f55fc27a0c86aaf5efd3e1ee418818..964a2a4c2ffcc7e7a0d2bc37333c28b07e192bf7 100644
+--- a/src/libs/manymouse/CMakeLists.txt
++++ b/src/libs/manymouse/CMakeLists.txt
+@@ -14,4 +14,8 @@ if(C_MANYMOUSE)
+     $<IF:$<BOOL:${SUPPORT_XINPUT2}>,${X11_Xinput_LIB},>
+   )
+ 
++  if (DOSBOX_PLATFORM_MACOS)
++    target_link_libraries(libmanymouse PRIVATE ${IOKit_LIBRARIES})
++  endif()
++
+ endif()
+diff --git a/src/midi/CMakeLists.txt b/src/midi/CMakeLists.txt
+index f43d0cfb4af80b760e785e040648039ad142ca98..dc47fd525bd4cbfbba4358f585cec63145608965 100644
+--- a/src/midi/CMakeLists.txt
++++ b/src/midi/CMakeLists.txt
+@@ -24,3 +24,7 @@ if (C_COREMIDI)
+   target_link_libraries(libdosboxcommon PRIVATE "-framework CoreFoundation")
+   target_link_libraries(libdosboxcommon PRIVATE "-framework CoreMIDI")
+ endif()
++
++if (C_COREAUDIO)
++  target_link_libraries(libdosboxcommon PRIVATE "-framework AudioToolbox")
++endif()

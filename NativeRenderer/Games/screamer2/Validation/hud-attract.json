@@ -1,0 +1,40 @@
+{
+  "schema": "screamer-hud-profile/v1",
+  "game": "screamer2-3dfx-gog",
+  "scope": "attract-only",
+  "complete": true,
+  "source_width": 640,
+  "source_height": 480,
+  "coordinate_system": "original framebuffer pixels; top-left origin",
+  "requires": {
+    "phase": "attract",
+    "game_flags_mask": 128,
+    "game_flags_value": 128
+  },
+  "rects": [
+    {
+      "x": 58,
+      "y": 7,
+      "width": 522,
+      "height": 92,
+      "anchor": "center",
+      "content": "original Screamer 2 logo"
+    },
+    {
+      "x": 143,
+      "y": 397,
+      "width": 354,
+      "height": 40,
+      "anchor": "center",
+      "content": "original copyright line"
+    }
+  ],
+  "validation": "Inspected original 640x480 cached framebuffer sequence797 from S2-live/live-attract-v2/original-frame.png, paired with coherent RAM 11.213458ms later. Both original logo and copyright glyphs, outlines and shadows fit inside these source-pixel rectangles. The native640 comparison aligns house/tree/road landmarks and four car roots with the original frame.",
+  "source_frame": "../S2-live/live-attract-v2/original-frame.png",
+  "limitations": [
+    "This profile is valid only during original attract mode; it does not validate the gameplay HUD.",
+    "Copy original framebuffer pixels without replacing labels, values or artwork.",
+    "Rectangles include some original 3D/sky background around glyphs; they are not glyph alpha masks.",
+    "Native cloud-sky and car shadows remain separate renderer work."
+  ]
+}

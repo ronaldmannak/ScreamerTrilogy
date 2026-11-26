@@ -1,0 +1,13 @@
+{
+  "executable_sha256": "9eac6e12ab309389bdda019cfa695bfbbc791fbda1a4634464a444fce35165d1",
+  "runtime_executable_sha256": "2fd67bfeb387558da4952dcd8442864e869e67ca5ef39793526cafd34358b9d4",
+  "ram_sha256": "a43793ca0b0991ba60a0730db91aeb7851735dbcc2e9c5c50e981fccffbe39fa",
+  "captured_utc": "2026-11-25T04:38:46.134746+00:00",
+  "guest_patch": {
+    "raw_offset": 349922,
+    "expected_hex": "83f801",
+    "replacement_hex": "83f803"
+  },
+  "engine": "/Applications/Screamer Rally.app/Contents/MacOS/dosbox",
+  "limitations": "Atomic CPU-step snapshot, not guaranteed logical end-of-frame; no GUI/input automation; Voodoo texture RAM excluded."
+}

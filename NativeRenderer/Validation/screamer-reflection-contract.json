@@ -1,0 +1,48 @@
+{
+  "texgen": "s1-reflection",
+  "batch": {
+    "blend": false,
+    "alpha_test": false,
+    "reflection_textures": "All owned full256-by-256 tile IDs in original frame order",
+    "reflection_phase": "Captured integer phase0..65535",
+    "reflection_scroll": "Captured normalized2-vector[0,1)"
+  },
+  "pose": {
+    "reflection_phase": "Live actor DWORD+0x3C, supported0..65535; nonreflective unused out-of-range data emits0",
+    "reflection_scroll": "Live original float32 actor+0x30/+0x38, x87 nearest/ties-even then lowbyte divided256; original integer-indefinite maps to0"
+  },
+  "normals": {
+    "file": "normals.bin",
+    "format": "float32-le",
+    "stride": 12,
+    "count": "Exactly vertices.count",
+    "space": "vertex-local",
+    "source": "Original counted float3 normal table from part+0x20; same basis as exported vertex positions",
+    "non_a0": [
+      0,
+      0,
+      0
+    ]
+  },
+  "shader": {
+    "view_position": "Original unshifted camera inverse basis*(worldPosition-originalCameraOrigin). Existing shifted eye path:properCamera*(worldPosition-eye)+(0,0,128). Do not apply Metal X flip.",
+    "normal": "Original authored normal transformed by original part-to-view rotation; do not normalize",
+    "reflection": "r=2*dot(n,normalize(viewPos))*n-normalize(viewPos)",
+    "uv": "(127+rint_even(127*r.xz))/256-reflection_scroll",
+    "uv_wrap": "Keep signed/unwrapped UV per vertex; repeat only while sampling per fragment",
+    "frame_index": "min(frame_count-1,(frame_count*reflection_phase)>>16)"
+  },
+  "source_links": {
+    "normal_table_bind": "8A931",
+    "normal_transform": "C25E0",
+    "reflection_generator": "C2270/C24E0",
+    "opaque_raster": "DBC83/DBC88",
+    "frame_phase_update": "1DB38/1CB4B",
+    "frame_phase_bind": "8ADF7/DBBCA",
+    "full256_fast_path": "DB630/DB6FC"
+  },
+  "limits": [
+    "Frontend deliberately preserves the existing interpolated Euler/part pose matrices; original Q14 matrix quantization differs slightly. Do not claim pixel-identical reflections.",
+    "C0/E0 palette-effect shadows and smoke remain outside this focused glass restoration."
+  ]
+}

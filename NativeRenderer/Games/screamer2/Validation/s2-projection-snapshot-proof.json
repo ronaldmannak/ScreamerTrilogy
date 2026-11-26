@@ -1,0 +1,60 @@
+{
+  "cy": {
+    "link": "0x8386c",
+    "value": 260
+  },
+  "grid_height": {
+    "link": "0x83854",
+    "value": 400
+  },
+  "grid_width": {
+    "link": "0x83880",
+    "value": 640
+  },
+  "x_offset": {
+    "link": "0xac0e8",
+    "value": 0
+  },
+  "y_offset": {
+    "link": "0xac0ec",
+    "value": 0
+  },
+  "center_fixed16": {
+    "link": "0x7c54a",
+    "value": 20905984
+  },
+  "mirror_flags": {
+    "link": "0xabfe0",
+    "value": 0
+  },
+  "x_table": {
+    "pointer_link": "0xac0f4",
+    "physical_address": "0x2710fc",
+    "first5": [
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0
+    ]
+  },
+  "y_table": {
+    "link": "0xae0fc",
+    "first5": [
+      0.0,
+      1.2000000476837158,
+      2.4000000953674316,
+      3.5999999046325684,
+      4.800000190734863
+    ]
+  },
+  "derived_projection": {
+    "width": 640,
+    "height": 480,
+    "fx": 256.0,
+    "fy": 307.20001220703125,
+    "cx": 319,
+    "cy": 312.0000123977661,
+    "near": 128
+  }
+}

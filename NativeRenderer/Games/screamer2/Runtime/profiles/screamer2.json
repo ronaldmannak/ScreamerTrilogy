@@ -1,0 +1,46 @@
+{
+  "schema": "screamer-extractor-profile/v1",
+  "id": "screamer2-3dfx-gog",
+  "title": "Screamer 2",
+  "executable": "S2_3DFX.EXE",
+  "executable_sha256": "e6c24c84650938f2baee5f4b571baa45bb09a93ba12dd24e3e1d2cefd9b6f3ec",
+  "physics_period_ms": 20,
+  "links": {
+    "rows": 1259280,
+    "models": 1394528,
+    "scene": 1302196,
+    "camera": 538684,
+    "clock": 1394544,
+    "dispatch": 504592,
+    "textures": 1396132,
+    "libraries": 1394672,
+    "environment": 704728
+  },
+  "setup_modes": {
+    "835792": 0,
+    "883792": 1,
+    "860140": 2,
+    "853776": 3,
+    "869088": 4,
+    "881564": 5,
+    "851632": 6,
+    "871232": 7
+  },
+  "texture_record_count": 3064,
+  "car_name_prefixes": [
+    "auto"
+  ],
+  "car_count_min": 1,
+  "car_count_max": 16,
+  "evidence": [
+    "../s2-material-homology.json",
+    "../s2-material-homology-extended.json",
+    "../../screamer2-homologues.json",
+    "../../screamer2-extended-homologues.json"
+  ],
+  "notes": [
+    "Link-time addresses; runtime translation must use explicit LE mappings.",
+    "The extractor never writes game memory or changes game timing.",
+    "Material routines disambiguated with unique 768-byte relocation-aware code matches."
+  ]
+}

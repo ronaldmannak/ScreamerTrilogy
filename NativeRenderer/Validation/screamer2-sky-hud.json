@@ -1,0 +1,46 @@
+{
+  "mode": "input-free automatic attract",
+  "read_only": true,
+  "keyboard_service": "disabled-read-only-diagnostic",
+  "original_wait_ticks": 2,
+  "engine_exit": 0,
+  "native4k": {
+    "native_world_frames": 3,
+    "render_width": 3840,
+    "render_height": 2160,
+    "sky_active": true,
+    "hud_alpha_layers": 1,
+    "gpu_errors": 0,
+    "live_parse_errors": 0,
+    "presentation_mode": "native-world-with-original-HUD"
+  },
+  "captured_track": 0,
+  "sky_source": {
+    "kind": "rally",
+    "enabled": true,
+    "ground_rgb": [
+      32,
+      100,
+      48
+    ],
+    "flat_rgb": [
+      0,
+      0,
+      8
+    ],
+    "source": "original-S2-7CC48-sky-flags-and-colours"
+  },
+  "HUD_complete_scope": "Transparent HUD source; original rear-view3D pixels only in verified mirror viewport",
+  "remaining_limits": [
+    "Actual player-race needle and mirror behavior is guarded by original code but not yet exercised; S2 API-input consent remains pending.",
+    "Existing dynamic wheel poses remain frozen and reflection UV remains approximate.",
+    "Only offscreen output is claimed; no foreground FPS measurement was performed."
+  ],
+  "source_proofs": [
+    "sky-homologue.json",
+    "sky-tmu-proof.json",
+    "needle-call-proof.json",
+    "final-demo/paired-display-proof.json",
+    "patch-and-test-proof.json"
+  ]
+}

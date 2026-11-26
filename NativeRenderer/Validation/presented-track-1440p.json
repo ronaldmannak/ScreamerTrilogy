@@ -1,0 +1,21 @@
+{
+  "replay_camera_samples": 122,
+  "drawable_height": 1440,
+  "render_target_fps": 60,
+  "drawable_width": 2560,
+  "gpu_p95_ms": 0.44095830526202917,
+  "scene": "/private/tmp/rally-native-renderer/build-textured-v3/Screamer Rally Metal Preview.app/Contents/Resources/Scene/scene.json",
+  "present_interval_p50_ms": 16.66658336762339,
+  "vertices": 168846,
+  "submitted_frames": 3539,
+  "presented_frames": 3261,
+  "gpu_mean_ms": 0.3969208462038542,
+  "cpu_encode_p95_ms": 0.2220416208729148,
+  "triangles": 81446,
+  "presented_fps": 59.90836051475304,
+  "present_interval_p95_ms": 16.666749957948923,
+  "draw_batches": 193,
+  "textures": 384,
+  "device": "Apple M5 Max",
+  "physics_execution": "none: viewer reads captured game geometry/camera poses"
+}

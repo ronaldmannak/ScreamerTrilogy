@@ -1,0 +1,33 @@
+{
+  "base": "existing unified-engine source after official0.83.1 + upstream patches + rally-bridge.patch + unified-engine.patch",
+  "source_file": "src/webserver/s1_native.cpp",
+  "base_sha256": "bcf3442a522db37f643d94f462096ed5031c27c5b1d10e89dc4616192e2523e8",
+  "source_sha256": "5cccdfe94a813de6fc0975cff3cf3e15047098f9accbf093bf87d25678fa2f86",
+  "patch_sha256": "ec1e58fa4333fa92b7ff2ce6fedae7a57d64bed8b034e4edcfd3b40b2d4617b4",
+  "binary": "/private/tmp/screamer-s1-hires/build/dosbox",
+  "binary_sha256": "8ec1e48e157078cc31b905a71345f14cf3627dbe682459be4873ced97c7d5994",
+  "build": "ARM64 Release;298initial targets andtwo3-target incremental builds passed",
+  "physics": "Original S1 two-tick helper unchanged; no physics patches",
+  "passive_proof": "/private/tmp/screamer-s1-hires/passive-final-test/result.json",
+  "main_race_proof": "screamer-playable-4k.json",
+  "prior_passive_proof": "/private/tmp/screamer-s1-hires/passive-test/result.json",
+  "final_passive_result": {
+    "seconds": 10.205615542,
+    "exit_code": 0,
+    "eligible_samples": 19,
+    "cs_ds_es_bases": [
+      0,
+      0,
+      0
+    ],
+    "paging_enabled": false,
+    "a20_enabled": true,
+    "framebuffer": 56400,
+    "ordinary_ram": true,
+    "backend_original": 61274,
+    "backend_skipped": 0,
+    "main_hud_calls": 0,
+    "input_api_used": false
+  },
+  "status": "Verified in actual isolated player race: original conventional framebuffer captured without rejection; native4K rendering active"
+}

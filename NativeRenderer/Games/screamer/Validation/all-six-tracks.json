@@ -1,0 +1,240 @@
+[
+  {
+    "track": 1,
+    "statistics": {
+      "cells": 222,
+      "objects_list_0": 163,
+      "objects_list_1": 1001,
+      "parts_lod_0": 1165,
+      "unique_parts": 224,
+      "rendered_type_0x10_polygons": 12885,
+      "world_objects": 1164,
+      "rendered_type_0x40_polygons": 2716,
+      "rendered_type_0x80_polygons": 62,
+      "frozen_animated_part_placements": 2,
+      "models_used": 223,
+      "vertices": 62433,
+      "triangles": 31107,
+      "textures": 163,
+      "unsupported_triangles_by_type": {}
+    },
+    "provenance": {
+      "original_executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+      "archive": "GFX/MAP1H.DAT",
+      "archive_sha256": "2d4c9e308a9856b0e77b1d1c8a9487a72b1aba70bf3a2757bcb9ef5efe25e861",
+      "asset_sha256": {
+        "UNR": "c141d2e9e5f0a1fccb6feaa00f0ddfe0c7614da5b34fc743b305643ba23a838c",
+        "MMP": "008666a0e24738718838a5104609f266d1e711ef89a5d0713f5e0ca805b92b18",
+        "MLB": "7b007deacbffea7ad4da28bfd88445e1bb6fd0967668804cf0203e3d798b57e9",
+        "COL": "b7f99cb3b55cdf5440bb32265927bf2e03dc9437cb464f376d10f16c1864e9d4"
+      },
+      "source": "Original owned S1 assets, decoded offline; no game execution or generated geometry",
+      "format_research": "S1/README.md and original STARTH.EXE disassembly",
+      "convention_source": "https://github.com/Rick-Barber/ScreamerRally-Recomp",
+      "source_license": "GPL-3.0-only"
+    },
+    "files_sha256": {
+      "vertices.bin": "5858767c40ef10c6f0568d94ae2633c667e2803ad6552a817dbd9bb9bdbed8df",
+      "indices.bin": "f9e5b018f0e4cc469ac49ea98e626b8a6b7c66579696e5a81556a8f5e7f3861c"
+    }
+  },
+  {
+    "track": 2,
+    "statistics": {
+      "cells": 385,
+      "objects_list_0": 487,
+      "objects_list_1": 921,
+      "parts_lod_0": 1410,
+      "unique_parts": 392,
+      "rendered_type_0x40_polygons": 1251,
+      "world_objects": 1408,
+      "rendered_type_0x10_polygons": 18675,
+      "rendered_type_0x80_polygons": 22,
+      "frozen_animated_part_placements": 3,
+      "models_used": 390,
+      "vertices": 78701,
+      "triangles": 38805,
+      "textures": 150,
+      "unsupported_triangles_by_type": {}
+    },
+    "provenance": {
+      "original_executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+      "archive": "GFX/MAP2H.DAT",
+      "archive_sha256": "56017a5c989a05bd80768b8628805e4a451aca628ba7e6f0f3c6be366915344f",
+      "asset_sha256": {
+        "UNR": "eae55e8e463509914f0a57daac68eb1186701728de08ee49568f13d3b96efcbe",
+        "MMP": "804a0ca30fc4a67dcbeaf350c4f5d7df876a268948f7245ffe6e85c896da6fca",
+        "MLB": "2dde4eefd0b970fa07d4608c5e535004dfa239e81f8df5b2bff70da7711a8abc",
+        "COL": "ab5938380d6fbe62774e72638dcec14a5aa9932f0f404779448e88a1a24e7373"
+      },
+      "source": "Original owned S1 assets, decoded offline; no game execution or generated geometry",
+      "format_research": "S1/README.md and original STARTH.EXE disassembly",
+      "convention_source": "https://github.com/Rick-Barber/ScreamerRally-Recomp",
+      "source_license": "GPL-3.0-only"
+    },
+    "files_sha256": {
+      "vertices.bin": "b79d95781f21dde980dcb039d7dad4887b43271d43d77d0ec7e487acff794888",
+      "indices.bin": "60af8146ba45d71bd2d94b0489d9c2d2f00820dedb50cd635f7b20a47a2071c1"
+    }
+  },
+  {
+    "track": 3,
+    "statistics": {
+      "cells": 365,
+      "objects_list_0": 359,
+      "objects_list_1": 1231,
+      "parts_lod_0": 1592,
+      "unique_parts": 374,
+      "rendered_type_0x10_polygons": 20648,
+      "world_objects": 1590,
+      "rendered_type_0x40_polygons": 2735,
+      "frozen_animated_part_placements": 4,
+      "rendered_type_0x80_polygons": 10,
+      "models_used": 373,
+      "vertices": 93185,
+      "triangles": 46399,
+      "textures": 179,
+      "unsupported_triangles_by_type": {}
+    },
+    "provenance": {
+      "original_executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+      "archive": "GFX/MAP3H.DAT",
+      "archive_sha256": "d9a07fc578342797551b3dda20afc2d7308363ccc7afdf989f7480f99c7e92a7",
+      "asset_sha256": {
+        "UNR": "72f9c1601d0fc5a3cb06d50b20bd6501647b6feb30df3dd10a6e0f8313c620a3",
+        "MMP": "0849b3b8afbf0d4c16be86e1c9d955f16f0ba01c7b2e36c6b87155c77bc8273f",
+        "MLB": "0d428b4f1a0c26a174da8626730221b5516e1624bc0b4871612697103692d975",
+        "COL": "84b135bd088cf75ed64120f5585cf1be98c44f688eb2684f4a2ae3b946c49a2b"
+      },
+      "source": "Original owned S1 assets, decoded offline; no game execution or generated geometry",
+      "format_research": "S1/README.md and original STARTH.EXE disassembly",
+      "convention_source": "https://github.com/Rick-Barber/ScreamerRally-Recomp",
+      "source_license": "GPL-3.0-only"
+    },
+    "files_sha256": {
+      "vertices.bin": "2a5010a48f5141b6730cbcd836d0595cef7df7f74dede3acf2c6821672e85d25",
+      "indices.bin": "289fc934d2dd9e99bc614897ef7bb544d3f23d291d527660ea9043be1ec417ed"
+    }
+  },
+  {
+    "track": 4,
+    "statistics": {
+      "cells": 366,
+      "objects_list_0": 237,
+      "objects_list_1": 1527,
+      "parts_lod_0": 1775,
+      "unique_parts": 272,
+      "rendered_type_0x10_polygons": 19707,
+      "world_objects": 1764,
+      "rendered_type_0x40_polygons": 3842,
+      "rendered_type_0x80_polygons": 184,
+      "frozen_animated_part_placements": 13,
+      "models_used": 261,
+      "vertices": 94615,
+      "triangles": 47149,
+      "textures": 205,
+      "unsupported_triangles_by_type": {
+        "0xe0": 124
+      }
+    },
+    "provenance": {
+      "original_executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+      "archive": "GFX/MAP4H.DAT",
+      "archive_sha256": "e06e6c73675612cf0103aee2303928c84ba7db446951e419ee81103879c39b66",
+      "asset_sha256": {
+        "UNR": "a37e38275746d883a87881311198d4e35728a6e633fd47d546668f7d457f5ae6",
+        "MMP": "9573ddd5e3741c18e111683d51408c2a1cba07c79dde36e91a34154e2a5589a7",
+        "MLB": "84669c3b6db1a10ef2d749874a6c2d3748ef65a5b5a311b704ad0b2078159e67",
+        "COL": "2d5396ec9de7f58697864ae5348be178d09b82d540a09b2a85ad5eb799e50fb4"
+      },
+      "source": "Original owned S1 assets, decoded offline; no game execution or generated geometry",
+      "format_research": "S1/README.md and original STARTH.EXE disassembly",
+      "convention_source": "https://github.com/Rick-Barber/ScreamerRally-Recomp",
+      "source_license": "GPL-3.0-only"
+    },
+    "files_sha256": {
+      "vertices.bin": "c438245975bb17466ab79b0520dd27d25148f2dc771eb8d62d1a56820ae7ce94",
+      "indices.bin": "35d0e691cadc42d8037a3598d85e7802ca02ea25efa380c5d7f64d7b9e6e6c22"
+    }
+  },
+  {
+    "track": 5,
+    "statistics": {
+      "cells": 573,
+      "objects_list_0": 405,
+      "objects_list_1": 1954,
+      "parts_lod_0": 2367,
+      "unique_parts": 365,
+      "rendered_type_0x10_polygons": 40378,
+      "world_objects": 2359,
+      "rendered_type_0x40_polygons": 1024,
+      "frozen_animated_part_placements": 11,
+      "rendered_type_0x80_polygons": 47,
+      "models_used": 360,
+      "vertices": 165241,
+      "triangles": 82343,
+      "textures": 163,
+      "unsupported_triangles_by_type": {
+        "0xc0": 156
+      }
+    },
+    "provenance": {
+      "original_executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+      "archive": "GFX/MAP5H.DAT",
+      "archive_sha256": "6f6e87e89c65b2203413e26821ec86f54099b7f2bf8dbda784d5c089ad06a2c3",
+      "asset_sha256": {
+        "UNR": "2c20e3f0ac91e62b4bb04c05d2d9fbaac9e62336f658add3d6271bd018567a6b",
+        "MMP": "2e8f0e24a9f34b0ef00334de22cf136d18bbc2396c938de6ce228e6eef3c3f5c",
+        "MLB": "59e3e0ead3808f7895f7322112107aa1e6156cef73e178ee3976b421d059d3c4",
+        "COL": "d5d42120255d2ae4b628ddbdb83991dde77420e9983cb8a94a12998328ba7aa2"
+      },
+      "source": "Original owned S1 assets, decoded offline; no game execution or generated geometry",
+      "format_research": "S1/README.md and original STARTH.EXE disassembly",
+      "convention_source": "https://github.com/Rick-Barber/ScreamerRally-Recomp",
+      "source_license": "GPL-3.0-only"
+    },
+    "files_sha256": {
+      "vertices.bin": "512ed41a815f0a40107b169196b5dc94ae8b34af1b57929d2ce48bcd4d39d193",
+      "indices.bin": "315a0f0aa712237b437cd6e2690bf3a44d7b705bae8d0e656225d9e9e8c76cf3"
+    }
+  },
+  {
+    "track": 6,
+    "statistics": {
+      "cells": 418,
+      "objects_list_0": 624,
+      "objects_list_1": 1449,
+      "parts_lod_0": 2096,
+      "unique_parts": 393,
+      "rendered_type_0x10_polygons": 28640,
+      "world_objects": 2073,
+      "rendered_type_0x40_polygons": 2984,
+      "frozen_animated_part_placements": 29,
+      "rendered_type_0x80_polygons": 1,
+      "models_used": 375,
+      "vertices": 124875,
+      "triangles": 61625,
+      "textures": 197,
+      "unsupported_triangles_by_type": {}
+    },
+    "provenance": {
+      "original_executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+      "archive": "GFX/MAP6H.DAT",
+      "archive_sha256": "7ed452ad0d6c7188e67e804f659d7a55d87170050fb1325ce472d1c8c27ec359",
+      "asset_sha256": {
+        "UNR": "cf58abb2eff37785293a7b71ea90e3765ec9fb7eb80d75d37cc0e030cc067cae",
+        "MMP": "0545bf5d47f1b3f199697b61f2cd072c5a0096019f71e96676fb1d65771673db",
+        "MLB": "e156e3518b6bd3b538077f7ac2db56ae66bfc53197d6e1b86230d2f29c39dbf2",
+        "COL": "5d8da41d0c0a094e5d077b2c9bf5a49a22c70270908346a5b3cb0860ea6d71f7"
+      },
+      "source": "Original owned S1 assets, decoded offline; no game execution or generated geometry",
+      "format_research": "S1/README.md and original STARTH.EXE disassembly",
+      "convention_source": "https://github.com/Rick-Barber/ScreamerRally-Recomp",
+      "source_license": "GPL-3.0-only"
+    },
+    "files_sha256": {
+      "vertices.bin": "d54b83672db6c5ddc499791b5c0ac4d33dead07fe7dcfab2f6abddceacd01f1d",
+      "indices.bin": "3c8a756bd09adc2c834fa4ca8b87a095ff9528b951440b2b6d7c35e0556f5492"
+    }
+  }
+]

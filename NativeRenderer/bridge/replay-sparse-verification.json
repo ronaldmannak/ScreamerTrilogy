@@ -1,0 +1,87 @@
+{
+  "result": "passed",
+  "replay": "bridge/replay-sparse.json",
+  "replay_sha256": "69fd3f4c11b6dfec8f670a1a17373051e7f2a59236e2b642a2b3a4fd8cf9053f",
+  "template_metadata": "probe-sparse/snapshot-metadata.json",
+  "template_ram_sha256": "a43793ca0b0991ba60a0730db91aeb7851735dbcc2e9c5c50e981fccffbe39fa",
+  "capture_statistics": {
+    "target_rate_hz": 33.0,
+    "requested_duration_seconds": 2.0,
+    "capture_span_seconds": 2.005038188,
+    "captured_samples": 67,
+    "effective_rate_hz": 32.91707878433685,
+    "mean_acquisition_ms": 5.450779253731343,
+    "max_acquisition_ms": 7.2975,
+    "missed_schedule_slots": 0,
+    "http_requests": 605,
+    "payload_bytes": 331542,
+    "car_count": 6
+  },
+  "output_sample_count": 122,
+  "output_resample_hz": 60.0,
+  "camera_start_origin": [
+    -70440.0,
+    4352.0,
+    -167220.0
+  ],
+  "camera_end_origin": [
+    -66916.0,
+    3475.0,
+    -164070.0
+  ],
+  "cars": [
+    {
+      "id": "scene:157",
+      "name": "auto1",
+      "endpoint_distance_units": 29411.09527032273
+    },
+    {
+      "id": "scene:159",
+      "name": "auto2",
+      "endpoint_distance_units": 30357.19950851857
+    },
+    {
+      "id": "scene:161",
+      "name": "auto3",
+      "endpoint_distance_units": 29571.77676434069
+    },
+    {
+      "id": "scene:163",
+      "name": "auto4",
+      "endpoint_distance_units": 28888.09848363163
+    },
+    {
+      "id": "scene:165",
+      "name": "auto1",
+      "endpoint_distance_units": 29792.96252473057
+    },
+    {
+      "id": "scene:167",
+      "name": "auto2",
+      "endpoint_distance_units": 26794.664002371814
+    }
+  ],
+  "checks": [
+    "67 actual timestamps strictly increase; acquisition midpoint lies in recorded range",
+    "Code marker checked before/after; main camera owner and car instance pointers stable",
+    "Six stable car IDs all show real captured endpoint movement",
+    "All camera/car positions and orthogonal rotation rows are finite",
+    "122 output pose samples resampled at60Hz with captured endpoints retained"
+  ],
+  "limits": [
+    "Nine separately atomic field requests span5..7ms; not one atomic guest frame",
+    "Target33Hz sampling does not itself set or prove game simulation rate",
+    "Viewer performs no physics; camera replay is implemented and dynamic mesh playback is separate",
+    "Not an all-track, gameplay, HUD/mirror, wheel animation, or long-session stability result"
+  ],
+  "guest_timing_configuration": {
+    "original_guest_executable_sha256": "9eac6e12ab309389bdda019cfa695bfbbc791fbda1a4634464a444fce35165d1",
+    "derived_guest_executable_sha256": "2fd67bfeb387558da4952dcd8442864e869e67ca5ef39793526cafd34358b9d4",
+    "patch": {
+      "raw_offset": 349922,
+      "expected_hex": "83f801",
+      "replacement_hex": "83f803"
+    },
+    "basis": "Three100Hz timer ticks minimum in guest code; host polling rate measured separately; no simulation-boundary synchronization proof"
+  }
+}

@@ -1,0 +1,378 @@
+{
+  "repository": "https://github.com/akitaonrails/rea-screamer-trilogy",
+  "commit": "c9a21733d7b89cecd4646f1a5249fe482bb9c534",
+  "source_url": "https://github.com/akitaonrails/rea-screamer-trilogy/blob/c9a21733d7b89cecd4646f1a5249fe482bb9c534/crates/screamer-launcher/src/fixes.rs",
+  "source_file": "/private/tmp/screamer-rally-enhancements/upstream/fixes.rs",
+  "source_sha256": "aff205edebe0b3b60c5a9eec86ed3a7e8e9f42cc23def8d0fdeca073199d224c",
+  "selected_license": "MIT",
+  "generated_utc": "2026-11-25T00:45:56.396934+00:00",
+  "validation": "Expected bytes checked against installed native-app game originals and identical retained GOG payloads. LE object/page maps used for VA-to-file mapping. Every LE relocation source checked for overlap; none. Four combinations generated twice in memory, hash-identical on repeat, all four hashes distinct, no length change or changes outside selected ranges. No executables or user data written; no dynamic game validation performed.",
+  "games": [
+    {
+      "game": "screamer",
+      "title": "Screamer",
+      "manifest": "screamer-patches.json",
+      "fix_set": "S1_STARTH_FIXES",
+      "selected_fixes": [
+        "E2",
+        "E6"
+      ],
+      "unrelated_F_fixes_applied": false,
+      "source_executable": "/Applications/Screamer.app/Contents/Resources/game/STARTH.EXE",
+      "source_size": 1034923,
+      "source_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+      "matches_retained_gog_executable": "/private/tmp/screamer-gog-package-review/package.pkg/Scripts/payload/Contents/Resources/game/STARTH.EXE",
+      "le": {
+        "header_offset": "0x2a50",
+        "page_size": 4096,
+        "object_count": 3,
+        "fixup_count_checked": 11259,
+        "mapping": [
+          {
+            "fix": "E2",
+            "virtual_address": "0x8b722",
+            "raw_offset": 614178,
+            "raw_offset_hex": "0x95f22",
+            "length": 31,
+            "expected_hex": "0fbfc90fbff60fbfdb0fbfff0fbfed0fbfc0d1f9d1fed1fbd1ffd1fdd1f852",
+            "replacement_hex": "8b06c1f80229068b460cc1f80229460c8b4618c1f8022946182bc0894624c3",
+            "relocation_overlaps": []
+          },
+          {
+            "fix": "E2",
+            "virtual_address": "0x8acc2",
+            "raw_offset": 611522,
+            "raw_offset_hex": "0x954c2",
+            "length": 5,
+            "expected_hex": "2bc0894624",
+            "replacement_hex": "e85b0a0000",
+            "relocation_overlaps": [],
+            "call_target_virtual_address": "0x8b722"
+          },
+          {
+            "fix": "E6",
+            "virtual_address": "0x100d29",
+            "raw_offset": 1013033,
+            "raw_offset_hex": "0xf7529",
+            "length": 4,
+            "expected_hex": "00401c47",
+            "replacement_hex": "00803b47",
+            "relocation_overlaps": []
+          },
+          {
+            "fix": "E6",
+            "virtual_address": "0x209bb",
+            "raw_offset": 176571,
+            "raw_offset_hex": "0x2b1bb",
+            "length": 4,
+            "expected_hex": "20cb0000",
+            "replacement_hex": "c0f30000",
+            "relocation_overlaps": []
+          },
+          {
+            "fix": "E6",
+            "virtual_address": "0x209d2",
+            "raw_offset": 176594,
+            "raw_offset_hex": "0x2b1d2",
+            "length": 4,
+            "expected_hex": "20cb0000",
+            "replacement_hex": "c0f30000",
+            "relocation_overlaps": []
+          }
+        ]
+      },
+      "variants": [
+        {
+          "widescreen": false,
+          "extended_distance": false,
+          "distance_level": 0,
+          "distance_increase_percent": 0,
+          "managed_object_distance_limit": 40000,
+          "coarse_axis_distance_limit": 52000,
+          "sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+          "byte_count": 1034923,
+          "changed_bytes": 0,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": false,
+          "extended_distance": true,
+          "distance_level": 1,
+          "distance_increase_percent": 20,
+          "managed_object_distance_limit": 48000,
+          "coarse_axis_distance_limit": 62400,
+          "sha256": "4d77cb6e77a0989bac4edb892c897285b16969ecb4f31f529ecc59408f1d635b",
+          "byte_count": 1034923,
+          "changed_bytes": 6,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": false,
+          "extended_distance": true,
+          "distance_level": 2,
+          "distance_increase_percent": 30,
+          "managed_object_distance_limit": 52000,
+          "coarse_axis_distance_limit": 67600,
+          "sha256": "f5bd88e4e3648108de9c84ed938f82e2c81b70e4d9c28f29313a24c716bde658",
+          "byte_count": 1034923,
+          "changed_bytes": 8,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": false,
+          "extended_distance": true,
+          "distance_level": 3,
+          "distance_increase_percent": 40,
+          "managed_object_distance_limit": 56000,
+          "coarse_axis_distance_limit": 72800,
+          "sha256": "a972ac4f7a6d4fe2b8c1a44eda8d6e301ee11df6d3a66511dfff303d84155b7d",
+          "byte_count": 1034923,
+          "changed_bytes": 8,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": true,
+          "extended_distance": false,
+          "distance_level": 0,
+          "distance_increase_percent": 0,
+          "managed_object_distance_limit": 40000,
+          "coarse_axis_distance_limit": 52000,
+          "sha256": "04d2adc73e5d1ccbb2aadc9978c7b5dcded33114e888181e3206d2e0a25a5541",
+          "byte_count": 1034923,
+          "changed_bytes": 36,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": true,
+          "extended_distance": true,
+          "distance_level": 1,
+          "distance_increase_percent": 20,
+          "managed_object_distance_limit": 48000,
+          "coarse_axis_distance_limit": 62400,
+          "sha256": "c68f02bd183c1254833099d00a5a9e5ae8ee4f37cc47a3f4cd9c531b2332437c",
+          "byte_count": 1034923,
+          "changed_bytes": 42,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": true,
+          "extended_distance": true,
+          "distance_level": 2,
+          "distance_increase_percent": 30,
+          "managed_object_distance_limit": 52000,
+          "coarse_axis_distance_limit": 67600,
+          "sha256": "4ba3955593c5d68fb1221d7d43b9a6f391500cb0afb51117eca7187c36649c9d",
+          "byte_count": 1034923,
+          "changed_bytes": 44,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": true,
+          "extended_distance": true,
+          "distance_level": 3,
+          "distance_increase_percent": 40,
+          "managed_object_distance_limit": 56000,
+          "coarse_axis_distance_limit": 72800,
+          "sha256": "99576a42aa103b47f286747a187e579964e475d784f1083209bdd0475bc793ae",
+          "byte_count": 1034923,
+          "changed_bytes": 44,
+          "repeated_generation_identical": true
+        }
+      ],
+      "preserve_configuration": {
+        "working_dos_directory": "C:\\",
+        "SCREAMER.CFG_hex": "433a09443a09433a0963",
+        "SCREAMER.CFG_base64": "QzoJRDoJQzoJYw==",
+        "SCREAMER.CFG_sha256": "c488c7c4bf4eb94b7082aefac3bdf637d75d24ab4c105c01c23dbd1f97b6b987",
+        "SCREAMER.CFG_matches_gog": true,
+        "machine": "svga_s3",
+        "memsize_mb": 16,
+        "cpu_core": "auto",
+        "realmode_cpu_cycles": 3000,
+        "protected_mode_cpu_cycles": "max",
+        "native_sblaster": {
+          "sbtype": "sb16",
+          "sbbase": 220,
+          "irq": 5,
+          "dma": 1,
+          "hdma": 5
+        },
+        "baseline_display": {
+          "aspect": "on",
+          "shader": "sharp",
+          "window_size": "1280x960"
+        },
+        "widescreen_display": {
+          "aspect": "stretch",
+          "viewport": "fit",
+          "integer_scaling": "off",
+          "shader": "rally-widescreen",
+          "window_size": "1280x720"
+        },
+        "note": "Keep original SCREAMER.CFG byte-for-byte and launch from C:\\; no C:\\SR rewrite. Existing native IRQ preserved; archived GOG DOSBox default IRQ is 7 even though tested native Screamer profile uses IRQ5."
+      },
+      "distance_effect": "20% managed animated-object visibility increase (40000 to48000 units); two admission thresholds increase52000 to62400."
+    },
+    {
+      "game": "screamer2",
+      "title": "Screamer 2",
+      "manifest": "screamer2-patches.json",
+      "fix_set": "S2_START65H_FIXES",
+      "selected_fixes": [
+        "E2",
+        "E6"
+      ],
+      "unrelated_F_fixes_applied": false,
+      "source_executable": "/Applications/Screamer 2.app/Contents/Resources/game/START65H.EXE",
+      "source_size": 1201082,
+      "source_sha256": "05f576866f26602be303343c5e9104132616f464b71ed6ae958e99a668e5c7c8",
+      "matches_retained_gog_executable": "/private/tmp/screamer2-gog-review.FGS1VU/expanded/package.pkg/Scripts/payload/Contents/Resources/game/START65H.EXE",
+      "le": {
+        "header_offset": "0x2c90",
+        "page_size": 4096,
+        "object_count": 4,
+        "fixup_count_checked": 16138,
+        "mapping": [
+          {
+            "fix": "E2",
+            "virtual_address": "0x7eb4e",
+            "raw_offset": 602958,
+            "raw_offset_hex": "0x9334e",
+            "length": 31,
+            "expected_hex": "0fbfc90fbff60fbfdb0fbfff0fbfed0fbfc0d1f9d1fed1fbd1ffd1fdd1f852",
+            "replacement_hex": "8b06c1f80229068b460cc1f80229460c8b4618c1f8022946182bc0894624c3",
+            "relocation_overlaps": []
+          },
+          {
+            "fix": "E2",
+            "virtual_address": "0x7e0f2",
+            "raw_offset": 600306,
+            "raw_offset_hex": "0x928f2",
+            "length": 5,
+            "expected_hex": "2bc0894624",
+            "replacement_hex": "e8570a0000",
+            "relocation_overlaps": [],
+            "call_target_virtual_address": "0x7eb4e"
+          },
+          {
+            "fix": "E6",
+            "virtual_address": "0x764ef",
+            "raw_offset": 568559,
+            "raw_offset_hex": "0x8acef",
+            "length": 5,
+            "expected_hex": "3d80782514",
+            "replacement_hex": "3d00e29550",
+            "relocation_overlaps": []
+          },
+          {
+            "fix": "E6",
+            "virtual_address": "0x76553",
+            "raw_offset": 568659,
+            "raw_offset_hex": "0x8ad53",
+            "length": 5,
+            "expected_hex": "3d80782514",
+            "replacement_hex": "3d00e29550",
+            "relocation_overlaps": []
+          },
+          {
+            "fix": "E6",
+            "virtual_address": "0x765d9",
+            "raw_offset": 568793,
+            "raw_offset_hex": "0x8add9",
+            "length": 5,
+            "expected_hex": "3d80782514",
+            "replacement_hex": "3d00e29550",
+            "relocation_overlaps": []
+          },
+          {
+            "fix": "E6",
+            "virtual_address": "0x7663d",
+            "raw_offset": 568893,
+            "raw_offset_hex": "0x8ae3d",
+            "length": 5,
+            "expected_hex": "3d80782514",
+            "replacement_hex": "3d00e29550",
+            "relocation_overlaps": []
+          },
+          {
+            "fix": "E6",
+            "virtual_address": "0x7dd92",
+            "raw_offset": 599442,
+            "raw_offset_hex": "0x92592",
+            "length": 5,
+            "expected_hex": "3d80782514",
+            "replacement_hex": "3d00e29550",
+            "relocation_overlaps": []
+          }
+        ]
+      },
+      "variants": [
+        {
+          "widescreen": false,
+          "extended_distance": false,
+          "sha256": "05f576866f26602be303343c5e9104132616f464b71ed6ae958e99a668e5c7c8",
+          "byte_count": 1201082,
+          "changed_bytes": 0,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": false,
+          "extended_distance": true,
+          "sha256": "de31dde8337cf51f3fc48c97076d38f1d2043492421d53cf83ef26dd797146e6",
+          "byte_count": 1201082,
+          "changed_bytes": 20,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": true,
+          "extended_distance": false,
+          "sha256": "15e36109931525a2895af814488c402b5394e03eec3ae8896c922adbd885abdc",
+          "byte_count": 1201082,
+          "changed_bytes": 36,
+          "repeated_generation_identical": true
+        },
+        {
+          "widescreen": true,
+          "extended_distance": true,
+          "sha256": "92504e7d9c952961ef0eae8c210dbea2c8c59d4c48b17d65ac313e0d7bd8d308",
+          "byte_count": 1201082,
+          "changed_bytes": 56,
+          "repeated_generation_identical": true
+        }
+      ],
+      "preserve_configuration": {
+        "working_dos_directory": "C:\\",
+        "SCREAMER.CFG_hex": "433a5c09443a09433a5c0963",
+        "SCREAMER.CFG_base64": "QzpcCUQ6CUM6XAlj",
+        "SCREAMER.CFG_sha256": "7be828f5380912fd5f818b978f0d6e3a06ed5dd4b9ebe0c774de387f66c475d4",
+        "SCREAMER.CFG_matches_gog": true,
+        "machine": "svga_s3",
+        "memsize_mb": 16,
+        "cpu_core": "auto",
+        "realmode_cpu_cycles": 3000,
+        "protected_mode_cpu_cycles": "max",
+        "native_sblaster": {
+          "sbtype": "sb16",
+          "sbbase": 220,
+          "irq": 7,
+          "dma": 1,
+          "hdma": 5
+        },
+        "baseline_display": {
+          "aspect": "on",
+          "shader": "sharp",
+          "window_size": "1280x960"
+        },
+        "widescreen_display": {
+          "aspect": "stretch",
+          "viewport": "fit",
+          "integer_scaling": "off",
+          "shader": "rally-widescreen",
+          "window_size": "1280x720"
+        },
+        "note": "Keep original SCREAMER.CFG byte-for-byte and launch from C:\\; no C:\\SR rewrite. Existing native IRQ preserved; archived GOG DOSBox default IRQ is 7 even though tested native Screamer profile uses IRQ5."
+      },
+      "distance_effect": "Double scenery/object admission radius (squared-distance comparison52000^2 to104000^2). This does not double every renderer/far-plane limit."
+    }
+  ]
+}

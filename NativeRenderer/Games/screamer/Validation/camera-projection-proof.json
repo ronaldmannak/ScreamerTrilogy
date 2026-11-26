@@ -1,0 +1,1437 @@
+{
+  "source_ram_sha256": "a0a498e6286fa7dd5f6f731a40ef88d0aa4b1d1deff77d7ce59e0c1617f71f09",
+  "original_camera_space_link": 389896,
+  "original_projected_buffer_link": 413908,
+  "validated_vertices": 59,
+  "max_abs_x_error_pixels": 0.9789473684210748,
+  "max_abs_y_error_pixels": 1.8215384615384664,
+  "projection": {
+    "eye_offset": 128,
+    "fx": 256,
+    "fy_640x400": 256,
+    "cx": 319,
+    "cy_640x400": 260,
+    "displayed_height": 480,
+    "fy_display": 307.2,
+    "cy_display": 312
+  },
+  "notes": "Original packed integer rasterization introduces quantization; active runtime projections supersede the earlier wrong static reciprocal-table interpretation.",
+  "points": [
+    {
+      "vertex": 0,
+      "original_camera_space": [
+        779,
+        -295,
+        -677
+      ],
+      "original_screen": [
+        71,
+        352
+      ],
+      "native_reference_screen": [
+        71.26832298136645,
+        353.81366459627327
+      ],
+      "error_pixels": [
+        0.2683229813664525,
+        1.81366459627327
+      ],
+      "rejected_static_hypothesis_screen": [
+        -108.4898177920686,
+        421.88638799571277
+      ]
+    },
+    {
+      "vertex": 2,
+      "original_camera_space": [
+        910,
+        -309,
+        -168
+      ],
+      "original_screen": [
+        -469,
+        526
+      ],
+      "native_reference_screen": [
+        -468.027027027027,
+        527.2432432432432
+      ],
+      "error_pixels": [
+        0.9729729729730252,
+        1.2432432432432279
+      ],
+      "rejected_static_hypothesis_screen": [
+        -779.867924528302,
+        633.132075471698
+      ]
+    },
+    {
+      "vertex": 3,
+      "original_camera_space": [
+        821,
+        -303,
+        -392
+      ],
+      "original_screen": [
+        -86,
+        408
+      ],
+      "native_reference_screen": [
+        -85.18461538461537,
+        409.1692307692308
+      ],
+      "error_pixels": [
+        0.8153846153846303,
+        1.1692307692308077
+      ],
+      "rejected_static_hypothesis_screen": [
+        -329.69135802469134,
+        499.4074074074074
+      ]
+    },
+    {
+      "vertex": 4,
+      "original_camera_space": [
+        924,
+        -102,
+        -123
+      ],
+      "original_screen": [
+        -624,
+        364
+      ],
+      "native_reference_screen": [
+        -623.406374501992,
+        364.0318725099602
+      ],
+      "error_pixels": [
+        0.5936254980080093,
+        0.03187250996018065
+      ],
+      "rejected_static_hypothesis_screen": [
+        -929.2532981530344,
+        397.79419525065964
+      ]
+    },
+    {
+      "vertex": 5,
+      "original_camera_space": [
+        835,
+        -96,
+        -347
+      ],
+      "original_screen": [
+        -132,
+        310
+      ],
+      "native_reference_screen": [
+        -131.02105263157893,
+        311.73894736842107
+      ],
+      "error_pixels": [
+        0.9789473684210748,
+        1.7389473684210657
+      ],
+      "rejected_static_hypothesis_screen": [
+        -389.9883913764511,
+        341.51243781094524
+      ]
+    },
+    {
+      "vertex": 6,
+      "original_camera_space": [
+        780,
+        -123,
+        -672
+      ],
+      "original_screen": [
+        69,
+        298
+      ],
+      "native_reference_screen": [
+        69.4,
+        299.36
+      ],
+      "error_pixels": [
+        0.4000000000000057,
+        1.3600000000000136
+      ],
+      "rejected_static_hypothesis_screen": [
+        -111.34482758620692,
+        327.8620689655172
+      ]
+    },
+    {
+      "vertex": 9,
+      "original_camera_space": [
+        778,
+        -69,
+        -388
+      ],
+      "original_screen": [
+        -67,
+        294
+      ],
+      "native_reference_screen": [
+        -66.98449612403101,
+        294.2325581395349
+      ],
+      "error_pixels": [
+        0.015503875968988723,
+        0.2325581395348877
+      ],
+      "rejected_static_hypothesis_screen": [
+        -299.53416149068323,
+        314.85714285714283
+      ]
+    },
+    {
+      "vertex": 10,
+      "original_camera_space": [
+        711,
+        -64,
+        -647
+      ],
+      "original_screen": [
+        84,
+        280
+      ],
+      "native_reference_screen": [
+        84.14064516129034,
+        281.1406451612903
+      ],
+      "error_pixels": [
+        0.14064516129033677,
+        1.1406451612903084
+      ],
+      "rejected_static_hypothesis_screen": [
+        -84.13621262458474,
+        296.2879291251384
+      ]
+    },
+    {
+      "vertex": 11,
+      "original_camera_space": [
+        882,
+        -83,
+        -79
+      ],
+      "original_screen": [
+        -772,
+        362
+      ],
+      "native_reference_screen": [
+        -771.7826086956522,
+        362.6473429951691
+      ],
+      "error_pixels": [
+        0.2173913043477569,
+        0.6473429951690832
+      ],
+      "rejected_static_hypothesis_screen": [
+        -1029.0119402985074,
+        386.8537313432836
+      ]
+    },
+    {
+      "vertex": 12,
+      "original_camera_space": [
+        121,
+        -299,
+        -444
+      ],
+      "original_screen": [
+        264,
+        392
+      ],
+      "native_reference_screen": [
+        264.84615384615387,
+        393.8181818181818
+      ],
+      "error_pixels": [
+        0.846153846153868,
+        1.818181818181813
+      ],
+      "rejected_static_hypothesis_screen": [
+        230.49714285714288,
+        478.69714285714286
+      ]
+    },
+    {
+      "vertex": 15,
+      "original_camera_space": [
+        268,
+        -307,
+        -197
+      ],
+      "original_screen": [
+        107,
+        500
+      ],
+      "native_reference_screen": [
+        107.89846153846153,
+        501.82153846153847
+      ],
+      "error_pixels": [
+        0.8984615384615324,
+        1.8215384615384664
+      ],
+      "rejected_static_hypothesis_screen": [
+        16.09492273730683,
+        606.9845474613687
+      ]
+    },
+    {
+      "vertex": 17,
+      "original_camera_space": [
+        283,
+        -100,
+        -151
+      ],
+      "original_screen": [
+        59,
+        350
+      ],
+      "native_reference_screen": [
+        59.329749103942675,
+        351.7562724014337
+      ],
+      "error_pixels": [
+        0.32974910394267454,
+        1.756272401433705
+      ],
+      "rejected_static_hypothesis_screen": [
+        -37.00982800982803,
+        385.7985257985258
+      ]
+    },
+    {
+      "vertex": 18,
+      "original_camera_space": [
+        122,
+        -128,
+        -439
+      ],
+      "original_screen": [
+        263,
+        316
+      ],
+      "native_reference_screen": [
+        263.9171075837743,
+        317.79188712522046
+      ],
+      "error_pixels": [
+        0.9171075837742819,
+        1.7918871252204553
+      ],
+      "rejected_static_hypothesis_screen": [
+        229.12374100719424,
+        354.29640287769786
+      ]
+    },
+    {
+      "vertex": 21,
+      "original_camera_space": [
+        301,
+        -72,
+        -220
+      ],
+      "original_screen": [
+        97,
+        312
+      ],
+      "native_reference_screen": [
+        97.57471264367817,
+        312.9655172413793
+      ],
+      "error_pixels": [
+        0.5747126436781684,
+        0.9655172413793025
+      ],
+      "rejected_static_hypothesis_screen": [
+        -4.764705882352928,
+        337.4453781512605
+      ]
+    },
+    {
+      "vertex": 22,
+      "original_camera_space": [
+        191,
+        -67,
+        -462
+      ],
+      "original_screen": [
+        236,
+        288
+      ],
+      "native_reference_screen": [
+        236.12542372881356,
+        289.071186440678
+      ],
+      "error_pixels": [
+        0.12542372881355845,
+        1.071186440677991
+      ],
+      "rejected_static_hypothesis_screen": [
+        182.79944289693594,
+        307.7771587743733
+      ]
+    },
+    {
+      "vertex": 25,
+      "original_camera_space": [
+        778,
+        -69,
+        -388
+      ],
+      "original_screen": [
+        -67,
+        294
+      ],
+      "native_reference_screen": [
+        -66.98449612403101,
+        294.2325581395349
+      ],
+      "error_pixels": [
+        0.015503875968988723,
+        0.2325581395348877
+      ],
+      "rejected_static_hypothesis_screen": [
+        -299.53416149068323,
+        314.85714285714283
+      ]
+    },
+    {
+      "vertex": 26,
+      "original_camera_space": [
+        755,
+        51,
+        -242
+      ],
+      "original_screen": [
+        -204,
+        224
+      ],
+      "native_reference_screen": [
+        -203.37837837837833,
+        224.7135135135135
+      ],
+      "error_pixels": [
+        0.6216216216216708,
+        0.7135135135135044
+      ],
+      "rejected_static_hypothesis_screen": [
+        -457.22489959839356,
+        207.56626506024097
+      ]
+    },
+    {
+      "vertex": 27,
+      "original_camera_space": [
+        829,
+        38,
+        -3
+      ],
+      "original_screen": [
+        -1302,
+        184
+      ],
+      "native_reference_screen": [
+        -1301.030534351145,
+        185.74045801526717
+      ],
+      "error_pixels": [
+        0.9694656488550208,
+        1.7404580152671656
+      ],
+      "rejected_static_hypothesis_screen": [
+        -1319.7953667953668,
+        184.88030888030886
+      ]
+    },
+    {
+      "vertex": 29,
+      "original_camera_space": [
+        882,
+        -83,
+        -79
+      ],
+      "original_screen": [
+        -772,
+        362
+      ],
+      "native_reference_screen": [
+        -771.7826086956522,
+        362.6473429951691
+      ],
+      "error_pixels": [
+        0.2173913043477569,
+        0.6473429951690832
+      ],
+      "rejected_static_hypothesis_screen": [
+        -1029.0119402985074,
+        386.8537313432836
+      ]
+    },
+    {
+      "vertex": 31,
+      "original_camera_space": [
+        301,
+        -72,
+        -220
+      ],
+      "original_screen": [
+        97,
+        312
+      ],
+      "native_reference_screen": [
+        97.57471264367817,
+        312.9655172413793
+      ],
+      "error_pixels": [
+        0.5747126436781684,
+        0.9655172413793025
+      ],
+      "rejected_static_hypothesis_screen": [
+        -4.764705882352928,
+        337.4453781512605
+      ]
+    },
+    {
+      "vertex": 32,
+      "original_camera_space": [
+        410,
+        49,
+        -120
+      ],
+      "original_screen": [
+        -105,
+        208
+      ],
+      "native_reference_screen": [
+        -104.22580645161293,
+        209.4193548387097
+      ],
+      "error_pixels": [
+        0.7741935483870748,
+        1.419354838709694
+      ],
+      "rejected_static_hypothesis_screen": [
+        -239.29787234042556,
+        193.27659574468083
+      ]
+    },
+    {
+      "vertex": 36,
+      "original_camera_space": [
+        755,
+        51,
+        -242
+      ],
+      "original_screen": [
+        -204,
+        224
+      ],
+      "native_reference_screen": [
+        -203.37837837837833,
+        224.7135135135135
+      ],
+      "error_pixels": [
+        0.6216216216216708,
+        0.7135135135135044
+      ],
+      "rejected_static_hypothesis_screen": [
+        -457.22489959839356,
+        207.56626506024097
+      ]
+    },
+    {
+      "vertex": 37,
+      "original_camera_space": [
+        829,
+        38,
+        -3
+      ],
+      "original_screen": [
+        -1302,
+        184
+      ],
+      "native_reference_screen": [
+        -1301.030534351145,
+        185.74045801526717
+      ],
+      "error_pixels": [
+        0.9694656488550208,
+        1.7404580152671656
+      ],
+      "rejected_static_hypothesis_screen": [
+        -1319.7953667953668,
+        184.88030888030886
+      ]
+    },
+    {
+      "vertex": 38,
+      "original_camera_space": [
+        410,
+        49,
+        -120
+      ],
+      "original_screen": [
+        -105,
+        208
+      ],
+      "native_reference_screen": [
+        -104.22580645161293,
+        209.4193548387097
+      ],
+      "error_pixels": [
+        0.7741935483870748,
+        1.419354838709694
+      ],
+      "rejected_static_hypothesis_screen": [
+        -239.29787234042556,
+        193.27659574468083
+      ]
+    },
+    {
+      "vertex": 40,
+      "original_camera_space": [
+        778,
+        -69,
+        -388
+      ],
+      "original_screen": [
+        -67,
+        294
+      ],
+      "native_reference_screen": [
+        -66.98449612403101,
+        294.2325581395349
+      ],
+      "error_pixels": [
+        0.015503875968988723,
+        0.2325581395348877
+      ],
+      "rejected_static_hypothesis_screen": [
+        -299.53416149068323,
+        314.85714285714283
+      ]
+    },
+    {
+      "vertex": 41,
+      "original_camera_space": [
+        755,
+        51,
+        -242
+      ],
+      "original_screen": [
+        -204,
+        224
+      ],
+      "native_reference_screen": [
+        -203.37837837837833,
+        224.7135135135135
+      ],
+      "error_pixels": [
+        0.6216216216216708,
+        0.7135135135135044
+      ],
+      "rejected_static_hypothesis_screen": [
+        -457.22489959839356,
+        207.56626506024097
+      ]
+    },
+    {
+      "vertex": 42,
+      "original_camera_space": [
+        707,
+        -50,
+        -427
+      ],
+      "original_screen": [
+        -8,
+        282
+      ],
+      "native_reference_screen": [
+        -7.1117117117117346,
+        283.06306306306305
+      ],
+      "error_pixels": [
+        0.8882882882882654,
+        1.0630630630630549
+      ],
+      "rejected_static_hypothesis_screen": [
+        -210.99121522693997,
+        297.4816983894583
+      ]
+    },
+    {
+      "vertex": 43,
+      "original_camera_space": [
+        301,
+        -72,
+        -220
+      ],
+      "original_screen": [
+        97,
+        312
+      ],
+      "native_reference_screen": [
+        97.57471264367817,
+        312.9655172413793
+      ],
+      "error_pixels": [
+        0.5747126436781684,
+        0.9655172413793025
+      ],
+      "rejected_static_hypothesis_screen": [
+        -4.764705882352928,
+        337.4453781512605
+      ]
+    },
+    {
+      "vertex": 44,
+      "original_camera_space": [
+        410,
+        49,
+        -120
+      ],
+      "original_screen": [
+        -105,
+        208
+      ],
+      "native_reference_screen": [
+        -104.22580645161293,
+        209.4193548387097
+      ],
+      "error_pixels": [
+        0.7741935483870748,
+        1.419354838709694
+      ],
+      "rejected_static_hypothesis_screen": [
+        -239.29787234042556,
+        193.27659574468083
+      ]
+    },
+    {
+      "vertex": 45,
+      "original_camera_space": [
+        332,
+        -52,
+        -295
+      ],
+      "original_screen": [
+        118,
+        290
+      ],
+      "native_reference_screen": [
+        118.07328605200945,
+        291.4704491725768
+      ],
+      "error_pixels": [
+        0.07328605200945049,
+        1.4704491725768207
+      ],
+      "rejected_static_hypothesis_screen": [
+        10.499092558983648,
+        308.31941923774957
+      ]
+    },
+    {
+      "vertex": 46,
+      "original_camera_space": [
+        633,
+        -91,
+        -619
+      ],
+      "original_screen": [
+        102,
+        290
+      ],
+      "native_reference_screen": [
+        102.06827309236948,
+        291.18607764390896
+      ],
+      "error_pixels": [
+        0.06827309236948054,
+        1.186077643908959
+      ],
+      "rejected_static_hypothesis_screen": [
+        -51.39542857142857,
+        313.248
+      ]
+    },
+    {
+      "vertex": 47,
+      "original_camera_space": [
+        707,
+        -50,
+        -427
+      ],
+      "original_screen": [
+        -8,
+        282
+      ],
+      "native_reference_screen": [
+        -7.1117117117117346,
+        283.06306306306305
+      ],
+      "error_pixels": [
+        0.8882882882882654,
+        1.0630630630630549
+      ],
+      "rejected_static_hypothesis_screen": [
+        -210.99121522693997,
+        297.4816983894583
+      ]
+    },
+    {
+      "vertex": 48,
+      "original_camera_space": [
+        269,
+        -94,
+        -490
+      ],
+      "original_screen": [
+        207,
+        298
+      ],
+      "native_reference_screen": [
+        207.5695792880259,
+        298.93851132686086
+      ],
+      "error_pixels": [
+        0.5695792880258921,
+        0.938511326860862
+      ],
+      "rejected_static_hypothesis_screen": [
+        134.37801608579088,
+        324.514745308311
+      ]
+    },
+    {
+      "vertex": 49,
+      "original_camera_space": [
+        332,
+        -52,
+        -295
+      ],
+      "original_screen": [
+        118,
+        290
+      ],
+      "native_reference_screen": [
+        118.07328605200945,
+        291.4704491725768
+      ],
+      "error_pixels": [
+        0.07328605200945049,
+        1.4704491725768207
+      ],
+      "rejected_static_hypothesis_screen": [
+        10.499092558983648,
+        308.31941923774957
+      ]
+    },
+    {
+      "vertex": 50,
+      "original_camera_space": [
+        829,
+        38,
+        -3
+      ],
+      "original_screen": [
+        -1302,
+        184
+      ],
+      "native_reference_screen": [
+        -1301.030534351145,
+        185.74045801526717
+      ],
+      "error_pixels": [
+        0.9694656488550208,
+        1.7404580152671656
+      ],
+      "rejected_static_hypothesis_screen": [
+        -1319.7953667953668,
+        184.88030888030886
+      ]
+    },
+    {
+      "vertex": 54,
+      "original_camera_space": [
+        779,
+        -295,
+        -677
+      ],
+      "original_screen": [
+        71,
+        352
+      ],
+      "native_reference_screen": [
+        71.26832298136645,
+        353.81366459627327
+      ],
+      "error_pixels": [
+        0.2683229813664525,
+        1.81366459627327
+      ],
+      "rejected_static_hypothesis_screen": [
+        -108.4898177920686,
+        421.88638799571277
+      ]
+    },
+    {
+      "vertex": 56,
+      "original_camera_space": [
+        910,
+        -309,
+        -168
+      ],
+      "original_screen": [
+        -469,
+        526
+      ],
+      "native_reference_screen": [
+        -468.027027027027,
+        527.2432432432432
+      ],
+      "error_pixels": [
+        0.9729729729730252,
+        1.2432432432432279
+      ],
+      "rejected_static_hypothesis_screen": [
+        -779.867924528302,
+        633.132075471698
+      ]
+    },
+    {
+      "vertex": 57,
+      "original_camera_space": [
+        821,
+        -303,
+        -392
+      ],
+      "original_screen": [
+        -86,
+        408
+      ],
+      "native_reference_screen": [
+        -85.18461538461537,
+        409.1692307692308
+      ],
+      "error_pixels": [
+        0.8153846153846303,
+        1.1692307692308077
+      ],
+      "rejected_static_hypothesis_screen": [
+        -329.69135802469134,
+        499.4074074074074
+      ]
+    },
+    {
+      "vertex": 58,
+      "original_camera_space": [
+        121,
+        -299,
+        -444
+      ],
+      "original_screen": [
+        264,
+        392
+      ],
+      "native_reference_screen": [
+        264.84615384615387,
+        393.8181818181818
+      ],
+      "error_pixels": [
+        0.846153846153868,
+        1.818181818181813
+      ],
+      "rejected_static_hypothesis_screen": [
+        230.49714285714288,
+        478.69714285714286
+      ]
+    },
+    {
+      "vertex": 61,
+      "original_camera_space": [
+        268,
+        -307,
+        -197
+      ],
+      "original_screen": [
+        107,
+        500
+      ],
+      "native_reference_screen": [
+        107.89846153846153,
+        501.82153846153847
+      ],
+      "error_pixels": [
+        0.8984615384615324,
+        1.8215384615384664
+      ],
+      "rejected_static_hypothesis_screen": [
+        16.09492273730683,
+        606.9845474613687
+      ]
+    },
+    {
+      "vertex": 62,
+      "original_camera_space": [
+        778,
+        -69,
+        -388
+      ],
+      "original_screen": [
+        -67,
+        294
+      ],
+      "native_reference_screen": [
+        -66.98449612403101,
+        294.2325581395349
+      ],
+      "error_pixels": [
+        0.015503875968988723,
+        0.2325581395348877
+      ],
+      "rejected_static_hypothesis_screen": [
+        -299.53416149068323,
+        314.85714285714283
+      ]
+    },
+    {
+      "vertex": 63,
+      "original_camera_space": [
+        711,
+        -64,
+        -647
+      ],
+      "original_screen": [
+        84,
+        280
+      ],
+      "native_reference_screen": [
+        84.14064516129034,
+        281.1406451612903
+      ],
+      "error_pixels": [
+        0.14064516129033677,
+        1.1406451612903084
+      ],
+      "rejected_static_hypothesis_screen": [
+        -84.13621262458474,
+        296.2879291251384
+      ]
+    },
+    {
+      "vertex": 64,
+      "original_camera_space": [
+        633,
+        -91,
+        -619
+      ],
+      "original_screen": [
+        102,
+        290
+      ],
+      "native_reference_screen": [
+        102.06827309236948,
+        291.18607764390896
+      ],
+      "error_pixels": [
+        0.06827309236948054,
+        1.186077643908959
+      ],
+      "rejected_static_hypothesis_screen": [
+        -51.39542857142857,
+        313.248
+      ]
+    },
+    {
+      "vertex": 65,
+      "original_camera_space": [
+        707,
+        -50,
+        -427
+      ],
+      "original_screen": [
+        -8,
+        282
+      ],
+      "native_reference_screen": [
+        -7.1117117117117346,
+        283.06306306306305
+      ],
+      "error_pixels": [
+        0.8882882882882654,
+        1.0630630630630549
+      ],
+      "rejected_static_hypothesis_screen": [
+        -210.99121522693997,
+        297.4816983894583
+      ]
+    },
+    {
+      "vertex": 66,
+      "original_camera_space": [
+        651,
+        -64,
+        -626
+      ],
+      "original_screen": [
+        97,
+        280
+      ],
+      "native_reference_screen": [
+        97.9708222811671,
+        281.7294429708223
+      ],
+      "error_pixels": [
+        0.9708222811671021,
+        1.7294429708222765
+      ],
+      "rejected_static_hypothesis_screen": [
+        -58.904761904761926,
+        297.15192743764175
+      ]
+    },
+    {
+      "vertex": 67,
+      "original_camera_space": [
+        301,
+        -72,
+        -220
+      ],
+      "original_screen": [
+        97,
+        312
+      ],
+      "native_reference_screen": [
+        97.57471264367817,
+        312.9655172413793
+      ],
+      "error_pixels": [
+        0.5747126436781684,
+        0.9655172413793025
+      ],
+      "rejected_static_hypothesis_screen": [
+        -4.764705882352928,
+        337.4453781512605
+      ]
+    },
+    {
+      "vertex": 68,
+      "original_camera_space": [
+        191,
+        -67,
+        -462
+      ],
+      "original_screen": [
+        236,
+        288
+      ],
+      "native_reference_screen": [
+        236.12542372881356,
+        289.071186440678
+      ],
+      "error_pixels": [
+        0.12542372881355845,
+        1.071186440677991
+      ],
+      "rejected_static_hypothesis_screen": [
+        182.79944289693594,
+        307.7771587743733
+      ]
+    },
+    {
+      "vertex": 69,
+      "original_camera_space": [
+        269,
+        -94,
+        -490
+      ],
+      "original_screen": [
+        207,
+        298
+      ],
+      "native_reference_screen": [
+        207.5695792880259,
+        298.93851132686086
+      ],
+      "error_pixels": [
+        0.5695792880258921,
+        0.938511326860862
+      ],
+      "rejected_static_hypothesis_screen": [
+        134.37801608579088,
+        324.514745308311
+      ]
+    },
+    {
+      "vertex": 70,
+      "original_camera_space": [
+        332,
+        -52,
+        -295
+      ],
+      "original_screen": [
+        118,
+        290
+      ],
+      "native_reference_screen": [
+        118.07328605200945,
+        291.4704491725768
+      ],
+      "error_pixels": [
+        0.07328605200945049,
+        1.4704491725768207
+      ],
+      "rejected_static_hypothesis_screen": [
+        10.499092558983648,
+        308.31941923774957
+      ]
+    },
+    {
+      "vertex": 71,
+      "original_camera_space": [
+        250,
+        -67,
+        -484
+      ],
+      "original_screen": [
+        214,
+        288
+      ],
+      "native_reference_screen": [
+        214.4248366013072,
+        288.0261437908497
+      ],
+      "error_pixels": [
+        0.4248366013071916,
+        0.02614379084968732
+      ],
+      "rejected_static_hypothesis_screen": [
+        146.02702702702703,
+        306.35675675675674
+      ]
+    },
+    {
+      "vertex": 73,
+      "original_camera_space": [
+        755,
+        51,
+        -242
+      ],
+      "original_screen": [
+        -204,
+        224
+      ],
+      "native_reference_screen": [
+        -203.37837837837833,
+        224.7135135135135
+      ],
+      "error_pixels": [
+        0.6216216216216708,
+        0.7135135135135044
+      ],
+      "rejected_static_hypothesis_screen": [
+        -457.22489959839356,
+        207.56626506024097
+      ]
+    },
+    {
+      "vertex": 74,
+      "original_camera_space": [
+        882,
+        -83,
+        -79
+      ],
+      "original_screen": [
+        -772,
+        362
+      ],
+      "native_reference_screen": [
+        -771.7826086956522,
+        362.6473429951691
+      ],
+      "error_pixels": [
+        0.2173913043477569,
+        0.6473429951690832
+      ],
+      "rejected_static_hypothesis_screen": [
+        -1029.0119402985074,
+        386.8537313432836
+      ]
+    },
+    {
+      "vertex": 77,
+      "original_camera_space": [
+        778,
+        -69,
+        -388
+      ],
+      "original_screen": [
+        -67,
+        294
+      ],
+      "native_reference_screen": [
+        -66.98449612403101,
+        294.2325581395349
+      ],
+      "error_pixels": [
+        0.015503875968988723,
+        0.2325581395348877
+      ],
+      "rejected_static_hypothesis_screen": [
+        -299.53416149068323,
+        314.85714285714283
+      ]
+    },
+    {
+      "vertex": 78,
+      "original_camera_space": [
+        755,
+        51,
+        -242
+      ],
+      "original_screen": [
+        -204,
+        224
+      ],
+      "native_reference_screen": [
+        -203.37837837837833,
+        224.7135135135135
+      ],
+      "error_pixels": [
+        0.6216216216216708,
+        0.7135135135135044
+      ],
+      "rejected_static_hypothesis_screen": [
+        -457.22489959839356,
+        207.56626506024097
+      ]
+    },
+    {
+      "vertex": 79,
+      "original_camera_space": [
+        707,
+        -50,
+        -427
+      ],
+      "original_screen": [
+        -8,
+        282
+      ],
+      "native_reference_screen": [
+        -7.1117117117117346,
+        283.06306306306305
+      ],
+      "error_pixels": [
+        0.8882882882882654,
+        1.0630630630630549
+      ],
+      "rejected_static_hypothesis_screen": [
+        -210.99121522693997,
+        297.4816983894583
+      ]
+    },
+    {
+      "vertex": 80,
+      "original_camera_space": [
+        301,
+        -72,
+        -220
+      ],
+      "original_screen": [
+        97,
+        312
+      ],
+      "native_reference_screen": [
+        97.57471264367817,
+        312.9655172413793
+      ],
+      "error_pixels": [
+        0.5747126436781684,
+        0.9655172413793025
+      ],
+      "rejected_static_hypothesis_screen": [
+        -4.764705882352928,
+        337.4453781512605
+      ]
+    },
+    {
+      "vertex": 81,
+      "original_camera_space": [
+        410,
+        49,
+        -120
+      ],
+      "original_screen": [
+        -105,
+        208
+      ],
+      "native_reference_screen": [
+        -104.22580645161293,
+        209.4193548387097
+      ],
+      "error_pixels": [
+        0.7741935483870748,
+        1.419354838709694
+      ],
+      "rejected_static_hypothesis_screen": [
+        -239.29787234042556,
+        193.27659574468083
+      ]
+    },
+    {
+      "vertex": 82,
+      "original_camera_space": [
+        332,
+        -52,
+        -295
+      ],
+      "original_screen": [
+        118,
+        290
+      ],
+      "native_reference_screen": [
+        118.07328605200945,
+        291.4704491725768
+      ],
+      "error_pixels": [
+        0.07328605200945049,
+        1.4704491725768207
+      ],
+      "rejected_static_hypothesis_screen": [
+        10.499092558983648,
+        308.31941923774957
+      ]
+    },
+    {
+      "vertex": 83,
+      "original_camera_space": [
+        829,
+        38,
+        -3
+      ],
+      "original_screen": [
+        -1302,
+        184
+      ],
+      "native_reference_screen": [
+        -1301.030534351145,
+        185.74045801526717
+      ],
+      "error_pixels": [
+        0.9694656488550208,
+        1.7404580152671656
+      ],
+      "rejected_static_hypothesis_screen": [
+        -1319.7953667953668,
+        184.88030888030886
+      ]
+    }
+  ]
+}

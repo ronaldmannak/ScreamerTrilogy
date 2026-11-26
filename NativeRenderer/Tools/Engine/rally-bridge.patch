@@ -1,0 +1,278 @@
+--- /dev/null
++++ b/src/webserver/rally.cpp
+@@ -0,0 +1,172 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++// Bounded local display/input bridge. No timing or CPU execution semantics change.
++#include "rally.h"
++#include "bridge.h"
++#include "cpu.h"
++#include "webserver.h"
++#include "cpu/registers.h"
++#include "gui/render/render.h"
++#include "hardware/input/keyboard.h"
++#include "hardware/memory.h"
++#include "libs/base64/base64.h"
++#include "libs/json/json.h"
++#include "misc/video.h"
++#include <algorithm>
++#include <chrono>
++#include <cstdlib>
++#include <cstring>
++#include <map>
++#include <mutex>
++#include <set>
++#include <stdexcept>
++
++using json=nlohmann::json;
++namespace Webserver {
++static uint64_t monotonic_ns() {
++    return std::chrono::duration_cast<std::chrono::nanoseconds>(
++        std::chrono::steady_clock::now().time_since_epoch()).count();
++}
++bool RallyEnabled() {
++    static const bool enabled=[] { const auto value=std::getenv("SCREAMER_METAL_BRIDGE");return value&&std::strcmp(value,"1")==0; }();
++    return enabled;
++}
++struct DisplayFrame {
++    uint32_t width=0,height=0;
++    uint64_t sequence=0,capture_ns=0;
++    std::string pixels;
++};
++static DisplayFrame latest;
++static std::mutex display_mutex;
++static std::set<KBD_KEYS> held_keys;
++static uint64_t input_lease=0;
++
++void RallyPublishFrame(const Render& source) {
++    if(!RallyEnabled())return;
++    const auto width=source.src.width,height=source.src.height;
++    if(width<=0||height<=0||width>2048||height>1536||source.scale.cache_pitch<=0)return;
++    DisplayFrame frame;
++    frame.width=static_cast<uint32_t>(width);frame.height=static_cast<uint32_t>(height);frame.capture_ns=monotonic_ns();
++    frame.pixels.resize(static_cast<size_t>(width)*height*4);
++    const auto input=reinterpret_cast<const uint8_t*>(source.scale.cache.data());
++    for(int y=0;y<height;y++) {
++        const uint8_t* row=input+static_cast<size_t>(y)*source.scale.cache_pitch;
++        auto dest=reinterpret_cast<uint8_t*>(frame.pixels.data())+static_cast<size_t>(y)*width*4;
++        for(int x=0;x<width;x++,dest+=4) {
++            uint8_t r=0,g=0,b=0;
++            switch(source.src.pixel_format) {
++            case PixelFormat::Indexed8: { const auto c=source.palette.rgb[row[x]];r=c.red;g=c.green;b=c.blue;break; }
++            case PixelFormat::RGB555_Packed16:
++            case PixelFormat::RGB565_Packed16: {
++                uint16_t c=0;std::memcpy(&c,row+x*2,2);
++                if(source.src.pixel_format==PixelFormat::RGB565_Packed16) {
++                    r=static_cast<uint8_t>(((c>>11)&31)*255/31);g=static_cast<uint8_t>(((c>>5)&63)*255/63);
++                } else {r=static_cast<uint8_t>(((c>>10)&31)*255/31);g=static_cast<uint8_t>(((c>>5)&31)*255/31);}
++                b=static_cast<uint8_t>((c&31)*255/31);break;
++            }
++            case PixelFormat::BGR24_ByteArray:b=row[x*3];g=row[x*3+1];r=row[x*3+2];break;
++            case PixelFormat::BGRX32_ByteArray:b=row[x*4];g=row[x*4+1];r=row[x*4+2];break;
++            default:return;
++            }
++            dest[0]=b;dest[1]=g;dest[2]=r;dest[3]=255;
++        }
++    }
++    std::lock_guard<std::mutex> lock(display_mutex);
++    frame.sequence=latest.sequence+1;latest=std::move(frame);
++}
++void RallyFrame(const httplib::Request&,httplib::Response& response) {
++    if(!RallyEnabled()){response.status=404;return;}
++    DisplayFrame frame;
++    {std::lock_guard<std::mutex> lock(display_mutex);frame=latest;}
++    if(frame.pixels.empty()){response.status=503;response.set_content("Frame not ready","text/plain");return;}
++    response.set_header("X-Rally-Width",std::to_string(frame.width));
++    response.set_header("X-Rally-Height",std::to_string(frame.height));
++    response.set_header("X-Rally-Pitch",std::to_string(frame.width*4));
++    response.set_header("X-Rally-Sequence",std::to_string(frame.sequence));
++    response.set_header("X-Rally-Capture-Ns",std::to_string(frame.capture_ns));
++    response.set_header("Cache-Control","no-store");
++    response.set_content(std::move(frame.pixels),"application/octet-stream");
++}
++static const std::map<std::string,KBD_KEYS>& keys() {
++    static const std::map<std::string,KBD_KEYS> mapping={
++        {"up",KBD_up},{"down",KBD_down},{"left",KBD_left},{"right",KBD_right},
++        {"enter",KBD_enter},{"escape",KBD_esc},{"space",KBD_space},{"tab",KBD_tab},{"backspace",KBD_backspace},
++        {"lshift",KBD_leftshift},{"rshift",KBD_rightshift},{"lctrl",KBD_leftctrl},{"rctrl",KBD_rightctrl},
++        {"lalt",KBD_leftalt},{"ralt",KBD_rightalt},
++        {"a",KBD_a},{"b",KBD_b},{"c",KBD_c},{"d",KBD_d},{"e",KBD_e},{"f",KBD_f},{"g",KBD_g},
++        {"h",KBD_h},{"i",KBD_i},{"j",KBD_j},{"k",KBD_k},{"l",KBD_l},{"m",KBD_m},{"n",KBD_n},
++        {"o",KBD_o},{"p",KBD_p},{"q",KBD_q},{"r",KBD_r},{"s",KBD_s},{"t",KBD_t},{"u",KBD_u},
++        {"v",KBD_v},{"w",KBD_w},{"x",KBD_x},{"y",KBD_y},{"z",KBD_z},
++        {"0",KBD_0},{"1",KBD_1},{"2",KBD_2},{"3",KBD_3},{"4",KBD_4},{"5",KBD_5},{"6",KBD_6},{"7",KBD_7},{"8",KBD_8},{"9",KBD_9},
++        {"f1",KBD_f1},{"f2",KBD_f2},{"f3",KBD_f3},{"f4",KBD_f4},{"f5",KBD_f5},{"f6",KBD_f6},
++        {"f7",KBD_f7},{"f8",KBD_f8},{"f9",KBD_f9},{"f10",KBD_f10},{"f11",KBD_f11},{"f12",KBD_f12}};
++    return mapping;
++}
++void RallyInputWatchdog() {
++    if(!RallyEnabled()||held_keys.empty()||monotonic_ns()<=input_lease)return;
++    for(const auto key:held_keys)KEYBOARD_AddKey(key,false);
++    held_keys.clear();input_lease=0;
++}
++class KeysCommand final:public Command {
++public:
++    std::set<KBD_KEYS> wanted;
++    void Execute() override {
++        for(const auto key:held_keys)if(!wanted.contains(key))KEYBOARD_AddKey(key,false);
++        for(const auto key:wanted)if(!held_keys.contains(key))KEYBOARD_AddKey(key,true);
++        held_keys=std::move(wanted);input_lease=monotonic_ns()+600000000;
++    }
++};
++void RallyKeys(const httplib::Request& request,httplib::Response& response) {
++    if(!RallyEnabled()){response.status=404;return;}
++    if(request.body.size()>8192)throw std::invalid_argument("Oversized key state");
++    const auto input=json::parse(request.body);
++    KeysCommand cmd;
++    if(!input.value("release_all",false)){
++        const auto& pressed=input.at("pressed_keys");
++        if(!pressed.is_array()||pressed.size()>64)throw std::invalid_argument("Invalid pressed key list");
++        for(const auto& value:pressed){auto name=value.get<std::string>();auto key=keys().find(name);if(key==keys().end())throw std::invalid_argument("Unknown game key");cmd.wanted.insert(key->second);}
++    }
++    cmd.WaitForCompletion();send_json(response,{{"ok",true},{"lease_ms",600}});
++}
++struct Range { uint32_t address=0,size=0;std::string data; };
++class ReadCommand final:public Command {
++public:
++    std::vector<Range> ranges,wait_ranges;
++    Registers registers;
++    uint64_t captured=0;
++    uint32_t linear_eip=0,linear_esp=0;
++    std::string stack;
++    bool ready=true;
++    void Execute() override {
++        registers.load();linear_eip=SegPhys(SegNames::cs)+reg_eip;linear_esp=SegPhys(SegNames::ss)+reg_esp;
++        if(!wait_ranges.empty()){
++            ready=false;
++            for(const auto& range:wait_ranges)if(linear_eip>=range.address&&static_cast<uint64_t>(linear_eip)<static_cast<uint64_t>(range.address)+range.size)ready=true;
++            if(!ready)return;
++        }
++        const uint64_t limit=static_cast<uint64_t>(MEM_TotalPages())*MemPageSize;
++        for(auto& range:ranges){if(static_cast<uint64_t>(range.address)+range.size>limit){error="Batch range exceeds RAM";return;}range.data.resize(range.size);MEM_BlockRead(range.address,range.data.data(),range.size);}
++        if(static_cast<uint64_t>(linear_esp)+8<=limit){stack.resize(8);MEM_BlockRead(linear_esp,stack.data(),8);}
++        captured=monotonic_ns();
++    }
++};
++void RallyRead(const httplib::Request& request,httplib::Response& response) {
++    if(!RallyEnabled()){response.status=404;return;}
++    if(request.body.size()>16384)throw std::invalid_argument("Oversized read request");
++    const auto input=json::parse(request.body);
++    const auto& ranges=input.at("ranges");
++    if(!ranges.is_array()||ranges.empty()||ranges.size()>64)throw std::invalid_argument("Invalid read range table");
++    ReadCommand cmd;uint64_t total=0;
++    for(const auto& item:ranges){auto address=item.at("address").get<uint64_t>(),size=item.at("size").get<uint64_t>();if(!size||address>UINT32_MAX||size>16*1024*1024||address+size>UINT32_MAX)throw std::invalid_argument("Invalid read range");total+=size;if(total>16*1024*1024)throw std::invalid_argument("Oversized batch");cmd.ranges.push_back({static_cast<uint32_t>(address),static_cast<uint32_t>(size),{}});}
++    if(input.contains("require_eip_ranges")){
++        const auto& waits=input.at("require_eip_ranges");if(!waits.is_array()||waits.size()>8)throw std::invalid_argument("Invalid wait ranges");
++        for(const auto& item:waits){auto address=item.at("address").get<uint64_t>(),size=item.at("size").get<uint64_t>();if(!size||address>UINT32_MAX||size>4096||address+size>UINT32_MAX)throw std::invalid_argument("Invalid wait range");cmd.wait_ranges.push_back({static_cast<uint32_t>(address),static_cast<uint32_t>(size),{}});}
++    }
++    cmd.WaitForCompletion();
++    if(!cmd.error.empty())throw std::out_of_range(cmd.error);
++    if(!cmd.ready){response.status=409;send_json(response,{{"ready",false},{"linear_eip",cmd.linear_eip}});return;}
++    json result={{"atomic_cpu_step",true},{"registers",cmd.registers},{"linear_eip",cmd.linear_eip},{"linear_esp",cmd.linear_esp},{"capture_ns",cmd.captured},{"ranges",json::array()}};
++    for(const auto& range:cmd.ranges)result["ranges"].push_back({{"address",range.address},{"size",range.size},{"data",base64::to_base64(range.data)}});
++    result["stack"]={{"address",cmd.linear_esp},{"data",base64::to_base64(cmd.stack)}};
++    send_json(response,result);
++}
++}
+--- /dev/null
++++ b/src/webserver/rally.h
+@@ -0,0 +1,15 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++// Local Screamer Metal integration; inactive unless SCREAMER_METAL_BRIDGE=1.
++#ifndef DOSBOX_RALLY_BRIDGE_H
++#define DOSBOX_RALLY_BRIDGE_H
++#include "libs/http/http.h"
++struct Render;
++namespace Webserver {
++bool RallyEnabled();
++void RallyPublishFrame(const Render& source);
++void RallyInputWatchdog();
++void RallyRead(const httplib::Request&, httplib::Response&);
++void RallyKeys(const httplib::Request&, httplib::Response&);
++void RallyFrame(const httplib::Request&, httplib::Response&);
++}
++#endif
+--- a/src/webserver/CMakeLists.txt
++++ b/src/webserver/CMakeLists.txt
+@@ -2,6 +2,7 @@
+   bridge.cpp
+   webserver.cpp
+   cpu.cpp
++  rally.cpp
+   memory.cpp
+   dos.cpp)
+ 
+--- a/src/webserver/meson.build
++++ b/src/webserver/meson.build
+@@ -3,6 +3,7 @@
+     'cpu.cpp',
+     'dos.cpp',
+     'memory.cpp',
++    'rally.cpp',
+     'webserver.cpp',
+ ]
+ 
+@@ -16,4 +17,4 @@
+ 
+ libwebserver_dep = declare_dependency(link_with: libwebserver)
+ 
+-internal_deps += libwebserver_dep
+\ No newline at end of file
++internal_deps += libwebserver_dep
+--- a/src/webserver/webserver.cpp
++++ b/src/webserver/webserver.cpp
+@@ -6,6 +6,7 @@
+ #include "cpu.h"
+ #include "dos.h"
+ #include "memory.h"
++#include "rally.h"
+ 
+ #include <set>
+ #include <string>
+@@ -55,6 +56,11 @@
+ 
+ static void setup_api_handlers()
+ {
++    if(RallyEnabled()) {
++        server.Post("/api/v1/rally/read",RallyRead);
++        server.Post("/api/v1/rally/keys",RallyKeys);
++        server.Get("/api/v1/rally/frame",RallyFrame);
++    }
+ 	server.Get("/api/v1/cpu/state", CpuStateCommand::Get);
+ 
+ 	server.Get("/api/v1/dos/internals", DosInternalsCommand::Get);
+--- a/src/webserver/bridge.cpp
++++ b/src/webserver/bridge.cpp
+@@ -2,6 +2,7 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include "bridge.h"
++#include "rally.h"
+ 
+ #include <algorithm>
+ #include <chrono>
+@@ -43,6 +44,7 @@
+ 
+ void Bridge::ProcessRequests()
+ {
++    RallyInputWatchdog();
+ 	std::lock_guard<std::mutex> lock(mtx);
+ 
+ 	if (queue.empty()) {
+--- a/src/gui/render/render.cpp
++++ b/src/gui/render/render.cpp
+@@ -3,6 +3,7 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include "dosbox.h"
++#include "webserver/rally.h"
+ 
+ #include <cassert>
+ #include <cmath>
+@@ -359,6 +360,7 @@
+ 	if (CAPTURE_IsCapturingImage() || CAPTURE_IsCapturingVideo()) {
+ 		handle_capture_frame();
+ 	}
++    if(!abort)Webserver::RallyPublishFrame(render);
+ 
+ 	// Only deinterlace the output if the frame has changed
+ 	if (is_deinterlacing() && render.updating_frame) {

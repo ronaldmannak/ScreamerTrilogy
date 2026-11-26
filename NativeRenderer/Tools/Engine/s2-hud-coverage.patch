@@ -1,0 +1,109 @@
+--- a/src/webserver/rally.cpp
++++ b/src/webserver/rally.cpp
+@@ -37,24 +37,43 @@
+ static uint32_t rally_helper=0;
+ static uint64_t needle_primitives=0;
+ static std::array<uint32_t,3> needle_returns{};
++static uint32_t helper_link=0,needle_line_return=0,needle_line_target=0,app_code_end=0;
++static const char* needle_profile="none";
+ static void observe_rally_helper(uint32_t address,const std::string& bytes){
+-    static const uint8_t tail[]={0x83,0xf8,0x03,0x7c,0xf6,0x58,0xc3};
+-    if(rally_helper||bytes.size()!=13||static_cast<uint8_t>(bytes[0])!=0x50||static_cast<uint8_t>(bytes[1])!=0xa1||std::memcmp(bytes.data()+6,tail,7)!=0)return;
++    static const uint8_t tail3[]={0x83,0xf8,0x03,0x7c,0xf6,0x58,0xc3};
++    static const uint8_t tail2[]={0x83,0xf8,0x02,0x7c,0xf6,0x58,0xc3};
++    if(rally_helper||bytes.size()!=13||static_cast<uint8_t>(bytes[0])!=0x50||static_cast<uint8_t>(bytes[1])!=0xa1)return;
++    const bool rally=std::memcmp(bytes.data()+6,tail3,7)==0;
++    const bool s2=std::memcmp(bytes.data()+6,tail2,7)==0;
++    if(!rally&&!s2)return;
++    const uint32_t original_helper=rally?0x504dc:0x519b4;
+     uint32_t pending=0;std::memcpy(&pending,bytes.data()+2,4);
+-    if(pending!=address+0x36||address<0x504dc)return;
+-    const uint32_t bias=address-0x504dc;
++    if(pending!=address+0x36||address<original_helper)return;
++    const uint32_t bias=address-original_helper;
++    const std::array<uint32_t,3> returns=rally?std::array<uint32_t,3>{0x4e016,0x4e02f,0x4e048}:std::array<uint32_t,3>{0x4f44a,0x4f463,0x4f47c};
++    const uint32_t line=rally?0xc0dca:0xc27ea;
++    const uint32_t line_return=rally?0xc0ea0:0xc28c0;
++    const uint32_t line_target=rally?0xee9b8:0xf06d8;
+     const uint64_t limit=static_cast<uint64_t>(MEM_TotalPages())*MemPageSize;
+-    for(const auto link:{0x4e016u,0x4e02fu,0x4e048u}){
+-        uint8_t call[5];const uint32_t pc=bias+link;
+-        if(static_cast<uint64_t>(pc)+1>limit)return;
+-        MEM_BlockRead(pc-5,call,5);int32_t relative=0;std::memcpy(&relative,call+1,4);
+-        if(call[0]!=0xe8||static_cast<uint32_t>(pc+relative)!=bias+0xc0dca)return;
+-    }
+-    rally_helper=address;needle_returns={bias+0x4e016,bias+0x4e02f,bias+0x4e048};
++    // All three original needle callers and their exact grDrawLine import
++    // call must agree. No game memory or timing is modified.
++    const auto guarded_call=[&](uint32_t link,uint32_t target){
++        const uint32_t pc=bias+link;
++        if(static_cast<uint64_t>(pc)+1>limit)return false;
++        uint8_t call[5];MEM_BlockRead(pc-5,call,5);int32_t relative=0;std::memcpy(&relative,call+1,4);
++        return call[0]==0xe8&&static_cast<uint32_t>(pc+relative)==bias+target;
++    };
++    for(const auto ret:returns)if(!guarded_call(ret,line))return;
++    if(!guarded_call(line_return,line_target))return;
++    rally_helper=address;helper_link=original_helper;
++    for(size_t i=0;i<returns.size();++i)needle_returns[i]=bias+returns[i];
++    needle_line_return=bias+line_return;needle_line_target=bias+line_target;
++    app_code_end=bias+(rally?0xeedc0:0xf0ae0);
++    needle_profile=rally?"screamer-rally-original":"screamer2-3dfx-original";
+ }
+ bool RallyNeedlePrimitive(){
+     if(!RallyEnabled()||!rally_helper)return false;
+-    const uint32_t sp=SegPhys(SegNames::ss)+reg_esp,bias=rally_helper-0x504dc;
++    const uint32_t sp=SegPhys(SegNames::ss)+reg_esp,bias=rally_helper-helper_link;
+     const uint64_t limit=static_cast<uint64_t>(MEM_TotalPages())*MemPageSize;
+     if(static_cast<uint64_t>(sp)+1024>limit)return false;
+     std::array<uint32_t,256> stack;MEM_BlockRead(sp,stack.data(),sizeof(stack));
+@@ -64,11 +83,11 @@
+     // is exactly 28 bytes later (two pointer args + four saved registers).
+     for(size_t i=0;i+7<stack.size();++i){
+         const uint32_t value=stack[i];
+-        if(value<bias+0x20005||value>=bias+0xeedc0)continue;
++        if(value<bias+0x20005||value>=app_code_end)continue;
+         uint8_t call[5];MEM_BlockRead(value-5,call,5);int32_t relative=0;std::memcpy(&relative,call+1,4);
+         const uint32_t target=value+relative;
+-        if(call[0]!=0xe8||target<bias+0x20000||target>=bias+0xeedc0)continue;
+-        if(value!=bias+0xc0ea0||target!=bias+0xee9b8)return false;
++        if(call[0]!=0xe8||target<bias+0x20000||target>=app_code_end)continue;
++        if(value!=needle_line_return||target!=needle_line_target)return false;
+         for(const auto ret:needle_returns)if(stack[i+7]==ret){++needle_primitives;return true;}
+         return false;
+     }
+@@ -81,6 +100,7 @@
+     std::string pixels,overlay;
+     uint64_t swap_sequence=0,coverage_pixels=0;
+     bool hud_complete=false;
++    std::string coverage_profile="none";uint64_t needle_count=0;
+ };
+ static DisplayFrame latest;
+ static std::mutex display_mutex;
+@@ -93,6 +113,7 @@
+     if(width<=0||height<=0||width>2048||height>1536||source.scale.cache_pitch<=0)return;
+     DisplayFrame frame;
+     frame.width=static_cast<uint32_t>(width);frame.height=static_cast<uint32_t>(height);frame.capture_ns=monotonic_ns();
++    frame.coverage_profile=needle_profile;frame.needle_count=needle_primitives;
+     frame.pixels.resize(static_cast<size_t>(width)*height*4);
+     const auto input=reinterpret_cast<const uint8_t*>(source.scale.cache.data());
+     for(int y=0;y<height;y++) {
+@@ -142,6 +163,8 @@
+     response.set_header("X-Rally-Pitch",std::to_string(frame.width*4));
+     response.set_header("X-Rally-Sequence",std::to_string(frame.sequence));
+     response.set_header("X-Rally-Capture-Ns",std::to_string(frame.capture_ns));
++    response.set_header("X-Rally-Coverage-Profile",frame.coverage_profile);
++    response.set_header("X-Rally-Needle-Primitives",std::to_string(frame.needle_count));
+     response.set_header("Cache-Control","no-store");
+     if(request.has_param("include_overlay")&&request.get_param_value("include_overlay")=="1"&&!frame.overlay.empty()){
+         response.set_header("X-Rally-Overlay-Offset",std::to_string(frame.pixels.size()));response.set_header("X-Rally-Overlay-Size",std::to_string(frame.overlay.size()));
+@@ -158,7 +181,9 @@
+     if(frame.overlay.empty()){response.status=503;response.set_content("Voodoo LFB coverage not ready","text/plain");return;}
+     response.set_header("X-Rally-Width",std::to_string(frame.width));response.set_header("X-Rally-Height",std::to_string(frame.height));
+     response.set_header("X-Rally-Pitch",std::to_string(frame.width*4));response.set_header("X-Rally-Sequence",std::to_string(frame.sequence));
+-    response.set_header("X-Rally-Capture-Ns",std::to_string(frame.capture_ns));response.set_header("X-Rally-Swap-Sequence",std::to_string(frame.swap_sequence));
++    response.set_header("X-Rally-Capture-Ns",std::to_string(frame.capture_ns));
++    response.set_header("X-Rally-Coverage-Profile",frame.coverage_profile);
++    response.set_header("X-Rally-Needle-Primitives",std::to_string(frame.needle_count));response.set_header("X-Rally-Swap-Sequence",std::to_string(frame.swap_sequence));
+     response.set_header("X-Rally-Coverage-Pixels",std::to_string(frame.coverage_pixels));response.set_header("X-Rally-Format","bgra8-premultiplied");
+     response.set_header("X-Rally-Hud-Complete",frame.hud_complete?"1":"0");
+     response.set_header("Cache-Control","no-store");response.set_content(std::move(frame.overlay),"application/octet-stream");

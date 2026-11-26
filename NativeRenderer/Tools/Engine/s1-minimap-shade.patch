@@ -1,0 +1,174 @@
+--- a/src/webserver/s1_native.cpp
++++ b/src/webserver/s1_native.cpp
+@@ -33,17 +33,24 @@
+ constexpr uint32_t MainRaceReturn = 0x1fffc;
+ constexpr uint32_t HudCall = 0x2001a, HudTarget = 0x23420;
+ constexpr uint32_t FrameCall = 0x1ff54, FrameTarget = 0x1ff70;
++constexpr uint32_t MapShadeCall = 0x23b25, MapShadeTarget = 0x25d28;
++constexpr uint8_t MapShadeAlpha = 64; // Original palette target is RGB * 0.75.
+ constexpr size_t HudPixels = 640*400;
+ constexpr uint64_t LeaseNs = 600000000;
+ constexpr std::array<uint8_t, 5> OriginalCall = {0xe8,0x38,0x28,0x00,0x00};
+ constexpr std::array<uint8_t, 5> MainRaceCall = {0xe8,0xb4,0x1a,0x06,0x00};
+ constexpr std::array<uint8_t, 5> OriginalFrameCall = {0xe8,0x17,0x00,0x00,0x00};
+ constexpr std::array<uint8_t, 5> MainHudCall = {0xe8,0x01,0x34,0x00,0x00};
++constexpr std::array<uint8_t, 5> OriginalMapShadeCall = {0xe8,0xfe,0x21,0x00,0x00};
++constexpr std::array<uint8_t, 12> MapShadePrologue = {0x60,0x25,0xfc,0xff,0x00,0x00,0x81,0xe3,0xfc,0xff,0x00,0x00};
++constexpr std::array<uint8_t, 7> MapShadeCoefficient = {0xc7,0x45,0xac,0x00,0x00,0x40,0x3f};
+ constexpr std::array<uint8_t, 7> WorldSave = {0x60,0x1e,0x06,0x0f,0xa0,0x0f,0xa8};
+ struct State {
+     bool installed=false, ready=false;
+     uint32_t code_base=0, data_base=0;
+     callback_number_t callback=0, hud_begin=0, hud_end=0, frame_begin=0;
++    callback_number_t map_begin=0, map_end=0;
++    uint64_t map_shade_calls=0, map_shade_rejected=0;
+     uint32_t last_outer_return=0, last_hud_mode=0;
+     uint64_t main_race_calls=0, hud_calls=0, hud_captures=0, hud_rejected=0;
+     uint64_t lease=0, callbacks=0, skipped=0, fallback=0, expired=0, stack_rejected=0;
+@@ -84,7 +91,7 @@
+ // Ordinary RAM reads and writes retain the original host backing addresses.
+ struct HudPage { uint32_t page;PageHandler* original;HostPt host; };
+ struct HudCoverage {
+-    bool active=false, pending=false;
++    bool active=false, pending=false, map_shade_active=false, valid=true;
+     uint32_t framebuffer=0, mode=0;
+     uint64_t captured=0, sequence=0;
+     std::vector<HudPage> pages;
+@@ -114,14 +121,23 @@
+         const auto physical=PAGING_GetPhysicalAddress(address);
+         auto host=GetHostReadPt(physical/MemPageSize);
+         host[physical%MemPageSize]=value;
+-        if(physical>=hud.framebuffer&&static_cast<uint64_t>(physical)-hud.framebuffer<HudPixels)
+-            hud.alpha[physical-hud.framebuffer]=255;
++        if(physical>=hud.framebuffer&&static_cast<uint64_t>(physical)-hud.framebuffer<HudPixels) {
++            const size_t offset=physical-hud.framebuffer;
++            // The original minimap background remaps existing world colors;
++            // it is an effect on the current world, not an opaque HUD sprite.
++            // Foreground map lines/markers written later retain full coverage.
++            if(hud.map_shade_active) {
++                const size_t x=offset%640,y=offset/640;
++                if(x<8||x>=152||y<248||y>=392)hud.valid=false;
++                if(!hud.alpha[offset])hud.alpha[offset]=MapShadeAlpha;
++            } else hud.alpha[offset]=255;
++        }
+     }
+ } hud_handler;
+ void stop_hud_coverage() {
+     if(!hud.active)return;
+     for(const auto& page:hud.pages)MEM_SetPageHandler(page.page,1,page.original);
+-    PAGING_ClearTLB();hud.active=false;
++    PAGING_ClearTLB();hud.active=false;hud.map_shade_active=false;
+ }
+ bool supported_hud_ram(uint32_t framebuffer) {
+     constexpr uint32_t LowRamStart=0x1000,LowRamEnd=0xa0000,ExtendedRamStart=0x100000;
+@@ -174,7 +190,7 @@
+     if(!ordinary_hud_pages(fb,&hud.pages,state.hud_rejected_page)) {
+         hud.pages.clear();return reject("framebuffer page is not ordinary writable RAM");
+     }
+-    hud.framebuffer=fb;hud.mode=mem_readd(data(0x1100c0));hud.alpha.fill(0);
++    hud.framebuffer=fb;hud.mode=mem_readd(data(0x1100c0));hud.alpha.fill(0);hud.valid=true;
+     for(const auto& page:hud.pages)MEM_SetPageHandler(page.page,1,&hud_handler);
+     PAGING_ClearTLB();hud.active=true;return true;
+ }
+@@ -184,14 +200,14 @@
+         // Preserve one completed original HUD cohort. VGA scanout can be
+         // several milliseconds behind this CPU snapshot, so its later RGB
+         // cache cannot safely provide colors for this frame's write mask.
+-        if(supported_hud_display()) {
++        if(supported_hud_display()&&hud.valid) {
+             MEM_BlockRead(hud.framebuffer,hud.indices.data(),HudPixels);
+             std::copy_n(vga.dac.palette_map,hud.palette.size(),hud.palette.begin());
+             state.captured_dac_bits=vga.dac.bits;state.captured_dac_pel_mask=vga.dac.pel_mask;
+             hud.captured=now_ns();hud.sequence++;hud.pending=true;state.hud_captures++;
+         } else {
+             hud.pending=false;state.hud_rejected++;
+-            state.hud_reject_reason="Indexed HUD display changed during capture";
++            state.hud_reject_reason="Indexed HUD display or minimap scope changed during capture";
+         }
+     }
+     reg_eip=code(FrameCall+5)-SegPhys(cs);return CBRET_NONE;
+@@ -200,6 +216,22 @@
+     stop_hud_coverage();
+     CPU_Push32(CALLBACK_PhysPointer(state.hud_end)-SegPhys(cs));
+     reg_eip=code(FrameTarget)-SegPhys(cs);return CBRET_NONE;
++}
++Bitu map_end_callback() {
++    hud.map_shade_active=false;
++    reg_eip=code(MapShadeCall+5)-SegPhys(cs);return CBRET_NONE;
++}
++Bitu map_begin_callback() {
++    // These are the original 23ACA..23B25 arguments, including the exact
++    // 144-by-144 source-space rectangle. Never infer the effect from colors.
++    const bool valid=reg_eax==8&&reg_edx==248&&reg_ebx==144&&reg_ecx==144;
++    if(hud.active) {
++        state.map_shade_calls++;
++        hud.map_shade_active=valid;
++        if(!valid){hud.valid=false;state.map_shade_rejected++;}
++    }
++    CPU_Push32(CALLBACK_PhysPointer(state.map_end)-SegPhys(cs));
++    reg_eip=code(MapShadeTarget)-SegPhys(cs);return CBRET_NONE;
+ }
+ Bitu hud_begin_callback() {
+     state.hud_calls++;
+@@ -248,7 +280,8 @@
+             throw std::invalid_argument("S1 mapping changed; restart private runtime");
+         const std::array<uint8_t,5> hud_hook={0xfe,0x38,state.hud_begin,0x00,0x90};
+         const std::array<uint8_t,5> frame_hook={0xfe,0x38,state.frame_begin,0x00,0x90};
+-        if(!matches(code(BackendCall),hook_bytes())||!matches(code(HudCall),hud_hook)||!matches(code(FrameCall),frame_hook))
++        const std::array<uint8_t,5> map_hook={0xfe,0x38,state.map_begin,0x00,0x90};
++        if(!matches(code(BackendCall),hook_bytes())||!matches(code(HudCall),hud_hook)||!matches(code(FrameCall),frame_hook)||!matches(code(MapShadeCall),map_hook))
+             throw std::invalid_argument("S1 backend hook no longer matches");
+         return;
+     }
+@@ -263,6 +296,7 @@
+     const std::array<uint8_t,5> wait_tail={0x83,0xfa,0x02,0x72,0xf5};
+     if(!matches(code(BackendCall),OriginalCall)||!matches(code(0x1fff7),MainRaceCall)||
+        !matches(code(0x2001a),MainHudCall)||!matches(code(FrameCall),OriginalFrameCall)||!matches(code(0x81ab5),WorldSave)||
++       !matches(code(MapShadeCall),OriginalMapShadeCall)||!matches(code(MapShadeTarget),MapShadePrologue)||!matches(code(0x258db),MapShadeCoefficient)||
+        !matches(code(0x1fc46),wait_tail)||mem_readw(code(0x1fc40))!=0x158b||
+        mem_readd(code(0x1fc42))!=code(0x107f9))
+         throw std::invalid_argument("Original S1 graphics/wait guards differ");
+@@ -270,16 +304,21 @@
+     if(!CALLBACK_Setup(state.callback,backend_callback,CB_RETN,"S1 original polygon backend bridge"))
+         throw std::runtime_error("Cannot allocate S1 callback");
+     state.hud_begin=CALLBACK_Allocate();state.hud_end=CALLBACK_Allocate();state.frame_begin=CALLBACK_Allocate();
++    state.map_begin=CALLBACK_Allocate();state.map_end=CALLBACK_Allocate();
+     if(!CALLBACK_Setup(state.hud_begin,hud_begin_callback,CB_RETN,"S1 original HUD coverage begin")||
+        !CALLBACK_Setup(state.hud_end,hud_end_callback,CB_RETN,"S1 original HUD coverage end")||
+-       !CALLBACK_Setup(state.frame_begin,frame_begin_callback,CB_RETN,"S1 original frame wrapper"))
++       !CALLBACK_Setup(state.frame_begin,frame_begin_callback,CB_RETN,"S1 original frame wrapper")||
++       !CALLBACK_Setup(state.map_begin,map_begin_callback,CB_RETN,"S1 original minimap shade begin")||
++       !CALLBACK_Setup(state.map_end,map_end_callback,CB_RETN,"S1 original minimap shade end"))
+         throw std::runtime_error("Cannot allocate S1 HUD callbacks");
+     const auto hook=hook_bytes();MEM_BlockWrite(code(BackendCall),hook.data(),hook.size());
+     const std::array<uint8_t,5> hud_hook={0xfe,0x38,state.hud_begin,0x00,0x90};
+     MEM_BlockWrite(code(HudCall),hud_hook.data(),hud_hook.size());
+     const std::array<uint8_t,5> frame_hook={0xfe,0x38,state.frame_begin,0x00,0x90};
+     MEM_BlockWrite(code(FrameCall),frame_hook.data(),frame_hook.size());
+-    if(!matches(code(BackendCall),hook)||!matches(code(HudCall),hud_hook)||!matches(code(FrameCall),frame_hook))throw std::runtime_error("S1 hook verification failed");
++    const std::array<uint8_t,5> map_hook={0xfe,0x38,state.map_begin,0x00,0x90};
++    MEM_BlockWrite(code(MapShadeCall),map_hook.data(),map_hook.size());
++    if(!matches(code(BackendCall),hook)||!matches(code(HudCall),hud_hook)||!matches(code(FrameCall),frame_hook)||!matches(code(MapShadeCall),map_hook))throw std::runtime_error("S1 hook verification failed");
+     state.installed=true;
+ }
+ json status() {
+@@ -295,6 +334,7 @@
+         {"main_race_calls",state.main_race_calls},{"last_outer_return_physical",state.last_outer_return},
+         {"last_hud_mode",state.last_hud_mode},{"hud_calls",state.hud_calls},{"hud_captures",state.hud_captures},
+         {"hud_rejected",state.hud_rejected},{"hud_framebuffer",hud.framebuffer},{"hud_sequence",hud.sequence},
++        {"minimap_shade_calls",state.map_shade_calls},{"minimap_shade_rejected",state.map_shade_rejected},{"minimap_shade_alpha",MapShadeAlpha},
+         {"hud_publish_attempts",state.publish_attempts},{"hud_publish_count",state.publish_count},
+         {"hud_publish_width",state.publish_width},{"hud_publish_height",state.publish_height},
+         {"hud_publish_pixel_format",state.publish_pixel_format},{"hud_publish_reject_reason",state.publish_reject_reason},
+@@ -348,8 +388,9 @@
+             const size_t at=sy*640+x;
+             const uint8_t alpha=hud.alpha[at];
+             const auto& color=hud.palette[hud.indices[at]];
+-            out[0]=alpha?color.Blue():0;out[1]=alpha?color.Green():0;
+-            out[2]=alpha?color.Red():0;out[3]=alpha;
++            const bool foreground=alpha==255;
++            out[0]=foreground?color.Blue():0;out[1]=foreground?color.Green():0;
++            out[2]=foreground?color.Red():0;out[3]=alpha;
+         }
+     }
+     hud.pending=false;state.publish_count++;state.publish_reject_reason.clear();

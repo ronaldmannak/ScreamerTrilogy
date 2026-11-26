@@ -1,0 +1,1046 @@
+{
+  "source": "<owned-games>/ScreamerRally/Screamer_Rally_1997",
+  "reviewed_archive": "/private/tmp/screamer-rally-malware-review/Screamer_Rally_1997.zip",
+  "archive_member_count": 122,
+  "compared_file_count": 122,
+  "all_archive_members_match": true,
+  "missing": [],
+  "mismatched": [],
+  "extra_files": [],
+  "files": [
+    {
+      "path": "ScrmRal/cd/srally.ccd",
+      "bytes": 2300,
+      "sha256": "a68355aa4cb306d883cc594f76165ed925244bb6f86b0119a2d82b5c681c7f1a",
+      "archive_sha256": "a68355aa4cb306d883cc594f76165ed925244bb6f86b0119a2d82b5c681c7f1a",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/cd/srally.cue",
+      "bytes": 382,
+      "sha256": "3b46e8d654b2d572c97b036f787277c52892502ec581970eec5c991c99ee2b0e",
+      "archive_sha256": "3b46e8d654b2d572c97b036f787277c52892502ec581970eec5c991c99ee2b0e",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/cd/srally.img",
+      "bytes": 560650944,
+      "sha256": "d27bc54aee4627087fb06b631a80f96460b0f42ea04e1831423a3b9b340488d1",
+      "archive_sha256": "d27bc54aee4627087fb06b631a80f96460b0f42ea04e1831423a3b9b340488d1",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/cd/srally.sub",
+      "bytes": 22883712,
+      "sha256": "c57a6c9364660fe402cf5122fbbd76f24449132b37ef3fa41ed9bda74bfb3060",
+      "archive_sha256": "c57a6c9364660fe402cf5122fbbd76f24449132b37ef3fa41ed9bda74bfb3060",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/Screamer Rally (1997).ba1",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/CONTROLS.CFG",
+      "bytes": 1496,
+      "sha256": "b2f6e0721b141874da36b3db35f6e7f7e8316f5a2e035bd07ec998de9dcdb1f4",
+      "archive_sha256": "b2f6e0721b141874da36b3db35f6e7f7e8316f5a2e035bd07ec998de9dcdb1f4",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/DEFCTRL.CFG",
+      "bytes": 1496,
+      "sha256": "b2f6e0721b141874da36b3db35f6e7f7e8316f5a2e035bd07ec998de9dcdb1f4",
+      "archive_sha256": "b2f6e0721b141874da36b3db35f6e7f7e8316f5a2e035bd07ec998de9dcdb1f4",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/HMIDET.386",
+      "bytes": 83152,
+      "sha256": "18f78bb0a02730217c09666751530022d7fee541760e516bddb90b3621c3cf34",
+      "archive_sha256": "18f78bb0a02730217c09666751530022d7fee541760e516bddb90b3621c3cf34",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/HMIDRV.386",
+      "bytes": 317317,
+      "sha256": "348ca810def83a52273fd3ba0987af9208c0a585942e7a542ee99da035d65bcf",
+      "archive_sha256": "348ca810def83a52273fd3ba0987af9208c0a585942e7a542ee99da035d65bcf",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/HMIMDRV.386",
+      "bytes": 117852,
+      "sha256": "a64e69c59f761fe3d23994fd07377564cf229a8656294383e874e0b6e53ac2fc",
+      "archive_sha256": "a64e69c59f761fe3d23994fd07377564cf229a8656294383e874e0b6e53ac2fc",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/SETUP.CFG",
+      "bytes": 160,
+      "sha256": "c4891c1a25fd1390a51ec6b8addef497c1600ce2cbafff17d0c5119310a71f86",
+      "archive_sha256": "c4891c1a25fd1390a51ec6b8addef497c1600ce2cbafff17d0c5119310a71f86",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/SETUP.DAT",
+      "bytes": 1606985,
+      "sha256": "87c307ff305b7f3ae6822ebe540127b0fa7cec655c76e9f0481f2d9decff02b9",
+      "archive_sha256": "87c307ff305b7f3ae6822ebe540127b0fa7cec655c76e9f0481f2d9decff02b9",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/SETUP.ICO",
+      "bytes": 766,
+      "sha256": "c5afd4c9e444fc12aa768d8dbf8b01691750d86363ded9a030ba21dd3ba4f503",
+      "archive_sha256": "c5afd4c9e444fc12aa768d8dbf8b01691750d86363ded9a030ba21dd3ba4f503",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/SR.ICO",
+      "bytes": 766,
+      "sha256": "fa40365425a1d5ca89c9cc2e807f8b201b6c515fc23c582f09f6adecc2ab86ff",
+      "archive_sha256": "fa40365425a1d5ca89c9cc2e807f8b201b6c515fc23c582f09f6adecc2ab86ff",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/VIELOGO.TGA",
+      "bytes": 50578,
+      "sha256": "46c875398accb71afbfc2d619b4ae1ebf61dc25047c07523954dd49e91b512e2",
+      "archive_sha256": "46c875398accb71afbfc2d619b4ae1ebf61dc25047c07523954dd49e91b512e2",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/GAME.DAT",
+      "bytes": 4481,
+      "sha256": "750fce438ceae61210f4963eebe0b822f0e195bed056a98eef929be98e33f750",
+      "archive_sha256": "750fce438ceae61210f4963eebe0b822f0e195bed056a98eef929be98e33f750",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/GEN.DAT",
+      "bytes": 17092,
+      "sha256": "28bfe20c0de9146343cf28fc05227f6f54ac810424f7eeac67e11d1c08e316c7",
+      "archive_sha256": "28bfe20c0de9146343cf28fc05227f6f54ac810424f7eeac67e11d1c08e316c7",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/LOCAL.DAT",
+      "bytes": 2948,
+      "sha256": "83d1b39a5d95c1f00ecc9294c06be62e5e81bd6cf448d7cb89ab1040cdb38cca",
+      "archive_sha256": "83d1b39a5d95c1f00ecc9294c06be62e5e81bd6cf448d7cb89ab1040cdb38cca",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/MAP1.DAT",
+      "bytes": 13970,
+      "sha256": "f903a5bbc49e98c584328975f23cb169dba832099d44786eadaa18bc58461fa7",
+      "archive_sha256": "f903a5bbc49e98c584328975f23cb169dba832099d44786eadaa18bc58461fa7",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/MAP2.DAT",
+      "bytes": 11497,
+      "sha256": "b6a9f9456acbcdbad926c18f07bdf6d0b6e452365bb7a14a7df04d526e113c20",
+      "archive_sha256": "b6a9f9456acbcdbad926c18f07bdf6d0b6e452365bb7a14a7df04d526e113c20",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/MAP3.DAT",
+      "bytes": 15417,
+      "sha256": "104f2d136693404f1249f37a982e83758f8985762f319067355ad8feed69870d",
+      "archive_sha256": "104f2d136693404f1249f37a982e83758f8985762f319067355ad8feed69870d",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/MAP4.DAT",
+      "bytes": 14638,
+      "sha256": "8198a964f6b3bf597e13d896e798914cf3cd6ae461e4ed093e1eefb2828db52c",
+      "archive_sha256": "8198a964f6b3bf597e13d896e798914cf3cd6ae461e4ed093e1eefb2828db52c",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/MAP5.DAT",
+      "bytes": 13337,
+      "sha256": "f8e1b5625c8770052b8b410967aa32d40c0d7d922fdf69451a0e9116137023fb",
+      "archive_sha256": "f8e1b5625c8770052b8b410967aa32d40c0d7d922fdf69451a0e9116137023fb",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/MAP6.DAT",
+      "bytes": 9867,
+      "sha256": "5d3a80a22e1ad6d43ff38767a1d57fbc36b837d01d68da5bbe5ebe5bc2fd9295",
+      "archive_sha256": "5d3a80a22e1ad6d43ff38767a1d57fbc36b837d01d68da5bbe5ebe5bc2fd9295",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/MAP7.DAT",
+      "bytes": 6900,
+      "sha256": "1b4969189bd47e9bc2a95f06c3b8a25abcbde86462b91765696a538caf41fed4",
+      "archive_sha256": "1b4969189bd47e9bc2a95f06c3b8a25abcbde86462b91765696a538caf41fed4",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DATA/SOUND.DAT",
+      "bytes": 1435548,
+      "sha256": "d969a9ed33307307370652b2fd78353301aa82949fd42e5ac4ac261a768829fb",
+      "archive_sha256": "d969a9ed33307307370652b2fd78353301aa82949fd42e5ac4ac261a768829fb",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/DOS4GW.EXE",
+      "bytes": 265396,
+      "sha256": "b8265123ac8a189637448618409ef3ecd2e9f3e1a47062c685a02240f688dec1",
+      "archive_sha256": "b8265123ac8a189637448618409ef3ecd2e9f3e1a47062c685a02240f688dec1",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/CARS101.DAT",
+      "bytes": 558933,
+      "sha256": "011d7a2020a4f56a90dcba1b0abf841a84120271def9b4de8d4cac8fc64a2ff8",
+      "archive_sha256": "011d7a2020a4f56a90dcba1b0abf841a84120271def9b4de8d4cac8fc64a2ff8",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/CARS111.DAT",
+      "bytes": 591408,
+      "sha256": "c39d1592714fbb43bbd1bb3981e8147f12e729f5e0d4aa503a1b1bb9429d9767",
+      "archive_sha256": "c39d1592714fbb43bbd1bb3981e8147f12e729f5e0d4aa503a1b1bb9429d9767",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVM11.DAT",
+      "bytes": 3956,
+      "sha256": "f57e67b635833821d2a6b851e970fa17b71e139e2f1b365634f0e0454ab717df",
+      "archive_sha256": "f57e67b635833821d2a6b851e970fa17b71e139e2f1b365634f0e0454ab717df",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP101.DAT",
+      "bytes": 5910,
+      "sha256": "2a19ab4188ee5d57b2370551ec6125835dfc5cee44d2d36a88d9f0fe4426c279",
+      "archive_sha256": "2a19ab4188ee5d57b2370551ec6125835dfc5cee44d2d36a88d9f0fe4426c279",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP111.DAT",
+      "bytes": 5915,
+      "sha256": "bfd7ebfd123dffa02fc6e48ce428434380830ae0c690d2ed96776e6c8f5caf67",
+      "archive_sha256": "bfd7ebfd123dffa02fc6e48ce428434380830ae0c690d2ed96776e6c8f5caf67",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP201.DAT",
+      "bytes": 5910,
+      "sha256": "ceec79d0c40bfae6e2e83ee29db57c724cb2cc9677d49fe068e0738182917f64",
+      "archive_sha256": "ceec79d0c40bfae6e2e83ee29db57c724cb2cc9677d49fe068e0738182917f64",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP211.DAT",
+      "bytes": 5915,
+      "sha256": "9f6eb5a329a0cde2ed1bab281a45ac07249457ebd5150ecdcf7d6cba8f7095d2",
+      "archive_sha256": "9f6eb5a329a0cde2ed1bab281a45ac07249457ebd5150ecdcf7d6cba8f7095d2",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP301.DAT",
+      "bytes": 5910,
+      "sha256": "41d6bbabd2e495f4e3768547cb7db19e287432370feced907b7b686c3d51af01",
+      "archive_sha256": "41d6bbabd2e495f4e3768547cb7db19e287432370feced907b7b686c3d51af01",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP311.DAT",
+      "bytes": 18397,
+      "sha256": "8cd83be424219727b003c07759ccfd5790e0a644ad788ba413a3f924261437b8",
+      "archive_sha256": "8cd83be424219727b003c07759ccfd5790e0a644ad788ba413a3f924261437b8",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP401.DAT",
+      "bytes": 5910,
+      "sha256": "90bc02bbf002c90a870d56e14e850a2bf4bfa5150e4bd8171082e27750ed0563",
+      "archive_sha256": "90bc02bbf002c90a870d56e14e850a2bf4bfa5150e4bd8171082e27750ed0563",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP411.DAT",
+      "bytes": 14858,
+      "sha256": "7af18bf9c41f986052d7f8f0c9d2a34fd7bd6dae7ab88db71153f33e20b61153",
+      "archive_sha256": "7af18bf9c41f986052d7f8f0c9d2a34fd7bd6dae7ab88db71153f33e20b61153",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP501.DAT",
+      "bytes": 5910,
+      "sha256": "ceec79d0c40bfae6e2e83ee29db57c724cb2cc9677d49fe068e0738182917f64",
+      "archive_sha256": "ceec79d0c40bfae6e2e83ee29db57c724cb2cc9677d49fe068e0738182917f64",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP511.DAT",
+      "bytes": 5915,
+      "sha256": "a89c599c8f130e2bc211ab0d450eae772ac63cf90cab164549e284655fc416e3",
+      "archive_sha256": "a89c599c8f130e2bc211ab0d450eae772ac63cf90cab164549e284655fc416e3",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP601.DAT",
+      "bytes": 14494,
+      "sha256": "23ec7b87b24b14143e8916c7d90547d0393dd1c3cabf4743b74815330402dc63",
+      "archive_sha256": "23ec7b87b24b14143e8916c7d90547d0393dd1c3cabf4743b74815330402dc63",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP611.DAT",
+      "bytes": 14350,
+      "sha256": "00ebee9ac4ca2490c4531c163612d02f2bbd5a731764c5520b09a9a121c1850c",
+      "archive_sha256": "00ebee9ac4ca2490c4531c163612d02f2bbd5a731764c5520b09a9a121c1850c",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP701.DAT",
+      "bytes": 11067,
+      "sha256": "9b8fc0519c792ef118ca80f79f70b5101fbf01cd49c6274994b60c011c3ee5b8",
+      "archive_sha256": "9b8fc0519c792ef118ca80f79f70b5101fbf01cd49c6274994b60c011c3ee5b8",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP711.DAT",
+      "bytes": 11067,
+      "sha256": "9b8fc0519c792ef118ca80f79f70b5101fbf01cd49c6274994b60c011c3ee5b8",
+      "archive_sha256": "9b8fc0519c792ef118ca80f79f70b5101fbf01cd49c6274994b60c011c3ee5b8",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/GAME1.DAT",
+      "bytes": 384600,
+      "sha256": "abcc79a0a2cd0b265ecace16a4fc0ab7180ce254cca521328057af01b7d107a5",
+      "archive_sha256": "abcc79a0a2cd0b265ecace16a4fc0ab7180ce254cca521328057af01b7d107a5",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/GRAF2.DAT",
+      "bytes": 5114024,
+      "sha256": "170a0f1b96c144c016b239966bf13a7dead197730e89a67d22b91ce5acad79cd",
+      "archive_sha256": "170a0f1b96c144c016b239966bf13a7dead197730e89a67d22b91ce5acad79cd",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/LOGO1.DAT",
+      "bytes": 579126,
+      "sha256": "ca64b9d8305ddba02317be4b0f605fd7cdca675b87ec3907f8ad58a99ef345b0",
+      "archive_sha256": "ca64b9d8305ddba02317be4b0f605fd7cdca675b87ec3907f8ad58a99ef345b0",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP11.DAT",
+      "bytes": 9332492,
+      "sha256": "a3d06a718420258416fc92920fdfddab45651c49edcc6022d7e142fddc257926",
+      "archive_sha256": "a3d06a718420258416fc92920fdfddab45651c49edcc6022d7e142fddc257926",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP21.DAT",
+      "bytes": 6523386,
+      "sha256": "5765bb45a89181918b027673eeb863f661c6ac3e419871d7b24c2d9e8b2ba52f",
+      "archive_sha256": "5765bb45a89181918b027673eeb863f661c6ac3e419871d7b24c2d9e8b2ba52f",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP31.DAT",
+      "bytes": 9605945,
+      "sha256": "d015f4da77a3b497f3c5bda69732cb8d990742a5f249f400c00dab1e2b323031",
+      "archive_sha256": "d015f4da77a3b497f3c5bda69732cb8d990742a5f249f400c00dab1e2b323031",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP41.DAT",
+      "bytes": 9610806,
+      "sha256": "b77f263c7a9b914ff095d3c6c1b40a71367505608abe0c0cb7c755468f82b219",
+      "archive_sha256": "b77f263c7a9b914ff095d3c6c1b40a71367505608abe0c0cb7c755468f82b219",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP51.DAT",
+      "bytes": 9140105,
+      "sha256": "f70e0a41fbe9c5cbeb53d5305e7155d63afa61a0816be29992891a53ef37ebb4",
+      "archive_sha256": "f70e0a41fbe9c5cbeb53d5305e7155d63afa61a0816be29992891a53ef37ebb4",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP61.DAT",
+      "bytes": 8943163,
+      "sha256": "8c190e78ec206e67ed6ade8284d67c682fd6f19c467adb8c90c447155f496867",
+      "archive_sha256": "8c190e78ec206e67ed6ade8284d67c682fd6f19c467adb8c90c447155f496867",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP71.DAT",
+      "bytes": 3712618,
+      "sha256": "eadeaf6173e536659036c64cc71fce733751a055064085c9eba39d1e215f5bb8",
+      "archive_sha256": "eadeaf6173e536659036c64cc71fce733751a055064085c9eba39d1e215f5bb8",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAPS1.DAT",
+      "bytes": 757401,
+      "sha256": "5e298e4140d01d8a3cad74663f888947b9ca993baef900742acb231b80594fed",
+      "archive_sha256": "5e298e4140d01d8a3cad74663f888947b9ca993baef900742acb231b80594fed",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MENU11.DAT",
+      "bytes": 498066,
+      "sha256": "5e3a57fb17b1c79e052aa9a4eb8511d1f54e07765f9fe82e20e6a754465ebad6",
+      "archive_sha256": "5e3a57fb17b1c79e052aa9a4eb8511d1f54e07765f9fe82e20e6a754465ebad6",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HMIDET.386",
+      "bytes": 92928,
+      "sha256": "0923efa636e2e6cba5bfe489d187acffdb5d0df0e6a26c8e4ad4fb2e6d5a2522",
+      "archive_sha256": "0923efa636e2e6cba5bfe489d187acffdb5d0df0e6a26c8e4ad4fb2e6d5a2522",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HMIDRV.386",
+      "bytes": 281934,
+      "sha256": "fd2a666c645ed19e9a5b43d1bd60d11de39884996226ef97536db1ed2334cc59",
+      "archive_sha256": "fd2a666c645ed19e9a5b43d1bd60d11de39884996226ef97536db1ed2334cc59",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HMIMDRV.386",
+      "bytes": 118079,
+      "sha256": "228ff761f3ec51226e7e6dc782abc2b24b2fd543f7fb09f592925a2790d5d4cb",
+      "archive_sha256": "228ff761f3ec51226e7e6dc782abc2b24b2fd543f7fb09f592925a2790d5d4cb",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HOTCGL/FXMEMMAP.VXD",
+      "bytes": 7584,
+      "sha256": "28fbbe9e6611357f1800bf0295c634128b7b58a135b7ec370467b887a4198965",
+      "archive_sha256": "28fbbe9e6611357f1800bf0295c634128b7b58a135b7ec370467b887a4198965",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HOTCGL/VOODOO.OVL",
+      "bytes": 348791,
+      "sha256": "6981a7bd77445be7b360ca367af1e527927db396546db15b69803b16a67676a9",
+      "archive_sha256": "6981a7bd77445be7b360ca367af1e527927db396546db15b69803b16a67676a9",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HOTCGL/VRITB170.CGL",
+      "bytes": 99400,
+      "sha256": "9f4510efb8f4c2191bf61564d89b7d731bc3a8169cd9fa55835c5ca05c08be75",
+      "archive_sha256": "9f4510efb8f4c2191bf61564d89b7d731bc3a8169cd9fa55835c5ca05c08be75",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HOTCGL/VRITC170.CGL",
+      "bytes": 99352,
+      "sha256": "4e457f6f947912ee08b02bb44e5991e39e625a0f2ddc3396f39ba0a1c9d20cb4",
+      "archive_sha256": "4e457f6f947912ee08b02bb44e5991e39e625a0f2ddc3396f39ba0a1c9d20cb4",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HOTCGL/VRITE170.CGL",
+      "bytes": 102175,
+      "sha256": "75693f5ab0cc65cd002703f03e35ff06bb484c9f2376529b4f1fde1064b35f5d",
+      "archive_sha256": "75693f5ab0cc65cd002703f03e35ff06bb484c9f2376529b4f1fde1064b35f5d",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HOTCGL/VRITI170.CGL",
+      "bytes": 102501,
+      "sha256": "17d840af2bc0a11e4e828a57068efcb1b620186ad2bc0ef0a282e8bc9ce94397",
+      "archive_sha256": "17d840af2bc0a11e4e828a57068efcb1b620186ad2bc0ef0a282e8bc9ce94397",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/HOTCGL/VRUSH.OVL",
+      "bytes": 395715,
+      "sha256": "17338671376641df1be991238962e146a48e2041cb2acc0cf1f214e35224743f",
+      "archive_sha256": "17338671376641df1be991238962e146a48e2041cb2acc0cf1f214e35224743f",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/Patch - Screamer Rally (STARTH.EXE).exe",
+      "bytes": 5125,
+      "sha256": "0b2960e3c98fb20cc21a6e34fdee3195654eb17495fdb9093ee8dbde4cd7579d",
+      "archive_sha256": "0b2960e3c98fb20cc21a6e34fdee3195654eb17495fdb9093ee8dbde4cd7579d",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/Patch - Screamer Rally (STARTL.EXE).exe",
+      "bytes": 5125,
+      "sha256": "17f500fcde1193ce067280a9b093f3fda7dc249af5e6a9370ada899d487669c2",
+      "archive_sha256": "17f500fcde1193ce067280a9b093f3fda7dc249af5e6a9370ada899d487669c2",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/REPLAYS/DUMMY.DAT",
+      "bytes": 9,
+      "sha256": "eace6cb5a3dcc0dcee33f45d1bc405fbb5f10f978795ca81a2254b3e2c1248c9",
+      "archive_sha256": "eace6cb5a3dcc0dcee33f45d1bc405fbb5f10f978795ca81a2254b3e2c1248c9",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/SCREAMER.CFG",
+      "bytes": 16,
+      "sha256": "15b89f59349e851241bdd259edca31ba786d93911da015ff5a6fb1ecf1e5e1bf",
+      "archive_sha256": "15b89f59349e851241bdd259edca31ba786d93911da015ff5a6fb1ecf1e5e1bf",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/SCREAMER.PIF",
+      "bytes": 967,
+      "sha256": "e7b3bfa335a31cf13c96b23592688178128e7dad60d771825d435acc79edb6bc",
+      "archive_sha256": "e7b3bfa335a31cf13c96b23592688178128e7dad60d771825d435acc79edb6bc",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/SETUP.BAT",
+      "bytes": 861,
+      "sha256": "daf2a14cca1d8d02b4ba1680f09f1c946e7e8383e867ef82fdbe979464258848",
+      "archive_sha256": "daf2a14cca1d8d02b4ba1680f09f1c946e7e8383e867ef82fdbe979464258848",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/SETUP.PIF",
+      "bytes": 967,
+      "sha256": "66f6e03681c225c6efd8d1e31eb908b272ee1d82b053a35d49208de5b55c6ea2",
+      "archive_sha256": "66f6e03681c225c6efd8d1e31eb908b272ee1d82b053a35d49208de5b55c6ea2",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/SR.BAT",
+      "bytes": 12,
+      "sha256": "7463f0f67e978244e69b0378c576a9fc88e3f58580ec7dec0a38f15f04f17492",
+      "archive_sha256": "7463f0f67e978244e69b0378c576a9fc88e3f58580ec7dec0a38f15f04f17492",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/ST.EXE",
+      "bytes": 297736,
+      "sha256": "e6083738a0130e77d8403f2948d70f4c554481405be8197ab70123ca0d57393d",
+      "archive_sha256": "e6083738a0130e77d8403f2948d70f4c554481405be8197ab70123ca0d57393d",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/STARTH.EXE",
+      "bytes": 1045098,
+      "sha256": "18d32c27d61873dc67381f87880d19774afaec1f7ee391d14ab255a9040a12d7",
+      "archive_sha256": "18d32c27d61873dc67381f87880d19774afaec1f7ee391d14ab255a9040a12d7",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/STARTL.EXE",
+      "bytes": 1049186,
+      "sha256": "a8822060bfa54141952d051afd0efc05a0f1ae97dc23e78dea6cce9192f9e9de",
+      "archive_sha256": "a8822060bfa54141952d051afd0efc05a0f1ae97dc23e78dea6cce9192f9e9de",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/TABS/PERSP01.TAB",
+      "bytes": 262656,
+      "sha256": "2901474f1a51265f40d55948c561c9d89d91fddeada659cca099d57fbf1ad6ef",
+      "archive_sha256": "2901474f1a51265f40d55948c561c9d89d91fddeada659cca099d57fbf1ad6ef",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/TABS/VIS.TAB",
+      "bytes": 161024,
+      "sha256": "da395e34f109aa5a685d1b6f46e502d0b1bd513086886a3b11a697dfea29e57e",
+      "archive_sha256": "da395e34f109aa5a685d1b6f46e502d0b1bd513086886a3b11a697dfea29e57e",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/CHOICE.EXE",
+      "bytes": 49152,
+      "sha256": "4a1b84960ebb5e98f945a1935952633cd805a86b199d2dbcd140d75033636ec7",
+      "archive_sha256": "4a1b84960ebb5e98f945a1935952633cd805a86b199d2dbcd140d75033636ec7",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/run.bat",
+      "bytes": 454,
+      "sha256": "5dd1bb10875f90d78df2d5275587ff1270ac7e309b7ef88040ad2f85bc203bff",
+      "archive_sha256": "5dd1bb10875f90d78df2d5275587ff1270ac7e309b7ef88040ad2f85bc203bff",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CHK3DBL.EXE",
+      "bytes": 43188,
+      "sha256": "27b0341beb94c465478a87ae51026dc1b25e200fb4a697ea0edd616723217a12",
+      "archive_sha256": "27b0341beb94c465478a87ae51026dc1b25e200fb4a697ea0edd616723217a12",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CHK3DFX.EXE",
+      "bytes": 85260,
+      "sha256": "9a6f20b946d05adc0ff5acfa41d5b98503e36876ee35377ef7cd5326f48f6397",
+      "archive_sha256": "9a6f20b946d05adc0ff5acfa41d5b98503e36876ee35377ef7cd5326f48f6397",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CHKMSI.EXE",
+      "bytes": 394216,
+      "sha256": "e1e94a6db3fae4d36f6c37a35bd4a82081209f9d07edb6d9574b1c8442c3286c",
+      "archive_sha256": "e1e94a6db3fae4d36f6c37a35bd4a82081209f9d07edb6d9574b1c8442c3286c",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/CONFIG/CARD3D.CFG",
+      "bytes": 16,
+      "sha256": "9d34149fbd1fe777eb238799054c8cbfbce372255f219f8740838def9bfd02db",
+      "archive_sha256": "9d34149fbd1fe777eb238799054c8cbfbce372255f219f8740838def9bfd02db",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/CARS102.DAT",
+      "bytes": 634678,
+      "sha256": "4b9a8f94be230176b1a8ff783be62eca47d68ca1ae0fd7d17fe58075d82f0b3f",
+      "archive_sha256": "4b9a8f94be230176b1a8ff783be62eca47d68ca1ae0fd7d17fe58075d82f0b3f",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/CARS112.DAT",
+      "bytes": 661875,
+      "sha256": "d99d15977d02878eb487f38514de2dc9eae90e9548e10b117bf434eadababf0b",
+      "archive_sha256": "d99d15977d02878eb487f38514de2dc9eae90e9548e10b117bf434eadababf0b",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVM12.DAT",
+      "bytes": 18523,
+      "sha256": "d2febc68713e0a66b80ba895c1201d1666393f6e1c41b3bbe2c89c43613f8083",
+      "archive_sha256": "d2febc68713e0a66b80ba895c1201d1666393f6e1c41b3bbe2c89c43613f8083",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP102.DAT",
+      "bytes": 18039,
+      "sha256": "572c2305ab89007f7bc83f7434fad02efd76ad85abed7a55c838ef169d971806",
+      "archive_sha256": "572c2305ab89007f7bc83f7434fad02efd76ad85abed7a55c838ef169d971806",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP112.DAT",
+      "bytes": 14268,
+      "sha256": "45731fcf8e73db44d29593efee5850016b9c64429e98f44b1c5f14c1f75190a8",
+      "archive_sha256": "45731fcf8e73db44d29593efee5850016b9c64429e98f44b1c5f14c1f75190a8",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP202.DAT",
+      "bytes": 14997,
+      "sha256": "a04b1f4ad2f7c3ecb8993f09e2b04702fe277f8a1d260426de17c0461167bc38",
+      "archive_sha256": "a04b1f4ad2f7c3ecb8993f09e2b04702fe277f8a1d260426de17c0461167bc38",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP212.DAT",
+      "bytes": 15797,
+      "sha256": "cf97aae0b8ba1db2bdc5cf914baa272dcc8cb126a3e7f9ef56d265cfc7ccf8b1",
+      "archive_sha256": "cf97aae0b8ba1db2bdc5cf914baa272dcc8cb126a3e7f9ef56d265cfc7ccf8b1",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP302.DAT",
+      "bytes": 12965,
+      "sha256": "52a2d97e90550da5dbce42b023fa95461620eff1e1f1e747b0289cd2393e1df9",
+      "archive_sha256": "52a2d97e90550da5dbce42b023fa95461620eff1e1f1e747b0289cd2393e1df9",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP312.DAT",
+      "bytes": 35549,
+      "sha256": "072757858fc8c36cf86a5cbdf5cd313238be4ac2909718b49743e1f2639e348c",
+      "archive_sha256": "072757858fc8c36cf86a5cbdf5cd313238be4ac2909718b49743e1f2639e348c",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP402.DAT",
+      "bytes": 13974,
+      "sha256": "daddac5541858ad8048dca56162cc580e57ddaba12e12ca804f472fe84f25dd9",
+      "archive_sha256": "daddac5541858ad8048dca56162cc580e57ddaba12e12ca804f472fe84f25dd9",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP412.DAT",
+      "bytes": 31030,
+      "sha256": "32f7c07bb3190d96e35821dde967573db141535178f987b5ea5bc0fda541561e",
+      "archive_sha256": "32f7c07bb3190d96e35821dde967573db141535178f987b5ea5bc0fda541561e",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP502.DAT",
+      "bytes": 12965,
+      "sha256": "52a2d97e90550da5dbce42b023fa95461620eff1e1f1e747b0289cd2393e1df9",
+      "archive_sha256": "52a2d97e90550da5dbce42b023fa95461620eff1e1f1e747b0289cd2393e1df9",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP512.DAT",
+      "bytes": 14268,
+      "sha256": "45731fcf8e73db44d29593efee5850016b9c64429e98f44b1c5f14c1f75190a8",
+      "archive_sha256": "45731fcf8e73db44d29593efee5850016b9c64429e98f44b1c5f14c1f75190a8",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP602.DAT",
+      "bytes": 29033,
+      "sha256": "ac756da6ee209ea7ddad200e314d1c9b069378836e01442bafc72712e7d9ae5f",
+      "archive_sha256": "ac756da6ee209ea7ddad200e314d1c9b069378836e01442bafc72712e7d9ae5f",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP612.DAT",
+      "bytes": 25344,
+      "sha256": "3930356602b909c9bdb8132fd869cfd578bd11f390a92aaa6cd3f4e89fa2b064",
+      "archive_sha256": "3930356602b909c9bdb8132fd869cfd578bd11f390a92aaa6cd3f4e89fa2b064",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP702.DAT",
+      "bytes": 24920,
+      "sha256": "b21ea517ce9c09eee59703f0753c334a2ac9467eddc1c868769cc8035c44dcbf",
+      "archive_sha256": "b21ea517ce9c09eee59703f0753c334a2ac9467eddc1c868769cc8035c44dcbf",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/ENVP712.DAT",
+      "bytes": 24920,
+      "sha256": "b21ea517ce9c09eee59703f0753c334a2ac9467eddc1c868769cc8035c44dcbf",
+      "archive_sha256": "b21ea517ce9c09eee59703f0753c334a2ac9467eddc1c868769cc8035c44dcbf",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/GAME2.DAT",
+      "bytes": 674211,
+      "sha256": "7ddd09c6103eb017519580f7c54a7c81b8edf2ba56ee5e3213d91936f003cf6c",
+      "archive_sha256": "7ddd09c6103eb017519580f7c54a7c81b8edf2ba56ee5e3213d91936f003cf6c",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/LOGO2.DAT",
+      "bytes": 666767,
+      "sha256": "996866124e844c0024d7192b3d8e20cc527d052099f8bdc26ea72c03e100a01c",
+      "archive_sha256": "996866124e844c0024d7192b3d8e20cc527d052099f8bdc26ea72c03e100a01c",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP12.DAT",
+      "bytes": 10709951,
+      "sha256": "a3aca5dfb7f7722bb9e04b734731fdb1c61968cc866a008bfb5fc7a0c86367e8",
+      "archive_sha256": "a3aca5dfb7f7722bb9e04b734731fdb1c61968cc866a008bfb5fc7a0c86367e8",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP22.DAT",
+      "bytes": 7043631,
+      "sha256": "b0edcd601cb5ceff124f2ca3c274fdd6c193dca91f56f01ee87b2fda39a5deea",
+      "archive_sha256": "b0edcd601cb5ceff124f2ca3c274fdd6c193dca91f56f01ee87b2fda39a5deea",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP32.DAT",
+      "bytes": 11640681,
+      "sha256": "e26fbf0ddfa59e965e6113b90afa471b96229670dd0fd487cd7a17042a6d68e2",
+      "archive_sha256": "e26fbf0ddfa59e965e6113b90afa471b96229670dd0fd487cd7a17042a6d68e2",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP42.DAT",
+      "bytes": 11600906,
+      "sha256": "4acb6c952e81abb69d8795228f9da2e798f738a96954e9421c021dc5e311ad49",
+      "archive_sha256": "4acb6c952e81abb69d8795228f9da2e798f738a96954e9421c021dc5e311ad49",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP52.DAT",
+      "bytes": 10776250,
+      "sha256": "6d8ecf2d0e7828ae3c2a8279a06854caace338b2f453287478e23bd49c9cb64d",
+      "archive_sha256": "6d8ecf2d0e7828ae3c2a8279a06854caace338b2f453287478e23bd49c9cb64d",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP62.DAT",
+      "bytes": 10607689,
+      "sha256": "ee4b9897928e403be3e3bcb38e98ccf55ea66d3dba8f4555bfeb733d00888a29",
+      "archive_sha256": "ee4b9897928e403be3e3bcb38e98ccf55ea66d3dba8f4555bfeb733d00888a29",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAP72.DAT",
+      "bytes": 4151058,
+      "sha256": "dbd3db656b437a379b1c5529a91c6f2840d88594bd5ef5514e51bbc9b688ae08",
+      "archive_sha256": "dbd3db656b437a379b1c5529a91c6f2840d88594bd5ef5514e51bbc9b688ae08",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MAPS2.DAT",
+      "bytes": 1004250,
+      "sha256": "7702c9a7b2dd8de23d82b238be2753c08a992feda7ad52b4547e3cf342773ce3",
+      "archive_sha256": "7702c9a7b2dd8de23d82b238be2753c08a992feda7ad52b4547e3cf342773ce3",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GFX/MENU12.DAT",
+      "bytes": 908128,
+      "sha256": "a44379488e9fe4b6a7016a0b066d9900d6220bc96ad20237abf936cd640a5764",
+      "archive_sha256": "a44379488e9fe4b6a7016a0b066d9900d6220bc96ad20237abf936cd640a5764",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/GLIDE2X.OVL",
+      "bytes": 348791,
+      "sha256": "6981a7bd77445be7b360ca367af1e527927db396546db15b69803b16a67676a9",
+      "archive_sha256": "6981a7bd77445be7b360ca367af1e527927db396546db15b69803b16a67676a9",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/START65H.EXE",
+      "bytes": 1145058,
+      "sha256": "0785e38567c475f25663e4022ec125e447a799004e34efa59758b50cfd84901d",
+      "archive_sha256": "0785e38567c475f25663e4022ec125e447a799004e34efa59758b50cfd84901d",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/START65L.EXE",
+      "bytes": 1149630,
+      "sha256": "d504a5a95ed3344a798f4a2f5d736c4a8ba8c493417d86d8b0617178b6818472",
+      "archive_sha256": "d504a5a95ed3344a798f4a2f5d736c4a8ba8c493417d86d8b0617178b6818472",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/STRT3DBH.EXE",
+      "bytes": 1045418,
+      "sha256": "b1fe88b91d76bf5e54df3db0d510ac143121af1ab935c023e1bb0e3b999fcb11",
+      "archive_sha256": "b1fe88b91d76bf5e54df3db0d510ac143121af1ab935c023e1bb0e3b999fcb11",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/STRT3DBL.EXE",
+      "bytes": 1044870,
+      "sha256": "f406a359bc082e4c955e1812f57158d65d6d0b1b0b64052627de208718dba8d4",
+      "archive_sha256": "f406a359bc082e4c955e1812f57158d65d6d0b1b0b64052627de208718dba8d4",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/STRT3FX.EXE",
+      "bytes": 1044502,
+      "sha256": "9eac6e12ab309389bdda019cfa695bfbbc791fbda1a4634464a444fce35165d1",
+      "archive_sha256": "9eac6e12ab309389bdda019cfa695bfbbc791fbda1a4634464a444fce35165d1",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/SR/STRTMSI.EXE",
+      "bytes": 1339982,
+      "sha256": "296e94716de19a1b92ec9dec65b656c9dd877160128f94b3cc9c2e8c5ae8391a",
+      "archive_sha256": "296e94716de19a1b92ec9dec65b656c9dd877160128f94b3cc9c2e8c5ae8391a",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "dosbox.conf",
+      "bytes": 484,
+      "sha256": "0e05eb0d66dffb6446a540c792025173c65e0da4beffaa599d314ff3d1916f04",
+      "archive_sha256": "0e05eb0d66dffb6446a540c792025173c65e0da4beffaa599d314ff3d1916f04",
+      "matches_reviewed_archive": true
+    },
+    {
+      "path": "ScrmRal/IAFIX.BAT",
+      "bytes": 420,
+      "sha256": "c5abecf236267c19b0b0d66510295724f9233cf3989339d1ebd2595652f73611",
+      "archive_sha256": "c5abecf236267c19b0b0d66510295724f9233cf3989339d1ebd2595652f73611",
+      "matches_reviewed_archive": true
+    }
+  ],
+  "disc": {
+    "cue": "<owned-games>/ScreamerRally/Screamer_Rally_1997/ScrmRal/cd/srally.cue",
+    "referenced_image_names": [
+      "srally.img"
+    ],
+    "case_sensitive_reference_exists": true,
+    "tracks": [
+      {
+        "number": 1,
+        "kind": "MODE1/2352"
+      },
+      {
+        "number": 2,
+        "kind": "AUDIO"
+      },
+      {
+        "number": 3,
+        "kind": "AUDIO"
+      },
+      {
+        "number": 4,
+        "kind": "AUDIO"
+      },
+      {
+        "number": 5,
+        "kind": "AUDIO"
+      },
+      {
+        "number": 6,
+        "kind": "AUDIO"
+      },
+      {
+        "number": 7,
+        "kind": "AUDIO"
+      },
+      {
+        "number": 8,
+        "kind": "AUDIO"
+      },
+      {
+        "number": 9,
+        "kind": "AUDIO"
+      }
+    ],
+    "indexes": [
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        18,
+        17,
+        41
+      ],
+      [
+        1,
+        22,
+        43,
+        35
+      ],
+      [
+        1,
+        26,
+        46,
+        43
+      ],
+      [
+        1,
+        31,
+        1,
+        51
+      ],
+      [
+        1,
+        35,
+        14,
+        20
+      ],
+      [
+        1,
+        38,
+        11,
+        27
+      ],
+      [
+        1,
+        42,
+        31,
+        64
+      ],
+      [
+        1,
+        47,
+        10,
+        41
+      ]
+    ],
+    "raw_bytes": 560650944,
+    "raw_sector_remainder": 0,
+    "raw_sector_count": 238372,
+    "iso_pvd_identifier": "CD001",
+    "iso_volume_identifier": "SRALLY",
+    "iso_declared_data_blocks": 81939
+  },
+  "guest_configuration": {
+    "screamer_cfg": "C:\\SR\tD:\tC:\\SR\tc",
+    "setup_first_8_u32": [
+      9,
+      10748395,
+      57366,
+      18,
+      544,
+      7,
+      1,
+      549
+    ],
+    "keyboard1_control_records": [
+      [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        72
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        80
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        75
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        77
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        54
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        29
+      ]
+    ],
+    "sr_bat": "START65H.EXE",
+    "startup_exe": "START65H.EXE",
+    "normalization_required": "When SR contents are mounted as C root, replace C:\\SR paths in the writable SCREAMER.CFG with C: or C:\\."
+  },
+  "execution": "Read files and ZIP entries only; no supplied executables or scripts were run."
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "Staged Rally reload recovery only; no installed/repository files changed",
+  "changed_files": {
+    "bridge/live_bridge.py": "5f71ef2e79ea2406ac623cec5f5bb0101c2b1ea26a25a1fb95d13566b8e17803",
+    "bridge/test_scene_reload.py": "8b072c9896e7a51ef46a77e14ca10987673c951a109bcd064d69aa36b49c555c"
+  },
+  "test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest test_scene_reload test_live_bridge -v",
+  "test_cwd": "/private/tmp/rally-reload-fix/bridge",
+  "tests_passed": 40,
+  "new_reload_tests": 11,
+  "network_used": false,
+  "game_processes_started": false,
+  "game_inputs_sent": false,
+  "timing_preserved": "original recognized Rally three-tick wait guard; no physics writes",
+  "limitations": "Synthetic byte/API/state regressions; actual same-track interactive restart not tested during Mac lock."
+}

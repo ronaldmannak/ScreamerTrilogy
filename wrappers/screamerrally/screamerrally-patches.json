@@ -1,0 +1,69 @@
+{
+  "original": "SR/START65H.EXE",
+  "derived": "SR/RALLYMAC.EXE",
+  "sha256": "0785e38567c475f25663e4022ec125e447a799004e34efa59758b50cfd84901d",
+  "patches": [
+    {
+      "option": "compatibility",
+      "description": "Minimum three 100 Hz timer ticks per frame; avoid excessive simulation rate on fast CPUs",
+      "offset": 340684,
+      "expected": "UKECAwMAg/gBfPZYww==",
+      "replacement": "UKECAwMAg/gDfPZYww=="
+    },
+    {
+      "option": "widescreen",
+      "offset": 546382,
+      "expected": "D7/JD7/2D7/bD7//D7/tD7/A0fnR/tH70f/R/dH4Ug==",
+      "replacement": "iwbB+AIpBotGDMH4AilGDItGGMH4AilGGCvAiUYkww=="
+    },
+    {
+      "option": "widescreen",
+      "offset": 543730,
+      "expected": "K8CJRiQ=",
+      "replacement": "6FcKAAA="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 511951,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA=",
+      "replacement_farther": "PSAx6n0="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 512051,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA=",
+      "replacement_farther": "PSAx6n0="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 512185,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA=",
+      "replacement_farther": "PSAx6n0="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 512285,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA=",
+      "replacement_farther": "PSAx6n0="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 542866,
+      "expected": "PYB4JRQ=",
+      "replacement": "PQDilVA=",
+      "replacement_farther": "PSAx6n0="
+    },
+    {
+      "option": "extended_distance",
+      "offset": 546894,
+      "expected": "LQAgAAD36IvIi+oPrOkD",
+      "replacement": "uQDilVCQkJCQkJCQkJCQ",
+      "replacement_farther": "uSAx6n2QkJCQkJCQkJCQ"
+    }
+  ],
+  "always_apply": true
+}

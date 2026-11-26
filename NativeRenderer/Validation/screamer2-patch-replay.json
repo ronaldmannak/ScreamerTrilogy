@@ -1,0 +1,21 @@
+{
+  "runtime_base_hashes_match": {
+    "Session.py": true,
+    "bridge/live_bridge.py": true,
+    "bridge/s2_sky_assets.py": true,
+    "bridge/s2_sky_state.py": true,
+    "bridge/s2_overlay_api.py": true,
+    "bridge/s2_hud.py": true
+  },
+  "runtime_forward_replay_exact": {
+    "Session.py": true,
+    "bridge/live_bridge.py": true,
+    "bridge/s2_sky_assets.py": true,
+    "bridge/s2_sky_state.py": true,
+    "bridge/s2_overlay_api.py": true,
+    "bridge/s2_hud.py": true
+  },
+  "engine_forward_replay_exact": true,
+  "existing_S2_regressions_passed": 21,
+  "new_source_contract_tests_passed": 8
+}

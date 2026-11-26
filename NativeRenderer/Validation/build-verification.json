@@ -1,0 +1,13 @@
+{
+  "verified_utc": "2026-11-25T04:56:38.257028+00:00",
+  "bundle_identifier": "local.screamer-rally.metal-preview",
+  "version": "0.1.0",
+  "architectures": "arm64",
+  "binary_sha256": "3a05b810e570c893f7163e27eb2568eb8019f042f1840ef57f11db4365461e81",
+  "source_sha256": "481bbd1b79ca8365ac9f544d07e752051aae6e081874beefb80bf10a033408c2",
+  "shader_sha256": "e93394caf22749262d0622829b2b52f29fe83cb9d58dc13c2b054e1696109e86",
+  "signature": "ad-hoc; codesign --verify --deep --strict passed",
+  "python_tests_passed": 31,
+  "numeric_checks_passed": 535,
+  "scope": "captured-scene renderer prototype, not playable game integration"
+}

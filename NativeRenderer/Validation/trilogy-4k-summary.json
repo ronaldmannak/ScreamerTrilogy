@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-25",
+  "python_tests_passed": 113,
+  "numeric_camera_transform_checks": 535,
+  "native_arm64_warnings_as_errors": "passed",
+  "source_renderer_sha256": "33f13bf4941e5d81f23eb050d7749099f3598cba76dc3b120e262bf4578bcecd",
+  "physics_hz": {
+    "rally": 32.996903657278274,
+    "screamer": 50.0161,
+    "screamer2": 50.0257
+  },
+  "rally_measured_displayed_fps": 59.5833757,
+  "screamer_screamer2_displayed_4k_fps": null,
+  "display_test_limit": "Mac locked during new4Kdisplaychecks; no inference fromoffscreenrates",
+  "live_offscreen_dimensions": [
+    3840,
+    2160
+  ],
+  "screamer_player_input_tested": false,
+  "screamer2_player_input_tested": false,
+  "rally_final_packaged_input_regression": "passed;accelerate/steer/pause/resume, allreleased, bothchildren0",
+  "known_limits": [
+    "Experimentalvisualparity:sky/materialeffects andsomeoverlaysincomplete",
+    "Screamer nativeracedashboardcurrentlydigitalonly; unvalidatedviewsfallback",
+    "Screamer2raceHUDpartial; projectedlabelsandsplit-screennotnative",
+    "First/second-gameactualplayer-racevisual/inputvalidationoutstanding"
+  ]
+}

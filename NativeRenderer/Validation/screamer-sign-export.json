@@ -1,0 +1,282 @@
+[
+  {
+    "scene": "/private/tmp/screamer-sign-original/Scenes/track1/scene.json",
+    "stats": {
+      "cells": 222,
+      "objects_list_0": 163,
+      "objects_list_1": 1001,
+      "parts_lod_0": 1165,
+      "unique_parts": 224,
+      "single_sided_polygons": 15663,
+      "rendered_type_0x10_polygons": 12885,
+      "world_objects": 1164,
+      "rendered_type_0x40_polygons": 2716,
+      "rendered_type_0x80_polygons": 62,
+      "frozen_animated_part_placements": 2,
+      "models_used": 223,
+      "vertices": 62433,
+      "triangles": 31107,
+      "textures": 163,
+      "unsupported_triangles_by_type": {}
+    },
+    "double_sided_batches": 0,
+    "double_sided_batch_triangles": 0,
+    "reflection_batches": 0,
+    "reflection_double_sided_batches": 0,
+    "geometry_check": {
+      "baseline": "<repository>/NativeRenderer/build-fullscreen/Screamer Metal.app/Contents/Resources/S1Scenes/track1",
+      "identical_legacy_vertices": true,
+      "baseline_normals_file_present": false,
+      "unchanged_normal_semantics": true,
+      "identical_original_triangle_multiset": true,
+      "baseline_triangles": 31107
+    }
+  },
+  {
+    "scene": "/private/tmp/screamer-sign-original/Scenes/track2/scene.json",
+    "stats": {
+      "cells": 385,
+      "objects_list_0": 487,
+      "objects_list_1": 921,
+      "parts_lod_0": 1410,
+      "unique_parts": 392,
+      "single_sided_polygons": 19934,
+      "rendered_type_0x40_polygons": 1251,
+      "world_objects": 1408,
+      "rendered_type_0x10_polygons": 18675,
+      "double_sided_polygons": 14,
+      "double_sided_triangles": 28,
+      "rendered_type_0x80_polygons": 22,
+      "frozen_animated_part_placements": 3,
+      "models_used": 390,
+      "vertices": 78701,
+      "triangles": 38805,
+      "textures": 150,
+      "unsupported_triangles_by_type": {}
+    },
+    "double_sided_batches": 4,
+    "double_sided_batch_triangles": 28,
+    "reflection_batches": 0,
+    "reflection_double_sided_batches": 0,
+    "geometry_check": {
+      "baseline": "<repository>/NativeRenderer/build-fullscreen/Screamer Metal.app/Contents/Resources/S1Scenes/track2",
+      "identical_legacy_vertices": true,
+      "baseline_normals_file_present": false,
+      "unchanged_normal_semantics": true,
+      "identical_original_triangle_multiset": true,
+      "baseline_triangles": 38805
+    }
+  },
+  {
+    "scene": "/private/tmp/screamer-sign-original/Scenes/track3/scene.json",
+    "stats": {
+      "cells": 365,
+      "objects_list_0": 359,
+      "objects_list_1": 1231,
+      "parts_lod_0": 1592,
+      "unique_parts": 374,
+      "single_sided_polygons": 23393,
+      "rendered_type_0x10_polygons": 20648,
+      "world_objects": 1590,
+      "rendered_type_0x40_polygons": 2735,
+      "frozen_animated_part_placements": 4,
+      "rendered_type_0x80_polygons": 10,
+      "models_used": 373,
+      "vertices": 93185,
+      "triangles": 46399,
+      "textures": 179,
+      "unsupported_triangles_by_type": {}
+    },
+    "double_sided_batches": 0,
+    "double_sided_batch_triangles": 0,
+    "reflection_batches": 0,
+    "reflection_double_sided_batches": 0,
+    "geometry_check": {
+      "baseline": "<repository>/NativeRenderer/build-fullscreen/Screamer Metal.app/Contents/Resources/S1Scenes/track3",
+      "identical_legacy_vertices": true,
+      "baseline_normals_file_present": false,
+      "unchanged_normal_semantics": true,
+      "identical_original_triangle_multiset": true,
+      "baseline_triangles": 46399
+    }
+  },
+  {
+    "scene": "/private/tmp/screamer-sign-original/Scenes/track4/scene.json",
+    "stats": {
+      "cells": 366,
+      "objects_list_0": 237,
+      "objects_list_1": 1527,
+      "parts_lod_0": 1775,
+      "unique_parts": 272,
+      "single_sided_polygons": 23733,
+      "rendered_type_0x10_polygons": 19707,
+      "world_objects": 1764,
+      "rendered_type_0x40_polygons": 3842,
+      "rendered_type_0x80_polygons": 184,
+      "frozen_animated_part_placements": 13,
+      "models_used": 261,
+      "vertices": 94615,
+      "triangles": 47149,
+      "textures": 205,
+      "unsupported_triangles_by_type": {
+        "0xe0": 124
+      }
+    },
+    "double_sided_batches": 0,
+    "double_sided_batch_triangles": 0,
+    "reflection_batches": 0,
+    "reflection_double_sided_batches": 0,
+    "geometry_check": {
+      "baseline": "<repository>/NativeRenderer/build-fullscreen/Screamer Metal.app/Contents/Resources/S1Scenes/track4",
+      "identical_legacy_vertices": true,
+      "baseline_normals_file_present": false,
+      "unchanged_normal_semantics": true,
+      "identical_original_triangle_multiset": true,
+      "baseline_triangles": 47149
+    }
+  },
+  {
+    "scene": "/private/tmp/screamer-sign-original/Scenes/track5/scene.json",
+    "stats": {
+      "cells": 573,
+      "objects_list_0": 405,
+      "objects_list_1": 1954,
+      "parts_lod_0": 2367,
+      "unique_parts": 365,
+      "single_sided_polygons": 41441,
+      "rendered_type_0x10_polygons": 40378,
+      "world_objects": 2359,
+      "rendered_type_0x40_polygons": 1024,
+      "frozen_animated_part_placements": 11,
+      "rendered_type_0x80_polygons": 47,
+      "double_sided_polygons": 8,
+      "double_sided_triangles": 10,
+      "models_used": 360,
+      "vertices": 165241,
+      "triangles": 82343,
+      "textures": 163,
+      "unsupported_triangles_by_type": {
+        "0xc0": 156
+      }
+    },
+    "double_sided_batches": 4,
+    "double_sided_batch_triangles": 10,
+    "reflection_batches": 0,
+    "reflection_double_sided_batches": 0,
+    "geometry_check": {
+      "baseline": "<repository>/NativeRenderer/build-fullscreen/Screamer Metal.app/Contents/Resources/S1Scenes/track5",
+      "identical_legacy_vertices": true,
+      "baseline_normals_file_present": false,
+      "unchanged_normal_semantics": true,
+      "identical_original_triangle_multiset": true,
+      "baseline_triangles": 82343
+    }
+  },
+  {
+    "scene": "/private/tmp/screamer-sign-original/Scenes/track6/scene.json",
+    "stats": {
+      "cells": 418,
+      "objects_list_0": 624,
+      "objects_list_1": 1449,
+      "parts_lod_0": 2096,
+      "unique_parts": 393,
+      "single_sided_polygons": 31596,
+      "rendered_type_0x10_polygons": 28640,
+      "world_objects": 2073,
+      "double_sided_polygons": 29,
+      "double_sided_triangles": 58,
+      "rendered_type_0x40_polygons": 2984,
+      "frozen_animated_part_placements": 29,
+      "rendered_type_0x80_polygons": 1,
+      "models_used": 375,
+      "vertices": 124875,
+      "triangles": 61625,
+      "textures": 197,
+      "unsupported_triangles_by_type": {}
+    },
+    "double_sided_batches": 4,
+    "double_sided_batch_triangles": 58,
+    "reflection_batches": 0,
+    "reflection_double_sided_batches": 0,
+    "geometry_check": {
+      "baseline": "<repository>/NativeRenderer/build-fullscreen/Screamer Metal.app/Contents/Resources/S1Scenes/track6",
+      "identical_legacy_vertices": true,
+      "baseline_normals_file_present": false,
+      "unchanged_normal_semantics": true,
+      "identical_original_triangle_multiset": true,
+      "baseline_triangles": 61625
+    }
+  },
+  {
+    "scene": "/private/tmp/screamer-sign-original/Scenes/dynamic-track1/scene.json",
+    "stats": {
+      "parts_lod_0": 188,
+      "unique_parts": 67,
+      "single_sided_polygons": 2217,
+      "rendered_type_0x40_polygons": 702,
+      "world_objects": 188,
+      "rendered_type_0x80_polygons": 614,
+      "rendered_type_0x10_polygons": 801,
+      "rendered_type_0xa0_polygons": 110,
+      "double_sided_polygons": 10,
+      "double_sided_triangles": 16,
+      "models_used": 12,
+      "vertices": 7934,
+      "triangles": 3480,
+      "textures": 168,
+      "unsupported_triangles_by_type": {
+        "0xe0": 36
+      },
+      "actor_roots": 78,
+      "dynamic_part_instances": 170
+    },
+    "double_sided_batches": 8,
+    "double_sided_batch_triangles": 16,
+    "reflection_batches": 10,
+    "reflection_double_sided_batches": 0,
+    "geometry_check": {
+      "baseline": "/private/tmp/screamer-s1-reflections/captured-track1",
+      "identical_legacy_vertices": true,
+      "baseline_normals_file_present": true,
+      "unchanged_normal_semantics": true,
+      "identical_original_triangle_multiset": true,
+      "baseline_triangles": 3480
+    }
+  },
+  {
+    "scene": "/private/tmp/screamer-sign-original/Scenes/dynamic-track3/scene.json",
+    "stats": {
+      "parts_lod_0": 133,
+      "unique_parts": 66,
+      "single_sided_polygons": 1825,
+      "rendered_type_0x40_polygons": 676,
+      "world_objects": 133,
+      "rendered_type_0x10_polygons": 533,
+      "rendered_type_0x80_polygons": 531,
+      "rendered_type_0xa0_polygons": 95,
+      "double_sided_polygons": 10,
+      "double_sided_triangles": 16,
+      "models_used": 10,
+      "vertices": 6474,
+      "triangles": 2804,
+      "textures": 147,
+      "unsupported_triangles_by_type": {
+        "0xe0": 72
+      },
+      "actor_roots": 33,
+      "dynamic_part_instances": 123
+    },
+    "double_sided_batches": 8,
+    "double_sided_batch_triangles": 16,
+    "reflection_batches": 9,
+    "reflection_double_sided_batches": 0,
+    "geometry_check": {
+      "baseline": "/private/tmp/screamer-s1-reflections/captured-track3",
+      "identical_legacy_vertices": true,
+      "baseline_normals_file_present": true,
+      "unchanged_normal_semantics": true,
+      "identical_original_triangle_multiset": true,
+      "baseline_triangles": 2804
+    }
+  }
+]

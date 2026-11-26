@@ -1,0 +1,65 @@
+{
+  "schema": "screamer-hud/v1",
+  "game": "screamer1",
+  "complete": false,
+  "primary_hud_validated": true,
+  "validation_scope": "Source-proven digital HUDmode2: conservativebands coveroriginal lap/position/timefontcalls plusfixedRPM/speed/gearpanel. Player-race visualvalidation remainsoutstanding.",
+  "required_original_hud_mode": 2,
+  "source_width": 640,
+  "source_height": 480,
+  "pixel_aspect_already_applied": true,
+  "rects": [
+    {
+      "x": 16,
+      "y": 7,
+      "width": 200,
+      "height": 73,
+      "anchor": "left",
+      "source": "Original lap labels/digits atx16,y22 and secondlapcounty40 (2355d,23597), pluslabels38,6; conservativefontband inalready480-rowcachedframe."
+    },
+    {
+      "x": 528,
+      "y": 7,
+      "width": 104,
+      "height": 73,
+      "anchor": "right",
+      "source": "Original POSITION label540,6 and numericposition552,22 (235cc..235d1); conservativefontband."
+    },
+    {
+      "x": 16,
+      "y": 117,
+      "width": 200,
+      "height": 121,
+      "anchor": "left",
+      "source": "Original TOTAL/LAPTIME/BESTLAP labels and8-character%02d:%02d:%02d numbers atx16,y112/144/176 (23646/23662/2367d), withconservativeglyphheight20 andwidth200."
+    },
+    {
+      "x": 466,
+      "y": 318,
+      "width": 167,
+      "height": 158,
+      "anchor": "right",
+      "source": "IMPRES_H.PKC bounds x466,y265,w167,h131 in640x400, expanded by original400-to480 blit; speed at542,374 and gear608,374 are inside this instrument region."
+    }
+  ],
+  "missing": [
+    "Full cockpit HUD mode1, hood/cockpit silhouettes, mirrors and alternate camera layouts.",
+    "Intro credits/logos, countdown, pause, results and transient center messages.",
+    "Actual player-race input and HUD composition have not been visually validated.",
+    "Rectangular cached instrument crop retains original-resolution world pixels in transparent gaps of its source art.",
+    "Conservativefontbandsretainoriginal-resolutionworldpixelsaroundtext; exactglyphmaskcompositionisnotimplemented."
+  ],
+  "evidence": {
+    "original_executable_sha256": "1246afc95463f96598d5fee764fc99c847b6d3e0bf8ca2268bd362c664bb28a3",
+    "pkc_blitter_link": "0x102b0: negative signed commands skip forward, positive copy original indexed bytes, zero terminates",
+    "impres_loader": "0x134ca..0x134d9 loads impres_ into118f10",
+    "labels_loader": "0x134de..0x134e8 loads implet_ into118f18",
+    "hud_mode_dispatch": "0x236de..0x236ed reads1100c0:1=cockpit via118f0c;2=digital via118f10",
+    "digital_draw": "0x2381c..0x23827 passes framebuffer121528 to original PKC blitter with original digital art118f10",
+    "speed_draw": "0x23860..0x23877:font2,x542,y374",
+    "gear_draw": "0x23897..0x238ae:font2,x608,y374",
+    "static_labels_draw": "0x236b6..0x236d9 draws118f18 to framebuffer121528",
+    "original_grid": "640x400; cached engine frame verified640x480, so coordinates are transformed once into that480-row frame.",
+    "primary_numeric_fields": "23558..23562 lap at16,22;23592..2359a secondlapcount atcomputedx,y40;235c7..235d1 position552,22;23646..23687 timesx16,y112/144/176"
+  }
+}

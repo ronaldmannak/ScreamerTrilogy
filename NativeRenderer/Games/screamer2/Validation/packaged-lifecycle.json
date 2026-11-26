@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-25",
+  "app": "<repository>/NativeRenderer/build-screamer2-4k/Screamer 2 Metal.app",
+  "bundle_id": "local.screamer2.metal-player",
+  "maximum_gui_seconds": 50,
+  "clean_engine_exit": 0,
+  "final_bridge_status": "stopped",
+  "session_error": null,
+  "game_inputs_sent": false,
+  "scope": "Final own bundled engine/Python/bridge/extractor and native4K together in automatic demo, followed by normal owned-child shutdown. Actual race controls not scripted; Mac locked during presentation tests."
+}

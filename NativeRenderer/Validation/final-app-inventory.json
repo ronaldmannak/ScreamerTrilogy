@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-25",
+  "apps": [
+    {
+      "app": "<repository>/NativeRenderer/build-live/Screamer Rally Metal.app",
+      "bundle_id": "local.screamer-rally.metal-player",
+      "version": "0.2.0",
+      "build": "3",
+      "arch": "arm64",
+      "signature": "deep/strict passed",
+      "executable_sha256": "13e48ccb20bde940c52c47a47f5569d0fea55c62f48b6be32a9d3cbb3d1c8c47"
+    },
+    {
+      "app": "<repository>/NativeRenderer/build-screamer-4k/Screamer Metal.app",
+      "bundle_id": "local.screamer.metal-player",
+      "version": "0.2.0",
+      "build": "2",
+      "arch": "arm64",
+      "signature": "deep/strict passed",
+      "executable_sha256": "436aac9e25f1f67f14cce48e1380cbf048f7fea36030adf1e40391c1ca92b88c"
+    },
+    {
+      "app": "<repository>/NativeRenderer/build-screamer2-4k/Screamer 2 Metal.app",
+      "bundle_id": "local.screamer2.metal-player",
+      "version": "0.2.0",
+      "build": "2",
+      "arch": "arm64",
+      "signature": "deep/strict passed",
+      "executable_sha256": "1593cac641386d9e7dbe13bc74016e734e7127a531b773b6e7a63729b2d24030"
+    }
+  ],
+  "original_installed_wrappers_modified": false,
+  "screamer_screamer2_display_validation": "Pending unlockedMac; live4Koffscreenpassed, no actualplayerinputtests"
+}
