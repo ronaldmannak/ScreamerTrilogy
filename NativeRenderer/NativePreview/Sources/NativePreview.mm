@@ -38,6 +38,13 @@ struct NightAssets {
     bool hasSky=false,skyEnabled=false;float3 skyGround={0,0,0},skyFlat={0,0,0};
     float skyCenterY=260,skyViewLastY=400,fogNear=6000,fogFar=35000;
 };
+struct FogAssets {
+    bool known=false,available=false,originalFog=false;
+    std::string worldScene,carsScene,reason;
+    float3 color={184.f/255,184.f/255,184.f/255},flat={184.f/255,188.f/255,184.f/255};
+    std::array<uint8_t,64> table=Conditions::originalFogTable();
+    float wScale=1,farDistance=25000;
+};
 struct LiveFrame {
     uint64_t seq=0; double sampleAt=0,publishedAt=0,period=.03;
     std::string epoch,mode,status,worldScene,carsScene,assetsEpoch,rendererNotice;
@@ -49,6 +56,7 @@ struct LiveFrame {
     NSString *skyPath=nil;std::string skyKind="rally";float skyCenterY=260,skyViewLastY=400;bool skyEnabled=false;float3 skyGround={0,0,0},skyFlat={0,0,0};
     bool hasSky=false,cullBackFaces=false,diagnosticCapture=false;std::set<std::string> hiddenInstanceIds;
     NightAssets night;
+    FogAssets fog;
 };
 struct FramebufferUniforms { float4 destination;float4 source; };
 
@@ -292,6 +300,33 @@ static LiveFrame liveFrameFromJSON(NSDictionary *j,NSString *base) {
                 if(!std::isfinite(night.fogNear)||!std::isfinite(night.fogFar)||night.fogNear<0||night.fogFar<=night.fogNear||night.fogFar>1e7)throw std::runtime_error("Invalid original night distance haze");
             }
         }
+        FogAssets &fog=frame.fog;fog.known=true;fog.originalFog=[variants[@"original"] isEqual:@"fog"];
+        NSDictionary *fogEntry=variants[@"fog"];
+        fog.reason="Original fog assets have not been prepared for this race.";
+        if([fogEntry isKindOfClass:NSDictionary.class]){
+            fog.available=[fogEntry[@"available"] boolValue];
+            if([fogEntry[@"reason"] isKindOfClass:NSString.class]&&[fogEntry[@"reason"] length]<=512)fog.reason=[fogEntry[@"reason"] UTF8String];
+            if(fog.available){
+                NSString *world=resolved(fogEntry[@"world_scene"]),*cars=resolved(fogEntry[@"cars_scene"]);
+                if(!world||!cars)throw std::runtime_error("Original fog requires its Day scene assets");
+                fog.worldScene=world.UTF8String;fog.carsScene=cars.UTF8String;
+                NSDictionary *sky=fogEntry[@"sky"],*glide=fogEntry[@"glide_fog"];
+                if(![sky isKindOfClass:NSDictionary.class]||[sky[@"enabled"] boolValue]||![glide isKindOfClass:NSDictionary.class])throw std::runtime_error("Original fog requires a disabled sky and a Glide table");
+                fog.flat=vector3(sky[@"flat_rgb"])/255.f;fog.color=vector3(glide[@"color_rgb"])/255.f;
+                for(int axis=0;axis<3;axis++)if(fog.color[axis]<0||fog.color[axis]>1||fog.flat[axis]<0||fog.flat[axis]>1)throw std::runtime_error("Invalid original fog color");
+                NSArray *table=glide[@"table"];
+                if(![table isKindOfClass:NSArray.class]||table.count!=64)throw std::runtime_error("Original Glide fog requires 64 table bytes");
+                for(int index=0;index<64;index++){
+                    id entry=table[index];double value=[entry isKindOfClass:NSNumber.class]?[entry doubleValue]:-1;
+                    if(!std::isfinite(value)||value<0||value>255||floor(value)!=value)throw std::runtime_error("Invalid original Glide fog table byte");
+                    fog.table[index]=static_cast<uint8_t>(value);
+                }
+                fog.wScale=glide[@"w_scale"]?[glide[@"w_scale"] floatValue]:1.f;
+                fog.farDistance=[glide[@"far_distance"]?:glide[@"far_plane"] floatValue];
+                if(!std::isfinite(fog.wScale)||fog.wScale<=0||fog.wScale>1024||!std::isfinite(fog.farDistance)||fog.farDistance<=128||fog.farDistance>1e7)throw std::runtime_error("Invalid original fog depth mapping");
+                fog.reason.clear();
+            }
+        }
     }
     frame.cullBackFaces=[j[@"cull_back_faces"] boolValue];frame.diagnosticCapture=[j[@"diagnostic_capture_replay"] boolValue];
     NSArray *hidden=j[@"hidden_instance_ids"]?:@[];
@@ -374,6 +409,14 @@ static LiveFrame frameWithOriginalNight(const LiveFrame &source,bool useNight) {
     }
     return result;
 }
+static LiveFrame frameWithOriginalFog(const LiveFrame &source,bool useFog) {
+    LiveFrame result=source;
+    if(!useFog||!source.fog.available)return result;
+    result.worldScene=source.fog.worldScene;result.carsScene=source.fog.carsScene;
+    result.hasSky=true;result.skyEnabled=false;result.skyPath=nil;
+    result.skyGround=source.fog.flat;result.skyFlat=source.fog.flat;
+    return result;
+}
 struct State {
     id<MTLDevice> device;
     id<MTLCommandQueue> queue;
@@ -398,6 +441,7 @@ struct State {
     bool render4K=false,widescreen=true,extendedDistance=true;float activeFarPlane=0;
     Conditions::Transition conditionsTransition;float2 conditionsWeights={0,0};bool conditionsApplied=false;
     bool nightKnown=false,nightAvailable=false,originalNight=false,nightActive=false;std::string nightReason;
+    bool fogKnown=false,fogAvailable=false,originalFog=false,fogActive=false;std::string fogReason;
     std::vector<Batch> batches;
     std::vector<CameraSample> replay;
     std::vector<CarInstance> cars;
@@ -774,16 +818,21 @@ struct State {
     if(hasLive){
         latest=liveFrames.back();s.liveAge=std::max(0.0,nowSeconds()-liveOffset-latest.publishedAt);s.livePoseAge=std::max(0.0,nowSeconds()-liveOffset-latest.sampleAt);s.liveDelay=latest.period;
         s.nightKnown=latest.night.known;s.nightAvailable=latest.night.available;s.originalNight=latest.night.originalNight;s.nightReason=latest.night.reason;
+        s.fogKnown=latest.fog.known;s.fogAvailable=latest.fog.available;s.originalFog=latest.fog.originalFog;s.fogReason=latest.fog.reason;
         if(s.nightKnown&&!s.nightAvailable&&s.conditionsTransition.target==Conditions::Preset::Night)s.conditionsTransition.setImmediate(Conditions::Preset::Day);
+        if(s.fogKnown&&!s.fogAvailable&&s.conditionsTransition.target==Conditions::Preset::Fog)s.conditionsTransition.setImmediate(Conditions::Preset::Day);
         const std::string originalWorld=latest.worldScene;
         s.nightActive=s.conditionsTransition.target==Conditions::Preset::Night&&s.nightAvailable;
+        s.fogActive=s.fogAvailable&&(s.conditionsTransition.target==Conditions::Preset::Fog||(s.originalFog&&s.conditionsTransition.target==Conditions::Preset::Day));
         latest=frameWithOriginalNight(latest,s.nightActive);
+        latest=frameWithOriginalFog(latest,s.fogActive);
         NSString *epoch=[NSString stringWithUTF8String:latest.epoch.c_str()];
         if(![epoch isEqual:s.liveEpoch]){[self releaseInput];s.liveEpoch=epoch;[s.pressCounts removeAllObjects];[self publishInput];}
         [self updateFramebuffer:latest];[self updateOverlays:latest];[self requestLiveAssets:latest];
         bool assetsMatch=!latest.worldScene.empty()&&[s.loadedWorldScene isEqual:[NSString stringWithUTF8String:latest.worldScene.c_str()]];
         if(!latest.assetsEpoch.empty())assetsMatch=assetsMatch&&[s.loadedAssetsEpoch isEqual:[NSString stringWithUTF8String:latest.assetsEpoch.c_str()]];
         if(!latest.carsScene.empty())assetsMatch=assetsMatch&&[s.loadedCarsScene isEqual:[NSString stringWithUTF8String:latest.carsScene.c_str()]];
+        if(s.originalFog&&s.conditionsTransition.target==Conditions::Preset::Day&&!s.fogAvailable)assetsMatch=false;
         s.liveAssetsReady=assetsMatch&&latest.hasCamera&&nativeMode(latest.mode)&&s.liveAge<.5&&s.livePoseAge<.15;
         s.liveNotice=latest.rendererNotice.empty()?nil:[NSString stringWithUTF8String:latest.rendererNotice.c_str()];
         s.livePartialHud=!latest.hudComplete&&latest.hudPrimaryValidated&&s.allowPartialHud;
@@ -837,9 +886,11 @@ struct State {
     if(hasLive){
         if(!latest.night.fogEnabled||(!s.nightActive&&!s.originalNight))visualWeights.x=0;
         else if(s.originalNight&&s.conditionsTransition.target!=Conditions::Preset::Fog)visualWeights.x=1;
+        if(!s.fogActive)visualWeights.y=0;
+        else if(s.originalFog&&s.conditionsTransition.target==Conditions::Preset::Day)visualWeights.y=1;
     }
-    ConditionsUniforms conditions=Conditions::makeUniforms(visualWeights,conditionsReference,latest.night.fogNear,latest.night.fogFar);
-    s.conditionsApplied=(!s.livePath||s.liveNative)&&(s.conditionsWeights.x>0||s.conditionsWeights.y>0);
+    ConditionsUniforms conditions=Conditions::makeUniforms(visualWeights,conditionsReference,latest.night.fogNear,latest.night.fogFar,latest.fog.table,latest.fog.color,latest.fog.wScale);
+    s.conditionsApplied=(!s.livePath||s.liveNative)&&(visualWeights.x>0||visualWeights.y>0);
     Uniforms uniforms={projection*rotation,(float4){eye.x,eye.y,eye.z,0},(float4){0,0,0,0},matrix_identity_float4x4,reflectionView,(float4){0,0,0,0},conditions};
     std::vector<float2> carScrolls(s.cars.size(),(float2){0,0});std::vector<uint32_t> carPhases(s.cars.size(),0);
     std::vector<float4x4> carMatrices(s.cars.size(),matrix_identity_float4x4);std::vector<bool> carVisible(s.cars.size(),true);
@@ -1063,6 +1114,9 @@ struct State {
     result[@"conditions_applied"]=@(s.conditionsApplied);result[@"conditions_physics"]=@"visual only; original clocks and handling unchanged";
     result[@"original_night_available"]=@(s.nightAvailable);result[@"original_night_active"]=@(s.nightActive);result[@"original_track_is_night"]=@(s.originalNight);
     if(!s.nightReason.empty())result[@"original_night_notice"]=[NSString stringWithUTF8String:s.nightReason.c_str()];
+    result[@"original_fog_available"]=@(s.fogAvailable);result[@"original_fog_active"]=@(s.fogActive);result[@"original_track_is_fog"]=@(s.originalFog);
+    result[@"fog_lookup"]=@"original 64-entry Glide table indexed by camera W depth";
+    if(!s.fogReason.empty())result[@"original_fog_notice"]=[NSString stringWithUTF8String:s.fogReason.c_str()];
     if(s.independentParts){result[@"dynamic_part_instances"]=@(s.cars.size());result[@"cars"]=NSNull.null;result[@"car_limitations"]=@"live independent actor-part transforms; authored A0 reflections and E0 glow/shadow masks; original palette effects use true-color alpha; texture damage/animation frames frozen";}
     result[@"window_content_width"]=@(s.windowContentWidth);result[@"window_content_height"]=@(s.windowContentHeight);
     result[@"view_frame_width"]=@(s.viewFrameSize.width);result[@"view_frame_height"]=@(s.viewFrameSize.height);
@@ -1221,6 +1275,7 @@ static NSString *gameKey(NSEvent *event) {
 - (void)changeConditions:(NSMenuItem *)item {
     if(item.tag<0||item.tag>2)return;
     if(item.tag==1&&self.renderer->state->nightKnown&&!self.renderer->state->nightAvailable)return;
+    if(item.tag==2&&self.renderer->state->fogKnown&&!self.renderer->state->fogAvailable)return;
     self.renderer->state->conditionsTransition.select(static_cast<Conditions::Preset>(item.tag),nowSeconds());
     for(NSMenuItem *sibling in item.menu.itemArray)sibling.state=sibling==item?NSControlStateValueOn:NSControlStateValueOff;
 }
@@ -1228,10 +1283,14 @@ static NSString *gameKey(NSEvent *event) {
     if(item.action==@selector(changeConditions:)){
         const State &s=*self.renderer->state;
         item.state=static_cast<NSInteger>(s.conditionsTransition.target)==item.tag?NSControlStateValueOn:NSControlStateValueOff;
-        if(item.tag==0)item.title=s.originalNight?@"Original (Night)":@"Day";
+        if(item.tag==0)item.title=s.originalFog?@"Original (Fog)":s.originalNight?@"Original (Night)":@"Day";
         if(item.tag==1){
             item.toolTip=s.nightReason.empty()?@"Uses the original game's night artwork and lights":[NSString stringWithUTF8String:s.nightReason.c_str()];
             return !s.livePath||(s.nightKnown&&s.nightAvailable);
+        }
+        if(item.tag==2){
+            item.toolTip=s.fogReason.empty()?@"Uses the original game's Glide fog table and flat sky fill":[NSString stringWithUTF8String:s.fogReason.c_str()];
+            return !s.livePath||(s.fogKnown&&s.fogAvailable);
         }
     }
     return YES;

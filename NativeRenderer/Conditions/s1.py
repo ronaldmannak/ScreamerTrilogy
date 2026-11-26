@@ -5,6 +5,9 @@ Screamer shipped Palm Town Night as MAP4, with a different route and grid.
 Using its complete world on MAP1 would move scenery away from the simulation.
 Instead the exporter matches named, geometrically identical surfaces and swaps
 only their original authored material/palette. Dynamic IDs and poses stay MAP1.
+
+No original fog condition is verified: MENU/track DTR expose no fog option or
+bank, and SMG blends texture-mask strength with the framebuffer, not depth.
 """
 import json
 from pathlib import Path
@@ -12,6 +15,7 @@ import shutil
 import uuid
 
 SCHEMA='screamer-original-conditions/v1'
+FOG_UNAVAILABLE_REASON='No original fog condition or authored fog bank has been verified for Screamer.'
 
 
 def build_variants(game_root,track,output,day_scene,cars_scene=None,*,ram=None,physical=None):
@@ -22,7 +26,8 @@ def build_variants(game_root,track,output,day_scene,cars_scene=None,*,ram=None,p
     accessed. Imports resolve from S1's Tools directory already on sys.path.
     """
     track=int(track)
-    result={'schema':SCHEMA,'original':'night' if track==4 else 'day'}
+    result={'schema':SCHEMA,'original':'night' if track==4 else 'day',
+            'fog':{'available':False,'reason':FOG_UNAVAILABLE_REASON}}
     if track not in (1,4):
         result['night']={'available':False,'reason':
             'Original Screamer night artwork is verified only for Palm Town and Palm Town Night.'}
@@ -49,6 +54,9 @@ def build_variants(game_root,track,output,day_scene,cars_scene=None,*,ram=None,p
         for key in ('world_scene','cars_scene','sky_texture'):
             if key in night and not Path(night[key]).is_file():
                 raise ValueError('Incomplete cached original S1 conditions')
+        # Older session caches predate original Fog capability metadata. Add
+        # the verified availability in memory, without rewriting cached assets.
+        cached['fog']=result['fog']
         return cached
     if cars_scene is not None and (ram is None or physical is None):
         # Avoid substituting static car meshes or original poses when a live

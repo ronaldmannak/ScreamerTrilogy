@@ -74,6 +74,12 @@ class OriginalEffects(unittest.TestCase):
             value=build_variants('/missing',track,'/missing','/missing','/missing')
             self.assertEqual(value['schema'],SCHEMA);self.assertEqual(value['original'],'day')
             self.assertFalse(value['night']['available'])
+            self.assertFalse(value['fog']['available']);self.assertTrue(value['fog']['reason'])
+
+    def test_original_fog_unavailable_before_actor_capture_on_all_tracks(self):
+        for track in range(1,7):
+            value=build_variants('/missing',track,'/missing','/missing')
+            self.assertFalse(value['fog']['available']);self.assertTrue(value['fog']['reason'])
 
     def test_original_night_cache_is_only_read_by_live_publisher(self):
         with tempfile.TemporaryDirectory() as folder:
@@ -85,7 +91,10 @@ class OriginalEffects(unittest.TestCase):
             (cache/'conditions.json').write_text(json.dumps(descriptor))
             # No RAM, physical mapping, game files or exporters are needed to
             # read already-completed work from the child asset process.
-            self.assertEqual(build_variants('/missing',4,cache,world,cars),descriptor)
+            value=build_variants('/missing',4,cache,world,cars)
+            self.assertEqual({k:v for k,v in value.items()if k!='fog'},descriptor)
+            self.assertFalse(value['fog']['available']);self.assertTrue(value['fog']['reason'])
+            self.assertEqual(json.loads((cache/'conditions.json').read_text()),descriptor)
             sky.unlink()
             with self.assertRaises(ValueError):build_variants('/missing',4,cache,world,cars)
 
@@ -95,6 +104,7 @@ class OriginalEffects(unittest.TestCase):
             cars=root/'cars.json';cars.write_text('{}');cache=root/'cache'
             value=build_variants(root/'missing-game',1,cache,world,cars,ram=b'',physical=lambda n:n)
             self.assertFalse(value['night']['available']);self.assertTrue(value['night']['reason'])
+            self.assertFalse(value['fog']['available'])
             self.assertEqual(world.read_text(),'{}');self.assertEqual(cars.read_text(),'{}')
             self.assertEqual(build_variants('/missing',1,cache,world,cars),value)
 

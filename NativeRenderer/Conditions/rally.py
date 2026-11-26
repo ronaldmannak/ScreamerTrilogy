@@ -46,13 +46,15 @@ def car_choices(capture, instances, game):
     return result
 
 
-def export_night_cars(game_root, base_cars_path, output, *, game='rally', track_id, capture=None, car_records=None):
+def export_night_cars(game_root, base_cars_path, output, *, game='rally', track_id, capture=None, car_records=None, condition=1):
     """Return an absolute scene.json path, preserving every live pose identity.
 
     car_records is an optional explicit id -> (zero-based archive model,
     one-based AUTO number) map for offline tests. Normal callers use capture.
     """
     require(capture is not None, 'Night cars require an immutable captured part-pose snapshot')
+    require(type(condition) is int and condition in (0, 1, 2), 'Unknown original car visual condition')
+    night_bit = condition & 1
     game_root, output = Path(game_root), Path(output)
     base = json.loads(Path(base_cars_path).read_text())
     require(base.get('schema') == 'screamer-scene/v1', 'Unknown captured cars schema')
@@ -65,7 +67,7 @@ def export_night_cars(game_root, base_cars_path, output, *, game='rally', track_
     require(len(originals) == len(dynamic), 'Captured car instances are ambiguous')
     require(not output.exists(), 'Refusing to overwrite an original Night car cache')
     output.mkdir(parents=True)
-    env_path = game_root / f'GFX/ENVP{track_id + 1}12.DAT'
+    env_path = game_root / f'GFX/ENVP{track_id + 1}{night_bit}2.DAT'
     env_mlb, env_mlb_source = archive_entry(env_path, 'ENV.MLB')
     env_hic, env_hic_source = archive_entry(env_path, 'ENV.HIC')
     provenance = {'ENV.MLB': env_mlb_source, 'ENV.HIC': env_hic_source}
@@ -80,7 +82,7 @@ def export_night_cars(game_root, base_cars_path, output, *, game='rally', track_
         original = originals[root['id']]
         model_choice, number = choices[root['id']]
         require(0 <= model_choice <= 9 and 1 <= number <= 8, 'Original Night car selection exceeds bound')
-        car_archive = game_root / f'GFX/CARS{model_choice + 1}12.DAT'
+        car_archive = game_root / f'GFX/CARS{model_choice + 1}{night_bit}2.DAT'
         entries = {}
         for ext in ('3DX', 'MLB', 'HIC'):
             entries[ext], source = archive_entry(car_archive, f'AUTO{number}.{ext}')
@@ -162,9 +164,9 @@ def export_night_cars(game_root, base_cars_path, output, *, game='rally', track_
     require(indices and len(indices) % 3 == 0 and max(indices) < len(vertices) // 9, 'Invalid original Night car indices')
     for name, values in (('vertices.bin', vertices), ('indices.bin', indices), ('normals.bin', normals)):
         write_array(output / name, values)
-    scene = {**base, 'title': ('Screamer Rally' if game == 'rally' else 'Screamer 2') + ': original Night cars and light geometry',
-             'provenance': {**base['provenance'], 'condition': 1, 'original_entries': provenance,
-                            'source': 'Owned original Night CARS/ENV decoded offline; captured live root identities preserved'},
+    scene = {**base, 'title': ('Screamer Rally' if game == 'rally' else 'Screamer 2') + (': original Night cars and light geometry' if night_bit else ': original Day cars'),
+             'provenance': {**base['provenance'], 'condition': condition, 'original_entries': provenance,
+                            'source': 'Owned original CARS/ENV condition banks decoded offline; captured live root identities preserved'},
              'vertices': {**base['vertices'], 'count': len(vertices) // 9},
              'indices': {**base['indices'], 'count': len(indices)},
              'normals': {'file': 'normals.bin', 'count': len(normals) // 3, 'stride': 12, 'format': 'float32-le', 'space': 'vertex-local'},
@@ -180,25 +182,83 @@ def export_night_cars(game_root, base_cars_path, output, *, game='rally', track_
     return str((output / 'scene.json').resolve())
 
 
-def export_night(game_root, track_id, base_world_path, base_cars_path, output, *, capture):
-    result = {'schema': SCHEMA, 'original': 'night' if capture.rd32(capture.link(0x1435c4, 4)) & 1 else 'day'}
-    require(type(track_id) is int and 0 <= track_id <= 6, 'Unknown Rally track index')
-    if track_id == 6:
-        result['night'] = {'available': False, 'reason': 'The original Stadium track has no authored Night sky.'}
-        return result
-    root, output = Path(game_root), Path(output)
-    require(sha((root / 'STRT3FX.EXE').read_bytes()) == EXE_SHA256, 'Original Rally executable profile differs')
-    require(not output.exists(), 'Refusing to overwrite an original Night cache')
-    output.mkdir(parents=True)
-    source, sky_provenance = archive_entry(root / f'GFX/MAP{track_id + 1}2.DAT', f'MAP{track_id + 1}1.BCK')
-    require(len(source) == 256 * 256 * 4, 'Original Rally Night sky extent differs')
+def export_backdrop(root, track_id, night_bit, path):
+    source, provenance = archive_entry(root / f'GFX/MAP{track_id + 1}2.DAT', f'MAP{track_id + 1}{night_bit}.BCK')
+    require(len(source) == 256 * 256 * 4, 'Original Rally backdrop extent differs')
     rgba = bytes(value for at in range(0, len(source), 4) for value in (*rgb565(unpack(source, '<H', at)[0]), 255))
-    sky = output / 'sky.png'
-    sky.write_bytes(png(256, 256, rgba))
-    sky.with_suffix('.json').write_text(json.dumps(sky_provenance, indent=2) + '\n')
-    cars = export_night_cars(root, base_cars_path, output / 'cars', track_id=track_id, capture=capture)
-    result['night'] = {'available': True, 'world_scene': str(Path(base_world_path).resolve()),
-                       'cars_scene': cars, 'sky_texture': str(sky.resolve()),
-                       'sky': {'kind': 'rally', 'enabled': True, 'ground_rgb': [0, 0, 0], 'flat_rgb': [0, 0, 0]},
-                       'night_fog': {'near': 6000, 'far': 35000, 'color': [0, 0, 0]}}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(png(256, 256, rgba))
+    path.with_suffix('.json').write_text(json.dumps(provenance, indent=2) + '\n')
+    return str(path.resolve())
+
+
+def export_day_and_fog(root, track_id, base_world_path, base_cars_path, output, *, capture, original):
+    from original_glide_fog import original_glide_fog
+    output.mkdir(parents=True)
+    # Fog's original condition2 selects Day banks (condition & 1 == 0).
+    # Reuse a captured Day/Fog bank exactly; only a captured Night cohort needs
+    # its Day geometry and environment rebuilt with the same live identities.
+    cars = str(Path(base_cars_path).resolve())
+    if original == 'night':
+        cars = export_night_cars(root, base_cars_path, output / 'cars', track_id=track_id,
+                                capture=capture, condition=0)
+    sky = export_backdrop(root, track_id, 0, output / 'sky.png')
+    world = str(Path(base_world_path).resolve())
+    # Original builder CBB39..CBB5E shifts BDF7 fields directly into
+    # grConstantColorValue; it does not replicate the low RGB565 bits.
+    fog = {'available': True, 'world_scene': world, 'cars_scene': cars, 'sky_texture': sky,
+           'sky': {'kind': 'rally', 'enabled': False, 'ground_rgb': [184, 188, 184], 'flat_rgb': [184, 188, 184]},
+           'glide_fog': original_glide_fog(),
+           'source': 'Original STRT3FX condition2: Day banks, no sky, BDF7 fill, B8B8B8 Glide table fog (5527A)'}
+    day = None
+    if original != 'day':
+        colors = [capture.rd32(capture.link(0x136524 + 4 * axis, 4)) for axis in range(3)]
+        r, g, b = colors
+        ground = ((r << 8) & 0xf800) | ((g << 3) & 0x7e0) | (b >> 3)
+        # Match the original sky/constant-color bitshift expansion already used
+        # by the baseline Rally sky_state reader, including Day fill value1.
+        day = {'available': True, 'world_scene': world, 'cars_scene': cars, 'sky_texture': sky,
+               'sky': {'kind': 'rally', 'enabled': True,
+                       'ground_rgb': [((ground >> 11) & 31) << 3, ((ground >> 5) & 63) << 2, (ground & 31) << 3],
+                       'flat_rgb': [0, 0, 8]}}
+    return day, fog
+
+
+def export_night(game_root, track_id, base_world_path, base_cars_path, output, *, capture):
+    """Export original optional visual variants; availability is independent."""
+    condition = capture.rd32(capture.link(0x1435c4, 4))
+    require(condition in (0, 1, 2), 'Unknown original Rally condition')
+    result = {'schema': SCHEMA, 'original': ('day', 'night', 'fog')[condition]}
+    require(type(track_id) is int and 0 <= track_id <= 6, 'Unknown Rally track index')
+    unavailable = {'available': False, 'reason': 'The original Stadium track has no authored Night sky.'}
+    result['night'] = unavailable if track_id == 6 else {'available': False, 'reason': 'Original Night assets unavailable.'}
+    result['fog'] = {'available': False, 'reason': 'Original Fog assets unavailable.'}
+    root, output = Path(game_root), Path(output)
+    try:
+        require(sha((root / 'STRT3FX.EXE').read_bytes()) == EXE_SHA256, 'Original Rally executable profile differs')
+        require(not output.exists(), 'Refusing to overwrite an original condition cache')
+        output.mkdir(parents=True)
+    except (ValueError, OSError) as error:
+        result['fog']['reason'] = str(error)[:500]
+        if track_id != 6:
+            result['night']['reason'] = str(error)[:500]
+        return result
+    try:
+        day, result['fog'] = export_day_and_fog(root, track_id, base_world_path, base_cars_path,
+                                              output / 'fog', capture=capture, original=result['original'])
+        if day is not None:
+            result['day'] = day
+    except (ValueError, OSError) as error:
+        result['fog'] = {'available': False, 'reason': str(error)[:500]}
+    if track_id == 6:
+        return result
+    try:
+        sky = export_backdrop(root, track_id, 1, output / 'sky.png')
+        cars = export_night_cars(root, base_cars_path, output / 'cars', track_id=track_id, capture=capture)
+        result['night'] = {'available': True, 'world_scene': str(Path(base_world_path).resolve()),
+                           'cars_scene': cars, 'sky_texture': sky,
+                           'sky': {'kind': 'rally', 'enabled': True, 'ground_rgb': [0, 0, 0], 'flat_rgb': [0, 0, 0]},
+                           'night_fog': {'near': 6000, 'far': 35000, 'color': [0, 0, 0]}}
+    except (ValueError, OSError) as error:
+        result['night'] = {'available': False, 'reason': str(error)[:500]}
     return result

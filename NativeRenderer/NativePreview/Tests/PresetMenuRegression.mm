@@ -39,5 +39,11 @@ int main(){@autoreleasepool{
     state.nightAvailable=true;if(![app validateMenuItem:night])return 13;
     state.originalNight=true;NSMenuItem *original=[[NSApp.mainMenu itemWithTitle:@"Conditions"].submenu itemAtIndex:0];
     [app validateMenuItem:original];if(![original.title isEqual:@"Original (Night)"])return 14;
+    NSMenuItem *fog=[[NSApp.mainMenu itemWithTitle:@"Conditions"].submenu itemAtIndex:2];
+    state.fogKnown=true;state.fogAvailable=false;
+    if([app validateMenuItem:fog])return 15;
+    [app changeConditions:fog];if(state.conditionsTransition.target!=Conditions::Preset::Day)return 16;
+    state.fogAvailable=true;if(![app validateMenuItem:fog])return 17;
+    state.originalFog=true;[app validateMenuItem:original];if(![original.title isEqual:@"Original (Fog)"])return 18;
     puts("Conditions menu and Cmd1/2/3 switch live presets without game input or physics changes; rendering controls remain diagnostic-only.");return 0;
 }}

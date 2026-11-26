@@ -49,6 +49,33 @@ class PublicationContracts(unittest.TestCase):
             self.assertEqual(path.read_bytes(), before)
             self.assertEqual(json.loads((directory / 'condition-variants.json').read_text()), value)
 
+    def test_fog_keeps_day_banks_and_validates_independently_from_night(self):
+        with tempfile.TemporaryDirectory() as folder:
+            directory = Path(folder)
+            world, _ = self.fixture(directory / 'world')
+            cars, baseline = self.fixture(directory / 'cars')
+            value = {'schema': 'screamer-original-conditions/v1', 'original': 'fog',
+                     'night': {'available': True, 'world_scene': '/outside-race-cache.json'},
+                     'fog': {'available': True, 'world_scene': str(world), 'cars_scene': str(cars),
+                             'glide_fog': {'table': [0] * 64, 'color_rgb': [184] * 3, 'w_scale': 1, 'far_distance': 25000}}}
+            actual = validate_conditions(directory, value, 'b' * 64, baseline)
+            self.assertFalse(actual['night']['available'])
+            self.assertTrue(actual['fog']['available'])
+            self.assertEqual(actual['original'], 'fog')
+            self.assertEqual(actual['fog']['world_scene'], str(world))
+
+    def test_corrupt_fog_table_is_disabled_without_replacing_baseline(self):
+        with tempfile.TemporaryDirectory() as folder:
+            directory = Path(folder)
+            world, _ = self.fixture(directory / 'world')
+            cars, baseline = self.fixture(directory / 'cars')
+            value = {'schema': 'screamer-original-conditions/v1', 'original': 'day',
+                     'night': {'available': False}, 'fog': {'available': True, 'world_scene': str(world),
+                     'cars_scene': str(cars), 'glide_fog': {'table': [False] + [0] * 63,
+                     'color_rgb': [184] * 3, 'w_scale': 1, 'far_distance': 25000}}}
+            self.assertFalse(validate_conditions(directory, value, 'b' * 64, baseline)['fog']['available'])
+            self.assertEqual(json.loads(cars.read_text()), baseline)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

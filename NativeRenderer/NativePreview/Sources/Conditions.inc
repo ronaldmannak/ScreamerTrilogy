@@ -1,17 +1,20 @@
 // SPDX-License-Identifier: GPL-3.0-only
 // Visual conditions are frontend state; they never alter game clocks or input.
 #include <algorithm>
+#include <array>
 #include <cctype>
 #include <cmath>
+#include <cstdint>
 #include <string>
 #include <simd/simd.h>
 
 struct ConditionsUniforms {
-    simd::float4 weights;  // night haze, grey fog, fog start distance, inverse fog span
+    simd::float4 weights;  // night haze, original fog, reserved, Glide W scale
     simd::float4 fogColor;
     simd::float4 nightFog; // near distance, inverse span, reserved, reserved
+    simd::float4 fogTable[16]; // Original 64-byte Glide table, normalized for Metal.
 };
-static_assert(sizeof(ConditionsUniforms)==48,"Conditions uniform layout must match Metal");
+static_assert(sizeof(ConditionsUniforms)==304,"Conditions uniform layout must match Metal");
 
 namespace Conditions {
 enum class Preset { Day, Night, Fog };
@@ -56,13 +59,26 @@ struct Transition {
         target=preset;previous=weights(preset);started=0;
     }
 };
-inline ConditionsUniforms makeUniforms(simd::float2 blend,float referenceDistance,float nightNear=6000.f,float nightFar=35000.f) {
+inline std::array<uint8_t,64> originalFogTable() {
+    // Original 3dfx table generator (Rally 5527A / S2 56CA6), far=-25000.
+    // The first 35 slots are zero; near is cached by the game but unused.
+    std::array<uint8_t,64> table{};
+    for(int index=3;index<32;index++){
+        float depth=-800.f*(index-3),far=-25000.f;
+        if(depth<far)depth=far-1;
+        table[32+index]=static_cast<uint8_t>(255.0*std::sin(static_cast<double>(depth/far)*1.570796327));
+    }
+    return table;
+}
+inline ConditionsUniforms makeUniforms(simd::float2 blend,float /*referenceDistance*/,float nightNear=6000.f,float nightFar=35000.f,
+        const std::array<uint8_t,64> &table=originalFogTable(),simd::float3 fogColor={184.f/255,184.f/255,184.f/255},float wScale=1.f) {
     for(int index=0;index<2;index++)blend[index]=std::isfinite(blend[index])?std::clamp(blend[index],0.f,1.f):0.f;
     float total=blend.x+blend.y;if(total>1)blend/=total;
-    float reference=std::isfinite(referenceDistance)&&referenceDistance>0?referenceDistance:32768.f;
-    reference=std::clamp(reference,256.f,10000000.f);
     if(!std::isfinite(nightNear)||!std::isfinite(nightFar)||nightNear<0||nightFar<=nightNear){nightNear=6000;nightFar=35000;}
-    return {(simd::float4){blend.x,blend.y,reference*.04f,1.f/(reference*.4f)},
-            (simd::float4){.64f,.69f,.74f,0},(simd::float4){nightNear,1.f/(nightFar-nightNear),0,0}};
+    if(!std::isfinite(wScale)||wScale<=0||wScale>1024)wScale=1;
+    ConditionsUniforms result={(simd::float4){blend.x,blend.y,0,wScale},
+            (simd::float4){fogColor.x,fogColor.y,fogColor.z,0},(simd::float4){nightNear,1.f/(nightFar-nightNear),0,0},{}};
+    for(int index=0;index<64;index++)result.fogTable[index/4][index%4]=table[index]/255.f;
+    return result;
 }
 } // namespace Conditions

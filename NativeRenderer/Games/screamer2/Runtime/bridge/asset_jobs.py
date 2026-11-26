@@ -91,32 +91,41 @@ class AssetJobs:
 
 
 def validate_conditions(directory, value, ram_hash, base_cars):
-    """A Night cache may replace visuals only for this exact captured car set."""
-    if value.get("schema") != "screamer-original-conditions/v1" or value.get("original") not in ("day", "night"):
+    """A condition cache may replace visuals only for this exact captured car set."""
+    if value.get("schema") != "screamer-original-conditions/v1" or value.get("original") not in ("day", "night", "fog"):
         raise ValueError("Original condition descriptor is invalid")
-    night = value.get("night", {})
-    if not night.get("available"):
-        return value
-    try:
-        for name in ("world_scene", "cars_scene", "sky_texture"):
-            target = Path(night[name])
-            if not target.is_absolute() or not target.resolve().is_relative_to(directory.resolve()) or not target.is_file():
-                raise ValueError("Original Night assets must stay inside this captured race cache")
-        validate_scene(Path(night["world_scene"]), ram_hash)
-        cars = validate_scene(Path(night["cars_scene"]), ram_hash)
-        identity = lambda scene: [(item["id"], item["model"]) for item in scene.get("dynamic_instances", [])]
-        if identity(cars) != identity(base_cars):
-            raise ValueError("Original Night car identities differ from the captured race")
-    except (KeyError, TypeError, ValueError, OSError) as error:
-        return {"schema": value["schema"], "original": value["original"],
-                "night": {"available": False, "reason": str(error)}}
+    for condition in ("night", "fog"):
+        entry = value.get(condition, {})
+        if not entry.get("available"):
+            continue
+        try:
+            files = ["world_scene", "cars_scene"] + (["sky_texture"] if condition == "night" else [])
+            for name in files:
+                target = Path(entry[name])
+                if not target.is_absolute() or not target.resolve().is_relative_to(directory.resolve()) or not target.is_file():
+                    raise ValueError("Original condition assets must stay inside this captured race cache")
+            validate_scene(Path(entry["world_scene"]), ram_hash)
+            cars = validate_scene(Path(entry["cars_scene"]), ram_hash)
+            identity = lambda scene: [(item["id"], item["model"]) for item in scene.get("dynamic_instances", [])]
+            if identity(cars) != identity(base_cars):
+                raise ValueError("Original condition car identities differ from the captured race")
+            if condition == "fog":
+                fog = entry["glide_fog"]
+                table = fog["table"]
+                if (not isinstance(table, list) or len(table) != 64 or
+                        any(type(number) is not int or not 0 <= number <= 255 for number in table)):
+                    raise ValueError("Original Glide fog table must contain exactly64bytes")
+                if fog["color_rgb"] != [184, 184, 184] or fog["w_scale"] != 1 or fog["far_distance"] != 25000:
+                    raise ValueError("Original S2 Fog parameters differ from the native renderer profile")
+        except (KeyError, TypeError, ValueError, OSError) as error:
+            value[condition] = {"available": False, "reason": str(error)[:500]}
     return value
 
 
 def export_conditions(directory, game_root):
     """Decode original alternate banks in the worker, without touching the guest."""
     result = {"schema": "screamer-original-conditions/v1", "original": "day",
-              "night": {"available": False, "reason": "Original game assets are unavailable."}}
+              **{name: {"available": False, "reason": "Original game assets are unavailable."} for name in ("night", "fog")}}
     if game_root is not None:
         try:
             from guest_memory import Snapshot
@@ -124,22 +133,32 @@ def export_conditions(directory, game_root):
             capture = Snapshot.load(directory / "ram.bin", directory / "metadata.json")
             track = capture.rd32(capture.link(0x151684, 4))
             condition = capture.rd32(capture.link(0x151688, 4))
-            result["original"] = "night" if condition & 1 else "day"
+            if condition not in (0, 1, 2):
+                raise ValueError("Original S2 condition is unknown")
+            result["original"] = ("day", "night", "fog")[condition]
             here = Path(__file__).resolve()
             candidates = (here.parents[1] / "Conditions", here.parents[4] / "Conditions")
             conditions = next((path for path in candidates if (path / "s2.py").is_file()), None)
             if conditions is None:
                 raise ValueError("Original condition decoder is unavailable")
             sys.path.insert(0, str(conditions))
-            from s2 import export_night
-            result = export_night(game_root, track, directory / "world/scene.json",
-                                  directory / "cars/scene.json", directory / "night", capture=capture,
-                                  read_entry=archive_entry, export_sky=export_sky)
+            from s2 import export_fog, export_night
+            for name, exporter in (("night", export_night), ("fog", export_fog)):
+                try:
+                    kwargs = {"export_sky": export_sky} if name == "night" else {}
+                    exported = exporter(game_root, track, directory / "world/scene.json",
+                                        directory / "cars/scene.json", directory / name, capture=capture,
+                                        read_entry=archive_entry, **kwargs)
+                    result[name] = exported[name]
+                except Exception as error:
+                    result[name] = {"available": False, "reason": str(error)[:500]}
+                    print(f"Original S2 {name} assets unavailable:", error, flush=True)
         except Exception as error:
             # A missing optional archive or unsupported material must never keep
             # the independently validated original race assets from loading.
-            result["night"] = {"available": False, "reason": str(error)[:500]}
-            print("Original S2 Night assets unavailable:", error, flush=True)
+            for name in ("night", "fog"):
+                result[name] = {"available": False, "reason": str(error)[:500]}
+            print("Original S2 condition assets unavailable:", error, flush=True)
     (directory / "condition-variants.json").write_text(json.dumps(result, indent=2) + "\n")
     return result
 

@@ -6,10 +6,12 @@ import struct
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from s2 import NightWorld, export_night, objects
+import s2
+from s2 import NightWorld, export_fog, export_night, objects
 
 
 def grid_fixture():
@@ -133,6 +135,58 @@ class OriginalS2Contracts(unittest.TestCase):
                 self.assertFalse(value['night']['available'])
                 self.assertEqual(value['original'], 'day')
                 self.assertFalse(target.exists())
+
+    def test_native_fog_does_not_require_unused_software_depth_map(self):
+        class Capture:
+            def link(self, address, size): return address
+            def rd32(self, address): return 2
+        def absent_entry(*args): raise ValueError('Synthetic archive has no software depth map')
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / 'S2_3DFX.EXE').write_bytes(b'non-game synthetic executable fixture')
+            with patch.object(s2, 'EXE_SHA256', s2.sha((root / 'S2_3DFX.EXE').read_bytes())):
+                for track in range(6):
+                    with self.subTest(track=track):
+                        result = export_fog(root, track, root / 'world/scene.json', root / 'cars/scene.json',
+                                            root / 'fog', capture=Capture(), read_entry=absent_entry)
+                        fog = result['fog']
+                        self.assertEqual(result['original'], 'fog')
+                        self.assertTrue(fog['available'])
+                        self.assertFalse(fog['software_depth_map']['available'])
+                        self.assertFalse(fog['sky']['enabled'])
+                        self.assertEqual(fog['sky']['flat_rgb'], [184, 188, 184])
+                        self.assertEqual(fog['sky']['ground_rgb'], [184, 188, 184])
+                        self.assertEqual(fog['glide_fog']['color_rgb'], [184, 184, 184])
+                        self.assertEqual(len(fog['glide_fog']['table']), 64)
+                        self.assertEqual(fog['glide_fog']['far_distance'], 25000)
+                        self.assertNotIn('far_plane', fog['glide_fog'])
+                        self.assertEqual(fog['world_scene'], str((root / 'world/scene.json').resolve()))
+                        self.assertFalse((root / 'fog').exists())
+
+    def test_fog_from_night_decodes_day_banks_and_preserves_scene_paths(self):
+        class Capture:
+            def link(self, address, size): return address
+            def rd32(self, address): return 1
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / 'S2_3DFX.EXE').write_bytes(b'non-game synthetic executable fixture')
+            paths = {'world_scene': str(root / 'fog/world/scene.json'), 'cars_scene': str(root / 'fog/cars/scene.json')}
+            with patch.object(s2, 'EXE_SHA256', s2.sha((root / 'S2_3DFX.EXE').read_bytes())), \
+                    patch.object(s2, '_export_bank', return_value=paths) as export:
+                result = export_fog(root, 0, '', '', root / 'fog', capture=Capture(), read_entry=lambda *a: (b'', {}))
+                self.assertEqual(result['original'], 'night')
+                self.assertEqual(export.call_args.kwargs['condition'], 0)
+                self.assertEqual(result['fog']['world_scene'], paths['world_scene'])
+                self.assertEqual(result['fog']['cars_scene'], paths['cars_scene'])
+                self.assertNotIn('sky_texture', result['fog'])
+
+    def test_original_bonus_track_bypasses_fog(self):
+        class Capture:
+            def link(self, address, size): return address
+            def rd32(self, address): return 0
+        value = export_fog('', 6, '', '', '', capture=Capture(), read_entry=None)
+        self.assertFalse(value['fog']['available'])
+        self.assertIn('bonus', value['fog']['reason'])
 
 
 if __name__ == '__main__':

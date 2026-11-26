@@ -90,39 +90,65 @@ class AssetJobs:
             terminate_group(process)
 
 
+def validate_glide_fog(value):
+    if not isinstance(value, dict):
+        raise ValueError("Original Fog table descriptor is missing")
+    for key, size in (("table", 64), ("color_rgb", 3)):
+        items = value.get(key)
+        if not isinstance(items, list) or len(items) != size or any(type(item) is not int or not 0 <= item <= 255 for item in items):
+            raise ValueError("Original Fog table/color byte extent is invalid")
+    if value.get("w_scale") != 1 or value.get("far_distance") != 25000:
+        raise ValueError("Original Rally Fog view-depth parameters differ")
+
+
 def validate_conditions(directory, value, ram_hash, base_cars):
-    """Optional alternate visuals must belong to this exact captured car cohort."""
+    """Validate each optional variant independently against this captured cohort."""
     original = value.get("original", "day")
-    try:
-        if value.get("schema") != "screamer-original-conditions/v1" or original not in ("day", "night"):
-            raise ValueError("Original condition descriptor is invalid")
-        night = value.get("night", {})
-        if not night.get("available"):
-            return value
-        for name in ("world_scene", "cars_scene", "sky_texture"):
-            target = Path(night[name])
-            if not target.is_absolute() or not target.resolve().is_relative_to(directory.resolve()) or not target.is_file():
-                raise ValueError("Original Night assets must stay inside this captured race cache")
-        validate_scene(Path(night["world_scene"]), ram_hash)
-        cars = validate_scene(Path(night["cars_scene"]), ram_hash)
-        identity = lambda scene: [(item["id"], item["model"]) for item in scene.get("dynamic_instances", [])]
-        if identity(cars) != identity(base_cars):
-            raise ValueError("Original Night car identities differ from the captured race")
-    except (KeyError, TypeError, ValueError, OSError) as error:
-        return {"schema": "screamer-original-conditions/v1", "original": original if original in ("day", "night") else "day",
-                "night": {"available": False, "reason": str(error)}}
-    return value
+    if value.get("schema") != "screamer-original-conditions/v1" or original not in ("day", "night", "fog"):
+        unavailable = {"available": False, "reason": "Original condition descriptor is invalid"}
+        return {"schema": "screamer-original-conditions/v1", "original": "day",
+                "night": dict(unavailable), "fog": dict(unavailable)}
+    result = dict(value)
+    for variant in ("night", "fog", "day"):
+        entry = value.get(variant)
+        if not entry:
+            continue
+        try:
+            if not isinstance(entry, dict):
+                raise ValueError("Original visual variant is invalid")
+            if not entry.get("available"):
+                continue
+            for name in ("world_scene", "cars_scene", "sky_texture"):
+                target = Path(entry[name])
+                if not target.is_absolute() or not target.resolve().is_relative_to(directory.resolve()) or not target.is_file():
+                    raise ValueError("Original condition assets must stay inside this captured race cache")
+            validate_scene(Path(entry["world_scene"]), ram_hash)
+            cars = validate_scene(Path(entry["cars_scene"]), ram_hash)
+            identity = lambda scene: [(item["id"], item["model"]) for item in scene.get("dynamic_instances", [])]
+            if identity(cars) != identity(base_cars):
+                raise ValueError("Original visual car identities differ from the captured race")
+            if variant == "fog":
+                validate_glide_fog(entry.get("glide_fog"))
+                if entry.get("sky", {}).get("enabled") is not False:
+                    raise ValueError("Original Rally Fog must disable its textured sky")
+        except (KeyError, TypeError, ValueError, OSError) as error:
+            result[variant] = {"available": False, "reason": str(error)[:500]}
+    return result
 
 
 def export_conditions(directory, game_root):
     result = {"schema": "screamer-original-conditions/v1", "original": "day",
-              "night": {"available": False, "reason": "Original game assets are unavailable."}}
+              "night": {"available": False, "reason": "Original game assets are unavailable."},
+              "fog": {"available": False, "reason": "Original game assets are unavailable."}}
     if game_root is not None:
         try:
             from guest_memory import Snapshot
             capture = Snapshot.load(directory / "ram.bin", directory / "metadata.json")
             track = capture.rd32(capture.link(0x1435c0, 4))
-            result["original"] = "night" if capture.rd32(capture.link(0x1435c4, 4)) & 1 else "day"
+            condition = capture.rd32(capture.link(0x1435c4, 4))
+            if condition not in (0, 1, 2):
+                raise ValueError("Unknown original Rally condition")
+            result["original"] = ("day", "night", "fog")[condition]
             conditions = Path(__file__).resolve().parents[1] / "Conditions"
             if not (conditions / "rally.py").is_file():
                 raise ValueError("Original condition decoder is unavailable")
@@ -133,8 +159,9 @@ def export_conditions(directory, game_root):
         except Exception as error:
             # Optional authored Night artwork cannot prevent the independent
             # baseline race assets from loading if an archive is unavailable.
-            result["night"] = {"available": False, "reason": str(error)[:500]}
-            print("Original Rally Night assets unavailable:", error, flush=True)
+            for variant in ("night", "fog"):
+                result[variant] = {"available": False, "reason": str(error)[:500]}
+            print("Original Rally condition assets unavailable:", error, flush=True)
     (directory / "condition-variants.json").write_text(json.dumps(result, indent=2) + "\n")
     return result
 

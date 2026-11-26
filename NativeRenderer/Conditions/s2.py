@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-only
-"""Decode owned Screamer 2 Night banks into a separate render-only asset set.
+"""Decode owned Screamer 2 condition assets into separate render-only sets.
 
 The original 3dfx loader selects MAPnH12 and ENVPn12 for condition & 1.
 This module never changes that condition, executes guest code, or changes the
@@ -66,10 +66,11 @@ def objects(grid):
 
 
 class NightWorld:
-    def __init__(self, assets, grid, output, *, camera=None, provenance=None, track_id=0, clock=0):
+    def __init__(self, assets, grid, output, *, camera=None, provenance=None, track_id=0, clock=0, condition=1):
         self.assets, self.grid, self.output = assets, grid, Path(output)
         self.camera, self.provenance, self.track_id = camera, provenance or {}, track_id
         self.clock = clock
+        self.condition_name = 'Night' if condition & 1 else 'Day'
         self.vertices, self.normals, self.groups = array('f'), array('f'), {}
         self.low, self.high = [math.inf] * 3, [-math.inf] * 3
         self.instances, self.materials, self.counts = [], {}, Counter()
@@ -160,7 +161,7 @@ class NightWorld:
         write_array(self.output / 'indices.bin', indices)
         require(len(self.normals) == len(self.vertices) // 3, 'Original S2 Night normals differ from the mesh extent')
         write_array(self.output / 'normals.bin', self.normals)
-        scene = {'schema': 'screamer-scene/v1', 'title': f'Screamer 2: original Night track {self.track_id + 1}',
+        scene = {'schema': 'screamer-scene/v1', 'title': f'Screamer 2: original {self.condition_name} track {self.track_id + 1}',
                  'provenance': self.provenance,
                  'coordinates': {'handedness': 'left', 'up': '+Y', 'units': 'original game world units',
                                  'vertices': 'absolute world positions', 'winding': 'original polygon order'},
@@ -181,25 +182,24 @@ class NightWorld:
         return scene
 
 
-def export_night(game_root, track_id, base_world_path, base_cars_path, output, *, capture,
-                 read_entry, export_sky, export_cars=None):
-    """Return a variant descriptor; only generated session-cache files are written."""
-    require(type(track_id) is int and 0 <= track_id <= 6, 'Unknown original S2 track')
-    original_condition = capture.rd32(capture.link(0x151688, 4))
-    require(original_condition in (0, 1, 2), 'Unknown original S2 condition')
-    result = {'schema': 'screamer-original-conditions/v1',
-              'original': 'night' if original_condition & 1 else 'day'}
-    if track_id not in NIGHT_TRACKS:
-        result['night'] = {'available': False, 'reason': 'This original Screamer 2 track has no authored Night asset bank.'}
-        return result
+def original_condition(capture):
+    condition = capture.rd32(capture.link(0x151688, 4))
+    require(condition in (0, 1, 2), 'Unknown original S2 condition')
+    return ('day', 'night', 'fog')[condition]
+
+
+def _export_bank(game_root, track_id, base_world_path, base_cars_path, output, *, capture,
+                 read_entry, condition, export_cars=None):
+    """Decode one MAP/CARS/ENV bit without changing the captured engine condition."""
     game_root, output = Path(game_root), Path(output)
     require(sha((game_root / 'S2_3DFX.EXE').read_bytes()) == EXE_SHA256, 'Original S2 executable profile differs')
-    require(not output.exists(), 'Refusing to overwrite an existing original Night cache')
+    require(condition in (0, 1), 'Unknown original S2 asset bank')
+    require(not output.exists(), 'Refusing to overwrite an existing original condition cache')
     output.mkdir(parents=True)
     world = output / 'world'
     (world / 'textures').mkdir(parents=True)
-    bank_path = game_root / f'GFX/MAP{track_id + 1}H12.DAT'
-    env_path = game_root / f'GFX/ENVP{track_id + 1}12.DAT'
+    bank_path = game_root / f'GFX/MAP{track_id + 1}H{condition}2.DAT'
+    env_path = game_root / f'GFX/ENVP{track_id + 1}{condition}2.DAT'
     entries, provenance = {}, {}
     for ext in ('UNR', 'MMP', 'MLB', 'HIC'):
         entries[ext], provenance[ext] = read_entry(bank_path, f'MAP{track_id + 1}.{ext}')
@@ -209,23 +209,77 @@ def export_night(game_root, track_id, base_world_path, base_cars_path, output, *
                        env_mlb=env_mlb, env_hic=env_hic)
     base_world = json.loads(Path(base_world_path).read_text())
     world_provenance = {'ram_sha256': capture.sha256, 'original_executable_sha256': EXE_SHA256,
-                        'source': 'Owned original S2 Night MAP/ENV assets decoded offline; simulation unchanged',
-                        'condition': 1, 'track_id': track_id, 'archive': f'GFX/{bank_path.name}',
+                        'source': 'Owned original S2 MAP/ENV assets decoded offline; simulation unchanged',
+                        'condition': condition, 'track_id': track_id, 'archive': f'GFX/{bank_path.name}',
                         'environment_archive': f'GFX/{env_path.name}', 'original_entries': provenance}
     NightWorld(assets, entries['MMP'], world, camera=base_world.get('camera'),
                provenance=world_provenance, track_id=track_id,
-               clock=capture.rd32(capture.link(0x154770, 4))).export()
-    sky = export_sky(game_root, track_id, 1, output)
+               clock=capture.rd32(capture.link(0x154770, 4)), condition=condition).export()
     if export_cars is None:
         from rally import export_night_cars
         export_cars = export_night_cars
     cars_path = export_cars(game_root, Path(base_cars_path), output / 'cars',
-                            game='screamer2', track_id=track_id, capture=capture)
+                            game='screamer2', track_id=track_id, capture=capture, condition=condition)
+    return {'world_scene': str((world / 'scene.json').resolve()), 'cars_scene': str(Path(cars_path).resolve())}
+
+
+def export_night(game_root, track_id, base_world_path, base_cars_path, output, *, capture,
+                 read_entry, export_sky, export_cars=None):
+    """Return a variant descriptor; only generated session-cache files are written."""
+    require(type(track_id) is int and 0 <= track_id <= 6, 'Unknown original S2 track')
+    result = {'schema': 'screamer-original-conditions/v1', 'original': original_condition(capture)}
+    if track_id not in NIGHT_TRACKS:
+        result['night'] = {'available': False, 'reason': 'This original Screamer 2 track has no authored Night asset bank.'}
+        return result
+    paths = _export_bank(game_root, track_id, base_world_path, base_cars_path, output,
+                         capture=capture, read_entry=read_entry, condition=1, export_cars=export_cars)
+    output = Path(output)
+    sky = export_sky(game_root, track_id, 1, output)
     # Loader 0x37D55 disables Night haze for track index3. The other authored
     # Night tracks select the original black distance haze, never a blue tint.
-    result['night'] = {'available': True, 'world_scene': str((world / 'scene.json').resolve()),
-                       'cars_scene': str(Path(cars_path).resolve()),
+    result['night'] = {'available': True, **paths,
                        'sky_texture': str((output / sky['path']).resolve()),
                        'sky': {'kind': 'rally', 'enabled': True, 'ground_rgb': [0, 0, 0], 'flat_rgb': [0, 0, 0]},
                        'night_fog': {'enabled': track_id != 3, 'near': 6000, 'far': 35000, 'color': [0, 0, 0]}}
+    return result
+
+
+def export_fog(game_root, track_id, base_world_path, base_cars_path, output, *, capture,
+               read_entry, export_cars=None):
+    """Original 3dfx Fog uses Day banks, grey clear, and the generated Glide table.
+
+    DEPTH2.DPT contains software palette depth maps, not the hardware fog table.
+    The S2_3DFX loader 0x560EB ignores that filename; absence is diagnostic only.
+    Its bonus-track branch at 0x37CDF explicitly disables all condition flags.
+    The 25000 distance builds the fog table; it does not set projection clipping.
+    """
+    from original_glide_fog import original_glide_fog
+    require(type(track_id) is int and 0 <= track_id <= 6, 'Unknown original S2 track')
+    original = original_condition(capture)
+    result = {'schema': 'screamer-original-conditions/v1', 'original': original}
+    if track_id == 6:
+        result['fog'] = {'available': False, 'reason': 'The original Screamer 2 bonus track disables Fog rendering.'}
+        return result
+    game_root = Path(game_root)
+    require(sha((game_root / 'S2_3DFX.EXE').read_bytes()) == EXE_SHA256, 'Original S2 executable profile differs')
+    if original == 'night':
+        paths = _export_bank(game_root, track_id, base_world_path, base_cars_path, output,
+                             capture=capture, read_entry=read_entry, condition=0, export_cars=export_cars)
+    else:
+        # Captured Day/Fog texture banks are already the original condition&1=0
+        # set. Reuse them verbatim, preserving captured poses and decoded texels.
+        paths = {'world_scene': str(Path(base_world_path).resolve()),
+                 'cars_scene': str(Path(base_cars_path).resolve())}
+    depth_map = {'available': False, 'usage': 'software palette depth map; not used by original 3dfx fog'}
+    try:
+        _, provenance = read_entry(game_root / f'GFX/MAP{track_id + 1}H02.DAT', 'DEPTH2.DPT')
+        depth_map.update(available=True, **provenance)
+    except (OSError, ValueError):
+        pass
+    # S2 CD45B..CD480 converts BDF7 to a Glide constant by shifts only;
+    # copying low bits into RGB888 would incorrectly brighten the flat fill.
+    result['fog'] = {'available': True, **paths,
+                     'sky': {'kind': 'rally', 'enabled': False, 'ground_rgb': [184, 188, 184], 'flat_rgb': [184, 188, 184]},
+                     'glide_fog': original_glide_fog(far=25000, color_rgb=(184, 184, 184)),
+                     'software_depth_map': depth_map}
     return result

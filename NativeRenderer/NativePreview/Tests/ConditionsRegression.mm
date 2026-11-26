@@ -15,6 +15,13 @@ static void requireTest(bool condition,const char *message){if(!condition)throw 
 static bool same(Pixel a,Pixel b){return a.r==b.r&&a.g==b.g&&a.b==b.b&&a.a==b.a;}
 static double separation(Pixel a,Pixel b){return sqrt(pow((double)a.r-b.r,2)+pow((double)a.g-b.g,2)+pow((double)a.b-b.b,2));}
 static bool close2(simd::float2 a,simd::float2 b){return simd_length(a-b)<1e-5f;}
+static float referenceFog(float depth,const std::array<uint8_t,64> &table){
+    auto w=[](int index){return std::ldexp(1.f,3+index/4)/(8-index%4);};
+    depth=std::clamp(depth,1.f,52428.f);int index=0;
+    while(index<62&&depth>=w(index+1))index++;
+    float alpha=std::clamp((depth-w(index))/(w(index+1)-w(index)),0.f,1.f);
+    return (table[index]+(table[index+1]-table[index])*alpha)/255.f;
+}
 
 static void checkTransitions(){
     using Conditions::Preset;Conditions::Transition state;
@@ -60,6 +67,17 @@ static void checkAssetVariants(){
     bool rejected=false;input[@"assets"]=@{@"condition_variants":@{@"schema":@"screamer-original-conditions/v1",@"night":@{@"available":@YES}}};
     try{liveFrameFromJSON(input,@"/tmp/conditions-test");}catch(const std::exception &){rejected=true;}
     requireTest(rejected,"Incomplete night asset set must not reach the renderer");
+    NSMutableArray *table=[NSMutableArray array];for(uint8_t value:Conditions::originalFogTable())[table addObject:@(value)];
+    NSDictionary *fog=@{@"available":@YES,@"world_scene":@"fog/day-world.json",@"cars_scene":@"fog/day-cars.json",@"sky":@{@"enabled":@NO,@"flat_rgb":@[@184,@188,@184]},@"glide_fog":@{@"color_rgb":@[@184,@184,@184],@"table":table,@"w_scale":@1,@"far_distance":@25000}};
+    input[@"assets"]=@{@"world_scene":@"night/world.json",@"cars_scene":@"night/cars.json",@"condition_variants":@{@"schema":@"screamer-original-conditions/v1",@"original":@"fog",@"night":@{@"available":@NO},@"fog":fog}};
+    base=liveFrameFromJSON(input,@"/tmp/conditions-test");LiveFrame fogFrame=frameWithOriginalFog(base,true);
+    requireTest(base.fog.available&&base.fog.originalFog&&fogFrame.worldScene=="/tmp/conditions-test/fog/day-world.json"&&fogFrame.carsScene=="/tmp/conditions-test/fog/day-cars.json"&&!fogFrame.skyEnabled&&fogFrame.hasSky,"Original Fog did not restore Day assets and disable the sky");
+    requireTest(fogFrame.seq==base.seq&&fogFrame.period==base.period&&fogFrame.sampleAt==base.sampleAt&&fogFrame.pose.cars.size()==base.pose.cars.size(),"Original Fog altered a source clock or pose");
+    requireTest(base.fog.table==Conditions::originalFogTable()&&base.fog.farDistance==25000,"Original Glide table/depth contract changed");
+    NSMutableDictionary *badFog=[fog mutableCopy];badFog[@"glide_fog"]=@{@"color_rgb":@[@184,@184,@184],@"table":@[@0],@"far_distance":@25000};
+    input[@"assets"]=@{@"condition_variants":@{@"schema":@"screamer-original-conditions/v1",@"night":@{@"available":@NO},@"fog":badFog}};
+    rejected=false;try{liveFrameFromJSON(input,@"/tmp/conditions-test");}catch(const std::exception &){rejected=true;}
+    requireTest(rejected,"Truncated original Glide table was accepted");
 }
 
 @interface ConditionsProbe : NSObject
@@ -68,6 +86,7 @@ static void checkAssetVariants(){
 @property(strong)id<MTLLibrary> library;
 @property(strong)id<MTLSamplerState> sampler;
 @property(assign)NSInteger blendMode;
+@property(assign)float lateralOffset;
 - (instancetype)initWithShader:(NSString *)shader;
 - (Pixel)render:(NSString *)fragment conditions:(ConditionsUniforms)conditions distance:(float)distance color:(Pixel)color cutoff:(float)cutoff sourceAlpha:(BOOL)sourceAlpha;
 @end
@@ -107,8 +126,11 @@ static void checkAssetVariants(){
     MTLRenderPassDescriptor *pass=[MTLRenderPassDescriptor renderPassDescriptor];
     pass.colorAttachments[0].texture=target;pass.colorAttachments[0].loadAction=MTLLoadActionClear;pass.colorAttachments[0].storeAction=MTLStoreActionStore;
     pass.colorAttachments[0].clearColor=MTLClearColorMake(13./255,17./255,23./255,1);
-    Uniforms uniforms={};uniforms.matrix=matrix_identity_float4x4;uniforms.matrix.columns[2]=(simd::float4){0,0,0,0};uniforms.matrix.columns[3].z=.5f;
+    Uniforms uniforms={};uniforms.matrix=matrix_identity_float4x4;
+    uniforms.matrix.columns[0].x=distance;uniforms.matrix.columns[1].y=distance;
+    uniforms.matrix.columns[2]=(simd::float4){0,0,0,-1};uniforms.matrix.columns[3]=(simd::float4){-self.lateralOffset*distance,0,.5f*distance,0};
     uniforms.model=matrix_identity_float4x4;uniforms.reflectionWorldToView=matrix_identity_float4x4;uniforms.options=(simd::float4){1,cutoff,sourceAlpha?1.f:0.f,0};uniforms.conditions=conditions;
+    uniforms.model.columns[3].x=self.lateralOffset;
     if(self.blendMode)uniforms.options.z=self.blendMode;
     id<MTLCommandBuffer> command=[self.queue commandBuffer];id<MTLRenderCommandEncoder> encoder=[command renderCommandEncoderWithDescriptor:pass];
     [encoder setRenderPipelineState:pipeline];[encoder setCullMode:MTLCullModeNone];
@@ -137,14 +159,24 @@ int main(int argc,const char **argv){@autoreleasepool{try{
     auto day=Conditions::makeUniforms((simd::float2){0,0},1000),night=Conditions::makeUniforms((simd::float2){1,0},1000),fog=Conditions::makeUniforms((simd::float2){0,1},1000);
     Pixel source{64,96,160,255};NSMutableArray *checks=[NSMutableArray array];
     auto world=[&](ConditionsUniforms conditions,float distance,Pixel pixel=Pixel{64,96,160,255},float cutoff=0.f,BOOL alpha=NO){return [probe render:@"worldFragment" conditions:conditions distance:distance color:pixel cutoff:cutoff sourceAlpha:alpha];};
-    Pixel original=world(day,200),nightWorld=world(night,200),nearFog=world(fog,20),middleFog=world(fog,200),farFog=world(fog,1000);
+    Pixel original=world(day,200),nightWorld=world(night,200),nearFog=world(fog,20),middleFog=world(fog,5000),farFog=world(fog,25000);
     requireTest(same(original,source)&&same(world(day,1000),source),"Day changed the original sampled world color");
     requireTest(same(nightWorld,source),"Night recolored authored near-field artwork");
     requireTest(same(world(night,40000),Pixel{0,0,0,255}),"Original night distance haze did not reach black");
     Pixel fogColor{(uint8_t)lround(fog.fogColor.x*255),(uint8_t)lround(fog.fogColor.y*255),(uint8_t)lround(fog.fogColor.z*255),255};
     requireTest(same(nearFog,original),"Fog hid the near-field race view");
     requireTest(separation(middleFog,fogColor)<separation(nearFog,fogColor)&&separation(farFog,fogColor)<separation(middleFog,fogColor),"Fog did not increase monotonically with geometry distance");
-    requireTest(separation(farFog,fogColor)<=2,"Distant geometry did not converge to the fog sky color");
+    auto table=Conditions::originalFogTable();
+    const uint8_t expectedTail[28]={12,25,38,50,63,75,87,99,111,122,133,144,155,164,174,183,192,200,208,215,221,227,233,238,242,246,249,251};
+    for(int index=0;index<36;index++)requireTest(table[index]==0,"Original fog near table slots changed");
+    for(int index=0;index<28;index++)requireTest(table[index+36]==expectedTail[index],"Original fog generator differs from executable bytes");
+    for(float depth:{1.f,400.f,512.f,1024.f,5000.f,25000.f,52428.f}){
+        Pixel value=world(fog,depth);float amount=referenceFog(depth,table);
+        Pixel expected{(uint8_t)lround(source.r+(184-source.r)*amount),(uint8_t)lround(source.g+(184-source.g)*amount),(uint8_t)lround(source.b+(184-source.b)*amount),255};
+        requireTest(separation(value,expected)<=2,"Metal Glide lookup differs from independent original-table reference");
+    }
+    probe.lateralOffset=50000;Pixel offAxis=world(fog,5000);probe.lateralOffset=0;
+    requireTest(same(offAxis,middleFog),"Fog used radial distance instead of original camera W depth");
     [checks addObject:@{@"check":@"world_day_night_distance_fog",@"day":components(original),@"night":components(nightWorld),@"fog_near":components(nearFog),@"fog_mid":components(middleFog),@"fog_far":components(farFog)}];
     Pixel keyed{200,80,40,0},clear{13,17,23,255};
     for(auto conditions:{day,night,fog}){
@@ -158,7 +190,7 @@ int main(int argc,const char **argv){@autoreleasepool{try{
     Pixel fogSky=[probe render:@"backgroundFragment" conditions:fog distance:0 color:skySource cutoff:0 sourceAlpha:NO];
     requireTest(same(daySky,skySource),"Day changed the original sampled sky");
     requireTest(same(nightSky,skySource),"Night recolored the authored sky texture");
-    requireTest(separation(fogSky,fogColor)<=2,"Fog sky and distant world colors differ");
+    requireTest(same(fogSky,Pixel{184,188,184,255}),"Original Fog did not replace sky with the original BDF7 constant-color expansion");
     [checks addObject:@{@"check":@"sky_day_night_fog",@"day":components(daySky),@"night":components(nightSky),@"fog":components(fogSky)}];
     for(NSString *fragment in @[@"framebufferFragment",@"overlayFragment"]){
         Pixel input{80,120,200,64};Pixel baseline=[probe render:fragment conditions:day distance:0 color:input cutoff:0 sourceAlpha:NO];

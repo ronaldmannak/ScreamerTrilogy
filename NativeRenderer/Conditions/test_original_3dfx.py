@@ -3,6 +3,7 @@ from pathlib import Path
 import struct
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from original_3dfx import RawAssets, archive_entry, lzw, palette4444
 from rally import car_choices, export_night
@@ -112,6 +113,46 @@ class CarIdentityTests(unittest.TestCase):
         self.assertEqual(car_choices(memory, [root], 'screamer2'), {'scene:41': (2, 3)})
         self.assertEqual(memory.last, 0x151690 + 2 * 44)
         self.assertEqual(root['model'], 628)
+
+    def test_stadium_original_fog_survives_missing_night_and_needs_no_dpt_file(self):
+        class Capture:
+            def link(self, address, size=4): return address
+            def rd32(self, address): return 0
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / 'STRT3FX.EXE').write_bytes(b'synthetic profile fixture')
+            with patch('rally.sha', return_value='9eac6e12ab309389bdda019cfa695bfbbc791fbda1a4634464a444fce35165d1'), \
+                 patch('rally.archive_entry', return_value=(bytes(256 * 256 * 4), {})) as read:
+                result = export_night(root, 6, root / 'world', root / 'cars', root / 'cache', capture=Capture())
+            self.assertFalse(result['night']['available'])
+            self.assertTrue(result['fog']['available'])
+            self.assertFalse(result['fog']['sky']['enabled'])
+            self.assertEqual(result['fog']['sky']['flat_rgb'], [184,188,184])
+            self.assertEqual(result['fog']['sky']['ground_rgb'], [184,188,184])
+            self.assertEqual(result['fog']['glide_fog']['far_distance'], 25000)
+            self.assertEqual(read.call_args[0][1], 'MAP70.BCK')
+            self.assertEqual(read.call_count, 1)  # No software DEPTH*.DPT read.
+
+    def test_original_night_fog_uses_day_car_banks_and_restorable_day_sky(self):
+        class Capture:
+            def link(self, address, size=4): return address
+            def rd32(self, address):
+                return 1 if address == 0x1435c4 else 80
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            (root / 'STRT3FX.EXE').write_bytes(b'synthetic profile fixture')
+            def export_cars(game_root, base, output, **options):
+                return str(Path(output) / 'scene.json')
+            with patch('rally.sha', return_value='9eac6e12ab309389bdda019cfa695bfbbc791fbda1a4634464a444fce35165d1'), \
+                 patch('rally.archive_entry', return_value=(bytes(256 * 256 * 4), {})), \
+                 patch('rally.export_night_cars', side_effect=export_cars) as cars:
+                result = export_night(root, 2, root / 'world', root / 'cars', root / 'cache', capture=Capture())
+            self.assertEqual(result['original'], 'night')
+            self.assertTrue(result['fog']['available'])
+            self.assertTrue(result['night']['available'])
+            self.assertEqual(cars.call_args_list[0].kwargs['condition'], 0)
+            self.assertEqual(result['fog']['cars_scene'], result['day']['cars_scene'])
+            self.assertTrue(result['day']['sky']['enabled'])
 
     def test_stadium_does_not_fall_back_to_tinted_day_art(self):
         class Capture:

@@ -19,11 +19,13 @@ In **Upgraded** mode, use the **Conditions** menu during a race:
 
 - **Day** — **⌘1**: original track colors and sky.
 - **Night** — **⌘2**: original night artwork, skies, reflections and light effects, where the game supplies them.
-- **Fog** — **⌘3**: distance-based haze that blends the world into the sky.
+- **Fog** — **⌘3**: the original 3dfx fog table, grey background and daytime asset banks.
 
-Day restores the original track appearance. Night loads an alternate set of visual assets in the frontend; it does not change the game's condition variables, physics, grip or timing. Fog blends smoothly. HUD colors, menus and other original-framebuffer views retain their original appearance. Asset preparation happens once per race in the local session cache.
+Day restores the original track appearance. Night and Fog select visual assets and rendering state in the frontend; they do not change the game's condition variables, physics, grip or timing. HUD colors, menus and other original-framebuffer views retain their original appearance. Asset preparation happens once per race in the local session cache.
 
 Night availability follows the original assets. Screamer supports Palm Town's compatible night materials and its existing Palm Town Night course; its other tracks have no matching night bank. Screamer 2 supplies night banks for tracks 1–4 and 6. Rally supplies night skies and night cars for tracks 1–6, while its world textures are shared. Night is unavailable on unsupported tracks rather than substituting a blue tint. On an originally night course, **Original (Night)** restores its baseline appearance.
+
+Fog reproduces the original 64-byte Glide table generator and its camera-depth lookup, `B8B8B8` fog color, sky-off `BDF7` constant fill and 25,000-unit fog falloff parameter. The game's draw-distance policy remains separate. Fog uses Day world/car/reflection banks even when switched from Night. It is available on Screamer 2's six regular tracks and all seven Rally tracks, including Stadium. Screamer 2's bonus track explicitly disables the original condition effects. The first Screamer has no verified native Fog mode, so its Fog item is disabled. An originally foggy race is labeled **Original (Fog)**. The software renderer's `DEPTH*.DPT` files are separate palette maps; the 3dfx versions generate their hardware fog table in code.
 
 The renderer translates Screamer's palette light/shadow masks to true-color alpha blending. Screamer 2 and Rally preserve the original light-cone blend equations, including destination-color modulation. Original game data stays in your local import or private app bundle.
 

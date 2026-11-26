@@ -9,9 +9,10 @@ struct VertexIn {
 };
 // Must match ConditionsUniforms in Conditions.inc. These are presentation-only.
 struct ConditionsUniforms {
-    float4 weights; // night haze, grey fog, fog start distance, inverse fog span
+    float4 weights; // night haze, original fog, reserved, Glide W scale
     float4 fogColor;
     float4 nightFog;
+    float4 fogTable[16];
 };
 struct Uniforms {
     float4x4 relativeWorldToClip;
@@ -27,6 +28,7 @@ struct VertexOut {
     float2 uv;
     float4 color;
     float3 relativeWorld;
+    float viewDepth;
 };
 // Original S1 C2270/C24E0 and DBB raster path. Preserve signed UVs
 // through interpolation; the repeating sampler wraps only at texture access.
@@ -40,6 +42,7 @@ vertex VertexOut worldVertex(VertexIn v [[stage_in]], constant Uniforms &u [[buf
     VertexOut o;
     o.relativeWorld = (u.localToWorld * float4(v.position, 1.0)).xyz - u.eye.xyz;
     o.position = u.relativeWorldToClip * float4(o.relativeWorld, 1.0);
+    o.viewDepth = o.position.w;
     o.uv = v.uv;
     o.color = v.color;
     if (u.options.w > 0.5) {
@@ -52,7 +55,18 @@ vertex VertexOut worldVertex(VertexIn v [[stage_in]], constant Uniforms &u [[buf
 }
 // Night artwork is selected from the owned original texture/model banks.
 // Preserve its colors; the original 3dfx night mode only adds black distance haze.
-float3 conditionsWorldRGB(float3 color, float distance, constant ConditionsUniforms &conditions) {
+float originalFogAmount(float depth, constant ConditionsUniforms &conditions) {
+    // Original Glide table coordinates (guFogTableIndexToW), interpolated in
+    // camera W depth. World-space radial distance is a different fog model.
+    float w=clamp(depth*conditions.weights.w,1.0,52428.0);
+    float exponent=floor(log2(w)),mantissa=w/exp2(exponent);
+    uint lane=mantissa>=1.6?3u:mantissa>=4.0/3.0?2u:mantissa>=8.0/7.0?1u:0u;
+    uint a=min(uint(exponent)*4u+lane,62u),b=a+1u;
+    float wa=exp2(3.0+float(a/4u))/float(8u-a%4u);
+    float wb=exp2(3.0+float(b/4u))/float(8u-b%4u);
+    return mix(conditions.fogTable[a/4u][a%4u],conditions.fogTable[b/4u][b%4u],saturate((w-wa)/(wb-wa)));
+}
+float3 conditionsWorldRGB(float3 color, float distance, float viewDepth, constant ConditionsUniforms &conditions) {
     float night=saturate(conditions.weights.x),fog=saturate(conditions.weights.y);
     if(night<=0 && fog<=0)return color; // Preserve the original Day result exactly.
     if(night>0){
@@ -60,17 +74,15 @@ float3 conditionsWorldRGB(float3 color, float distance, constant ConditionsUnifo
         color*=1-span*span*(3-2*span)*night;
     }
     if(fog>0){
-        float span=saturate((distance-conditions.weights.z)*conditions.weights.w);
-        float amount=span*span*(3-2*span)*fog;
+        float amount=originalFogAmount(viewDepth,conditions)*fog;
         color=mix(color,conditions.fogColor.rgb,amount);
     }
     return color;
 }
 float3 conditionsSkyRGB(float3 color, constant ConditionsUniforms &conditions) {
-    float fog=saturate(conditions.weights.y);
-    // The distant background meets the world fog colour without a visible seam.
-    if(fog>0)color=mix(color,conditions.fogColor.rgb,fog);
-    return color;
+    // Original Fog disables the sky and draws RGB565 BDF7 as a flat fill.
+    // That quantized fill is distinct from Glide's B8B8B8 fog blend color.
+    return conditions.weights.y>0 ? float3(184.0,188.0,184.0)/255.0 : color;
 }
 fragment float4 worldFragment(VertexOut v [[stage_in]], constant Uniforms &u [[buffer(1)]],
                               texture2d<float> tex [[texture(0)]], sampler sampling [[sampler(0)]]) {
@@ -81,7 +93,7 @@ fragment float4 worldFragment(VertexOut v [[stage_in]], constant Uniforms &u [[b
     // materials both write an opaque result after the key test.
     float distance=length(v.relativeWorld);
     // Original mode 7 grey light cones use 2*source*destination and disable fog.
-    float3 rgb=abs(u.options.z-2.0)<0.1?color.rgb:conditionsWorldRGB(color.rgb,distance,u.conditions);
+    float3 rgb=abs(u.options.z-2.0)<0.1?color.rgb:conditionsWorldRGB(color.rgb,distance,v.viewDepth,u.conditions);
     return float4(rgb, u.options.z > 0.5 ? color.a : 1.0);
 }
 struct FramebufferOut { float4 position [[position]]; float2 uv; };

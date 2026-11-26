@@ -41,6 +41,27 @@ class OriginalVariantPublication(unittest.TestCase):
             escaped['night']['sky_texture'] = str(folder.parent / 'sky.png')
             self.assertFalse(validate_conditions(folder, escaped, 'a' * 64, base)['night']['available'])
 
+    def test_original_fog_validates_independently_of_missing_night(self):
+        with tempfile.TemporaryDirectory() as name:
+            folder = Path(name)
+            world, _ = self.scene(folder / 'world')
+            cars, base = self.scene(folder / 'cars')
+            sky = folder / 'sky.png'
+            sky.write_bytes(b'synthetic only')
+            fog = {'available': True, 'world_scene': str(world), 'cars_scene': str(cars), 'sky_texture': str(sky),
+                   'sky': {'enabled': False}, 'glide_fog': {'color_rgb': [184,184,184], 'table': [0]*64,
+                                                          'w_scale': 1, 'far_distance': 25000}}
+            value = {'schema': 'screamer-original-conditions/v1', 'original': 'fog',
+                     'night': {'available': False, 'reason': 'Stadium has no Night sky'}, 'fog': fog}
+            result = validate_conditions(folder, value, 'a' * 64, base)
+            self.assertEqual(result['original'], 'fog')
+            self.assertTrue(result['fog']['available'])
+            self.assertFalse(result['night']['available'])
+            bad = copy.deepcopy(value)
+            bad['fog']['glide_fog']['table'][2] = True
+            self.assertFalse(validate_conditions(folder, bad, 'a' * 64, base)['fog']['available'])
+            self.assertTrue(value['fog']['available'])  # Validation never mutates its input.
+
     def test_optional_asset_failure_does_not_modify_baseline(self):
         with tempfile.TemporaryDirectory() as name:
             folder = Path(name)
