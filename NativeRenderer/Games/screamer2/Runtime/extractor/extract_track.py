@@ -337,14 +337,14 @@ class TrackExtractor:
                     (obj['animation'] & 0xffff) >> 2 if obj['animation'] & 0x60000 else obj['animation'] >> 2)
                 frame = max(0, min(len(frames) - 1, (len(frames) * phase) >> 14)) if frames else 0
                 texture = self.texture_indices.get(frames[frame]) if frames else None
-                if self.with_textures and texture is not None and mode == 1:
+                if self.with_textures and texture is not None and mode in (1, 3):
                     from texture_decode import export_keyed_variant
                     record = frames[frame]
                     if record not in self.keyed_texture_indices:
                         self.keyed_texture_indices[record] = len(self.textures)
                         self.textures.append(export_keyed_variant(self.memory, self.output, self.textures[texture], records=self.links["textures"]))
                     texture = self.keyed_texture_indices[record]
-                elif self.with_textures and texture is not None and mode in (3, 6, 7):
+                elif self.with_textures and texture is not None and mode in (6, 7):
                     from texture_decode import export_blended_variant
                     record = frames[frame]
                     if record not in self.blended_texture_indices:
@@ -371,8 +371,11 @@ class TrackExtractor:
                     if batch_key not in self.batch_indices:
                         self.batch_indices[batch_key] = array('I')
                         self.batch_metadata[batch_key] = {'material_address': material['address'],
-                            'texture': texture, 'mode': mode, 'alpha_test': mode == 1,
-                            'blend': mode in (3, 6, 7)}
+                            'texture': texture, 'mode': mode, 'alpha_test': mode in (1, 3),
+                            'blend': mode in (3, 6, 7),
+                            'blend_mode': ('source_color' if mode == 3 else
+                                           'modulate2x' if mode == 7 and texture is not None and self.textures[texture].get('grey_blend') else
+                                           'alpha' if mode in (6, 7) else 'opaque')}
                         if self.current_instance_id is not None:
                             self.batch_metadata[batch_key]['instance_id'] = self.current_instance_id
                         if mode == 5:

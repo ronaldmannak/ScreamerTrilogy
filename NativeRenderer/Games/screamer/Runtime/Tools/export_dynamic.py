@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-only
 """Original S1 scene-list actors, split into independently animated part meshes."""
-import argparse,hashlib,json,math,struct,shutil,uuid
+import argparse,hashlib,json,math,struct,shutil,sys,uuid
 from pathlib import Path
 from export_scene import Scene,rotation,transform,require,u32,EXE_SHA
 from s1_sky import export_sky
@@ -79,8 +79,8 @@ def part_pose(ram,actor,slot):
 
 
 class DynamicScene(Scene):
-    def __init__(self,game,track,output,ram,physical):
-        super().__init__(game,track,output)
+    def __init__(self,game,track,output,ram,physical,visual_track=None):
+        super().__init__(game,track,output,visual_track=visual_track)
         self.bank=ram;self.model_bases,self.actors=actors(ram,physical);self.model_count=len(self.model_bases)
         self.dynamic=[]
         for actor in self.actors:
@@ -114,7 +114,7 @@ class DynamicScene(Scene):
         scene['statistics'].update(actor_roots=len(self.actors),dynamic_part_instances=len(scene['dynamic_instances']))
         scene['limitations']=['Original actor and part geometry, materials and captured world transforms; live bridge must update matching id+model poses.',
             'A0 opaque reflections retain authored per-vertex normals and original live actor reflection scroll; the renderer implements s1-reflection texgen.',
-            'C0/E0 palette-effect material families remain explicitly omitted; see unsupported triangle counts.',
+            'E0 original SMG fades are reconstructed before palette quantization; C0 remains explicitly omitted.',
             'Texture damage/animation frame selection is frozen at this capture; independent part transforms are live-capable.',
             'Sky and original overlays require separate composition.']
         (self.output/'scene.json').write_text(json.dumps(scene,indent=2)+'\n')
@@ -124,6 +124,7 @@ class DynamicScene(Scene):
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('ram','metadata','game-root','output'):p.add_argument('--'+name,required=True,type=Path)
+    p.add_argument('--world-scene',type=Path,help='Build original weather visuals in the same guarded background job')
     a=p.parse_args();require(not a.output.exists(),'Use a fresh dynamic scene folder')
     ram=a.ram.read_bytes();meta=json.loads(a.metadata.read_text())
     require(len(ram)==RAM_SIZE and hashlib.sha256(ram).hexdigest()==meta['ram_sha256'],'RAM capture hash mismatch')
@@ -139,6 +140,13 @@ def main():
         scene=exporter.export();export_sky(a.game_root,int(name[-1]),staging/'sky');staging.rename(a.output)
     finally:
         if staging.exists():shutil.rmtree(staging)
+    if a.world_scene:
+        runtime=Path(__file__).resolve().parent.parent
+        sys.path.insert(0,str(runtime if (runtime/'Conditions').is_dir() else Path(__file__).resolve().parents[4]))
+        from Conditions.s1 import build_variants
+        variants=build_variants(a.game_root,int(name[-1]),a.output.parent/'Conditions',a.world_scene,
+                                a.output/'scene.json',ram=ram,physical=physical)
+        (a.output.parent/'condition-variants.json').write_text(json.dumps(variants,indent=2)+'\n')
     print(json.dumps({'scene':str(a.output/'scene.json'),'statistics':scene['statistics']},indent=2))
 
 

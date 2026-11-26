@@ -29,8 +29,9 @@ def terminate_group(process):
 
 
 class AssetJobs:
-    def __init__(self, root, extractor):
+    def __init__(self, root, extractor, game_root=None):
         self.root, self.extractor = Path(root), Path(extractor)
+        self.game_root = Path(game_root) if game_root else None
         self.root.mkdir(parents=True, exist_ok=True)
         self.current = None
         self.ready = None
@@ -51,6 +52,8 @@ class AssetJobs:
         log = (directory / "extraction.log").open("wb")
         command = [sys.executable, str(Path(__file__).resolve()), "--job", str(directory),
                    "--extractor", str(self.extractor)]
+        if self.game_root is not None:
+            command += ["--game-root", str(self.game_root)]
         process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT,start_new_session=True,
                                    env=dict(os.environ,PYTHONDONTWRITEBYTECODE="1"))
         log.close()
@@ -75,6 +78,10 @@ class AssetJobs:
                 raise ValueError("Captured race asset set does not contain a bounded S2 car set")
             self.ready = {"epoch":epoch,"scene":str(scene),"cars":str(cars),
                           "world_scene":str(scene),"cars_scene":str(cars),"ram_sha256":self.current["ram_hash"]}
+            variants = directory / "condition-variants.json"
+            if variants.is_file():
+                self.ready["condition_variants"] = validate_conditions(
+                    directory, json.loads(variants.read_text()), self.current["ram_hash"], car_data)
         return self.ready
 
     def stop(self):
@@ -83,7 +90,61 @@ class AssetJobs:
             terminate_group(process)
 
 
-def run_job(directory, extractor):
+def validate_conditions(directory, value, ram_hash, base_cars):
+    """A Night cache may replace visuals only for this exact captured car set."""
+    if value.get("schema") != "screamer-original-conditions/v1" or value.get("original") not in ("day", "night"):
+        raise ValueError("Original condition descriptor is invalid")
+    night = value.get("night", {})
+    if not night.get("available"):
+        return value
+    try:
+        for name in ("world_scene", "cars_scene", "sky_texture"):
+            target = Path(night[name])
+            if not target.is_absolute() or not target.resolve().is_relative_to(directory.resolve()) or not target.is_file():
+                raise ValueError("Original Night assets must stay inside this captured race cache")
+        validate_scene(Path(night["world_scene"]), ram_hash)
+        cars = validate_scene(Path(night["cars_scene"]), ram_hash)
+        identity = lambda scene: [(item["id"], item["model"]) for item in scene.get("dynamic_instances", [])]
+        if identity(cars) != identity(base_cars):
+            raise ValueError("Original Night car identities differ from the captured race")
+    except (KeyError, TypeError, ValueError, OSError) as error:
+        return {"schema": value["schema"], "original": value["original"],
+                "night": {"available": False, "reason": str(error)}}
+    return value
+
+
+def export_conditions(directory, game_root):
+    """Decode original alternate banks in the worker, without touching the guest."""
+    result = {"schema": "screamer-original-conditions/v1", "original": "day",
+              "night": {"available": False, "reason": "Original game assets are unavailable."}}
+    if game_root is not None:
+        try:
+            from guest_memory import Snapshot
+            from s2_sky_assets import archive_entry, export_sky
+            capture = Snapshot.load(directory / "ram.bin", directory / "metadata.json")
+            track = capture.rd32(capture.link(0x151684, 4))
+            condition = capture.rd32(capture.link(0x151688, 4))
+            result["original"] = "night" if condition & 1 else "day"
+            here = Path(__file__).resolve()
+            candidates = (here.parents[1] / "Conditions", here.parents[4] / "Conditions")
+            conditions = next((path for path in candidates if (path / "s2.py").is_file()), None)
+            if conditions is None:
+                raise ValueError("Original condition decoder is unavailable")
+            sys.path.insert(0, str(conditions))
+            from s2 import export_night
+            result = export_night(game_root, track, directory / "world/scene.json",
+                                  directory / "cars/scene.json", directory / "night", capture=capture,
+                                  read_entry=archive_entry, export_sky=export_sky)
+        except Exception as error:
+            # A missing optional archive or unsupported material must never keep
+            # the independently validated original race assets from loading.
+            result["night"] = {"available": False, "reason": str(error)[:500]}
+            print("Original S2 Night assets unavailable:", error, flush=True)
+    (directory / "condition-variants.json").write_text(json.dumps(result, indent=2) + "\n")
+    return result
+
+
+def run_job(directory, extractor, game_root=None):
     # Lower the extraction worker's CPU priority without affecting the emulator
     # or the live input/frame worker. User data is never an output target.
     try:
@@ -95,11 +156,13 @@ def run_job(directory, extractor):
                     "--output",str(directory/"world")],check=True)
     subprocess.run([sys.executable,str(extractor/"extract_cars.py"),*common,
                     "--output",str(directory/"cars")],check=True)
+    export_conditions(directory, game_root)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--job",type=Path,required=True)
     parser.add_argument("--extractor",type=Path,required=True)
+    parser.add_argument("--game-root",type=Path)
     args = parser.parse_args()
-    run_job(args.job,args.extractor)
+    run_job(args.job,args.extractor,args.game_root)

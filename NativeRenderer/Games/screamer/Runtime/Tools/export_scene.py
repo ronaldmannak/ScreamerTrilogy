@@ -89,13 +89,34 @@ def write_array(path,values):
         values.tofile(f)
 
 
+def palette_effect_rgba(index,palette):
+    """Reconstruct MAPn.SMG's authored E0 ramps before VGA quantization.
+
+    STARTH CDBB4 indexes SMG[texture_byte * 256 + destination_index].
+    The 64 original rows fade to white (0..31), black (32..47), or the
+    track's gold color197 (48..63). The texture is an opacity mask, not COL.
+    """
+    require(0<=index<64,'Unrecognized original E0 palette-effect row')
+    if index<32:color,alpha=(255,255,255),index/31
+    elif index<48:color,alpha=(0,0,0),(index-32)/15
+    else:color,alpha=palette[197],(index-48)/15
+    return (*color,round(alpha*255))
+
+
+def polygon_signature(part,polygon):
+    """Compare authored surface coordinates, allowing extra night-only faces."""
+    return (tuple((tuple(part['vertices'][i]),tuple(part['uv'][i])) for i in polygon['indices']),
+            tuple(polygon['record_normal']))
+
+
 class Scene:
-    def __init__(self, game, track, output, phase=0):
+    def __init__(self, game, track, output, phase=0, visual_track=None):
         self.track,self.output,self.phase=track,output,phase
         self.archive_name=f'GFX/MAP{track}H.DAT'
         raw,entries,read=archive(game/self.archive_name)
         require(sha(raw)==ARCHIVE_SHA[track],'Unrecognized original track archive hash')
         self.bank,self.grid,self.mlb,self.col=(read(f'MAP{track}.{ext}') for ext in ('UNR','MMP','MLB','COL'))
+        smg=read(f'MAP{track}.SMG');require(len(smg)==64*256,'Invalid original palette-effect table')
         size,self.model_count=unpack(self.bank,'<2I',0)
         require(0<self.model_count<=4096,'Invalid model bank count')
         self.model_data=8+4*self.model_count
@@ -132,7 +153,60 @@ class Scene:
             'source':'Original owned S1 assets, decoded offline; no game execution or generated geometry',
             'format_research':'S1/README.md and original STARTH.EXE disassembly',
             'convention_source':'https://github.com/Rick-Barber/ScreamerRally-Recomp',
-            'source_license':'GPL-3.0-only'}
+            'source_license':'GPL-3.0-only',
+            'palette_effects':{'original_smg_sha256':sha(smg),
+                'original_kernel':'STARTH CDBB4 / CDCA7: SMG[texture_byte*256+destination_index]',
+                'reconstruction':'E0 straight alpha reproduces white0..31/31, black32..47/15, gold48..63/15 ramps before original VGA palette quantization'}}
+        self.visual_source=None;self.visual_parts={};self.visual_matches={}
+        if visual_track is not None and visual_track!=track:
+            require(track==1 and visual_track==4,'Only original Palm Town day/night assets are compatible')
+            self.visual_source=Scene(game,visual_track,output,phase)
+            # Cars are separate original 3DX models. Include their named parts
+            # in the matching catalogue, without adding any geometry/actors.
+            _,entries,read_visual=archive(game/self.visual_source.archive_name)
+            source=self.visual_source
+            for name in entries:
+                if name.upper().endswith('.3DX'):
+                    source.model_bases.append(len(source.bank));source.bank+=read_visual(name)
+                    source.model_count+=1
+            for index in range(source.model_count):
+                model=source.model(index)
+                for slot in range(model['parts']):
+                    offsets=[model['levels'][level][slot] for level in range(3) if model['levels'][level][slot]]
+                    if offsets:
+                        part=source.part(model,offsets[0])
+                        self.visual_parts.setdefault(part['name'],[]).append(part)
+            self.provenance['visual_variant']={
+                'original_track':visual_track,'archive_sha256':ARCHIVE_SHA[visual_track],
+                'policy':'Original MAP1 geometry, grid, IDs and placements; compatible named MAP4 surfaces only',
+                'palette_effects':'E0 straight alpha reconstructs original SMG ramps before palette quantization'}
+
+    def surface(self,part,polygon):
+        """Choose only an unambiguous original night material for this surface."""
+        source=getattr(self,'visual_source',None)
+        if source is None:return self,polygon
+        key=id(part)
+        if key not in self.visual_matches:
+            candidates=self.visual_parts.get(part['name'],[]);mapping={}
+            for original in part['polygons']:
+                signature=polygon_signature(part,original);matches=[]
+                for candidate in candidates:
+                    matches.extend(p for p in candidate['polygons'] if polygon_signature(candidate,p)==signature)
+                # Same-name geometry can recur at different LODs. An override
+                # is safe only when every matching surface has the same art.
+                values={(p['material'],p['color']) for p in matches}
+                if len(values)==1:
+                    match=matches[0]
+                    old=self.materials.get(original['material']);new=source.materials.get(match['material'])
+                    if old and new and old['type']==new['type']:
+                        mapping[id(original)]=match
+            self.visual_matches[key]=mapping
+        match=self.visual_matches[key].get(id(polygon))
+        if match is not None:
+            self.counts['authored_night_polygons']+=1
+            return source,match
+        self.counts['unchanged_day_polygons']+=1
+        return self,polygon
 
     def model(self,index):
         require(0<=index<self.model_count,'Invalid model reference')
@@ -206,7 +280,8 @@ class Scene:
             return [[words[row+3*col]/16384 for col in range(3)] for row in range(3)],words[9:12]
         return rotation(unpack(self.bank,'<3i',at+4)),unpack(self.bank,'<3i',at+0x10)
 
-    def texture(self,material,animation,reflection_phase=0):
+    def texture(self,material,animation,reflection_phase=0,source=None):
+        source=source or self
         frames=material['frames']
         if not frames:
             return None
@@ -222,22 +297,31 @@ class Scene:
         # The raster reads two byte coordinates at source stride256, including
         # the authored border of the materials declared254-by-254.
         w,h=(256,256) if material['type']==0xa0 else (declared_w,declared_h)
-        require(pointer+(h-1)*256+w<=len(self.mlb),'Original texture tile exceeds MLB')
+        require(pointer+(h-1)*256+w<=len(source.mlb),'Original texture tile exceeds MLB')
         keyed=material['type']==0x40
-        key=(pointer,w,h,keyed)
+        effect=material['type']==0xe0
+        key=(source.track,pointer,w,h,keyed,effect)
         if key in self.texture_ids:
             return self.texture_ids[key]
         pixels=bytearray()
         for y in range(h):
-            for color in self.mlb[pointer+256*y:pointer+256*y+w]:
-                pixels.extend((*self.palette[color],0 if keyed and color==0 else 255))
+            for color in source.mlb[pointer+256*y:pointer+256*y+w]:
+                pixels.extend(palette_effect_rgba(color,source.palette) if effect else
+                              (*source.palette[color],0 if keyed and color==0 else 255))
         encoded=png(w,h,bytes(pixels))
         ident=len(self.textures);path=f'textures/{ident:04d}.png'
         (self.output/path).write_bytes(encoded)
         self.textures.append({'path':path,'width':w,'height':h,'sha256':sha(encoded),
-            'source':'MLB indexed8 + original COL RGB666','source_frame_offset':pointer,
+            'source':'MLB E0 SMG ramp mask, true-color reconstruction before palette quantization' if effect else 'MLB indexed8 + original COL RGB666',
+            'source_track':source.track,'source_frame_offset':pointer,
             'source_row_stride':256,'source_declared_width':declared_w,'source_declared_height':declared_h,
-            'alpha':'index0 keyed' if keyed else 'opaque','frame_index':index})
+            'alpha':'original SMG ramp strength' if effect else 'index0 keyed' if keyed else 'opaque','frame_index':index})
+        if effect:
+            # ImageIO/MTKTextureLoader premultiplies PNG RGB. Preserve the
+            # original straight target color for the GPU's alpha blend pass.
+            raw_path=f'textures/{ident:04d}.rgba'
+            (self.output/raw_path).write_bytes(pixels)
+            self.textures[-1].update(rgba_file=raw_path,rgba_sha256=sha(pixels))
         self.texture_ids[key]=ident
         return ident
 
@@ -282,15 +366,16 @@ class Scene:
             matrix,translation=self.placement(model,slot)
             vertices=[transform(world_rotation,obj['position'],transform(matrix,translation,v)) for v in part['vertices']]
             for polygon in part['polygons']:
-                material=self.materials.get(polygon['material'])
+                source,art=self.surface(part,polygon)
+                material=source.materials.get(art['material'])
                 require(material is not None,'Polygon names nonexistent S1 material')
                 kind=material['type']
-                if kind not in (0x10,0x40,0x80,0xa0):
+                if kind not in (0x10,0x40,0x80,0xa0,0xe0):
                     self.unsupported[f'{kind:#x}']+=len(polygon['indices'])-2
                     continue
-                texture=self.texture(material,obj['animation'],obj.get('reflection_phase',0)) if kind!=0x80 else None
+                texture=self.texture(material,obj['animation'],obj.get('reflection_phase',0),source) if kind!=0x80 else None
                 require(texture is not None or kind==0x80,'Missing texture for textured material')
-                rgba=[v/255 for v in self.palette[polygon['color']&255]]+[1.] if kind==0x80 else [1.,1.,1.,1.]
+                rgba=[v/255 for v in source.palette[art['color']&255]]+[1.] if kind==0x80 else [1.,1.,1.,1.]
                 start=len(self.vertices)//9
                 require(start+len(polygon['indices'])<=3000000,'Scene vertex budget exceeded')
                 for i in polygon['indices']:
@@ -316,7 +401,7 @@ class Scene:
                 double_sided=polygon_double_sided(part['vertices'],polygon['indices'],polygon['record_normal'])
                 self.counts['double_sided_polygons' if double_sided else 'single_sided_polygons']+=1
                 if double_sided:self.counts['double_sided_triangles']+=len(polygon['indices'])-2
-                group=(polygon['material'],texture,obj.get('dynamic_instance_id'),double_sided)
+                group=(art['material'],texture,obj.get('dynamic_instance_id'),double_sided,source.track)
                 indices=self.groups.setdefault(group,array('I'))
                 for corner in range(1,len(polygon['indices'])-1):
                     indices.extend((start,start+corner,start+corner+1))
@@ -330,14 +415,17 @@ class Scene:
         for obj in self.objects():
             self.add_object(obj)
         indices=array('I');batches=[]
-        for (offset,texture,instance_id,double_sided),values in sorted(self.groups.items(),key=lambda p:(p[0][0],str(p[0][2]),p[0][3])):
-            kind=self.materials[offset]['type']
+        for (offset,texture,instance_id,double_sided,source_track),values in sorted(self.groups.items(),key=lambda p:(p[0][0],str(p[0][2]),p[0][3],p[0][4])):
+            source=self.visual_source if source_track!=self.track else self
+            kind=source.materials[offset]['type']
             batches.append({'first_index':len(indices),'index_count':len(values),'texture':texture,
-                'alpha_test':kind==0x40,'blend':False,'source_material_offset':offset,'source_material_type':kind,
+                'alpha_test':kind==0x40,'blend':kind==0xe0,'source_material_offset':offset,'source_material_type':kind,
+                'source_track':source_track,
                 'double_sided':double_sided})
+            if kind==0xe0:batches[-1]['blend_mode']='alpha'
             if kind==0xa0:
-                material=self.materials[offset];count=len(material['frames'])
-                frame_textures=[self.texture(material,0,(i*65536+count-1)//count) for i in range(count)]
+                material=source.materials[offset];count=len(material['frames'])
+                frame_textures=[self.texture(material,0,(i*65536+count-1)//count,source) for i in range(count)]
                 batches[-1].update(texgen='s1-reflection',reflection_scroll=[0.,0.],
                                   reflection_textures=frame_textures)
             if instance_id is not None:
@@ -360,7 +448,7 @@ class Scene:
                 'textures':len(self.textures),'unsupported_triangles_by_type':dict(self.unsupported)},
             'limitations':['Static world only; original simulation, cars, HUD, sky, input and audio not integrated.',
                 'A0 opaque reflections retain original authored normals and256-stride environment tiles; renderer must implement s1-reflection texgen.',
-                'Types C0/E0 and other palette-effect families remain explicitly omitted.',
+                'E0 SMG fades are reconstructed before original palette quantization; C0 remains explicitly omitted.',
                 'Texture animation and any animated part placements are frozen at one phase; billboard orientation is fixed.',
                 'UV normalization raw/256, flat-polygon palette index and transform conventions need original-frame calibration.',
                 'An orbit inspection camera is a host view of original geometry, not an original captured game camera.'],

@@ -16,3 +16,18 @@ python3 NativeRenderer/NativePreview/Tests/run_fullscreen_regression.py \
 ```
 
 The probe runs for14seconds after startup and the runner enforces a30second maximum. It briefly activates its own test window. `--compile-only` builds without showing a window. The fresh output directory retains compile arguments, geometry events, metrics and assertions. This validates presentation geometry; it is not a player-race or gameplay/FPS benchmark. See `../../Validation/fullscreen-fill-regression.json` for the verified build0.3.2/7 result.
+
+## Live Day / Night / Fog
+
+Run the source-only conditions checks on an Apple Silicon Mac with a Metal device:
+
+```sh
+python3 NativeRenderer/NativePreview/Tests/check_conditions.py \
+  --output /private/tmp/screamer-conditions-new-check
+```
+
+The runner compiles the actual production frontend and shader. Authored synthetic geometry and one-pixel colors check unchanged original artwork and night skies, black night distance haze, grey fog, alpha-key discard, preserved source alpha, and the original alpha/ONE–SRC_COLOR/2×source×destination glow equations. Modulated light cones retain the original fog exemption. Framebuffer and HUD fragments remain byte-identical across presets. CPU checks cover visual asset selection, missing/incomplete banks, unchanged source clock/identity, smooth fog transitions and finite uniforms. The menu probe checks ⌘1/2/3, unsupported-night availability and unchanged game-input/session state. Actual frontend CLI runs reject unknown conditions and preserve untinted near-field artwork.
+
+`OriginalConditionsIntegration.mm` additionally exercises the production asynchronous asset loader with a private `screamer-live/v1` fixture containing baseline assets and `assets.condition_variants`. It renders Day → Night → Day → Fog at 1280×720, checks every captured instance/model identity, and requires the restored Day image to match byte-for-byte. It injects immutable captured poses directly into the frontend; it never starts a game, advances physics or publishes input. Fixtures and rendered original assets belong outside version control. An asset-load snapshot can precede the first camera/car placement: use a later recorded pose from the same verified asset epoch and document that provenance when preparing a visual fixture.
+
+No original game files, game process, save data or guest input are used. Generated images are synthetic probes, not gameplay captures. This checks rendering and switching contracts, not player-race visuals or frame-rate guarantees.

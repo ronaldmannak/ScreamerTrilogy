@@ -19,16 +19,25 @@
 #include <unistd.h>
 
 using simd::float2; using simd::float3; using simd::float4; using simd::float4x4;
+#include "Conditions.inc"
 struct Vertex { float x,y,z,u,v,r,g,b,a; };
 static_assert(sizeof(Vertex)==36, "Scene vertex layout must remain 36 bytes");
-struct Uniforms { float4x4 matrix; float4 eye; float4 options; float4x4 model; float4x4 reflectionWorldToView; float4 reflectionScroll; };
+struct Uniforms { float4x4 matrix; float4 eye; float4 options; float4x4 model; float4x4 reflectionWorldToView; float4 reflectionScroll; ConditionsUniforms conditions; };
 struct Pose { uint32_t model; float3 position; simd::quatf rotation;float2 reflectionScroll={0,0};uint32_t reflectionPhase=0; };
 struct CarInstance { std::string id; Pose captured; };
-struct Batch { uint32_t first,count; NSInteger texture; float alphaTest; bool blend=false; NSInteger instance=-1; float3 center={0,0,0};bool s1Reflection=false;std::vector<NSInteger> reflectionTextures={};bool doubleSided=false; };
+enum class BlendMode { Opaque, Alpha, Modulate2x, SourceColor, Additive, Multiply };
+struct Batch { uint32_t first,count; NSInteger texture; float alphaTest; bool blend=false; NSInteger instance=-1; float3 center={0,0,0};bool s1Reflection=false;std::vector<NSInteger> reflectionTextures={};bool doubleSided=false;BlendMode blendMode=BlendMode::Opaque; };
 struct CameraSample { double t; float3 eye; simd::float3x3 rotation; std::map<std::string,Pose> cars; };
 struct Projection { float width=640,height=480,fx=256,fy=307.2f,cx=319,cy=312,nearZ=128; };
 struct HudRect {float x,y,width,height;std::string anchor;};
 struct HudLayer { HudRect rect;NSString *path=nil,*format=nil;NSUInteger stride=0; };
+struct NightAssets {
+    bool known=false,available=false,originalNight=false,fogEnabled=true;
+    std::string worldScene,carsScene,reason;
+    NSString *skyPath=nil;std::string skyKind="rally";
+    bool hasSky=false,skyEnabled=false;float3 skyGround={0,0,0},skyFlat={0,0,0};
+    float skyCenterY=260,skyViewLastY=400,fogNear=6000,fogFar=35000;
+};
 struct LiveFrame {
     uint64_t seq=0; double sampleAt=0,publishedAt=0,period=.03;
     std::string epoch,mode,status,worldScene,carsScene,assetsEpoch,rendererNotice;
@@ -39,6 +48,7 @@ struct LiveFrame {
     std::vector<HudLayer> hudLayers;uint64_t hudSequence=0;
     NSString *skyPath=nil;std::string skyKind="rally";float skyCenterY=260,skyViewLastY=400;bool skyEnabled=false;float3 skyGround={0,0,0},skyFlat={0,0,0};
     bool hasSky=false,cullBackFaces=false,diagnosticCapture=false;std::set<std::string> hiddenInstanceIds;
+    NightAssets night;
 };
 struct FramebufferUniforms { float4 destination;float4 source; };
 
@@ -113,6 +123,47 @@ static NSString *assetPath(NSString *base, NSString *relative) {
         throw std::runtime_error("Scene assets must use safe relative paths");
     return [base stringByAppendingPathComponent:relative];
 }
+static BlendMode blendModeFromJSON(NSDictionary *batch) {
+    if(![batch[@"blend"] boolValue])return BlendMode::Opaque;
+    id mode=batch[@"blend_mode"];
+    if(!mode)return BlendMode::Alpha; // Earlier source-alpha scene exports.
+    if([mode isEqual:@"alpha"])return BlendMode::Alpha;
+    if([mode isEqual:@"modulate2x"])return BlendMode::Modulate2x;
+    if([mode isEqual:@"source_color"])return BlendMode::SourceColor;
+    if([mode isEqual:@"additive"])return BlendMode::Additive;
+    if([mode isEqual:@"multiply"])return BlendMode::Multiply;
+    throw std::runtime_error("Unknown original material blend equation");
+}
+static void configureBlend(MTLRenderPipelineColorAttachmentDescriptor *attachment,BlendMode mode) {
+    attachment.blendingEnabled=mode!=BlendMode::Opaque;
+    attachment.rgbBlendOperation=MTLBlendOperationAdd;attachment.alphaBlendOperation=MTLBlendOperationAdd;
+    attachment.sourceAlphaBlendFactor=MTLBlendFactorOne;
+    attachment.destinationAlphaBlendFactor=MTLBlendFactorOneMinusSourceAlpha;
+    switch(mode){
+        case BlendMode::Modulate2x:attachment.sourceRGBBlendFactor=MTLBlendFactorDestinationColor;attachment.destinationRGBBlendFactor=MTLBlendFactorSourceColor;break;
+        case BlendMode::SourceColor:attachment.sourceRGBBlendFactor=MTLBlendFactorOne;attachment.destinationRGBBlendFactor=MTLBlendFactorSourceColor;break;
+        case BlendMode::Additive:attachment.sourceRGBBlendFactor=MTLBlendFactorOne;attachment.destinationRGBBlendFactor=MTLBlendFactorOne;break;
+        case BlendMode::Multiply:attachment.sourceRGBBlendFactor=MTLBlendFactorZero;attachment.destinationRGBBlendFactor=MTLBlendFactorSourceColor;break;
+        default:attachment.sourceRGBBlendFactor=MTLBlendFactorSourceAlpha;attachment.destinationRGBBlendFactor=MTLBlendFactorOneMinusSourceAlpha;break;
+    }
+}
+static id<MTLTexture> loadSceneTexture(id metadata,NSString *base,id<MTLDevice> device,MTKTextureLoader *loader) {
+    // PNG loaders may premultiply RGB. Original light masks require their
+    // straight source color for alpha and destination-color blend equations.
+    if([metadata isKindOfClass:NSDictionary.class]&&metadata[@"rgba_file"]){
+        NSUInteger width=[metadata[@"width"] unsignedIntegerValue],height=[metadata[@"height"] unsignedIntegerValue];
+        NSData *rgba=[NSData dataWithContentsOfFile:assetPath(base,metadata[@"rgba_file"])];
+        if(!width||!height||width>4096||height>4096||rgba.length!=width*height*4)throw std::runtime_error("Invalid straight RGBA scene texture");
+        auto descriptor=[MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatRGBA8Unorm width:width height:height mipmapped:NO];
+        descriptor.storageMode=MTLStorageModeShared;id<MTLTexture> texture=[device newTextureWithDescriptor:descriptor];
+        if(!texture)throw std::runtime_error("Could not allocate original material texture");
+        [texture replaceRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0 withBytes:rgba.bytes bytesPerRow:width*4];return texture;
+    }
+    NSString *name=[metadata isKindOfClass:NSString.class]?metadata:metadata[@"path"];
+    NSError *error=nil;id<MTLTexture> texture=[loader newTextureWithContentsOfURL:[NSURL fileURLWithPath:assetPath(base,name)] options:@{MTKTextureLoaderOptionSRGB:@NO,MTKTextureLoaderOptionGenerateMipmaps:@YES} error:&error];
+    if(!texture)throw std::runtime_error([[NSString stringWithFormat:@"Cannot load texture %@: %@",name,error.localizedDescription] UTF8String]);
+    return texture;
+}
 static std::vector<float> sceneNormals(NSDictionary *scene,NSString *base,size_t count) {
     std::vector<float> normals(count*3,0);id header=scene[@"normals"];
     if(!header)return normals;
@@ -124,8 +175,8 @@ static std::vector<float> sceneNormals(NSDictionary *scene,NSString *base,size_t
     return normals;
 }
 static bool s1ReflectionBatch(NSDictionary *batch,NSDictionary *scene) {
-    if(![batch[@"texgen"] isEqual:@"s1-reflection"])return false;
-    if([batch[@"source_material_type"] unsignedIntegerValue]!=0xa0||!scene[@"normals"]||[batch[@"blend"] boolValue]||[batch[@"alpha_test"] boolValue]||![batch[@"texture"] isKindOfClass:NSNumber.class]||[batch[@"texture"] integerValue]<0)throw std::runtime_error("S1 glass requires authored normals and opaque original texture");
+    if(![batch[@"texgen"] isEqual:@"s1-reflection"]&&![batch[@"texgen"] isEqual:@"original-reflection"])return false;
+    if([batch[@"source_material_type"] unsignedIntegerValue]!=0xa0||!scene[@"normals"]||[batch[@"blend"] boolValue]||[batch[@"alpha_test"] boolValue]||![batch[@"texture"] isKindOfClass:NSNumber.class]||[batch[@"texture"] integerValue]<0)throw std::runtime_error("Original reflections require authored normals and an opaque environment texture");
     return true;
 }
 static std::vector<NSInteger> reflectionTextures(NSDictionary *batch,NSUInteger count,NSInteger offset) {
@@ -213,6 +264,35 @@ static LiveFrame liveFrameFromJSON(NSDictionary *j,NSString *base) {
         }
         frame.skyGround=vector3(sky[@"ground_rgb"])/255.f;frame.skyFlat=vector3(sky[@"flat_rgb"])/255.f;
     }
+    NSDictionary *variants=[assets isKindOfClass:NSDictionary.class]?assets[@"condition_variants"]:nil;
+    if([variants isKindOfClass:NSDictionary.class]){
+        if(![variants[@"schema"] isEqual:@"screamer-original-conditions/v1"])throw std::runtime_error("Unknown original condition asset schema");
+        NightAssets &night=frame.night;night.known=true;night.originalNight=[variants[@"original"] isEqual:@"night"];
+        NSDictionary *entry=variants[@"night"];
+        if(![entry isKindOfClass:NSDictionary.class])throw std::runtime_error("Missing original night availability");
+        night.available=[entry[@"available"] boolValue];
+        if([entry[@"reason"] isKindOfClass:NSString.class]&&[entry[@"reason"] length]<=512)night.reason=[entry[@"reason"] UTF8String];
+        if(night.available){
+            NSString *world=resolved(entry[@"world_scene"]),*cars=resolved(entry[@"cars_scene"]);
+            if(!world||!cars)throw std::runtime_error("Original night requires complete scene assets");
+            night.worldScene=world.UTF8String;night.carsScene=cars.UTF8String;night.skyPath=resolved(entry[@"sky_texture"]);
+            NSDictionary *nightSky=entry[@"sky"];
+            if([nightSky isKindOfClass:NSDictionary.class]){
+                night.hasSky=true;night.skyEnabled=[nightSky[@"enabled"] boolValue];
+                night.skyGround=vector3(nightSky[@"ground_rgb"])/255.f;night.skyFlat=vector3(nightSky[@"flat_rgb"])/255.f;
+                if([nightSky[@"kind"] isEqual:@"s1"]){
+                    night.skyKind="s1";night.skyCenterY=[nightSky[@"center_y"] floatValue];night.skyViewLastY=[nightSky[@"view_last_y"] floatValue];
+                    if(!std::isfinite(night.skyCenterY)||!std::isfinite(night.skyViewLastY)||night.skyCenterY<=0||night.skyCenterY>=400||night.skyViewLastY<=0||night.skyViewLastY>400)throw std::runtime_error("Invalid original night sky viewport");
+                }
+            }
+            NSDictionary *fog=entry[@"night_fog"];
+            if([fog isKindOfClass:NSDictionary.class]){
+                if(fog[@"enabled"])night.fogEnabled=[fog[@"enabled"] boolValue];
+                if(fog[@"near"])night.fogNear=[fog[@"near"] floatValue];if(fog[@"far"])night.fogFar=[fog[@"far"] floatValue];
+                if(!std::isfinite(night.fogNear)||!std::isfinite(night.fogFar)||night.fogNear<0||night.fogFar<=night.fogNear||night.fogFar>1e7)throw std::runtime_error("Invalid original night distance haze");
+            }
+        }
+    }
     frame.cullBackFaces=[j[@"cull_back_faces"] boolValue];frame.diagnosticCapture=[j[@"diagnostic_capture_replay"] boolValue];
     NSArray *hidden=j[@"hidden_instance_ids"]?:@[];
     if(![hidden isKindOfClass:NSArray.class]||hidden.count>32)throw std::runtime_error("Invalid hidden instance table");
@@ -282,11 +362,23 @@ static LiveFrame liveFrameFromJSON(NSDictionary *j,NSString *base) {
     }
     return frame;
 }
+static LiveFrame frameWithOriginalNight(const LiveFrame &source,bool useNight) {
+    LiveFrame result=source;
+    if(!useNight||!source.night.available)return result;
+    const NightAssets &night=source.night;
+    result.worldScene=night.worldScene;result.carsScene=night.carsScene;
+    result.skyPath=night.skyPath;result.hasSky=night.hasSky;result.skyKind=night.skyKind;result.skyEnabled=night.skyEnabled;
+    result.skyGround=night.skyGround;result.skyFlat=night.skyFlat;result.skyCenterY=night.skyCenterY;result.skyViewLastY=night.skyViewLastY;
+    if(source.hasSky&&source.skyKind=="s1"&&night.skyKind=="s1"){
+        result.skyCenterY=source.skyCenterY;result.skyViewLastY=source.skyViewLastY;
+    }
+    return result;
+}
 struct State {
     id<MTLDevice> device;
     id<MTLCommandQueue> queue;
     id<MTLRenderPipelineState> pipeline;
-    id<MTLRenderPipelineState> blendPipeline;
+    std::map<BlendMode,id<MTLRenderPipelineState>> blendPipelines;
     id<MTLRenderPipelineState> framebufferPipeline;
     id<MTLRenderPipelineState> presentationPipeline;
     id<MTLRenderPipelineState> overlayPipeline,skyPipeline;
@@ -304,6 +396,8 @@ struct State {
     bool hudLayersReady=false,skyActive=false;
     bool cullBackFaces=false,diagnosticCapture=false;
     bool render4K=false,widescreen=true,extendedDistance=true;float activeFarPlane=0;
+    Conditions::Transition conditionsTransition;float2 conditionsWeights={0,0};bool conditionsApplied=false;
+    bool nightKnown=false,nightAvailable=false,originalNight=false,nightActive=false;std::string nightReason;
     std::vector<Batch> batches;
     std::vector<CameraSample> replay;
     std::vector<CarInstance> cars;
@@ -396,19 +490,19 @@ struct State {
     for (NSDictionary *b in j[@"batches"]) {
         uint64_t first=[b[@"first_index"] unsignedLongLongValue],count=[b[@"index_count"] unsignedLongLongValue];
         if (!count || count%3 || first>i.length/4 || count>i.length/4-first || first>UINT32_MAX || count>UINT32_MAX) throw std::runtime_error("Invalid draw batch");
-        if ([b[@"blend"] boolValue])throw std::runtime_error("Blended materials require a later renderer stage");
         NSInteger texture=[b[@"texture"] isKindOfClass:NSNumber.class] ? [b[@"texture"] integerValue] : -1;
         s.batches.push_back({(uint32_t)first,(uint32_t)count,texture,[b[@"alpha_test"] boolValue] ? 0.5f : 0.f});
+        s.batches.back().blendMode=blendModeFromJSON(b);s.batches.back().blend=s.batches.back().blendMode!=BlendMode::Opaque;
+        float3 low={INFINITY,INFINITY,INFINITY},high={-INFINITY,-INFINITY,-INFINITY};
+        for(uint64_t n=first;n<first+count;n++){const Vertex &vertex=vv[indices[n]];float3 point={vertex.x,vertex.y,vertex.z};low=simd_min(low,point);high=simd_max(high,point);}
+        s.batches.back().center=(low+high)*.5f;
         s.batches.back().s1Reflection=s1ReflectionBatch(b,j);s.batches.back().doubleSided=[b[@"double_sided"] boolValue];
         if(s.batches.back().s1Reflection)s.batches.back().reflectionTextures=reflectionTextures(b,[j[@"textures"] count],0);
     }
     if (s.batches.empty()) s.batches.push_back({0,(uint32_t)(i.length/4),-1,0});
     s.textures=[NSMutableArray array];MTKTextureLoader *loader=[[MTKTextureLoader alloc] initWithDevice:s.device];
     for (id texture in j[@"textures"]) {
-        NSString *name=[texture isKindOfClass:NSString.class] ? texture : texture[@"path"];
-        NSError *error=nil;id<MTLTexture> t=[loader newTextureWithContentsOfURL:[NSURL fileURLWithPath:assetPath(base,name)] options:@{MTKTextureLoaderOptionSRGB:@NO,MTKTextureLoaderOptionGenerateMipmaps:@YES} error:&error];
-        if (!t) throw std::runtime_error([[NSString stringWithFormat:@"Cannot load texture %@: %@",name,error.localizedDescription] UTF8String]);
-        [s.textures addObject:t];
+        [s.textures addObject:loadSceneTexture(texture,base,s.device,loader)];
     }
     for(const Batch &b:s.batches)if(b.texture>=0 && b.texture>=(NSInteger)s.textures.count)throw std::runtime_error("Texture index out of bounds");
     if(cars){
@@ -439,16 +533,7 @@ struct State {
         s.vertices+=cv.length/sizeof(Vertex);s.carTriangles=ci.length/12;s.triangles+=s.carTriangles;
         NSInteger textureBase=(NSInteger)s.textures.count;
         for(NSDictionary *texture in cj[@"textures"]){
-            NSError *error=nil;id<MTLTexture> t=nil;
-            if(texture[@"rgba_file"]){
-                NSUInteger width=[texture[@"width"] unsignedIntegerValue],height=[texture[@"height"] unsignedIntegerValue];
-                NSData *rgba=[NSData dataWithContentsOfFile:assetPath(carBase,texture[@"rgba_file"])];
-                if(!width||!height||width>4096||height>4096||rgba.length!=width*height*4)throw std::runtime_error("Invalid raw car texture");
-                auto descriptor=[MTLTextureDescriptor texture2DDescriptorWithPixelFormat:MTLPixelFormatRGBA8Unorm width:width height:height mipmapped:NO];
-                descriptor.storageMode=MTLStorageModeShared;t=[s.device newTextureWithDescriptor:descriptor];
-                [t replaceRegion:MTLRegionMake2D(0,0,width,height) mipmapLevel:0 withBytes:rgba.bytes bytesPerRow:width*4];
-            }else t=[loader newTextureWithContentsOfURL:[NSURL fileURLWithPath:assetPath(carBase,texture[@"path"])] options:@{MTKTextureLoaderOptionSRGB:@NO,MTKTextureLoaderOptionGenerateMipmaps:@YES} error:&error];
-            if(!t)throw std::runtime_error("Could not load car texture");[s.textures addObject:t];
+            [s.textures addObject:loadSceneTexture(texture,carBase,s.device,loader)];
         }
         for(NSDictionary *batch in cj[@"batches"]){
             uint64_t first=[batch[@"first_index"] unsignedLongLongValue],count=[batch[@"index_count"] unsignedLongLongValue];
@@ -457,12 +542,13 @@ struct State {
             if(![name isKindOfClass:NSString.class]||!instanceIndices.count(name.UTF8String))throw std::runtime_error("Car batch references unknown instance");
             NSInteger texture=[batch[@"texture"] isKindOfClass:NSNumber.class]?[batch[@"texture"] integerValue]:-1;
             if(texture< -1||texture>=(NSInteger)[cj[@"textures"] count])throw std::runtime_error("Car texture index out of bounds");
-            bool blend=[batch[@"blend"] boolValue];if(blend&&[batch[@"mode"] intValue]!=6)throw std::runtime_error("Only source-alpha car blending is supported");
+            BlendMode blendMode=blendModeFromJSON(batch);bool blend=blendMode!=BlendMode::Opaque;
             float3 low={INFINITY,INFINITY,INFINITY},high={-INFINITY,-INFINITY,-INFINITY};
             for(uint64_t n=first;n<first+count;n++){const Vertex &vv=carVertices[carIndices[n]];float3 point={vv.x,vv.y,vv.z};low=simd_min(low,point);high=simd_max(high,point);}
             s.batches.push_back({(uint32_t)(indexBase+first),(uint32_t)count,texture<0?-1:textureBase+texture,
                 [batch[@"alpha_test"] boolValue]?.5f:0.f,blend,instanceIndices[name.UTF8String],(low+high)*.5f});
             s.batches.back().s1Reflection=s1ReflectionBatch(batch,cj);s.batches.back().doubleSided=[batch[@"double_sided"] boolValue];
+            s.batches.back().blendMode=blendMode;
             if(s.batches.back().s1Reflection)s.batches.back().reflectionTextures=reflectionTextures(batch,[cj[@"textures"] count],textureBase);
         }
     }
@@ -485,10 +571,11 @@ struct State {
     vd.layouts[0].stride=sizeof(Vertex);pd.vertexDescriptor=vd;
     s.pipeline=[s.device newRenderPipelineStateWithDescriptor:pd error:&error];
     if (!s.pipeline) throw std::runtime_error(error.localizedDescription.UTF8String);
-    pd.colorAttachments[0].blendingEnabled=YES;
-    pd.colorAttachments[0].sourceRGBBlendFactor=MTLBlendFactorSourceAlpha;pd.colorAttachments[0].destinationRGBBlendFactor=MTLBlendFactorOneMinusSourceAlpha;
-    pd.colorAttachments[0].sourceAlphaBlendFactor=MTLBlendFactorOne;pd.colorAttachments[0].destinationAlphaBlendFactor=MTLBlendFactorOneMinusSourceAlpha;
-    s.blendPipeline=[s.device newRenderPipelineStateWithDescriptor:pd error:&error];if(!s.blendPipeline)throw std::runtime_error(error.localizedDescription.UTF8String);
+    for(BlendMode mode:{BlendMode::Alpha,BlendMode::Modulate2x,BlendMode::SourceColor,BlendMode::Additive,BlendMode::Multiply}){
+        configureBlend(pd.colorAttachments[0],mode);
+        id<MTLRenderPipelineState> pipeline=[s.device newRenderPipelineStateWithDescriptor:pd error:&error];
+        if(!pipeline)throw std::runtime_error(error.localizedDescription.UTF8String);s.blendPipelines[mode]=pipeline;
+    }
     MTLRenderPipelineDescriptor *fp=[MTLRenderPipelineDescriptor new];
     fp.vertexFunction=[library newFunctionWithName:@"framebufferVertex"];fp.fragmentFunction=[library newFunctionWithName:@"framebufferFragment"];
     fp.colorAttachments[0].pixelFormat=MTLPixelFormatBGRA8Unorm;fp.depthAttachmentPixelFormat=MTLPixelFormatDepth32Float;
@@ -686,6 +773,11 @@ struct State {
     LiveFrame latest;bool hasLive=!liveFrames.empty();std::vector<CameraSample> liveSamples;
     if(hasLive){
         latest=liveFrames.back();s.liveAge=std::max(0.0,nowSeconds()-liveOffset-latest.publishedAt);s.livePoseAge=std::max(0.0,nowSeconds()-liveOffset-latest.sampleAt);s.liveDelay=latest.period;
+        s.nightKnown=latest.night.known;s.nightAvailable=latest.night.available;s.originalNight=latest.night.originalNight;s.nightReason=latest.night.reason;
+        if(s.nightKnown&&!s.nightAvailable&&s.conditionsTransition.target==Conditions::Preset::Night)s.conditionsTransition.setImmediate(Conditions::Preset::Day);
+        const std::string originalWorld=latest.worldScene;
+        s.nightActive=s.conditionsTransition.target==Conditions::Preset::Night&&s.nightAvailable;
+        latest=frameWithOriginalNight(latest,s.nightActive);
         NSString *epoch=[NSString stringWithUTF8String:latest.epoch.c_str()];
         if(![epoch isEqual:s.liveEpoch]){[self releaseInput];s.liveEpoch=epoch;[s.pressCounts removeAllObjects];[self publishInput];}
         [self updateFramebuffer:latest];[self updateOverlays:latest];[self requestLiveAssets:latest];
@@ -697,7 +789,9 @@ struct State {
         s.livePartialHud=!latest.hudComplete&&latest.hudPrimaryValidated&&s.allowPartialHud;
         s.cullBackFaces=latest.cullBackFaces;s.diagnosticCapture=latest.diagnosticCapture;
         s.liveNative=!s.originalView&&nativeMode(latest.mode)&&latest.hasCamera&&(latest.hudComplete||s.livePartialHud||s.liveSceneOnly)&&s.hudLayersReady&&s.framebufferTexture&&assetsMatch&&s.liveAge<.5&&s.livePoseAge<.15;
-        for(const auto &frame:liveFrames)if(frame.hasCamera&&nativeMode(frame.mode)&&frame.mode==latest.mode&&frame.worldScene==latest.worldScene)liveSamples.push_back(frame.pose);
+        // Variant assets share the original track's camera and actor identities.
+        // Keep interpolation on that source clock while the GPU changes resources.
+        for(const auto &frame:liveFrames)if(frame.hasCamera&&nativeMode(frame.mode)&&frame.mode==latest.mode&&frame.worldScene==originalWorld)liveSamples.push_back(frame.pose);
         s.projection=latest.projection;if(s.liveAge>.75&&s.inputFocused)[self releaseInput];
     }else {s.liveNative=false;s.liveAssetsReady=false;}
     const auto &samples=s.livePath?liveSamples:s.replay;
@@ -737,7 +831,16 @@ struct State {
     if(!replaying)reflectionView=rotation;
     reflectionView.columns[3]=-(reflectionView*(float4){eye.x,eye.y,eye.z,0});reflectionView.columns[3].w=1;
     if(replaying)reflectionView.columns[3].z+=128.f;
-    Uniforms uniforms={projection*rotation,(float4){eye.x,eye.y,eye.z,0},(float4){0,0,0,0},matrix_identity_float4x4,reflectionView,(float4){0,0,0,0}};
+    s.conditionsWeights=s.conditionsTransition.sample(cpu);
+    float conditionsReference=latest.originalDrawDistance>0?latest.originalDrawDistance:std::max(s.radius,8192.f);
+    float2 visualWeights=s.conditionsWeights;
+    if(hasLive){
+        if(!latest.night.fogEnabled||(!s.nightActive&&!s.originalNight))visualWeights.x=0;
+        else if(s.originalNight&&s.conditionsTransition.target!=Conditions::Preset::Fog)visualWeights.x=1;
+    }
+    ConditionsUniforms conditions=Conditions::makeUniforms(visualWeights,conditionsReference,latest.night.fogNear,latest.night.fogFar);
+    s.conditionsApplied=(!s.livePath||s.liveNative)&&(s.conditionsWeights.x>0||s.conditionsWeights.y>0);
+    Uniforms uniforms={projection*rotation,(float4){eye.x,eye.y,eye.z,0},(float4){0,0,0,0},matrix_identity_float4x4,reflectionView,(float4){0,0,0,0},conditions};
     std::vector<float2> carScrolls(s.cars.size(),(float2){0,0});std::vector<uint32_t> carPhases(s.cars.size(),0);
     std::vector<float4x4> carMatrices(s.cars.size(),matrix_identity_float4x4);std::vector<bool> carVisible(s.cars.size(),true);
     s.visibleCars=0;
@@ -759,16 +862,17 @@ struct State {
     id<MTLCommandBuffer> cb=[s.queue commandBuffer];cb.label=@"Rally preview frame";
     id<MTLRenderCommandEncoder> e=[cb renderCommandEncoderWithDescriptor:pass];
     s.skyActive=false;
-    if(s.liveNative&&latest.hasSky){
+    if((s.liveNative&&latest.hasSky)||s.conditionsApplied){
         [e setRenderPipelineState:s.skyPipeline];[e setDepthStencilState:nil];[e setCullMode:MTLCullModeNone];
         [e setFragmentSamplerState:s.skySampler atIndex:0];
+        [e setFragmentBytes:&uniforms length:sizeof(uniforms) atIndex:1];
         auto background=[&](float y,float height,float4 uv,float4 color,id<MTLTexture> texture){
             if(height<=0)return;
             FramebufferUniforms quad{(float4){0,1-2*(y+height*.5f)/target.height,1,height/target.height},uv};
             [e setVertexBytes:&quad length:sizeof(quad) atIndex:0];[e setFragmentBytes:&color length:sizeof(color) atIndex:0];[e setFragmentTexture:texture?:s.whiteTexture atIndex:0];
             [e drawPrimitives:MTLPrimitiveTypeTriangle vertexStart:0 vertexCount:6];
         };
-        if(latest.skyEnabled&&s.skyTexture&&[latest.skyPath isEqual:s.loadedSkyPath]){
+        if(s.liveNative&&latest.hasSky&&latest.skyEnabled&&s.skyTexture&&[latest.skyPath isEqual:s.loadedSkyPath]){
             float sinePitch=-properCamera.columns[1].z;
             double heading=atan2(-properCamera.columns[0].z,properCamera.columns[2].z)*2048/(2*M_PI);
             float horizon=0;float4 uv;
@@ -788,7 +892,7 @@ struct State {
             }
             background(0,horizon,uv,(float4){0,0,0,-1},s.skyTexture);
             background(horizon,target.height-horizon,(float4){0,0,1,1},(float4){latest.skyGround.x,latest.skyGround.y,latest.skyGround.z,1},nil);s.skyActive=true;
-        }else background(0,target.height,(float4){0,0,1,1},(float4){latest.skyFlat.x,latest.skyFlat.y,latest.skyFlat.z,1},nil);
+        }else {float3 flat=s.liveNative&&latest.hasSky?latest.skyFlat:(float3){.26f,.42f,.58f};background(0,target.height,(float4){0,0,1,1},(float4){flat.x,flat.y,flat.z,1},nil);}
     }
     [e setRenderPipelineState:s.pipeline];[e setDepthStencilState:s.depthState];[e setFrontFacingWinding:MTLWindingClockwise];[e setCullMode:s.cullBackFaces?MTLCullModeBack:MTLCullModeNone];
     s.reflectionDraws=0;
@@ -797,14 +901,14 @@ struct State {
         if(b.instance>=0&&!carVisible[(size_t)b.instance])return;
         NSInteger texture=reflectionTexture(b,b.instance>=0?carPhases[(size_t)b.instance]:0);
         BOOL textured=texture>=0 && texture<(NSInteger)s.textures.count;
-        uniforms.options.x=textured ? 1.f : 0.f;uniforms.options.y=b.alphaTest;uniforms.options.z=b.blend?1.f:0.f;uniforms.options.w=b.s1Reflection?1.f:0.f;
+        uniforms.options.x=textured ? 1.f : 0.f;uniforms.options.y=b.alphaTest;uniforms.options.z=static_cast<float>(b.blendMode);uniforms.options.w=b.s1Reflection?1.f:0.f;
         float2 scroll=b.instance>=0?carScrolls[(size_t)b.instance]:(float2){0,0};uniforms.reflectionScroll=(float4){scroll.x,scroll.y,0,0};
         if(b.s1Reflection)s.reflectionDraws++;
         uniforms.model=b.instance>=0?carMatrices[(size_t)b.instance]:matrix_identity_float4x4;
         // Source-authored zero/folded-normal exceptions retain their previous
         // two-sided rendering without disabling culling for the rest of a material.
         [e setCullMode:s.cullBackFaces&&!b.doubleSided?MTLCullModeBack:MTLCullModeNone];
-        [e setRenderPipelineState:b.blend?s.blendPipeline:s.pipeline];[e setDepthStencilState:b.blend?s.blendDepthState:s.depthState];
+        [e setRenderPipelineState:b.blend?s.blendPipelines.at(b.blendMode):s.pipeline];[e setDepthStencilState:b.blend?s.blendDepthState:s.depthState];
         [e setVertexBytes:&uniforms length:sizeof(uniforms) atIndex:1];
         [e setFragmentBytes:&uniforms length:sizeof(uniforms) atIndex:1];
         [e setFragmentSamplerState:b.s1Reflection?s.skySampler:s.sampler atIndex:0];
@@ -954,7 +1058,12 @@ struct State {
     double fps=times.size()>1 ? (times.size()-1)/(times.back()-times.front()) : 0;
     double gpu=0;for (double x:s.gpuMs)gpu+=x;if (!s.gpuMs.empty())gpu/=s.gpuMs.size();
     NSMutableDictionary *result=[@{@"scene":s.scenePath,@"device":s.device.name,@"drawable_width":@(s.renderWidth),@"drawable_height":@(s.renderHeight),@"submitted_frames":@(s.frames),@"native_world_frames":@(s.nativeFrames),@"original_fallback_frames":@(s.fallbackFrames),@"presented_frames":@(times.size()),@"presented_fps":@(fps),@"present_interval_p50_ms":@(percentile(intervals,.5)),@"present_interval_p95_ms":@(percentile(intervals,.95)),@"gpu_mean_ms":@(gpu),@"gpu_p95_ms":@(percentile(s.gpuMs,.95)),@"cpu_encode_p95_ms":@(percentile(s.encodeMs,.95)),@"vertices":@(s.vertices),@"triangles":@(s.triangles),@"draw_batches":@(s.batches.size()),@"textures":@(s.textures.count),@"replay_camera_samples":@(s.replay.size()),@"cars":@(s.cars.size()),@"visible_cars":@(s.visibleCars),@"car_triangles":@(s.carTriangles),@"replay_instance_samples":@(s.carPoseSamples),@"car_pose_source":s.replay.empty()?@"captured fixed poses":@"recorded id+model-guarded root poses; position lerp and quaternion slerp",@"car_limitations":@"frozen wheel/part poses; approximate reflection UV; batch-sorted transparency",@"physics_execution":@"none: viewer reads captured game geometry/camera poses",@"render_target_fps":@60} mutableCopy];
-    if(s.independentParts){result[@"dynamic_part_instances"]=@(s.cars.size());result[@"cars"]=NSNull.null;result[@"car_limitations"]=@"live independent actor-part transforms; authored A0 window reflections; E0 palette-effect shadows omitted; texture damage/animation frames frozen";}
+    result[@"conditions_preset"]=[NSString stringWithUTF8String:Conditions::key(s.conditionsTransition.target)];
+    result[@"conditions_night_weight"]=@(s.conditionsWeights.x);result[@"conditions_fog_weight"]=@(s.conditionsWeights.y);
+    result[@"conditions_applied"]=@(s.conditionsApplied);result[@"conditions_physics"]=@"visual only; original clocks and handling unchanged";
+    result[@"original_night_available"]=@(s.nightAvailable);result[@"original_night_active"]=@(s.nightActive);result[@"original_track_is_night"]=@(s.originalNight);
+    if(!s.nightReason.empty())result[@"original_night_notice"]=[NSString stringWithUTF8String:s.nightReason.c_str()];
+    if(s.independentParts){result[@"dynamic_part_instances"]=@(s.cars.size());result[@"cars"]=NSNull.null;result[@"car_limitations"]=@"live independent actor-part transforms; authored A0 reflections and E0 glow/shadow masks; original palette effects use true-color alpha; texture damage/animation frames frozen";}
     result[@"window_content_width"]=@(s.windowContentWidth);result[@"window_content_height"]=@(s.windowContentHeight);
     result[@"view_frame_width"]=@(s.viewFrameSize.width);result[@"view_frame_height"]=@(s.viewFrameSize.height);
     result[@"view_bounds_width"]=@(s.viewBoundsSize.width);result[@"view_bounds_height"]=@(s.viewBoundsSize.height);
@@ -1075,11 +1184,13 @@ static NSString *gameKey(NSEvent *event) {
     s.distance=std::clamp(s.distance*expf((float)event.scrollingDeltaY*.025f),s.radius*.02f,s.radius*8.f);
 }
 @end
-@interface PreviewApp:NSObject<NSApplicationDelegate,NSWindowDelegate>
+@interface PreviewApp:NSObject<NSApplicationDelegate,NSWindowDelegate,NSMenuItemValidation>
 @property(nonatomic,strong)NSWindow *window;
 @property(nonatomic,strong)PreviewRenderer *renderer;
 @property(nonatomic,strong)id displayDriver;
 - (void)installMenus;
+- (void)changeConditions:(NSMenuItem *)item;
+- (BOOL)validateMenuItem:(NSMenuItem *)item;
 @end
 @implementation PreviewApp
 - (void)fitInitialGameWindow {
@@ -1107,9 +1218,35 @@ static NSString *gameKey(NSEvent *event) {
     self.renderer->state->render4K=true;self.renderer->state->originalView=false;
     for(NSMenuItem *sibling in item.menu.itemArray)sibling.state=sibling==item?NSControlStateValueOn:NSControlStateValueOff;
 }
+- (void)changeConditions:(NSMenuItem *)item {
+    if(item.tag<0||item.tag>2)return;
+    if(item.tag==1&&self.renderer->state->nightKnown&&!self.renderer->state->nightAvailable)return;
+    self.renderer->state->conditionsTransition.select(static_cast<Conditions::Preset>(item.tag),nowSeconds());
+    for(NSMenuItem *sibling in item.menu.itemArray)sibling.state=sibling==item?NSControlStateValueOn:NSControlStateValueOff;
+}
+- (BOOL)validateMenuItem:(NSMenuItem *)item {
+    if(item.action==@selector(changeConditions:)){
+        const State &s=*self.renderer->state;
+        item.state=static_cast<NSInteger>(s.conditionsTransition.target)==item.tag?NSControlStateValueOn:NSControlStateValueOff;
+        if(item.tag==0)item.title=s.originalNight?@"Original (Night)":@"Day";
+        if(item.tag==1){
+            item.toolTip=s.nightReason.empty()?@"Uses the original game's night artwork and lights":[NSString stringWithUTF8String:s.nightReason.c_str()];
+            return !s.livePath||(s.nightKnown&&s.nightAvailable);
+        }
+    }
+    return YES;
+}
 - (void)installMenus {
     NSMenu *menu=[NSMenu new],*appMenu=[NSMenu new];NSMenuItem *item=[NSMenuItem new];
     [appMenu addItemWithTitle:[@"Quit " stringByAppendingString:applicationTitle()] action:@selector(terminate:) keyEquivalent:@"q"];item.submenu=appMenu;[menu addItem:item];NSApp.mainMenu=menu;
+    NSMenu *conditionsMenu=[[NSMenu alloc] initWithTitle:@"Conditions"];
+    NSMenuItem *conditionsRoot=[NSMenuItem new];conditionsRoot.title=@"Conditions";conditionsRoot.submenu=conditionsMenu;[menu addItem:conditionsRoot];
+    NSArray<NSString *> *conditionTitles=@[@"Day",@"Night",@"Fog"];
+    for(NSInteger index=0;index<3;index++){
+        NSMenuItem *condition=[conditionsMenu addItemWithTitle:conditionTitles[index] action:@selector(changeConditions:) keyEquivalent:[NSString stringWithFormat:@"%ld",(long)index+1]];
+        condition.target=self;condition.tag=index;condition.keyEquivalentModifierMask=NSEventModifierFlagCommand;
+        condition.state=static_cast<NSInteger>(self.renderer->state->conditionsTransition.target)==index?NSControlStateValueOn:NSControlStateValueOff;
+    }
     if(!self.renderer->state->bundledGameUI){
         NSMenu *renderMenu=[[NSMenu alloc] initWithTitle:@"Rendering"];NSMenuItem *renderRoot=[NSMenuItem new];renderRoot.title=@"Rendering";renderRoot.submenu=renderMenu;[menu addItem:renderRoot];
         NSMenuItem *windowResolution=[renderMenu addItemWithTitle:@"Window Resolution" action:@selector(renderAtWindowResolution:) keyEquivalent:@""];windowResolution.target=self;
@@ -1212,11 +1349,12 @@ static NSDictionary *prepareBundledSession(NSString *resources) {
 int main(int argc,const char **argv) {
     @autoreleasepool {try {
         if(argc==2 && std::string(argv[1])=="--check-math") {checkProjectionMath();fprintf(stdout,"Projection reference checks passed\n");return 0;}
-        NSString *scene=nil,*shader=nil,*replay=nil,*cars=nil,*live=nil,*input=nil,*report=nil,*offscreen=nil;bool noCars=false,liveSceneOnly=false,allowPartialHud=false,widescreen=true,extendedDistance=true;int render4K=-1;int width=3840,height=2160,frames=120;double duration=0,fixedTime=-1;
+        NSString *scene=nil,*shader=nil,*replay=nil,*cars=nil,*live=nil,*input=nil,*report=nil,*offscreen=nil;bool noCars=false,liveSceneOnly=false,allowPartialHud=false,widescreen=true,extendedDistance=true;Conditions::Preset requestedConditions=Conditions::Preset::Day;int render4K=-1;int width=3840,height=2160,frames=120;double duration=0,fixedTime=-1;
         for(int i=1;i<argc;i++){
             std::string a=argv[i];
             auto next=[&](){if(i+1>=argc)throw std::runtime_error("Missing command argument");return [NSString stringWithUTF8String:argv[++i]];};
             if(a=="--scene")scene=next();else if(a=="--shader")shader=next();else if(a=="--replay")replay=next();else if(a=="--cars")cars=next();else if(a=="--live")live=next();else if(a=="--input")input=next();else if(a=="--no-cars")noCars=true;else if(a=="--live-scene-only")liveSceneOnly=true;else if(a=="--render-4k")render4K=1;else if(a=="--window-resolution")render4K=0;else if(a=="--widescreen")widescreen=true;else if(a=="--original-aspect")widescreen=false;else if(a=="--extended-distance")extendedDistance=true;else if(a=="--standard-distance")extendedDistance=false;else if(a=="--allow-partial-hud")allowPartialHud=true;else if(a=="--report")report=next();else if(a=="--offscreen")offscreen=next();
+            else if(a=="--conditions"){if(!Conditions::fromString(next().UTF8String,requestedConditions))throw std::runtime_error("Conditions must be day, night or fog");}
             else if(a=="--width")width=std::stoi(next().UTF8String);else if(a=="--height")height=std::stoi(next().UTF8String);else if(a=="--frames")frames=std::stoi(next().UTF8String);else if(a=="--duration")duration=std::stod(next().UTF8String);else if(a=="--time")fixedTime=std::stod(next().UTF8String);else throw std::runtime_error("Unknown command argument");
         }
         NSString *resources=NSBundle.mainBundle.resourcePath;
@@ -1234,7 +1372,7 @@ int main(int argc,const char **argv) {
         if(noCars)cars=nil;
         if(live){replay=nil;if(!input)input=[live.stringByDeletingLastPathComponent stringByAppendingPathComponent:@"input.json"];}
         if(width<64||height<64||width>8192||height>8192||frames<1||frames>10000||!std::isfinite(duration)||duration<0||!std::isfinite(fixedTime)||fixedTime< -1)throw std::runtime_error("Invalid preview dimensions or duration");
-        PreviewRenderer *renderer=[[PreviewRenderer alloc] initWithScene:scene shader:shader replay:replay cars:cars report:report];renderer->state->widescreen=widescreen;renderer->state->extendedDistance=extendedDistance;renderer->state->render4K=render4K>=0?render4K:([NSFileManager.defaultManager fileExistsAtPath:config]&&[jsonFile(config)[@"render_4k"] boolValue]);renderer->state->allowPartialHud=allowPartialHud||([NSFileManager.defaultManager fileExistsAtPath:config]&&[jsonFile(config)[@"allow_partial_hud"] boolValue]);renderer->state->duration=duration;renderer->state->fixedTime=fixedTime;
+        PreviewRenderer *renderer=[[PreviewRenderer alloc] initWithScene:scene shader:shader replay:replay cars:cars report:report];renderer->state->conditionsTransition.setImmediate(requestedConditions);renderer->state->widescreen=widescreen;renderer->state->extendedDistance=extendedDistance;renderer->state->render4K=render4K>=0?render4K:([NSFileManager.defaultManager fileExistsAtPath:config]&&[jsonFile(config)[@"render_4k"] boolValue]);renderer->state->allowPartialHud=allowPartialHud||([NSFileManager.defaultManager fileExistsAtPath:config]&&[jsonFile(config)[@"allow_partial_hud"] boolValue]);renderer->state->duration=duration;renderer->state->fixedTime=fixedTime;
         if(live){renderer->state->liveSceneOnly=liveSceneOnly;[renderer startLive:live input:input];}
         if(session){
             renderer->state->bundledGameUI=true;

@@ -13,6 +13,20 @@ Each app offers two experiences after setup:
 
 The original game logic runs in DOSBox. Physics retains approximately **50 Hz** for Screamer and Screamer 2, and **33 Hz** for Rally. Metal presentation targets **60 FPS**, interpolating camera/car snapshots between game updates. Menus, loading screens and unsupported views use the original framebuffer.
 
+## Live race conditions
+
+In **Upgraded** mode, use the **Conditions** menu during a race:
+
+- **Day** — **⌘1**: original track colors and sky.
+- **Night** — **⌘2**: original night artwork, skies, reflections and light effects, where the game supplies them.
+- **Fog** — **⌘3**: distance-based haze that blends the world into the sky.
+
+Day restores the original track appearance. Night loads an alternate set of visual assets in the frontend; it does not change the game's condition variables, physics, grip or timing. Fog blends smoothly. HUD colors, menus and other original-framebuffer views retain their original appearance. Asset preparation happens once per race in the local session cache.
+
+Night availability follows the original assets. Screamer supports Palm Town's compatible night materials and its existing Palm Town Night course; its other tracks have no matching night bank. Screamer 2 supplies night banks for tracks 1–4 and 6. Rally supplies night skies and night cars for tracks 1–6, while its world textures are shared. Night is unavailable on unsupported tracks rather than substituting a blue tint. On an originally night course, **Original (Night)** restores its baseline appearance.
+
+The renderer translates Screamer's palette light/shadow masks to true-color alpha blending. Screamer 2 and Rally preserve the original light-cone blend equations, including destination-color modulation. Original game data stays in your local import or private app bundle.
+
 ## First launch: import your game
 
 1. [Build the apps](#build-on-macos), then open the matching locally built `Screamer.app`, `Screamer 2.app` or `Screamer Rally.app`.

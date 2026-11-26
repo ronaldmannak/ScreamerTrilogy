@@ -78,12 +78,65 @@ class AssetJobs:
             self.ready = {"epoch":epoch,"scene":str(scene),"cars":str(cars),
                           "world_scene":str(scene),"cars_scene":str(cars),"ram_sha256":self.current["ram_hash"]}
             if scene_data.get("sky"):self.ready["sky_texture"]=str(scene.parent/scene_data["sky"]["path"])
+            variants = directory / "condition-variants.json"
+            if variants.is_file():
+                self.ready["condition_variants"] = validate_conditions(
+                    directory, json.loads(variants.read_text()), self.current["ram_hash"], car_data)
         return self.ready
 
     def stop(self):
         processes = self.retired + ([self.current["process"]] if self.current else [])
         for process in processes:
             terminate_group(process)
+
+
+def validate_conditions(directory, value, ram_hash, base_cars):
+    """Optional alternate visuals must belong to this exact captured car cohort."""
+    original = value.get("original", "day")
+    try:
+        if value.get("schema") != "screamer-original-conditions/v1" or original not in ("day", "night"):
+            raise ValueError("Original condition descriptor is invalid")
+        night = value.get("night", {})
+        if not night.get("available"):
+            return value
+        for name in ("world_scene", "cars_scene", "sky_texture"):
+            target = Path(night[name])
+            if not target.is_absolute() or not target.resolve().is_relative_to(directory.resolve()) or not target.is_file():
+                raise ValueError("Original Night assets must stay inside this captured race cache")
+        validate_scene(Path(night["world_scene"]), ram_hash)
+        cars = validate_scene(Path(night["cars_scene"]), ram_hash)
+        identity = lambda scene: [(item["id"], item["model"]) for item in scene.get("dynamic_instances", [])]
+        if identity(cars) != identity(base_cars):
+            raise ValueError("Original Night car identities differ from the captured race")
+    except (KeyError, TypeError, ValueError, OSError) as error:
+        return {"schema": "screamer-original-conditions/v1", "original": original if original in ("day", "night") else "day",
+                "night": {"available": False, "reason": str(error)}}
+    return value
+
+
+def export_conditions(directory, game_root):
+    result = {"schema": "screamer-original-conditions/v1", "original": "day",
+              "night": {"available": False, "reason": "Original game assets are unavailable."}}
+    if game_root is not None:
+        try:
+            from guest_memory import Snapshot
+            capture = Snapshot.load(directory / "ram.bin", directory / "metadata.json")
+            track = capture.rd32(capture.link(0x1435c0, 4))
+            result["original"] = "night" if capture.rd32(capture.link(0x1435c4, 4)) & 1 else "day"
+            conditions = Path(__file__).resolve().parents[1] / "Conditions"
+            if not (conditions / "rally.py").is_file():
+                raise ValueError("Original condition decoder is unavailable")
+            sys.path.insert(0, str(conditions))
+            from rally import export_night
+            result = export_night(game_root, track, directory / "world/scene.json", directory / "cars/scene.json",
+                                  directory / "night", capture=capture)
+        except Exception as error:
+            # Optional authored Night artwork cannot prevent the independent
+            # baseline race assets from loading if an archive is unavailable.
+            result["night"] = {"available": False, "reason": str(error)[:500]}
+            print("Original Rally Night assets unavailable:", error, flush=True)
+    (directory / "condition-variants.json").write_text(json.dumps(result, indent=2) + "\n")
+    return result
 
 
 def run_job(directory, extractor, game_root=None):
@@ -105,6 +158,7 @@ def run_job(directory, extractor, game_root=None):
         scene_path.write_text(json.dumps(scene,indent=2)+"\n")
     subprocess.run([sys.executable,str(extractor/"extract_cars.py"),*common,
                     "--output",str(directory/"cars")],check=True)
+    export_conditions(directory, game_root)
 
 
 if __name__ == "__main__":

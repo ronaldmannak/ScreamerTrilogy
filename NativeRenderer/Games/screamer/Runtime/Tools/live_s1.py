@@ -215,7 +215,7 @@ class Bridge:
         (folder/'snapshot.json').write_text(json.dumps(meta,indent=2)+'\n')
         log=(folder/'export.log').open('wb')
         process=subprocess.Popen([sys.executable,str(Path(__file__).with_name('export_dynamic.py')),'--ram',str(folder/'ram.bin'),'--metadata',str(folder/'snapshot.json'),
-            '--game-root',str(self.a.game_root),'--output',str(folder/'Dynamic')],stdout=log,stderr=subprocess.STDOUT,
+            '--game-root',str(self.a.game_root),'--output',str(folder/'Dynamic'),'--world-scene',str(world)],stdout=log,stderr=subprocess.STDOUT,
             env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'))
         self.generation+=1
         self.job=(process,log,folder,key,world,self.generation);self.cached_actors=roots;self.model_bases=model_bases;self.scene_key=key;self.assets=None
@@ -234,6 +234,12 @@ class Bridge:
         self.sky_palette=sky['palette_rgb']
         self.assets={'world_scene':str(world),'cars_scene':str(folder/'Dynamic/scene.json'),'epoch':folder.name,
                      'sky_texture':str(sky_dir/'texture.png')}
+        runtime=Path(__file__).resolve().parent.parent
+        conditions_root=runtime if (runtime/'Conditions').is_dir() else Path(__file__).resolve().parents[4]
+        sys.path.insert(0,str(conditions_root)) if str(conditions_root) not in sys.path else None
+        from Conditions.s1 import build_variants
+        self.assets['condition_variants']=build_variants(self.a.game_root,int(key[0][-1]),folder/'Conditions',
+                                                        world,folder/'Dynamic/scene.json')
         self.assets_since=now_ns();self.exact_hud=None
 
     def read_pose(self):
@@ -332,7 +338,7 @@ class Bridge:
                 'completed_frame_wait_misses':self.wait_misses},
             'last_wait_status':self.last_wait_status,
             'error':self.last_error,'limitations':['Native gameplay currently supports original digital HUD mode2; other views retain the original framebuffer. Original sky assets and atomic sky state are published for native composition.',
-                'Special palette effects omitted explicitly; native camera verified against original projected vertices.',
+                'E0 fades reconstruct original SMG ramps before palette quantization; unsupported C0 is counted explicitly. Native camera verified against original projected vertices.',
                 'Mode guard identifies original scene frame but does not yet distinguish player race from automatic intro/demo.']}
 
     def run(self):

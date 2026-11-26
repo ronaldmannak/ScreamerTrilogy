@@ -1,0 +1,47 @@
+{
+  "schema": "screamer-live-conditions-validation/v1",
+  "date": "2026-11-25",
+  "candidate_version": "0.5.0",
+  "candidate_build": 14,
+  "games": [
+    "screamer",
+    "screamer2",
+    "screamerrally"
+  ],
+  "controls": {
+    "menu": "Conditions",
+    "Day": "Command-1",
+    "Night": "Command-2",
+    "Fog": "Command-3",
+    "transition_seconds": 0.6,
+    "default": "day"
+  },
+  "changes": "Native world and sky presentation only; no game-clock, physics, grip, input or engine changes.",
+  "checks": {
+    "cpu_transition_and_interruption": "passed",
+    "production_gpu_world_and_sky": "passed",
+    "world_alpha_key_and_source_alpha": "passed",
+    "hud_and_framebuffer_unchanged": "passed",
+    "menu_shortcuts_checkmarks_live_selection": "passed",
+    "actual_frontend_cli_presets_and_invalid_arguments": "passed",
+    "all_game_default_and_explicit_day_images_match_previous_build": "byte-identical authored scene at 320x180",
+    "all_game_night_and_fog_outputs_distinct": "passed",
+    "all_game_strict_deep_signatures": "passed",
+    "all_game_game_data_exclusion": "passed",
+    "source_input_fingerprints": "matched including Conditions.inc",
+    "source_only_python_tests": 38,
+    "owned_track_snapshot_day_night_fog": "31107 triangles, 163 textures, zero GPU errors; offscreen render only"
+  },
+  "scope": {
+    "new_game_execution": false,
+    "game_input_sent": false,
+    "installed_apps_changed": false,
+    "original_game_files_added_to_source": false,
+    "published_to_github": false
+  },
+  "limitations": [
+    "Night grades textures that contain baked daylight shading; no physical relighting or headlights are added.",
+    "Classic, menus, mirrors and other original framebuffer views retain their original appearance.",
+    "No new interactive player-race test or displayed-FPS measurement was performed."
+  ]
+}

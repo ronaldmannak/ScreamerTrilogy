@@ -7,13 +7,20 @@ struct VertexIn {
     float4 color [[attribute(2)]];
     float3 normal [[attribute(3)]];
 };
+// Must match ConditionsUniforms in Conditions.inc. These are presentation-only.
+struct ConditionsUniforms {
+    float4 weights; // night haze, grey fog, fog start distance, inverse fog span
+    float4 fogColor;
+    float4 nightFog;
+};
 struct Uniforms {
     float4x4 relativeWorldToClip;
     float4 eye;
-    float4 options; // textured, alpha threshold, source-alpha blend, original S1 A0 reflection
+    float4 options; // textured, alpha threshold, original blend equation, S1 A0 reflection
     float4x4 localToWorld;
     float4x4 reflectionWorldToView;
     float4 reflectionScroll;
+    ConditionsUniforms conditions;
 };
 struct VertexOut {
     float4 position [[position]];
@@ -43,6 +50,28 @@ vertex VertexOut worldVertex(VertexIn v [[stage_in]], constant Uniforms &u [[buf
     }
     return o;
 }
+// Night artwork is selected from the owned original texture/model banks.
+// Preserve its colors; the original 3dfx night mode only adds black distance haze.
+float3 conditionsWorldRGB(float3 color, float distance, constant ConditionsUniforms &conditions) {
+    float night=saturate(conditions.weights.x),fog=saturate(conditions.weights.y);
+    if(night<=0 && fog<=0)return color; // Preserve the original Day result exactly.
+    if(night>0){
+        float span=saturate((distance-conditions.nightFog.x)*conditions.nightFog.y);
+        color*=1-span*span*(3-2*span)*night;
+    }
+    if(fog>0){
+        float span=saturate((distance-conditions.weights.z)*conditions.weights.w);
+        float amount=span*span*(3-2*span)*fog;
+        color=mix(color,conditions.fogColor.rgb,amount);
+    }
+    return color;
+}
+float3 conditionsSkyRGB(float3 color, constant ConditionsUniforms &conditions) {
+    float fog=saturate(conditions.weights.y);
+    // The distant background meets the world fog colour without a visible seam.
+    if(fog>0)color=mix(color,conditions.fogColor.rgb,fog);
+    return color;
+}
 fragment float4 worldFragment(VertexOut v [[stage_in]], constant Uniforms &u [[buffer(1)]],
                               texture2d<float> tex [[texture(0)]], sampler sampling [[sampler(0)]]) {
     float4 color = v.color;
@@ -50,7 +79,10 @@ fragment float4 worldFragment(VertexOut v [[stage_in]], constant Uniforms &u [[b
     if (color.a < u.options.y) discard_fragment();
     // Original textures contain authored shading. Opaque and keyed world
     // materials both write an opaque result after the key test.
-    return float4(color.rgb, u.options.z > 0.5 ? color.a : 1.0);
+    float distance=length(v.relativeWorld);
+    // Original mode 7 grey light cones use 2*source*destination and disable fog.
+    float3 rgb=abs(u.options.z-2.0)<0.1?color.rgb:conditionsWorldRGB(color.rgb,distance,u.conditions);
+    return float4(rgb, u.options.z > 0.5 ? color.a : 1.0);
 }
 struct FramebufferOut { float4 position [[position]]; float2 uv; };
 struct FramebufferUniforms { float4 destination;float4 source; };
@@ -65,6 +97,7 @@ fragment float4 framebufferFragment(FramebufferOut v [[stage_in]],texture2d<floa
 fragment float4 overlayFragment(FramebufferOut v [[stage_in]],texture2d<float> tex [[texture(0)]],sampler sampling [[sampler(0)]]) {
     return tex.sample(sampling,v.uv);
 }
-fragment float4 backgroundFragment(FramebufferOut v [[stage_in]],constant float4 &color [[buffer(0)]],texture2d<float> tex [[texture(0)]],sampler sampling [[sampler(0)]]) {
-    return color.a>=0 ? color : float4(tex.sample(sampling,v.uv).rgb,1);
+fragment float4 backgroundFragment(FramebufferOut v [[stage_in]],constant float4 &color [[buffer(0)]],constant Uniforms &u [[buffer(1)]],texture2d<float> tex [[texture(0)]],sampler sampling [[sampler(0)]]) {
+    float4 result=color.a>=0 ? color : float4(tex.sample(sampling,v.uv).rgb,1);
+    return float4(conditionsSkyRGB(result.rgb,u.conditions),result.a);
 }

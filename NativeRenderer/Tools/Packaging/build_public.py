@@ -213,6 +213,7 @@ def runtime_sources(resources, game):
         for name, source in [('Execution', 'Tools/Execution'), ('bridge', 'bridge'), ('extractor', 'extractor')]:
             copy_source_tree(ROOT / source, live / name)
         shutil.copy2(ROOT / 'hud-profile.json', live / 'hud-profile.json')
+    copy_source_tree(ROOT / 'Conditions', live / 'Conditions')
     copy_source_tree(ROOT / 'Importer', resources / 'Importer')
 
 
@@ -277,6 +278,7 @@ def declare_minimum_macos(app, minimum):
 def source_proof():
     """Record exact compiler/source inputs without publishing machine paths."""
     inputs = [ROOT / 'NativePreview/Sources/NativePreview.mm',
+              ROOT / 'NativePreview/Sources/Conditions.inc',
               ROOT / 'NativePreview/Sources/World.metal', ROOT / 'Launcher/Launcher.m',
               ROOT / 'Launcher/FirstLaunchImport.inc', Path(__file__).resolve(),
               ROOT / 'Tools/Packaging/bundle_runtime.py', ROOT / 'Tools/Packaging/verify_public.py',
@@ -288,6 +290,10 @@ def source_proof():
     for path in (ROOT / 'Importer').rglob('*.py'):
         if not path.name.startswith('test_'):
             inputs.append(path)
+    for directory in ('Conditions','Games/screamer/Runtime','Games/screamer2/Runtime','bridge','extractor'):
+        for path in sorted((ROOT / directory).rglob('*.py')):
+            if not path.name.startswith('test_') and 'tests' not in path.parts:
+                inputs.append(path)
     return [{'path': str(path.relative_to(REPOSITORY)),
              'sha256': hashlib.sha256(path.read_bytes()).hexdigest()} for path in inputs if path.is_file()]
 

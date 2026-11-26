@@ -330,7 +330,7 @@ class Session:
         if self.read_only:self.keyboard.method="disabled-read-only-diagnostic"
         self.input_error=None;self.input_thread=None
         self.layout=self.feed=None;self.layout_signature=None
-        self.jobs=AssetJobs(args.cache_root,args.extractor_dir)
+        self.jobs=AssetJobs(args.cache_root,args.extractor_dir,getattr(args,'game_root',None))
         self.assets=None;self.race_epoch=None;self.scene_key=None;self.previous_phase="loading"
         self.scene_generation=None;self.capture_pending=False
         self.previous_attract=True
